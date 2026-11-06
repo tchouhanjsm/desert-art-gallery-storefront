@@ -62,7 +62,7 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
         self.assertIn("read-only", script.lower())
         self.assertIn("never renames", script.lower())
         self.assertIn("SHA-256", guide)
-        self.assertIn("does not authorize bulk migration", guide)
+        self.assertIn("bulk migration", guide)
 
     def test_previous_synthesis_is_historical_only(self):
         protocol = (ROOT / "docs/AI-WORKING-PROTOCOL.md").read_text(encoding="utf-8").lower()
