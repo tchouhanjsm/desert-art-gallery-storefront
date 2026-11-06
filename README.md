@@ -3,41 +3,34 @@
 Desert Art Gallery (DAG) is a new premium, product-led ecommerce and gallery experience rooted in Jaisalmer, Rajasthan, with a Japan-first customer focus and an English-only customer-facing storefront.
 
 ## Current stage
-**M1 — Owner-controlled visual direction review.**
+**M1 — Reference-led creative exploration reset.**
 
-The M0 foundation and Japan-first customer research are in place. Four materially distinct visual territories are presented for owner review. No final palette, typography, visual style or art direction has been selected. No production application stack or commerce integration has been selected.
+The owner explicitly rejected the four visual territories in the previous review. POJ Studio and Macaroni Shoten are now the principal references for a fresh DAG-specific design study. No final palette, typography, visual style, art direction or production theme has been selected. No production application stack or commerce integration has been selected.
 
 ## Start here
-1. [`AGENTS.md`](AGENTS.md) — permanent instructions for agents and contributors.
+1. [Permanent agent instructions](AGENTS.md).
 2. [Project Charter](docs/00-PROJECT-CHARTER.md).
-3. [Creative Direction](docs/03-CREATIVE-DIRECTION.md).
-4. [Visual Design System](docs/04-VISUAL-DESIGN-SYSTEM.md).
-5. [Quality and Acceptance](docs/09-QUALITY-AND-ACCEPTANCE.md).
-6. [Owner-Controlled Visual Direction](docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
-7. [AI Working Protocol](docs/AI-WORKING-PROTOCOL.md).
-8. [Decision Register](docs/DECISIONS.md).
-9. [Roadmap](docs/10-ROADMAP.md).
-
-## Four visual directions — owner choice required
-- [Rendered visual board](design/explorations/visual-directions.html)
-- [Exact palette, typography, layout and accessibility specifications](docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md)
-
-Each option has desktop and mobile vector preview boards:
-
-| Direction | Desktop | Mobile |
-|---|---|---|
-| Graphic Atelier | [View](design/explorations/rendered/graphic-atelier-desktop.svg) | [View](design/explorations/rendered/graphic-atelier-mobile.svg) |
-| Future Relics | [View](design/explorations/rendered/future-relics-desktop.svg) | [View](design/explorations/rendered/future-relics-mobile.svg) |
-| Living Garden | [View](design/explorations/rendered/living-garden-desktop.svg) | [View](design/explorations/rendered/living-garden-mobile.svg) |
-| Modern Folk Pop | [View](design/explorations/rendered/modern-folk-pop-desktop.svg) | [View](design/explorations/rendered/modern-folk-pop-mobile.svg) |
-
-The alternatives are **Graphic Atelier**, **Future Relics**, **Living Garden** and **Modern Folk Pop**. They are proposals only. Choose one, combine elements, request revisions, or reject all. The AI must not select or rank a winner.
+3. [Reference-led design brief](docs/17-REFERENCE-LED-DESIGN-BRIEF.md).
+4. [Creative Direction](docs/03-CREATIVE-DIRECTION.md).
+5. [Visual Design System](docs/04-VISUAL-DESIGN-SYSTEM.md).
+6. [Quality and Acceptance](docs/09-QUALITY-AND-ACCEPTANCE.md).
+7. [Owner-Controlled Visual Direction](docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+8. [AI Working Protocol](docs/AI-WORKING-PROTOCOL.md).
+9. [Decision Register](docs/DECISIONS.md).
+10. [Roadmap](docs/10-ROADMAP.md).
 
 ## Principal design references
-- POJ Studio: https://pojstudio.com/
-- Macaroni Shoten: https://shop.macaro-ni.jp/
+- [POJ Studio](https://pojstudio.com/)
+- [Macaroni Shoten](https://shop.macaro-ni.jp/)
 
-Study their retail and editorial principles. Do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
+The owner has asked DAG to use these references closely. The design brief records observed patterns and DAG-specific translations. The deliverable must remain an original DAG design: do not clone either site, reuse its assets or copy its text, product content, exact page composition or brand identity.
+
+## Rejected historical visual proposals
+The previous four-option review — Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop — was explicitly rejected by the owner on 6 November 2026. The comparison board and detailed specifications remain as historical evidence only:
+- [Archived comparison board](design/explorations/visual-directions.html)
+- [Rejected specifications](docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md)
+
+Do not treat any rejected palette, font pairing or preview as an active preference or approved direction.
 
 ## Permanent principle
 **DO NOT ABANDON MINIMALISM. ABANDON EMPTINESS.**
@@ -49,4 +42,4 @@ The previous implementation remains at https://github.com/tchouhanjsm/desert-art
 Japan-first is the intended customer focus. English-only is the customer-facing language requirement. Exact sales territories, seller jurisdiction, currency, tax, duties, shipping, payment, returns and legal disclosures must be confirmed before implementation.
 
 ## Visual decision authority
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.** No final palette, fonts, visual personality, photography art direction or production theme may be implemented before the owner's explicit selection is recorded in `docs/DECISIONS.md`.
+**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.** No final palette, fonts, visual personality, photography art direction or production theme may be implemented before the owner's explicit selection is recorded in docs/DECISIONS.md.

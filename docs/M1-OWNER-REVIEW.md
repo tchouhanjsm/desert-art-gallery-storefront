@@ -1,26 +1,28 @@
 # M1 — Owner Review and Exit Gate
 
-**Status:** Customer/market research and four visual proposals are ready; owner choice remains pending.
+**Status:** The owner rejected the previous four visual proposals on 6 November 2026. The next creative review is being rebuilt around POJ Studio and Macaroni Shoten as the principal references. No visual identity has been approved.
 
-## Delivered
+## Owner decisions recorded
+- **D-008:** Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop are all rejected. None may be carried forward as an active option, preference or default.
+- **D-009:** POJ Studio and Macaroni Shoten are the named primary references for the next design exploration.
+- The references guide retail quality and customer experience, not pixel-for-pixel cloning. DAG must retain its own Jaisalmer identity, original content and product imagery.
+
+## Research retained
 - Japan-first customer and market research: [14 — Japan-First Customer and Market Research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md).
-- Reference-site observations: [Reference Research Log](REFERENCE-RESEARCH-LOG.md).
+- Reference observations and current live-site limitations: [Reference Research Log](REFERENCE-RESEARCH-LOG.md).
+- Detailed comparison and DAG-specific translation requirements: [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md).
 - Direct, enquiry-led and hybrid operating-model assessment: [16 — Commercial Model Assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md).
-- Four materially different creative territories with exact palettes, type specifications, neutral trade-offs and rendered desktop/mobile examples: [visual board](../design/explorations/visual-directions.html) and [detailed specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md).
-- Mandatory authority and process: [14 — Owner-Controlled Visual Direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+- Mandatory decision authority and process: [14 — Owner-Controlled Visual Direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 
-## Four visual options
-1. **Graphic Atelier** — high-contrast modernist editorial, vermilion/cobalt/marigold, Inter.
-2. **Future Relics** — digital-future object gallery, ultramarine/acid pink/ion, Noto Sans Display and PT Mono.
-3. **Living Garden** — expressive botanical/art-deco editorial, canopy/jade/coral/citrus/violet, EB Garamond and Lato.
-4. **Modern Folk Pop** — energetic craft-pop retail, cobalt/saffron/pink/teal, Comfortaa and Lato.
+## What happens next
+Prepare a fresh owner-review package based on both references and DAG's actual product, brand and customer requirements. It must contain at least four materially different DAG-specific visual territories, each with exact colour values, type specifications/licensing, layout and photography direction, rendered desktop/mobile examples, accessibility notes and neutral trade-offs.
 
-These are alternatives, not a shortlist ranked by the AI. No option is recommended, preferred, scored, selected or approved. Each has individual desktop/mobile render captures in `design/explorations/rendered/`.
+The new proposals must not simply rename or lightly revise P-015. No option is recommended, preferred, scored, selected or approved. The AI will ask the owner to choose, combine, request revisions or reject all options.
 
-## Owner decision required
-Choose one direction, combine named elements from different directions, request revisions, or reject all four. The AI will not choose or recommend a winner. No final palette, font pairing, visual personality, photography style, design tokens or production theme may be implemented until the owner makes an explicit choice and that choice is recorded in `DECISIONS.md`.
+No final palette, font pairing, visual personality, photography style, design tokens, global theme or production styling may be implemented until the owner makes a new explicit choice and that choice is recorded in DECISIONS.md.
 
-Also confirm the first customer-validation focus and the representative product/image sample when ready. These decisions are separate from seller jurisdiction and commercial/legal matters U-001 to U-010, which remain open.
+## Separate owner inputs
+The initial customer-validation focus and representative product/photo sample remain open. These decisions are separate from seller jurisdiction, commercial and legal matters U-001 to U-010. Do not turn unresolved items into invented facts.
 
 ## Exit criteria
-M1 creative direction closes only after explicit owner choice/combination/revision/rejection and confirmation of the initial validation focus. M2 prototypes follow the selected direction. No production framework, database, application code or paid service is authorized by this review.
+M1 creative direction closes only after the owner reviews the fresh reference-led options and explicitly chooses, combines, requests revisions or rejects them, and the initial customer-validation focus is confirmed. M2 prototypes follow only an approved visual direction. No production framework, database, application code or paid service is authorized by this review.
