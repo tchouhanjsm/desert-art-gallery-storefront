@@ -39,6 +39,15 @@ Permanent principle:
 
 # DO NOT ABANDON MINIMALISM. ABANDON EMPTINESS.
 
+## Principal design references
+Our principal references are:
+
+**POJ Studio:** https://pojstudio.com/
+
+**Macaroni Shoten:** https://shop.macaro-ni.jp/
+
+These are the two primary references for DAG's creative and retail study. Examine their actual customer experience, editorial presentation, product merchandising, navigation, collection structure, typography, image treatment and responsive behaviour. Translate relevant principles into DAG's own Jaisalmer identity. Do not clone either site or copy its assets, text, exact layouts or brand identity.
+
 ## 4. Confirmed project direction
 - Japan-first is the intended customer and market focus.
 - All customer-facing content must remain English-only.
@@ -142,3 +151,25 @@ For every meaningful task, report:
 5. Visual/browser evidence where relevant.
 6. Remaining risks, blockers and owner decisions.
 7. Documentation updated.
+
+## 12. Owner-controlled visual identity — mandatory approval gate
+
+The AI agent MUST NOT independently choose or approve DAG's brand colour palette, typography, overall visual style, art direction or visual personality.
+
+Before any visual system is finalized:
+1. Prepare at least four materially different visual territories.
+2. Make them genuinely different in hue families, contrast, typography, composition, image treatment and retail personality. Do not present four variations of beige/grey/ivory.
+3. Show actual rendered visual boards and representative page sections, not only written descriptions or small swatches.
+4. State exact proposed colour values, font families/weights, typography scale, surface treatments and layout principles for every option.
+5. Explain advantages, disadvantages and likely customer impression without selecting a winner.
+6. Ask the owner which direction to choose, combine or reject.
+7. STOP creative-system implementation and wait for the owner's selection.
+
+Do not default to grey, greige, beige, ivory, sand, muted terracotta or low-contrast monochrome. These ingredients are not permanently prohibited, but they may only be used if the owner selects them. Never assume "Japanese-inspired" means neutral, pale or muted.
+
+After owner selection, record exact choices in `docs/DECISIONS.md`, update the visual-system document and follow the approved tokens. Foundational palette, typography and style changes require renewed owner approval. Routine component-level decisions within the approved system may proceed autonomously.
+
+
+**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+
+The owner exclusively selects foundational DAG visual identity. Present at least four materially different rendered options with exact HEX values, fonts/weights/licensing, layout/art direction, desktop/mobile examples and neutral trade-offs. Never recommend, rank, choose or approve a winner. Ask the owner to choose, combine, request revisions or reject all options, then stop before production tokens or final styling.

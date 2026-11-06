@@ -1,6 +1,6 @@
 # Owner Input Register
 
-This is a concise queue of decisions that require owner input. Update it as decisions are recorded in `DECISIONS.md`. The M1 creative territories and commercial-model comparison are prepared; the choices below remain owner-controlled.
+This is a concise queue of decisions that require owner input. Update it as decisions are recorded in `DECISIONS.md`.
 
 | ID | Topic | Why it matters | Needed by | Status |
 |---|---|---|---|---|
@@ -12,10 +12,10 @@ This is a concise queue of decisions that require owner input. Update it as deci
 | U-006 | Returns/refunds/cancellations | Policy and legal compliance | Before policy publication | Open |
 | U-007 | Customer segments | Product and content prioritization | During M1 | Open |
 | U-008 | Direct, enquiry-led or hybrid | Core shopping journey | Before M2/M3 | Open |
-| U-009 | Brand positioning/promise | Brand identity and content | During M1 | Proposed; owner review |
+| U-009 | Brand positioning/promise | Brand identity and content | During M1 | Open |
 | U-010 | Technology and hosting | Engineering cost and capability | M3 | Open |
-| M1-A | Creative territory selection | Determines M2 prototypes and design system | Before M2 | Owner review pending |
-| M1-B | Initial research/validation focus | Prioritizes customer interviews and prototype testing | During M1 | Owner review pending |
-| M1-C | Initial product sample | Enables authentic photography and product-detail testing | Before M2 | Owner input needed |
+| M1-A | Visual territory selection | Sets the brand visual system and M2 prototypes | Before M2 | Four options presented; owner choice pending |
+| M1-B | Customer-validation cohort | Prioritizes customer research | During M1 | Owner input pending |
+| M1-C | Product/photo sample | Enables authentic product and image testing | Before M2 | Owner input pending |
 
 Do not turn unanswered questions into invented facts. Continue work that is independent of these decisions.

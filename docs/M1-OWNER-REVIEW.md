@@ -1,30 +1,26 @@
 # M1 — Owner Review and Exit Gate
 
-**Review package date:** 6 November 2026  
-**Milestone status:** Research and recommendations prepared; awaiting owner selections.
+**Status:** Customer/market research and four visual proposals are ready; owner choice remains pending.
 
 ## Delivered
+- Japan-first customer and market research: [14 — Japan-First Customer and Market Research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md).
+- Reference-site observations: [Reference Research Log](REFERENCE-RESEARCH-LOG.md).
+- Direct, enquiry-led and hybrid operating-model assessment: [16 — Commercial Model Assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md).
+- Four materially different creative territories with exact palettes, type specifications, neutral trade-offs and rendered desktop/mobile examples: [visual board](../design/explorations/visual-directions.html) and [detailed specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md).
+- Mandatory authority and process: [14 — Owner-Controlled Visual Direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 
-- Japan-first customer and market research with source links, dates and limitations: [14 — Japan-First Customer and Market Research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md).
-- Two creative territories and recommended synthesis: [15 — DAG Creative Direction Options](15-CREATIVE-DIRECTION-OPTIONS.md).
-- Direct, enquiry-led and hybrid operating-model comparison: [16 — Commercial Model Assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md).
-- Browser-openable visual territory sheet: [M1 Territory Study](../design/explorations/m1-territory-study.html).
-- Durable source observations: [Reference Research Log](REFERENCE-RESEARCH-LOG.md).
+## Four visual options
+1. **Graphic Atelier** — high-contrast modernist editorial, vermilion/cobalt/marigold, Inter.
+2. **Future Relics** — digital-future object gallery, ultramarine/acid pink/ion, Noto Sans Display and PT Mono.
+3. **Living Garden** — expressive botanical/art-deco editorial, canopy/jade/coral/citrus/violet, EB Garamond and Lato.
+4. **Modern Folk Pop** — energetic craft-pop retail, cobalt/saffron/pink/teal, Comfortaa and Lato.
 
-## Recommendation for owner review
+These are alternatives, not a shortlist ranked by the AI. No option is recommended, preferred, scored, selected or approved. Each has individual desktop/mobile render captures in `design/explorations/rendered/`.
 
-Choose **Material Archive** as the design foundation, borrowing the product-discovery clarity and catalogue energy of **Collected Colour**. Test a controlled hybrid purchase/enquiry model against the actual sale-ready catalogue before making it a business decision.
+## Owner decision required
+Choose one direction, combine named elements from different directions, request revisions, or reject all four. The AI will not choose or recommend a winner. No final palette, font pairing, visual personality, photography style, design tokens or production theme may be implemented until the owner makes an explicit choice and that choice is recorded in `DECISIONS.md`.
 
-## Owner decisions required to close M1
-
-1. Select Territory A, Territory B or the recommended synthesis.
-2. Confirm whether the proposed positioning is directionally correct; do not approve public copy until every claim is verified.
-3. Choose which audience hypothesis to prioritize for the first validation round.
-4. Agree the initial sale-ready product sample for image and product-information testing.
-5. Decide whether the commercial model should be evaluated as direct, enquiry-led or hybrid.
-
-These choices are not assumed by this review. Owner-controlled commercial/legal matters U-001 to U-006 remain open independently of the design selection.
+Also confirm the first customer-validation focus and the representative product/image sample when ready. These decisions are separate from seller jurisdiction and commercial/legal matters U-001 to U-010, which remain open.
 
 ## Exit criteria
-
-M1 can be marked complete after the owner selects a creative direction and confirms the initial customer-validation focus. M2 then starts with responsive prototypes based on that selection. No production framework, application code or paid service is selected by this package.
+M1 creative direction closes only after explicit owner choice/combination/revision/rejection and confirmation of the initial validation focus. M2 prototypes follow the selected direction. No production framework, database, application code or paid service is authorized by this review.

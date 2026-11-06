@@ -1,5 +1,14 @@
 # 13 — Design Review Protocol
 
+## Principal design references
+
+Our principal references are:
+
+- **POJ Studio:** https://pojstudio.com/
+- **Macaroni Shoten:** https://shop.macaro-ni.jp/
+
+These are DAG's primary references for creative and retail study. Study their actual editorial presentation, merchandising, product discovery, navigation, typography, photography and responsive customer experience. Learn from their principles, but do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
+
 ## Purpose
 Prevent superficial redesigns and ensure visual direction is reviewed as an actual customer experience.
 
@@ -64,3 +73,11 @@ For each major review, record:
 - What fails.
 - Required corrections.
 - Owner decision.
+
+## Owner-controlled visual selection
+
+**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+
+A visual review package must present at least four materially distinct options, each with exact palette roles/HEX values, font families/weights/licensing, layout/component examples, image art direction, contrast checks and actual desktop/mobile renders. Include neutral strengths, trade-offs and risks. The AI must not recommend, rank, score or identify a winner. The owner may choose, combine, request changes or reject all. Stop until the owner decision is explicit and recorded in `DECISIONS.md`. Do not create production tokens or theme styling before that gate.
+
+Current proposal package: [four-direction specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md) and [rendered board](../design/explorations/visual-directions.html). The historic Material Archive / Collected Colour synthesis is not an approved default.

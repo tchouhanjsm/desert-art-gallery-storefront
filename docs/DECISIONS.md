@@ -37,6 +37,11 @@ Status: CONFIRMED
 Decision: Approximately 3,000 original photographs across roughly 300 products exist. Bulk migration and hosting are deferred. Do not commit the photo library to Git.
 Date: 2026-11-06
 
+### D-007 — Owner controls visual identity selection
+Status: CONFIRMED
+Decision: The AI agent must not unilaterally choose DAG's final palette, typography, visual style or art direction. It must present at least four materially distinct rendered alternatives with exact values and neutral trade-offs, then wait for the owner to choose. The previous beige/grey/ivory/terracotta direction must not be used as an automatic default.
+Date: 2026-11-06
+
 ## Unresolved owner decisions
 
 ### U-001 — Seller jurisdiction and legal identity
@@ -83,40 +88,14 @@ Status: UNRESOLVED
 Question: Select after requirements and options are documented.
 
 ## Decision record format
-For each new decision:
-- ID.
-- Date.
-- Status.
-- Context.
-- Options considered.
-- Decision.
-- Rationale.
-- Consequences.
-- Documents/code affected.
-- Owner confirmation where required.
+For each new decision, record ID, date, status, context, options, decision, rationale, consequences, affected docs/code and owner confirmation.
 
-## M1 proposals — awaiting owner review
+## Current visual proposals — no owner choice recorded
 
-### P-011 — Creative direction recommendation
+### P-015 — Four visual territories
 Status: PROPOSED
-Proposal: Use **Material Archive** as the brand and composition foundation, with the product-discovery clarity and catalogue energy of **Collected Colour**. The preliminary palettes and rules are in `docs/15-CREATIVE-DIRECTION-OPTIONS.md`; the side-by-side exploratory sheet is `design/explorations/m1-territory-study.html`.
-Owner decision required: Select Territory A, Territory B or the recommended synthesis before M2. No palette or typography token is approved yet.
+Proposal: Present four materially different exploratory directions for comparison: Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop. Exact palette/font/layout/contrast specifications are in `docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md`; desktop/mobile examples are in `design/explorations/visual-directions.html` and `design/explorations/rendered/`.
+Owner decision required: Choose one, combine named elements, request revisions or reject all four. No winner is designated. No direction is recommended, ranked, selected or approved. This record does not confer visual authority on the AI.
 Date: 2026-11-06
 
-### P-012 — Brand positioning direction
-Status: PROPOSED
-Proposal: Position DAG as a considered gallery of textiles and objects connected to Jaisalmer, Rajasthan, presented with accurate product and material information. This is not approved public-facing copy.
-Owner decision required: Confirm strategic direction and verify any public claims before publication.
-Date: 2026-11-06
-
-### P-013 — Commercial-model hypothesis
-Status: PROPOSED
-Proposal: Evaluate a controlled hybrid model: direct purchase for sale-ready items with verified price, stock and fulfilment; enquiry for genuinely bespoke or manually quoted exceptions. This does not resolve U-008.
-Owner decision required: Select the commercial model after reviewing the real product readiness and operations.
-Date: 2026-11-06
-
-### P-014 — Initial customer-validation focus
-Status: PROPOSED
-Proposal: Test home/interior buyers, craft/material enthusiasts, gift buyers and trade/design professionals as hypotheses, without treating them as validated personas.
-Owner decision required: Prioritize the first interview cohort and initial 10–20 product-photo sample.
-Date: 2026-11-06
+The former Material Archive / Collected Colour synthesis remains a historical AI proposal only. It is not a default, preferred direction or owner approval. Do not implement it unless the owner explicitly selects its elements in a new recorded decision.

@@ -3,9 +3,9 @@
 ## Status
 Not approved. This document defines the system and approval process. Do not treat palettes or tokens from earlier chats or the previous repository as approved brand values.
 
-## M1 exploratory territories
+No final palette, font pairing, visual personality or art direction has been approved. Current alternatives are exploratory only. See [four exact visual direction specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md), [rendered desktop/mobile board](../design/explorations/visual-directions.html) and [owner authority/process](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 
-Preliminary palettes and type roles are recorded in [15 — DAG Creative Direction Options](15-CREATIVE-DIRECTION-OPTIONS.md) and shown in the [visual territory study](../design/explorations/m1-territory-study.html). These are exploratory, not approved design tokens.
+**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.** Do not recommend, rank or select an option. Do not establish production tokens or a global theme until the owner explicitly chooses or combines options and the decision is recorded.
 
 ## Required system
 Define:
@@ -43,3 +43,13 @@ Before tokens are marked approved, provide:
 
 ## Token lifecycle
 Exploration, Proposed, Approved, Retired. Approved/retired tokens need owner decision date and rationale.
+
+## Owner approval gate — no default tokens
+
+Final palette, typography, visual personality and art direction are owner-controlled. Until selected:
+- No production colour tokens may be designated as defaults.
+- No final font family or pairing may be selected.
+- No production theme or global CSS design system may be established.
+- Do not use generic browser defaults or grey wireframe canvases as a substitute for a visual proposal.
+
+Create temporary, clearly labelled exploratory boards only. After selection, record the owner decision, exact values, font sources/licensing and component rules here. Changes to foundational visual decisions require renewed owner approval.
