@@ -44,7 +44,7 @@ Do not treat any rejected palette, font pairing or preview as an active preferen
 
 ## Photo library preparation
 
-A read-only photo audit utility is available for the future 10–20 image sample or, later, the full original photo folder. It reports dimensions, formats, file sizes and byte-identical duplicates without modifying source media. See [19 — Non-Destructive Photo Library Audit](docs/19-PHOTO-LIBRARY-AUDIT.md). It does not migrate, optimize or publish images.
+A read-only photo audit utility is available for the future 10–20 image sample or, later, the full original photo folder. It reports dimensions, formats, file sizes and byte-identical duplicates without modifying source media. Existing report files are never overwritten, and incomplete directory scans are explicitly flagged. See [19 — Non-Destructive Photo Library Audit](docs/19-PHOTO-LIBRARY-AUDIT.md). It does not migrate, optimize or publish images.
 
 ## Principal design references
 

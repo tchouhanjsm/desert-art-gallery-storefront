@@ -9,6 +9,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import os
 import struct
 import sys
@@ -163,10 +164,23 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def iter_candidates(root: Path) -> tuple[list[Path], int]:
+def iter_candidates(root: Path) -> tuple[list[Path], int, list[str]]:
     files: list[Path] = []
     skipped_symlinks = 0
-    for current, dirs, names in os.walk(root, followlinks=False):
+    traversal_errors: list[str] = []
+
+    def record_walk_error(error: OSError) -> None:
+        filename = getattr(error, "filename", None)
+        if not filename:
+            traversal_errors.append(".")
+            return
+        path = Path(filename)
+        try:
+            traversal_errors.append(path.relative_to(root).as_posix())
+        except ValueError:
+            traversal_errors.append(path.name or ".")
+
+    for current, dirs, names in os.walk(root, followlinks=False, onerror=record_walk_error):
         current_path = Path(current)
         symlink_dirs = [name for name in dirs if (current_path / name).is_symlink()]
         skipped_symlinks += len(symlink_dirs)
@@ -189,14 +203,17 @@ def iter_candidates(root: Path) -> tuple[list[Path], int]:
                 continue
             if detect_format(signature):
                 files.append(path)
-    return sorted(files, key=lambda p: p.relative_to(root).as_posix().casefold()), skipped_symlinks
+    ordered = sorted(files, key=lambda p: p.relative_to(root).as_posix().casefold())
+    return ordered, skipped_symlinks, traversal_errors
 
 
 def audit_directory(root: Path, min_megapixels: float | None = None) -> tuple[list[PhotoRecord], dict[str, object]]:
     root = root.expanduser().resolve()
     if not root.exists() or not root.is_dir():
         raise ValueError(f"Source directory does not exist or is not a directory: {root}")
-    candidates, skipped_symlinks = iter_candidates(root)
+    if min_megapixels is not None and (not math.isfinite(min_megapixels) or min_megapixels < 0):
+        raise ValueError("Minimum megapixels threshold must be finite and zero or greater")
+    candidates, skipped_symlinks, traversal_errors = iter_candidates(root)
     raw: list[dict[str, object]] = []
     hash_paths: dict[str, list[int]] = {}
     format_counts: Counter[str] = Counter()
@@ -278,6 +295,9 @@ def audit_directory(root: Path, min_megapixels: float | None = None) -> tuple[li
         "total_bytes": sum(r.bytes for r in records),
         "formats": dict(sorted(format_counts.items())),
         "skipped_symlinks": skipped_symlinks,
+        "directory_traversal_errors": len(traversal_errors),
+        "directory_error_paths": traversal_errors,
+        "scan_complete": not bool(traversal_errors),
         "min_megapixels_threshold": min_megapixels,
         "read_only": True,
     }
@@ -287,7 +307,7 @@ def audit_directory(root: Path, min_megapixels: float | None = None) -> tuple[li
 def write_csv(records: Iterable[PhotoRecord], destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     fields = list(PhotoRecord.__dataclass_fields__.keys())
-    with destination.open("w", encoding="utf-8-sig", newline="") as handle:
+    with destination.open("x", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for record in records:
@@ -296,7 +316,8 @@ def write_csv(records: Iterable[PhotoRecord], destination: Path) -> None:
 
 def write_json(summary: dict[str, object], destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    with destination.open("x", encoding="utf-8") as handle:
+        handle.write(json.dumps(summary, indent=2, ensure_ascii=False) + "\n")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -309,8 +330,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--json", dest="json_path", type=Path, help="Optional JSON summary report path")
     parser.add_argument("--min-megapixels", type=float, default=None, help="Optional warning threshold; no default quality threshold is imposed")
     args = parser.parse_args(argv)
-    if args.min_megapixels is not None and args.min_megapixels < 0:
-        parser.error("--min-megapixels must be zero or greater")
+    if args.min_megapixels is not None and (not math.isfinite(args.min_megapixels) or args.min_megapixels < 0):
+        parser.error("--min-megapixels must be finite and zero or greater")
     try:
         source_root = args.source_dir.expanduser().resolve()
         csv_destination = args.csv_path.expanduser().resolve()
@@ -319,8 +340,12 @@ def main(argv: list[str] | None = None) -> int:
             parser.error("--csv report must be outside the source directory")
         if json_destination and json_destination.is_relative_to(source_root):
             parser.error("--json report must be outside the source directory")
-        if json_destination and json_destination == csv_destination:
+        if json_destination and str(json_destination).casefold() == str(csv_destination).casefold():
             parser.error("--csv and --json must use different output paths")
+        if csv_destination.exists():
+            raise ValueError(f"CSV report already exists; choose a new path (reports are never overwritten): {csv_destination}")
+        if json_destination and json_destination.exists():
+            raise ValueError(f"JSON report already exists; choose a new path (reports are never overwritten): {json_destination}")
         records, summary = audit_directory(source_root, args.min_megapixels)
         write_csv(records, csv_destination)
         if json_destination:
@@ -328,15 +353,23 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, ValueError) as exc:
         print(f"Photo audit failed: {exc}", file=sys.stderr)
         return 2
-    print(f"Photo audit complete (read-only): {summary['image_candidates']} image candidates")
+    if summary["scan_complete"]:
+        print(f"Photo audit complete (read-only): {summary['image_candidates']} image candidates")
+    else:
+        print(f"Photo audit INCOMPLETE (read-only): {summary['image_candidates']} image candidates")
     print(f"- Formats: {summary['formats']}")
     print(f"- Review required: {summary['review_required']}")
     print(f"- Exact duplicate groups: {summary['duplicate_groups']}")
     print(f"- Source bytes: {summary['total_bytes']}")
+    print(f"- Directory traversal errors: {summary['directory_traversal_errors']}")
+    print(f"- Scan complete: {summary['scan_complete']}")
+    if summary["directory_error_paths"]:
+        for relative_path in summary["directory_error_paths"]:
+            print(f"- Skipped directory: {relative_path}", file=sys.stderr)
     print(f"- CSV report: {csv_destination}")
     if json_destination:
         print(f"- JSON summary: {json_destination}")
-    return 0
+    return 0 if summary['scan_complete'] else 1
 
 
 if __name__ == "__main__":

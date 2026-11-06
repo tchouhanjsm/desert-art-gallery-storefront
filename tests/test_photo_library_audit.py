@@ -7,6 +7,9 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
+
+import audit_photo_library
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -118,6 +121,55 @@ class PhotoLibraryAuditTests(unittest.TestCase):
             rows, summary = audit_directory(root)
             self.assertEqual(len(rows), 1)
             self.assertEqual(summary["skipped_symlinks"], 2)
+
+    def test_existing_reports_are_never_overwritten(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "photos"
+            root.mkdir()
+            (root / "one.png").write_bytes(png_bytes(1200, 800))
+            reports = Path(tmp) / "reports"
+            reports.mkdir()
+            existing_csv = reports / "existing.csv"
+            existing_csv.write_text("owner data must survive", encoding="utf-8")
+            existing_json = reports / "existing.json"
+            existing_json.write_text("preserve this report", encoding="utf-8")
+
+            self.assertEqual(main([str(root), "--csv", str(existing_csv)]), 2)
+            self.assertEqual(existing_csv.read_text(encoding="utf-8"), "owner data must survive")
+
+            new_csv = reports / "new.csv"
+            self.assertEqual(main([str(root), "--csv", str(new_csv), "--json", str(existing_json)]), 2)
+            self.assertFalse(new_csv.exists())
+            self.assertEqual(existing_json.read_text(encoding="utf-8"), "preserve this report")
+
+    def test_rejects_non_finite_megapixel_thresholds(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for threshold in (float("nan"), float("inf"), float("-inf"), -0.1):
+                with self.subTest(threshold=threshold):
+                    with self.assertRaises(ValueError):
+                        audit_directory(root, min_megapixels=threshold)
+
+    def test_directory_traversal_errors_mark_scan_incomplete(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "photos"
+            root.mkdir()
+            csv_out = Path(tmp) / "reports" / "audit.csv"
+            json_out = Path(tmp) / "reports" / "summary.json"
+
+            def fake_walk(path, followlinks=False, onerror=None):
+                if onerror is not None:
+                    onerror(PermissionError(13, "permission denied", str(Path(path) / "private")))
+                return iter(())
+
+            with patch("audit_photo_library.os.walk", side_effect=fake_walk):
+                result = main([str(root), "--csv", str(csv_out), "--json", str(json_out)])
+
+            self.assertEqual(result, 1)
+            summary = json.loads(json_out.read_text(encoding="utf-8"))
+            self.assertFalse(summary["scan_complete"])
+            self.assertEqual(summary["directory_traversal_errors"], 1)
+            self.assertEqual(summary["directory_error_paths"], ["private"])
 
     def test_rejects_missing_source_directory(self):
         with tempfile.TemporaryDirectory() as tmp:

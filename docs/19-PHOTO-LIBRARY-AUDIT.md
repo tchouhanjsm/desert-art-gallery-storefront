@@ -8,7 +8,7 @@ The owner has approximately 3,000 original photographs for roughly 300 products.
 
 ## Safety contract
 
-The scanner is read-only with respect to source media. It does not rename, edit, rotate, re-encode, compress, move, upload or delete images. It writes only the CSV/JSON reports at the destination paths provided. Keep reports outside the source photo folder and outside Git unless explicitly sanitized and approved; file names and relative folder names may disclose internal information.
+The scanner is read-only with respect to source media. It does not rename, edit, rotate, re-encode, compress, move, upload or delete images. It writes only the CSV/JSON reports at the destination paths provided. Existing report files are never overwritten; choose fresh output paths for each run. Keep reports outside the source photo folder and outside Git unless explicitly sanitized and approved; file names and relative folder names may disclose internal information.
 
 It does not extract EXIF/GPS metadata, infer product identities, match filenames to SKUs, assess image aesthetics, detect near-duplicates, decide which image is best or publish anything. Exact duplicates mean byte-identical SHA-256 matches only.
 
@@ -42,11 +42,11 @@ python scripts/audit_photo_library.py "/path/to/sample" \
   --csv "/path/to/private-reports/dag-photo-audit.csv"
 ```
 
-The CSV destination is required. Both report paths must be outside the source directory, and CSV/JSON must use different destinations. The command exits with code 0 after writing reports, or code 2 for an invalid/unreadable source or report path. Source files are never modified.
+The CSV destination is required. Both report paths must be outside the source directory, and CSV/JSON must use different destinations. Existing files are not overwritten; select new report names for each run. The command exits with code 0 for a complete scan, code 1 when one or more directories could not be traversed (reports are written with scan_complete=false), or code 2 for invalid/unreadable inputs or report-writing errors. Directory traversal failures are included in the JSON summary and printed as warnings; an incomplete scan must not be treated as a complete inventory. Source files are never modified.
 
 ## Validation
 
-Unit tests use synthetic image headers and temporary directories. They cover PNG/JPEG/GIF/WebP/BMP dimensions, extension/content mismatch, corrupt candidates, exact duplicate detection, source immutability, symlink skipping, report output and invalid input paths. Tests do not require real DAG images or third-party dependencies.
+Unit tests use synthetic image headers and temporary directories. They cover PNG/JPEG/GIF/WebP/BMP dimensions, extension/content mismatch, corrupt candidates, exact duplicate detection, source immutability, symlink skipping, existing-report collision protection, non-finite thresholds, incomplete directory traversal reporting, report output and invalid input paths. Tests do not require real DAG images or third-party dependencies.
 
 ## What remains for a real sample
 
