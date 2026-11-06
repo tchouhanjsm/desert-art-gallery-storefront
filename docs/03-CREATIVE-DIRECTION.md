@@ -81,3 +81,12 @@ The owner named [POJ Studio](https://pojstudio.com/) and [Macaroni Shoten](https
 The next package must again contain at least four materially different visual territories with exact colours, font/licensing specifications, rendered desktop/mobile examples, neutral trade-offs and accessibility notes. No palette, typography, overall style or art direction is approved. Do not recommend or select a winner.
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+
+
+## Current owner-review package
+
+The fresh reference-led visual options are ready for owner review:
+- [Rendered desktop/mobile board](../design/explorations/reference-led-directions.html)
+- [Four detailed direction specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md)
+
+The owner may choose one, combine named elements, request revisions or reject all four. No option is recommended, ranked, selected or approved. Production tokens and final styling remain blocked until the explicit owner choice is recorded.

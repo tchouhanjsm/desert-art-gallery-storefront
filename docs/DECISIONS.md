@@ -120,7 +120,7 @@ Status: PROPOSED
 
 Basis: D-009 and docs/17-REFERENCE-LED-DESIGN-BRIEF.md.
 
-Proposal: Prepare a fresh package of at least four materially different DAG-specific visual territories, informed by current POJ Studio and Macaroni Shoten research and the verified DAG identity. The package must include exact HEX palettes, type families/weights/licensing, page/composition and photography direction, desktop/mobile renders, neutral trade-offs and accessibility notes.
+Proposal package delivered: [Porcelain Index], [Bordeaux Editions], [Blue Current] and [Citron Signal], each with exact HEX palettes, type families/weights/licensing, page composition and photography direction, neutral trade-offs and contrast notes. Desktop/mobile renders are presented in design/explorations/reference-led-directions.html; detailed specifications are in docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md. The four territories are proposals only, not recommendations or approvals.
 
 Owner action: Review the new options when presented and choose one, combine explicit elements, request revisions or reject all. No recommendation or winner is designated. No production tokens or theme may be finalized before the new explicit owner choice is recorded.
 

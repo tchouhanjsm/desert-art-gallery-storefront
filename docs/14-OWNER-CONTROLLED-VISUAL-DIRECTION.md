@@ -70,7 +70,7 @@ Do not carry any rejected option forward as an active preference, default, blend
 
 The owner named [POJ Studio](https://pojstudio.com/) and [Macaroni Shoten](https://shop.macaro-ni.jp/) as principal references on 6 November 2026 (D-009). The reference research log and [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md) govern the next study.
 
-The next owner-review package must contain at least four new, materially different DAG-specific territories. Each must have exact HEX colour roles, typography and licensing notes, composition and photography direction, desktop/mobile examples, accessibility notes and neutral trade-offs. Do not clone either reference, and do not recommend, rank, score, preselect or imply a default. The owner must explicitly choose, combine, request revisions or reject all before any production tokens or final theme are implemented.
+The current owner-review package contains four new, materially different DAG-specific territories: [Porcelain Index], [Bordeaux Editions], [Blue Current] and [Citron Signal]. Compare the [rendered desktop/mobile board](../design/explorations/reference-led-directions.html) and [exact specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md), including HEX roles, font licensing, page composition, photography direction, trade-offs and contrast notes. Do not clone either reference, and do not recommend, rank, score, preselect or imply a default. The owner must explicitly choose, combine, request revisions or reject all before any production tokens or final theme are implemented.
 
 ## Principal design references
 
