@@ -5,7 +5,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from validate_project import OPTIONS, heading_slug, markdown_links, validate_project  # noqa: E402
+from validate_project import OPTIONS, REFERENCE_OPTIONS, REFERENCE_FONTS, heading_slug, markdown_links, validate_project  # noqa: E402
 
 
 class OwnerControlledVisualGovernanceTests(unittest.TestCase):
@@ -41,6 +41,19 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
         self.assertIn("pojstudio.com", decisions)
         self.assertIn("pixel-for-pixel", brief)
         self.assertIn("rejected", review.lower())
+
+    def test_fresh_reference_led_options_are_rendered_and_specified(self):
+        spec = (ROOT / "docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md").read_text(encoding="utf-8")
+        board = (ROOT / "design/explorations/reference-led-directions.html").read_text(encoding="utf-8")
+        for option in REFERENCE_OPTIONS:
+            self.assertIn(option, spec)
+            self.assertIn(option, board)
+        for font in REFERENCE_FONTS:
+            self.assertIn(font, spec)
+            self.assertIn(font, board)
+        self.assertIn("Desktop composition", board)
+        self.assertIn("Mobile composition", board)
+        self.assertIn("not DAG products", board)
 
     def test_previous_synthesis_is_historical_only(self):
         protocol = (ROOT / "docs/AI-WORKING-PROTOCOL.md").read_text(encoding="utf-8").lower()

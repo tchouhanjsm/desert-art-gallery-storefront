@@ -10,17 +10,19 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
  ".github/ISSUE_TEMPLATE/.gitkeep",".github/workflows/.gitkeep",".github/workflows/project-quality.yml",
  "AGENTS.md","README.md","design/README.md","design/approved/.gitkeep","design/explorations/.gitkeep",
- "design/explorations/visual-directions.html","design/prototypes/.gitkeep",
+ "design/explorations/visual-directions.html","design/explorations/reference-led-directions.html","design/prototypes/.gitkeep",
  "docs/00-PROJECT-CHARTER.md","docs/01-DESIGN-PHILOSOPHY.md","docs/02-BRAND-IDENTITY.md",
  "docs/03-CREATIVE-DIRECTION.md","docs/04-VISUAL-DESIGN-SYSTEM.md","docs/05-ART-DIRECTION-AND-PHOTOGRAPHY.md",
  "docs/06-CONTENT-STRATEGY.md","docs/07-INFORMATION-ARCHITECTURE.md","docs/08-TECHNICAL-ARCHITECTURE.md",
  "docs/09-QUALITY-AND-ACCEPTANCE.md","docs/10-ROADMAP.md","docs/11-CUSTOMER-AND-MERCHANDISING-STRATEGY.md",
  "docs/12-MERCHANT-OPERATIONS.md","docs/13-DESIGN-REVIEW-PROTOCOL.md","docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md",
- "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/ADR-TEMPLATE.md",
+ "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md","docs/ADR-TEMPLATE.md",
  "docs/AI-BOOTSTRAP-PROMPT.md","docs/AI-WORKING-PROTOCOL.md","docs/DECISIONS.md",
  "docs/OWNER-INPUT-REGISTER.md","docs/REFERENCE-RESEARCH-LOG.md","docs/UPDATE-VISUAL-OWNER-GATE-PROMPT.md",
  "scripts/validate_project.py","tests/test_project_validation.py"]
 OPTIONS=["Graphic Atelier","Future Relics","Living Garden","Modern Folk Pop"]
+REFERENCE_OPTIONS=["Porcelain Index","Bordeaux Editions","Blue Current","Citron Signal"]
+REFERENCE_FONTS=["Cormorant Garamond","Manrope","Fraunces","DM Sans","Newsreader","Work Sans","Space Grotesk","IBM Plex Mono"]
 FONTS=["Inter","Noto Sans Display","PT Mono","EB Garamond","Lato","Comfortaa"]
 RENDERS=[f"design/explorations/rendered/{name}-{device}.svg"
  for name in ["graphic-atelier","future-relics","living-garden","modern-folk-pop"] for device in ["desktop","mobile"]]
@@ -98,6 +100,29 @@ def validate_project(root: Path=ROOT) -> list[str]:
 
  if "P-015" not in docs.get("docs/DECISIONS.md","") or "no winner" not in docs.get("docs/DECISIONS.md","").lower(): errors.append("decision register missing no-winner proposal P-015")
  if "no option is recommended" not in docs.get("docs/M1-OWNER-REVIEW.md","").lower() or "rejected" not in docs.get("docs/M1-OWNER-REVIEW.md","").lower(): errors.append("owner review must record rejection and preserve no-recommendation rule")
+ reference_spec=root/"docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md"
+ if reference_spec.exists():
+  rt=reference_spec.read_text(encoding="utf-8")
+  for n in REFERENCE_OPTIONS:
+   if n not in rt: errors.append(f"reference-led specification missing {n}")
+  for f in REFERENCE_FONTS:
+   if f not in rt: errors.append(f"reference-led specification missing font {f}")
+  if len(set(HEX.findall(rt)))<24: errors.append("reference-led specification requires 24+ exact HEX values")
+  if "none is recommended" not in rt.lower(): errors.append("reference-led specification must state no option is recommended")
+ else: errors.append("missing reference-led direction specifications")
+ reference_board=root/"design/explorations/reference-led-directions.html"
+ if reference_board.exists():
+  rt=reference_board.read_text(encoding="utf-8"); rp=BoardParser(); rp.feed(rt); rp.close(); errors.extend(rp.errors)
+  if rp.stack: errors.append(f"unclosed reference board HTML tags: {rp.stack[-8:]}")
+  if rp.cards!=4: errors.append(f"expected four reference-led option cards, found {rp.cards}")
+  if not rp.viewport or not rp.lang_en: errors.append("reference board missing English lang or viewport metadata")
+  for n in REFERENCE_OPTIONS+REFERENCE_FONTS:
+   if n not in rt: errors.append(f"reference board missing {n}")
+  if "Desktop composition" not in rt or "Mobile composition" not in rt: errors.append("reference board missing desktop/mobile compositions")
+  if "not dag products" not in rt.lower(): errors.append("reference board must label placeholders as not DAG products")
+  if "max-width:900px" not in rt: errors.append("reference board missing responsive breakpoint")
+ else: errors.append("missing reference-led visual board")
+
  if "four" not in docs.get("docs/10-ROADMAP.md","").lower() or "owner" not in docs.get("docs/10-ROADMAP.md","").lower(): errors.append("roadmap missing four-option owner gate")
  spec=root/"docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md"
  if spec.exists():
@@ -136,10 +161,10 @@ def main() -> int:
   return 1
  print("DAG governance validation: PASS")
  print(f"- {len(REQUIRED)} foundation/governance paths present")
- print(f"- {len(RENDERS)} desktop/mobile SVG direction previews present")
+ print(f"- {len(RENDERS)} archived desktop/mobile SVG previews and four fresh reference-led previews present")
  print("- Markdown UTF-8, internal links and heading hierarchy pass")
  print("- owner-control gate, explicit P-015 rejection, new reference decision and no-clone boundary pass")
- print("- four territories, exact HEX palettes, typography and responsive board pass")
+ print("- archived rejection and fresh four-option palettes, fonts and responsive render board pass")
  print("- no app/framework/database/hosting scaffold introduced")
  return 0
 
