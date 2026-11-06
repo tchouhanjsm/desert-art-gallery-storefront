@@ -60,7 +60,7 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
         script = (ROOT / "scripts/audit_photo_library.py").read_text(encoding="utf-8")
         guide = (ROOT / "docs/19-PHOTO-LIBRARY-AUDIT.md").read_text(encoding="utf-8")
         self.assertIn("read-only", script.lower())
-        self.assertIn("does not rename", script.lower())
+        self.assertIn("never renames", script.lower())
         self.assertIn("SHA-256", guide)
         self.assertIn("does not authorize bulk migration", guide)
 
