@@ -1,6 +1,6 @@
 # 10 — Project Roadmap
 
-**Current milestone:** M1 owner-controlled visual direction review. Four creative territories are presented; no winner is selected or recommended. The explicit owner choice is pending. Final design tokens and production styling remain blocked pending owner choice.
+**Current milestone:** M1 — reference-led creative exploration reset after the owner's explicit rejection of the previous four visual territories. POJ Studio and Macaroni Shoten are the principal references for the next DAG-specific design study. No final visual direction is approved.
 
 ## M0 — Repository and governance foundation
 **Status: Completed.**
@@ -8,20 +8,21 @@
 - Establish permanent agent rules, charter, design philosophy, decision register and AI protocol.
 - Add automated documentation/link checks and CI validation.
 
-## M1 — Customer, brand and creative strategy
-**Status: Research prepared; owner visual selection pending.**
-- Complete evidence-led Japan-first customer/market research and define hypotheses.
+## M1 — Customer, brand and reference-led creative strategy
+**Status: Research prepared; new visual proposal package required.**
+- Preserve evidence-led Japan-first customer/market research and define validation hypotheses.
 - Compare direct-purchase, enquiry-led and hybrid commercial models without making an owner decision.
-- Study POJ Studio and Macaroni Shoten; record dated observations and limitations.
-- Develop at least four materially different visual territories.
+- Study POJ Studio and Macaroni Shoten; record dated observations and live-site limitations.
+- Translate useful retail principles into DAG-specific requirements without cloning either site.
+- Develop at least four materially different new DAG visual territories. Do not reuse rejected P-015 as active options.
 - Provide exact palette values, typography families/weights/licensing, layout and art-direction specifications.
-- Render desktop and mobile examples, with accessibility/contrast notes.
-- Present neutral trade-offs; do not recommend, rank or select a winner.
+- Render desktop and mobile examples with accessibility/contrast notes.
+- Present neutral trade-offs; do not recommend, rank, score, select or imply a default.
 - Ask the owner to choose, combine, request revisions or reject all options. Stop before final tokens or production styling.
 
-Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md), [commercial model assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md), [owner-controlled visual direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md), [four visual direction specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md), and the [rendered four-direction study](../design/explorations/visual-directions.html).
+Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md), [commercial model assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md), [reference research log](REFERENCE-RESEARCH-LOG.md), [reference-led design brief](17-REFERENCE-LED-DESIGN-BRIEF.md), [owner-controlled visual direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md), and the [decision register](DECISIONS.md).
 
-Exit: owner explicitly chooses, combines, requests revisions or rejects all four territories and confirms the initial customer-validation focus. M1 does not authorize production theme implementation before that decision.
+Exit: the owner explicitly chooses, combines, requests revisions or rejects the new reference-led proposals and confirms the initial customer-validation focus. M1 does not authorize production theme implementation before the decision.
 
 ## M2 — Responsive page prototypes
 Only after owner visual selection:
@@ -56,4 +57,4 @@ Subject to approved business rules, implement purchase/enquiry, checkout, paymen
 ## M7 — Launch readiness
 Security, accessibility, performance, SEO, backup/restore, monitoring, incident plan, deployment and owner acceptance.
 
-Do not skip milestones to generate visible code. See [the mandatory owner gate](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md): **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+Do not skip milestones to generate visible code. See the mandatory owner gate in 14-OWNER-CONTROLLED-VISUAL-DIRECTION.md: **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
