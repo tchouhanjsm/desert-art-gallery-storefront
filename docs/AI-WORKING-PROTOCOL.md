@@ -60,7 +60,7 @@ When one owner decision blocks a feature, isolate it and continue unrelated safe
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
 
-The owner rejected the previous four proposals (P-015) on 6 November 2026. POJ Studio and Macaroni Shoten are the confirmed references for the next original DAG design study. Read docs/17-REFERENCE-LED-DESIGN-BRIEF.md and docs/REFERENCE-RESEARCH-LOG.md before preparing new options.
+The old Material Archive / Collected Colour synthesis is historical only, not a default. The owner rejected the previous four proposals (P-015) on 6 November 2026. POJ Studio and Macaroni Shoten are the confirmed references for the next original DAG design study. Read docs/17-REFERENCE-LED-DESIGN-BRIEF.md and docs/REFERENCE-RESEARCH-LOG.md before preparing new options.
 
 Prepare at least four materially different new DAG-specific territories with exact palettes, typography/licensing, layout/art direction, desktop/mobile renders, neutral trade-offs and accessibility notes. Do not clone either reference, reuse its assets or copy its text, product content, branding or exact page composition. Do not reuse rejected P-015 options as active candidates. Do not rank or recommend options. Ask the owner to choose, combine, request revisions or reject all, then stop. No final design tokens or production theme may be implemented before that explicit choice.
 
