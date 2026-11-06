@@ -58,16 +58,19 @@ After showing all options:
 - [ ] Owner selection recorded.
 - [ ] Production tokens match the selected direction.
 
-## Current owner-review package
+## Previous owner-review package — rejected
 
-The current set contains four non-ranked alternatives: **Graphic Atelier**, **Future Relics**, **Living Garden** and **Modern Folk Pop**.
+The owner explicitly rejected all four territories on 6 November 2026 (D-008): Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop. The previous board and exact specifications are retained as an archive only:
+- [Archived comparison board](../design/explorations/visual-directions.html)
+- [Rejected specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md)
 
-- [Rendered board with all four options](../design/explorations/visual-directions.html)
-- [Detailed exact specifications, fonts and contrast notes](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md)
+Do not carry any rejected option forward as an active preference, default, blend or approved direction.
 
-Per-option desktop and mobile captures are stored in `design/explorations/rendered/`. These are unapproved explorations using abstract placeholders, not DAG product photographs. Font family/licensing details are candidates for review; no font files are included.
+## Current reference-led design work
 
-The earlier Material Archive / Collected Colour synthesis is historical AI exploration only. It is not a default and does not carry forward any approval.
+The owner named [POJ Studio](https://pojstudio.com/) and [Macaroni Shoten](https://shop.macaro-ni.jp/) as principal references on 6 November 2026 (D-009). The reference research log and [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md) govern the next study.
+
+The next owner-review package must contain at least four new, materially different DAG-specific territories. Each must have exact HEX colour roles, typography and licensing notes, composition and photography direction, desktop/mobile examples, accessibility notes and neutral trade-offs. Do not clone either reference, and do not recommend, rank, score, preselect or imply a default. The owner must explicitly choose, combine, request revisions or reject all before any production tokens or final theme are implemented.
 
 ## Principal design references
 

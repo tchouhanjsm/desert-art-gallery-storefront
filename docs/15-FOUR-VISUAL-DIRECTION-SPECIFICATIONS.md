@@ -1,10 +1,10 @@
 # 15 — Four Visual Direction Specifications
 
-**Status:** Four proposals for owner comparison. None is selected, preferred or approved.
+**Status: REJECTED by the owner on 6 November 2026 (D-008).** Historical archive only; none of these proposals is active, selected, preferred or approved. Do not reuse these directions as defaults or active candidates.
 
 **Decision rule:** THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS. The owner may choose one, combine named details, request revisions or reject all. No production theme or final token set may be implemented before the owner chooses.
 
-Rendered examples: [full responsive visual board](../design/explorations/visual-directions.html).
+Historical rendered examples (retained for audit only): [archived responsive visual board](../design/explorations/visual-directions.html).
 
 Individual desktop/mobile vector previews:
 
