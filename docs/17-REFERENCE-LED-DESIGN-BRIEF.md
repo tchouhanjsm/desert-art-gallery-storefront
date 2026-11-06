@@ -1,6 +1,6 @@
 # 17 — Reference-Led Design Brief
 
-**Status:** Owner-requested research and design brief. No final visual identity, palette, typography or production theme is approved.
+**Status:** Owner-requested research and design brief. Four new reference-led visual proposals are now ready for review. No final visual identity, palette, typography or production theme is approved.
 
 ## 1. Owner direction
 
@@ -131,3 +131,14 @@ P-015 is rejected and must not be reused as an active option set.
 - Deciding seller jurisdiction, sales territory, tax, duties, shipping, payments or returns.
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+
+
+## 8. Current owner-review package
+
+The fresh proposal package is ready:
+- [Rendered desktop/mobile comparison board](../design/explorations/reference-led-directions.html)
+- [Exact palette, typography, composition, photography and accessibility specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md)
+
+The four new territories are **Porcelain Index**, **Bordeaux Editions**, **Blue Current** and **Citron Signal**. They are not ranked or recommended. They are not a relabelled version of the rejected P-015 options.
+
+The owner may choose one, combine explicitly named elements, request revisions or reject all four. No palette, typography, art direction or production theme has been approved.

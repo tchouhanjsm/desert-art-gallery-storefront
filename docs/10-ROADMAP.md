@@ -1,6 +1,6 @@
 # 10 — Project Roadmap
 
-**Current milestone:** M1 — reference-led creative exploration reset after the owner's explicit rejection of the previous four visual territories. POJ Studio and Macaroni Shoten are the principal references for the next DAG-specific design study. No final visual direction is approved.
+**Current milestone:** M1 — four reference-led visual proposals presented; explicit owner selection pending. No final visual direction is approved.
 
 ## M0 — Repository and governance foundation
 **Status: Completed.**
@@ -9,20 +9,20 @@
 - Add automated documentation/link checks and CI validation.
 
 ## M1 — Customer, brand and reference-led creative strategy
-**Status: Research prepared; new visual proposal package required.**
+**Status: Research and proposal package delivered; owner review pending.**
 - Preserve evidence-led Japan-first customer/market research and define validation hypotheses.
 - Compare direct-purchase, enquiry-led and hybrid commercial models without making an owner decision.
 - Study POJ Studio and Macaroni Shoten; record dated observations and live-site limitations.
 - Translate useful retail principles into DAG-specific requirements without cloning either site.
-- Develop at least four materially different new DAG visual territories. Do not reuse rejected P-015 as active options.
+- Present four new, materially different DAG visual territories. The earlier P-015 set remains rejected and archived.
 - Provide exact palette values, typography families/weights/licensing, layout and art-direction specifications.
 - Render desktop and mobile examples with accessibility/contrast notes.
 - Present neutral trade-offs; do not recommend, rank, score, select or imply a default.
 - Ask the owner to choose, combine, request revisions or reject all options. Stop before final tokens or production styling.
 
-Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md), [commercial model assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md), [reference research log](REFERENCE-RESEARCH-LOG.md), [reference-led design brief](17-REFERENCE-LED-DESIGN-BRIEF.md), [owner-controlled visual direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md), and the [decision register](DECISIONS.md).
+Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md), [commercial model assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md), [reference research log](REFERENCE-RESEARCH-LOG.md), [reference-led design brief](17-REFERENCE-LED-DESIGN-BRIEF.md), [four visual specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md), [rendered desktop/mobile board](../design/explorations/reference-led-directions.html), and [owner decision register](DECISIONS.md).
 
-Exit: the owner explicitly chooses, combines, requests revisions or rejects the new reference-led proposals and confirms the initial customer-validation focus. M1 does not authorize production theme implementation before the decision.
+Exit: the owner explicitly chooses, combines, requests revisions or rejects the four new proposals and confirms the initial customer-validation focus. M1 does not authorize production theme implementation before the decision.
 
 ## M2 — Responsive page prototypes
 Only after owner visual selection:
