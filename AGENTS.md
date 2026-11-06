@@ -173,3 +173,8 @@ After owner selection, record exact choices in `docs/DECISIONS.md`, update the v
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
 
 The owner exclusively selects foundational DAG visual identity. Present at least four materially different rendered options with exact HEX values, fonts/weights/licensing, layout/art direction, desktop/mobile examples and neutral trade-offs. Never recommend, rank, choose or approve a winner. Ask the owner to choose, combine, request revisions or reject all options, then stop before production tokens or final styling.
+
+
+## Current reference-led visual decision state
+
+The owner rejected all four P-015 visual proposals on 6 November 2026 (D-008). They remain historical only; do not treat their palettes, typography or compositions as active preferences. The owner named POJ Studio and Macaroni Shoten as primary design references (D-009). Read docs/17-REFERENCE-LED-DESIGN-BRIEF.md and docs/REFERENCE-RESEARCH-LOG.md before the next creative exploration. A close adaptation of general retail/customer-experience principles is in scope; exact cloning, reuse of assets/text or copying page composition is not. No final DAG visual direction is approved.

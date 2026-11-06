@@ -60,7 +60,9 @@ When one owner decision blocks a feature, isolate it and continue unrelated safe
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
 
-Four proposals are documented in `docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md` and rendered in `design/explorations/visual-directions.html`; separate desktop/mobile captures are in `design/explorations/rendered/`. The previous Material Archive / Collected Colour synthesis is historical only, not a default or recommendation. Do not rank or recommend the four options. Ask the owner to select, combine, request revisions or reject all four, then stop. No final design tokens or production theme may be implemented before that explicit choice.
+The owner rejected the previous four proposals (P-015) on 6 November 2026. POJ Studio and Macaroni Shoten are the confirmed references for the next original DAG design study. Read docs/17-REFERENCE-LED-DESIGN-BRIEF.md and docs/REFERENCE-RESEARCH-LOG.md before preparing new options.
+
+Prepare at least four materially different new DAG-specific territories with exact palettes, typography/licensing, layout/art direction, desktop/mobile renders, neutral trade-offs and accessibility notes. Do not clone either reference, reuse its assets or copy its text, product content, branding or exact page composition. Do not reuse rejected P-015 options as active candidates. Do not rank or recommend options. Ask the owner to choose, combine, request revisions or reject all, then stop. No final design tokens or production theme may be implemented before that explicit choice.
 
 ## New-chat continuity
-At each major milestone, update `10-ROADMAP.md` and `DECISIONS.md`. Produce a short handover referencing files, commits and PRs. Never rely on the chat alone for durable project knowledge.
+At each major milestone, update 10-ROADMAP.md and DECISIONS.md. Produce a short handover referencing files, commits and PRs. Never rely on the chat alone for durable project knowledge.

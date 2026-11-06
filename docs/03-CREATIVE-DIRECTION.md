@@ -65,8 +65,19 @@ The AI must not select the final DAG visual direction.
 
 Before production styling, present at least four materially different creative territories. They must differ meaningfully—not four minor palette variations.
 
-Each territory must include exact HEX values and colour roles, display/heading/body/UI font families and weights, font availability/licensing notes, layout/grid principles, header/navigation, hero, product-card, category/collection and editorial examples, photography mood, desktop and mobile rendered sections, and accessibility/contrast notes. The current package is recorded in [15 — Four Visual Direction Specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md) and [the rendered comparison board](../design/explorations/visual-directions.html).
+Each territory must include exact HEX values and colour roles, display/heading/body/UI font families and weights, font availability/licensing notes, layout/grid principles, header/navigation, hero, product-card, category/collection and editorial examples, photography mood, desktop and mobile rendered sections, and accessibility/contrast notes. The previous package in [15 — Four Visual Direction Specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md) was explicitly rejected by the owner on 6 November 2026 (D-008). It is historical only. The new reference-led design study is governed by [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md) and the [reference research log](REFERENCE-RESEARCH-LOG.md).
 
 Show the differences visually. Do not label one option recommended, preferred or best. Present neutral trade-offs, ask the owner to select, combine, request revisions or reject all, then STOP. Do not establish final production tokens or implement the final visual system until the owner chooses.
+
+**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+
+
+## Current owner decision and next study
+
+The owner rejected all four territories previously documented in [15 — Four Visual Direction Specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md) on 6 November 2026 (D-008). That package and its rendered board are historical only, not active candidates or preferences.
+
+The owner named [POJ Studio](https://pojstudio.com/) and [Macaroni Shoten](https://shop.macaro-ni.jp/) as the principal references for the next study (D-009). Use the observations and DAG-specific translation in [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md). Create an original DAG design with comparable retail quality and customer-experience principles; do not copy either site's identity, assets, text, product content or exact composition.
+
+The next package must again contain at least four materially different visual territories with exact colours, font/licensing specifications, rendered desktop/mobile examples, neutral trade-offs and accessibility notes. No palette, typography, overall style or art direction is approved. Do not recommend or select a winner.
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**

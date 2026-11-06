@@ -3,7 +3,7 @@
 ## Status
 Not approved. This document defines the system and approval process. Do not treat palettes or tokens from earlier chats or the previous repository as approved brand values.
 
-No final palette, font pairing, visual personality or art direction has been approved. Current alternatives are exploratory only. See [four exact visual direction specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md), [rendered desktop/mobile board](../design/explorations/visual-directions.html) and [owner authority/process](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+No final palette, font pairing, visual personality or art direction has been approved. The previous four exploratory territories were rejected by the owner (D-008) and are historical only. The new reference-led design study is specified in [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md); see [owner authority/process](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.** Do not recommend, rank or select an option. Do not establish production tokens or a global theme until the owner explicitly chooses or combines options and the decision is recorded.
 

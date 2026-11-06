@@ -1,15 +1,19 @@
 # Design Assets
 
-- `explorations/`: unapproved explorations and design territories.
-- `approved/`: owner-approved assets only; include the related decision ID and date.
-- `prototypes/`: runnable HTML/CSS prototypes used for design reviews.
+- explorations/: unapproved explorations and design territories.
+- approved/: owner-approved assets only; include the related decision ID and date.
+- prototypes/: runnable HTML/CSS prototypes used for design reviews.
 
 Never place unlicensed reference-site assets or the full product-photo library here.
 
-## Current owner review package
+## Rejected historical visual package
 
-- [Four direction board](explorations/visual-directions.html)
-- [Exact palettes, fonts, layouts and contrast notes](../docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md)
-- Individual desktop and mobile renders: `explorations/rendered/`.
+- [Archived four-direction board](explorations/visual-directions.html)
+- [Rejected specifications](../docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md)
+- Individual desktop and mobile renders: explorations/rendered/.
 
-These are unapproved exploratory proposals. Do not place them in `approved/` until the owner records a selection.
+The owner rejected all four directions on 6 November 2026 (D-008). These assets are retained for audit history only and must not be treated as a current preference, default or approved direction.
+
+## Current reference-led work
+
+The new design study is governed by [17 — Reference-Led Design Brief](../docs/17-REFERENCE-LED-DESIGN-BRIEF.md) and the [owner-controlled visual decision process](../docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md). Do not place anything in approved/ until an explicit owner choice is recorded.
