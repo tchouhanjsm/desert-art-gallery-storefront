@@ -30,6 +30,18 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
             ["Graphic Atelier", "Future Relics", "Living Garden", "Modern Folk Pop"],
         )
 
+    def test_owner_rejection_and_reference_led_decision_are_recorded(self):
+        decisions = (ROOT / "docs/DECISIONS.md").read_text(encoding="utf-8")
+        brief = (ROOT / "docs/17-REFERENCE-LED-DESIGN-BRIEF.md").read_text(encoding="utf-8")
+        review = (ROOT / "docs/M1-OWNER-REVIEW.md").read_text(encoding="utf-8")
+        self.assertIn("D-008", decisions)
+        self.assertIn("D-009", decisions)
+        self.assertIn("Status: REJECTED", decisions)
+        self.assertIn("shop.macaro-ni.jp", decisions)
+        self.assertIn("pojstudio.com", decisions)
+        self.assertIn("pixel-for-pixel", brief)
+        self.assertIn("rejected", review.lower())
+
     def test_previous_synthesis_is_historical_only(self):
         protocol = (ROOT / "docs/AI-WORKING-PROTOCOL.md").read_text(encoding="utf-8").lower()
         history = (ROOT / "docs/15-CREATIVE-DIRECTION-OPTIONS.md").read_text(encoding="utf-8").lower()
