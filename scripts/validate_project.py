@@ -16,7 +16,7 @@ REQUIRED = [
  "docs/06-CONTENT-STRATEGY.md","docs/07-INFORMATION-ARCHITECTURE.md","docs/08-TECHNICAL-ARCHITECTURE.md",
  "docs/09-QUALITY-AND-ACCEPTANCE.md","docs/10-ROADMAP.md","docs/11-CUSTOMER-AND-MERCHANDISING-STRATEGY.md",
  "docs/12-MERCHANT-OPERATIONS.md","docs/13-DESIGN-REVIEW-PROTOCOL.md","docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md",
- "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/ADR-TEMPLATE.md",
+ "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/ADR-TEMPLATE.md",
  "docs/AI-BOOTSTRAP-PROMPT.md","docs/AI-WORKING-PROTOCOL.md","docs/DECISIONS.md",
  "docs/OWNER-INPUT-REGISTER.md","docs/REFERENCE-RESEARCH-LOG.md","docs/UPDATE-VISUAL-OWNER-GATE-PROMPT.md",
  "scripts/validate_project.py","tests/test_project_validation.py"]
@@ -86,8 +86,18 @@ def validate_project(root: Path=ROOT) -> list[str]:
  if "14-OWNER-CONTROLLED-VISUAL-DIRECTION.md" not in docs.get("README.md",""): errors.append("README does not link owner-control policy")
  if "not a default" not in docs.get("docs/AI-WORKING-PROTOCOL.md","").lower(): errors.append("AI protocol does not retire prior synthesis as default")
  if "D-007" not in docs.get("docs/DECISIONS.md","") or "CONFIRMED" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing confirmed D-007")
+ if "D-008" not in docs.get("docs/DECISIONS.md","") or "My DAG visual direction decision: reject." not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing explicit owner rejection D-008")
+ if "D-009" not in docs.get("docs/DECISIONS.md","") or "pojstudio.com" not in docs.get("docs/DECISIONS.md","") or "shop.macaro-ni.jp" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing reference decision D-009")
+ if "P-015" not in docs.get("docs/DECISIONS.md","") or "Status: REJECTED" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register must mark P-015 rejected")
+ brief = root/"docs/17-REFERENCE-LED-DESIGN-BRIEF.md"
+ if brief.exists():
+  bt=brief.read_text(encoding="utf-8").lower()
+  for term in ["poj studio","macaroni shoten","pixel-for-pixel","at least four","jaisalmer"]:
+   if term not in bt: errors.append(f"reference-led brief missing {term}")
+ else: errors.append("missing reference-led design brief")
+
  if "P-015" not in docs.get("docs/DECISIONS.md","") or "no winner" not in docs.get("docs/DECISIONS.md","").lower(): errors.append("decision register missing no-winner proposal P-015")
- if "no option is recommended" not in docs.get("docs/M1-OWNER-REVIEW.md","").lower(): errors.append("owner review must say no option is recommended")
+ if "no option is recommended" not in docs.get("docs/M1-OWNER-REVIEW.md","").lower() or "rejected" not in docs.get("docs/M1-OWNER-REVIEW.md","").lower(): errors.append("owner review must record rejection and preserve no-recommendation rule")
  if "four" not in docs.get("docs/10-ROADMAP.md","").lower() or "owner" not in docs.get("docs/10-ROADMAP.md","").lower(): errors.append("roadmap missing four-option owner gate")
  spec=root/"docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md"
  if spec.exists():
@@ -128,7 +138,7 @@ def main() -> int:
  print(f"- {len(REQUIRED)} foundation/governance paths present")
  print(f"- {len(RENDERS)} desktop/mobile SVG direction previews present")
  print("- Markdown UTF-8, internal links and heading hierarchy pass")
- print("- owner-control gate, no-winner rule and historical-default retirement pass")
+ print("- owner-control gate, explicit P-015 rejection, new reference decision and no-clone boundary pass")
  print("- four territories, exact HEX palettes, typography and responsive board pass")
  print("- no app/framework/database/hosting scaffold introduced")
  return 0
