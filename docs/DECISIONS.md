@@ -37,6 +37,25 @@ Status: CONFIRMED
 Decision: Approximately 3,000 original photographs across roughly 300 products exist. Bulk migration and hosting are deferred. Do not commit the photo library to Git.
 Date: 2026-11-06
 
+### D-007 — Owner controls visual identity selection
+Status: CONFIRMED
+Decision: The AI agent must not unilaterally choose DAG's final palette, typography, visual style or art direction. It must present at least four materially distinct rendered alternatives with exact values and neutral trade-offs, then wait for the owner to choose. The previous beige/grey/ivory/terracotta direction must not be used as an automatic default.
+Date: 2026-11-06
+
+### D-008 — Reject the four proposed visual territories
+Status: CONFIRMED
+Decision: The owner explicitly rejected all four territories in P-015 on 6 November 2026: Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop. None is selected, preferred, approved, a default or an active candidate. The full P-015 package is retained as historical evidence only.
+Owner instruction: "My DAG visual direction decision: reject."
+Consequences: Build a fresh visual review around the references named in D-009. Do not reuse the rejected palettes or type pairings as a default.
+Date: 2026-11-06
+
+### D-009 — POJ Studio and Macaroni Shoten as principal design references
+Status: CONFIRMED
+Decision: The owner names https://pojstudio.com/ and https://shop.macaro-ni.jp/ as the principal references for the next DAG creative and retail design study and asks whether DAG can be designed exactly like them. Use both as close references for customer experience, editorial retail quality, product discovery, merchandising and information hierarchy. The DAG deliverable must remain original: do not clone either site's identity, source assets, copy, product imagery or pixel-for-pixel page composition. This reference instruction does not select a final DAG palette, typography, art direction or page layout.
+Owner instruction: "shop.macaro-ni.jp/ and pojstudio.com - can we design exactly as it it."
+Consequences: Use docs/17-REFERENCE-LED-DESIGN-BRIEF.md to prepare new owner-review options. Keep the visual approval gate active.
+Date: 2026-11-06
+
 ## Unresolved owner decisions
 
 ### U-001 — Seller jurisdiction and legal identity
@@ -83,40 +102,28 @@ Status: UNRESOLVED
 Question: Select after requirements and options are documented.
 
 ## Decision record format
-For each new decision:
-- ID.
-- Date.
-- Status.
-- Context.
-- Options considered.
-- Decision.
-- Rationale.
-- Consequences.
-- Documents/code affected.
-- Owner confirmation where required.
+For each new decision, record ID, date, status, context, options, decision, rationale, consequences, affected docs/code and owner confirmation.
 
-## M1 proposals — awaiting owner review
+## Rejected historical visual proposal package
 
-### P-011 — Creative direction recommendation
+### P-015 — Four visual territories
+Status: REJECTED
+
+Proposal history: Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop were presented with exact palette/font specifications and desktop/mobile explorations in the earlier review.
+
+Owner decision: The owner explicitly rejected all four on 6 November 2026: "My DAG visual direction decision: reject."
+
+Consequences: None of the four proposals may be treated as selected, preferred, ranked, blended by the AI, a default or an active candidate. No winner exists; the entire P-015 package is rejected. Retain the assets and specifications as historical audit material only. Do not use their palettes, type pairings or preview compositions as a starting default.
+
+### P-016 — New reference-led DAG design exploration
 Status: PROPOSED
-Proposal: Use **Material Archive** as the brand and composition foundation, with the product-discovery clarity and catalogue energy of **Collected Colour**. The preliminary palettes and rules are in `docs/15-CREATIVE-DIRECTION-OPTIONS.md`; the side-by-side exploratory sheet is `design/explorations/m1-territory-study.html`.
-Owner decision required: Select Territory A, Territory B or the recommended synthesis before M2. No palette or typography token is approved yet.
+
+Basis: D-009 and docs/17-REFERENCE-LED-DESIGN-BRIEF.md.
+
+Proposal package delivered: [Porcelain Index], [Bordeaux Editions], [Blue Current] and [Citron Signal], each with exact HEX palettes, type families/weights/licensing, page composition and photography direction, neutral trade-offs and contrast notes. Desktop/mobile renders are presented in design/explorations/reference-led-directions.html; detailed specifications are in docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md. The four territories are proposals only, not recommendations or approvals.
+
+Owner action: Review the new options when presented and choose one, combine explicit elements, request revisions or reject all. No recommendation or winner is designated. No production tokens or theme may be finalized before the new explicit owner choice is recorded.
+
 Date: 2026-11-06
 
-### P-012 — Brand positioning direction
-Status: PROPOSED
-Proposal: Position DAG as a considered gallery of textiles and objects connected to Jaisalmer, Rajasthan, presented with accurate product and material information. This is not approved public-facing copy.
-Owner decision required: Confirm strategic direction and verify any public claims before publication.
-Date: 2026-11-06
-
-### P-013 — Commercial-model hypothesis
-Status: PROPOSED
-Proposal: Evaluate a controlled hybrid model: direct purchase for sale-ready items with verified price, stock and fulfilment; enquiry for genuinely bespoke or manually quoted exceptions. This does not resolve U-008.
-Owner decision required: Select the commercial model after reviewing the real product readiness and operations.
-Date: 2026-11-06
-
-### P-014 — Initial customer-validation focus
-Status: PROPOSED
-Proposal: Test home/interior buyers, craft/material enthusiasts, gift buyers and trade/design professionals as hypotheses, without treating them as validated personas.
-Owner decision required: Prioritize the first interview cohort and initial 10–20 product-photo sample.
-Date: 2026-11-06
+The former Material Archive / Collected Colour synthesis remains a historical AI proposal only. It is not a default, preferred direction or owner approval. Do not implement it unless the owner explicitly selects its elements in a new recorded decision.

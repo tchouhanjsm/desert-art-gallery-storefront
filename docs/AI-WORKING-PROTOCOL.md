@@ -32,19 +32,20 @@ A repeatable protocol for every new AI chat, coding agent and autonomous session
 
 ## Design-specific protocol
 - Do not use the old storefront as the visual starting point.
-- Study references and record concrete observations with URLs and access dates.
-- Explore alternatives before choosing a direction.
-- Use actual rendered prototypes, not descriptions alone.
-- Review full pages at mobile, tablet and desktop sizes.
-- Mark designs as exploration/proposed/approved/implemented/verified.
-- Do not self-approve.
+- Study POJ Studio and Macaroni Shoten; record dated observations and source URLs.
+- Develop at least four materially different creative territories.
+- Specify exact HEX values, font family/weights/licensing, layout and photography direction.
+- Use actual rendered desktop/mobile examples, not descriptions or swatches alone.
+- Present neutral trade-offs; do not recommend, rank, score, badge, preselect or select a winner.
+- Ask the owner to choose, combine, request revisions or reject all options.
+- Stop before final tokens, production theme or global visual styling until an explicit owner choice is recorded.
 
 ## Autonomous execution
-Proceed independently on reversible in-scope design, documentation, code and test tasks. Do not ask routine questions about ordinary implementation details.
+Proceed independently on reversible in-scope documentation, research, option exploration, code and tests. Do not ask routine questions about ordinary implementation details.
 
-Stop for owner decisions involving seller jurisdiction, sales territory, currency, tax, shipping commitments, returns, legal identity, payment commitments, spending, subscriptions, production data, irreversible actions or sensitive credentials.
+Stop for owner decisions involving foundational visual identity, seller jurisdiction, sales territory, currency, tax, shipping commitments, returns, legal identity, payment commitments, spending, subscriptions, production data, irreversible actions or sensitive credentials.
 
-When one decision blocks a feature, isolate it and continue unrelated safe work.
+When one owner decision blocks a feature, isolate it and continue unrelated safe work.
 
 ## Completion review
 - Review the entire diff.
@@ -55,12 +56,13 @@ When one decision blocks a feature, isolate it and continue unrelated safe work.
 - Record screenshots only if actually captured and reviewed.
 - Report limitations accurately.
 
-## Completion report
-Include objective, milestone, files changed, decisions/assumptions, actual tests and results, visual evidence, risks, owner decisions and documentation updates.
+## Current visual owner gate
 
-## Current M1 handoff
+**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
 
-The M1 research and creative proposal package is in `docs/14-JAPAN-FIRST-CUSTOMER-RESEARCH.md`, `docs/15-CREATIVE-DIRECTION-OPTIONS.md`, `docs/16-COMMERCIAL-MODEL-ASSESSMENT.md` and `docs/M1-OWNER-REVIEW.md`. The recommended direction is Material Archive with the product-discovery clarity of Collected Colour. It is a proposal, not an owner-approved decision. Do not start M2 production work or mark the territory approved until the owner responds.
+The old Material Archive / Collected Colour synthesis is historical only, not a default. The owner rejected the previous four proposals (P-015) on 6 November 2026. POJ Studio and Macaroni Shoten are the confirmed references for the next original DAG design study. Read docs/17-REFERENCE-LED-DESIGN-BRIEF.md and docs/REFERENCE-RESEARCH-LOG.md before preparing new options.
+
+Prepare at least four materially different new DAG-specific territories with exact palettes, typography/licensing, layout/art direction, desktop/mobile renders, neutral trade-offs and accessibility notes. Do not clone either reference, reuse its assets or copy its text, product content, branding or exact page composition. Do not reuse rejected P-015 options as active candidates. Do not rank or recommend options. Ask the owner to choose, combine, request revisions or reject all, then stop. No final design tokens or production theme may be implemented before that explicit choice.
 
 ## New-chat continuity
-At each major milestone, update `10-ROADMAP.md` and `DECISIONS.md`. Produce a short handover referencing files, commits and PRs. Never rely on the chat alone for durable project knowledge.
+At each major milestone, update 10-ROADMAP.md and DECISIONS.md. Produce a short handover referencing files, commits and PRs. Never rely on the chat alone for durable project knowledge.

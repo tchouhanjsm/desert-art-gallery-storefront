@@ -1,32 +1,76 @@
 # Reference Research Log
 
-Research log for actual reference-site inspections. Date format: 6 November 2026. These observations describe the public pages as retrieved on that date; live sites can change.
+Record every significant reference-site review.
 
-## POJ Studio
+For each entry: date accessed, source URL, page/journey reviewed, specific observation, learning for DAG, what must not be copied and design implication.
 
-- **Accessed:** 6 November 2026.
-- **URLs:** https://pojstudio.com/ ; https://pojstudio.com/collections/all ; https://pojstudio.com/collections/kintsugi-kit ; https://pojstudio.com/blogs/kintsugi
-- **Observed:** Global country/currency and language controls; a top tariff/duty notice; separated Shop, Experiences, Kintsugi, Stories and About areas; a 296-item Shop All view with category navigation, price and availability filters, sort controls, variant labels and explicit Sold out/Preorder states; artisan and process stories linked from collection context.
-- **DAG learning:** make collection taxonomy, stock/variant states, maker/story content, country/duty information and product browsing discoverable as separate but connected tasks. Build the exact categories from DAG's real catalogue, not POJ's.
-- **Do not copy:** site layout, visual system, text, photography, categories, product naming or distinctive Kintsugi framing.
-- **Implication:** Material Archive can use considered editorial composition, but shop and product pages must retain practical density and clear states.
+## Principal references
 
-## Macaroni Shoten
+- **POJ Studio:** https://pojstudio.com/
+- **Macaroni Shoten:** https://shop.macaro-ni.jp/
 
-- **Accessed:** 6 November 2026.
-- **URL:** https://shop.macaro-ni.jp/
-- **Observed:** The page presents a short everyday-curation proposition and four broad categories (Kitchen, Living, Food, Daily). At inspection, it explicitly displayed that no products were listed. The page is Japanese-language.
-- **DAG learning:** consider the simplicity of a small set of customer-facing category doors and an everyday-use lens.
-- **Limits / do not copy:** no reliable live evidence of its current product-card, pricing, inventory, checkout or merchandising quality can be drawn from an empty catalogue. Do not copy its Japanese-language copy or visual identity; DAG's customer-facing content remains English-only.
-- **Implication:** use as a light curation reference only, not as proof of a working ecommerce flow.
+## Prior inspection notes retained from M1 research (6 November 2026)
 
-## Supporting research sources
+### POJ Studio
+- Inspected homepage, Shop All, Kintsugi collection and related journal paths on 6 November 2026.
+- Observed country/currency and language controls, a tariff/duty notice, distinct Shop/Experiences/Kintsugi/Stories/About areas, category navigation, price/availability filters, sorting, variant labels and Sold out/Preorder states.
+- DAG may study the separation of product taxonomy, editorial, maker context and service information. Do not copy POJ taxonomy, UI, text, imagery or page layouts.
+- Sources: https://pojstudio.com/ ; https://pojstudio.com/collections/all ; https://pojstudio.com/collections/kintsugi-kit ; https://pojstudio.com/blogs/kintsugi
 
-- Japan ecommerce context: METI, FY2024 B2C EC release (26 Aug 2025), https://www.meti.go.jp/english/press/2025/0826_003.html
-- Latest FY2025 market summary attributed to METI (21 Oct 2026; AI-generated summary, verify detailed numbers against the linked original report), https://jp-reports.com/en/articles/01M5G4812VGTVGTB6XA9YTV78C/
-- Payment-method and checkout-friction research: GMO Payment Gateway (25 Nov 2025), https://group.gmo/news/article/9798/ ; SB Payment Services (3 Jul 2025), https://www.sbpayment.jp/en/news/press/2025/20250703_001470/
-- Cross-border complaint context: National Consumer Affairs Center of Japan (5 Aug 2026), https://www.kokusen.go.jp/news/data/n-20260805_2.html
-- Japan ecommerce and seller-disclosure context: U.S. International Trade Administration, https://www.trade.gov/country-commercial-guides/japan-ecommerce-0
-- Regional craft/cluster context (not proof about DAG's specific products): Rajasthan Government, https://rising.rajasthan.gov.in/handlooms-and-handicrafts
+### Macaroni Shoten
+- Inspected https://shop.macaro-ni.jp/ on 6 November 2026. The shop then presented four broad category names (Kitchen, Living, Food, Daily) and an empty-product state.
+- Use only as a prompt to consider compact category doors and an everyday-use lens. It was not possible to evaluate active product cards or checkout during that inspection. Do not copy its Japanese-language customer content or identity; DAG remains English-only.
 
-No observations or customer interviews are assumed beyond the items above.
+These observations do not prescribe or imply a winner among the current visual territories.
+
+
+## Updated reference review — 6 November 2026
+
+### POJ Studio — live homepage and retail journeys
+
+Reviewed:
+- https://pojstudio.com/
+- https://pojstudio.com/collections/tableware-1
+- https://pojstudio.com/collections/bestsellers
+- https://pojstudio.com/pages/about
+
+Current observations:
+- Homepage combines a promotional/duty notice area, broad primary navigation, a seasonal campaign hero, concise brand statement, category/collection entry points, mission content, press, artisan stories, bestseller products and service/company footer links.
+- Navigation separates Shop, Experiences, Kintsugi, Stories, Visit and About. Shop has grouped collection/category links; country/currency and English/Japanese language controls are available.
+- Tableware content groups products by categories/materials such as ceramics, wood, glass and washi, with short introductions, prices, variant and availability/bestseller/preorder labels.
+- Bestsellers exposes product count, sorting, availability and price filters, visible prices and status labels.
+- About content connects products with artisan, team and sustainability narratives.
+- A commerce-partner case study describes the site as Shopify-based and mentions product metafields/metaobjects, product-page tabs and collection banners. This is third-party implementation context only; it does not authorize DAG to use Shopify or copy the implementation.
+
+DAG learning:
+- Keep catalogue discovery and editorial storytelling as distinct but connected routes.
+- Use concise collection context, visible product facts and filters only when supported by the catalogue.
+- Give makers and craft context room to explain an object's value.
+- Treat country, currency, tariffs, shipping and language controls as business decisions; do not copy POJ's settings or publish unapproved delivery/tax claims.
+
+Do not copy POJ's logo, wording, images, exact menu structure, product names, page composition or visual identity.
+
+### Macaroni Shoten — live storefront and category
+
+Reviewed:
+- https://shop.macaro-ni.jp/
+- https://shop.macaro-ni.jp/categories/3902202
+- Historical launch context: https://prtimes.jp/main/html/rd/p/000000069.000005511.html
+
+Current observations:
+- The live store has a compact header/search and short Japanese introductory text.
+- Visible category taxonomy is Kitchen, Living, Food and Daily, with category-specific sublinks.
+- About, contact, privacy and commercial-disclosure paths are present.
+- On the access date, the live homepage and Kitchen category both returned an empty-product state. Active product merchandising and checkout could not be assessed.
+- The 1 October 2021 launch announcement described a curated selection of Japanese handmade goods and selected food products. This is historical context only, not proof of today's active catalogue.
+
+DAG learning:
+- Category discovery can be compact and understandable.
+- Base category labels must reflect DAG's actual range and customer use; do not copy Macaroni's labels or Japanese customer content.
+- Revisit the live site before any later detailed merchandising comparison because the empty state limits what can be assessed.
+
+## Owner direction and design boundary
+
+The owner rejected the four previous territories and designated POJ Studio and Macaroni Shoten as principal references on 6 November 2026. See D-008 and D-009 in DECISIONS.md and docs/17-REFERENCE-LED-DESIGN-BRIEF.md.
+
+Study their customer-experience principles and retail quality, but produce an original DAG design. Do not copy exact brand identity, layout, writing, imagery, product content or proprietary assets. These observations do not approve a palette, typeface or final visual direction.

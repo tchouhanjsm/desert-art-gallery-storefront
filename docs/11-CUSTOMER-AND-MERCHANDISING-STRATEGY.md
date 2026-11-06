@@ -6,10 +6,6 @@ Define who DAG serves, what customers need to understand and how the catalogue s
 ## Market orientation
 Japan-first is the intended customer focus. All customer-facing content remains English-only. Specific sales territories and legal/operational arrangements are recorded as unresolved where applicable.
 
-## Research baseline
-
-The evidence review and validation plan are in [14 — Japan-First Customer and Market Research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md). Treat the segments below as hypotheses until actual research validates them.
-
 ## Customer research hypotheses
 Research and validate:
 - Interest in Indian/Jaisalmer textiles and objects.

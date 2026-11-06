@@ -5,6 +5,15 @@ Create a distinctive, trustworthy, premium ecommerce and gallery experience for 
 
 The goal is not to modernize the old storefront. The goal is to define and build the right experience from first principles.
 
+## Principal design references
+
+Our principal references are:
+
+- **POJ Studio:** https://pojstudio.com/
+- **Macaroni Shoten:** https://shop.macaro-ni.jp/
+
+These are DAG's primary references for creative and retail study. Study their actual editorial presentation, merchandising, product discovery, navigation, typography, photography and responsive customer experience. Learn from their principles, but do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
+
 ## Product ambition
 DAG should combine:
 - Editorial sophistication and material sensitivity studied from POJ Studio.

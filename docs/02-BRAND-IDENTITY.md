@@ -17,10 +17,6 @@ A gallery and retail experience for textiles, objects and craft connected with J
 ## Brand voice
 English-only, clear, warm, precise and restrained. Prefer concrete product facts over vague superlatives. Avoid claims such as "world's finest", "ancient tradition", "museum quality" or "sustainable" unless independently substantiated and approved.
 
-## M1 positioning proposal — not approved
-
-A candidate positioning direction for owner review: **A considered collection of textiles and objects connected to Jaisalmer, Rajasthan, presented with clear material, product and provenance information.** This is a strategic draft, not customer-facing approved copy. Every product-level origin, maker and technique claim still requires evidence.
-
 ## Identity work still required
 Not yet approved:
 - Final positioning statement and brand promise.

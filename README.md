@@ -1,42 +1,62 @@
 # Desert Art Gallery
 
-Desert Art Gallery (DAG) is a new premium, product-led ecommerce and gallery experience rooted in Jaisalmer, Rajasthan, with a Japan-first customer focus and an English-only customer-facing storefront.
+Desert Art Gallery (DAG) is a premium, product-led ecommerce and gallery experience rooted in Jaisalmer, Rajasthan, with a Japan-first customer focus and an English-only customer-facing storefront.
 
 ## Current stage
-**M1 — Customer, brand and creative direction (owner review).**
+**M1 — Reference-led visual review ready; owner selection pending.**
 
-The M0 documentation foundation is installed. M1 research, creative territories and a commercial-model assessment are prepared; owner selection of the visual direction and initial validation focus remains the exit gate. No production application stack or commerce integration has been selected.
+The owner rejected the first four visual territories and named POJ Studio and Macaroni Shoten as principal references. A fresh set of four DAG-specific visual proposals is now ready. No final palette, typography, art direction or production theme has been selected.
 
 ## Start here
-1. [`AGENTS.md`](AGENTS.md) — permanent instructions for all agents and contributors.
-2. [`docs/00-PROJECT-CHARTER.md`](docs/00-PROJECT-CHARTER.md) — project purpose and scope.
-3. [`docs/01-DESIGN-PHILOSOPHY.md`](docs/01-DESIGN-PHILOSOPHY.md) — Japanese-inspired working principles.
-4. [`docs/03-CREATIVE-DIRECTION.md`](docs/03-CREATIVE-DIRECTION.md) — reference study and design process.
-5. [`docs/DECISIONS.md`](docs/DECISIONS.md) — confirmed decisions and owner questions.
-6. [`docs/14-JAPAN-FIRST-CUSTOMER-RESEARCH.md`](docs/14-JAPAN-FIRST-CUSTOMER-RESEARCH.md) — evidence and customer hypotheses.
-7. [`docs/15-CREATIVE-DIRECTION-OPTIONS.md`](docs/15-CREATIVE-DIRECTION-OPTIONS.md) — two territories and the recommendation.
-8. [`docs/AI-WORKING-PROTOCOL.md`](docs/AI-WORKING-PROTOCOL.md) — repeatable agent workflow.
-9. [`docs/10-ROADMAP.md`](docs/10-ROADMAP.md) — milestone plan.
-10. [`docs/AI-BOOTSTRAP-PROMPT.md`](docs/AI-BOOTSTRAP-PROMPT.md) — first-session prompt.
+1. [Permanent agent instructions](AGENTS.md).
+2. [Project Charter](docs/00-PROJECT-CHARTER.md).
+3. [Reference-led design brief](docs/17-REFERENCE-LED-DESIGN-BRIEF.md).
+4. [Fresh visual territory specifications](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md).
+5. [Rendered desktop/mobile comparison board](design/explorations/reference-led-directions.html).
+6. [Creative Direction](docs/03-CREATIVE-DIRECTION.md).
+7. [Visual Design System](docs/04-VISUAL-DESIGN-SYSTEM.md).
+8. [Owner-Controlled Visual Direction](docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+9. [Decision Register](docs/DECISIONS.md).
 
-## M1 review package
-- [Japan-first customer research](docs/14-JAPAN-FIRST-CUSTOMER-RESEARCH.md)
-- [Creative direction options](docs/15-CREATIVE-DIRECTION-OPTIONS.md)
-- [Commercial model assessment](docs/16-COMMERCIAL-MODEL-ASSESSMENT.md)
-- [M1 owner review](docs/M1-OWNER-REVIEW.md)
-- [Visual territory study](design/explorations/m1-territory-study.html)
+## New owner-review package
 
-## Creative references
-- POJ Studio: https://pojstudio.com/
-- Macaroni Shoten: https://shop.macaro-ni.jp/
+These are four new, non-ranked proposals. None is recommended, preselected or approved.
 
-These are references for retail sophistication, editorial presentation, curation and customer experience. DAG must develop its own identity.
+| Proposal | Visual character |
+|---|---|
+| Porcelain Index | Material-first gallery catalogue |
+| Bordeaux Editions | Atmospheric, chapter-led collector's journal |
+| Blue Current | Contemporary studio catalogue |
+| Citron Signal | High-contrast graphic object index |
+
+- [Compare all four desktop/mobile previews](design/explorations/reference-led-directions.html)
+- [Read exact HEX palettes, typography, layouts, photography, contrast and trade-offs](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md)
+
+All object visuals and product names shown on the board are abstract placeholders, not real DAG catalogue content or photographs.
+
+## Rejected historical visual proposals
+
+Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop were explicitly rejected by the owner on 6 November 2026 (D-008). Their comparison board and specifications remain as historical audit evidence only:
+- [Archived comparison board](design/explorations/visual-directions.html)
+- [Rejected specifications](docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md)
+
+Do not treat any rejected palette, font pairing or preview as an active preference or approved direction.
+
+## Principal design references
+
+- [POJ Studio](https://pojstudio.com/)
+- [Macaroni Shoten](https://shop.macaro-ni.jp/)
+
+DAG adapts retail and customer-experience principles without cloning either brand, layout, copy, products, photography or proprietary assets. The storefront must express its own Jaisalmer identity.
 
 ## Permanent principle
+
 **DO NOT ABANDON MINIMALISM. ABANDON EMPTINESS.**
 
-## Legacy repository boundary
-The previous implementation remains at https://github.com/tchouhanjsm/desert-art-gallery. It may be used selectively for verified business/domain knowledge and engineering lessons. Do not copy its frontend, CSS, layouts, components, visual tokens or old design instructions into this new project.
-
 ## Market and operational note
+
 Japan-first is the intended customer focus. English-only is the customer-facing language requirement. Exact sales territories, seller jurisdiction, currency, tax, duties, shipping, payment, returns and legal disclosures must be confirmed before implementation.
+
+## Visual decision authority
+
+**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.** No final palette, fonts, visual personality, photography art direction or production theme may be implemented before the owner's explicit selection is recorded in docs/DECISIONS.md.

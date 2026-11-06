@@ -1,30 +1,40 @@
 # M1 — Owner Review and Exit Gate
 
-**Review package date:** 6 November 2026  
-**Milestone status:** Research and recommendations prepared; awaiting owner selections.
+**Status:** Fresh reference-led creative proposals are ready for owner review. No visual direction has been selected or approved.
 
-## Delivered
+## Owner decisions recorded
+- **D-008:** The owner rejected Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop. They remain historical only.
+- **D-009:** The owner named POJ Studio and Macaroni Shoten as the principal references for the next DAG design study.
+- The references guide retail quality and customer experience, not pixel-for-pixel cloning. DAG must retain its own Jaisalmer identity, original content and product imagery.
 
-- Japan-first customer and market research with source links, dates and limitations: [14 — Japan-First Customer and Market Research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md).
-- Two creative territories and recommended synthesis: [15 — DAG Creative Direction Options](15-CREATIVE-DIRECTION-OPTIONS.md).
-- Direct, enquiry-led and hybrid operating-model comparison: [16 — Commercial Model Assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md).
-- Browser-openable visual territory sheet: [M1 Territory Study](../design/explorations/m1-territory-study.html).
-- Durable source observations: [Reference Research Log](REFERENCE-RESEARCH-LOG.md).
+## Research and design delivered
+- Japan-first customer and market research: [14 — Japan-First Customer and Market Research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md).
+- Updated reference observations and live-site limitations: [Reference Research Log](REFERENCE-RESEARCH-LOG.md).
+- Detailed translation into DAG requirements: [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md).
+- Direct, enquiry-led and hybrid operating-model assessment: [16 — Commercial Model Assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md).
+- Four fresh visual territories with exact palettes, typography, composition, photography, contrast notes and trade-offs: [18 — Reference-Led Direction Specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md).
+- Rendered comparison board with desktop and mobile examples: [Reference-Led Visual Board](../design/explorations/reference-led-directions.html).
+- Mandatory owner authority and decision process: [14 — Owner-Controlled Visual Direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 
-## Recommendation for owner review
+## Fresh visual proposals
 
-Choose **Material Archive** as the design foundation, borrowing the product-discovery clarity and catalogue energy of **Collected Colour**. Test a controlled hybrid purchase/enquiry model against the actual sale-ready catalogue before making it a business decision.
+1. **Porcelain Index** — material-first gallery catalogue; Cormorant Garamond and Manrope.
+2. **Bordeaux Editions** — atmospheric, chapter-led collector's journal; Fraunces and DM Sans.
+3. **Blue Current** — contemporary studio catalogue; Newsreader and Work Sans.
+4. **Citron Signal** — high-contrast graphic object index; Space Grotesk and IBM Plex Mono.
 
-## Owner decisions required to close M1
+These are materially different proposals, not recommendations or rankings. The previous P-015 territories are rejected and are not reused as active candidates.
 
-1. Select Territory A, Territory B or the recommended synthesis.
-2. Confirm whether the proposed positioning is directionally correct; do not approve public copy until every claim is verified.
-3. Choose which audience hypothesis to prioritize for the first validation round.
-4. Agree the initial sale-ready product sample for image and product-information testing.
-5. Decide whether the commercial model should be evaluated as direct, enquiry-led or hybrid.
+## Owner decision required
 
-These choices are not assumed by this review. Owner-controlled commercial/legal matters U-001 to U-006 remain open independently of the design selection.
+Choose one option, combine explicitly named elements, request revisions, or reject all four. No option is recommended, preferred, scored, selected or approved.
+
+No final palette, font pairing, visual personality, photography style, design tokens, global theme or production styling may be implemented until the owner makes an explicit choice and that choice is recorded in DECISIONS.md.
+
+## Separate owner inputs
+
+The initial customer-validation focus and representative product/photo sample remain open. These are separate from seller jurisdiction, commercial and legal matters U-001 to U-010.
 
 ## Exit criteria
 
-M1 can be marked complete after the owner selects a creative direction and confirms the initial customer-validation focus. M2 then starts with responsive prototypes based on that selection. No production framework, application code or paid service is selected by this package.
+M1 creative direction closes only after the owner reviews the fresh reference-led options and explicitly chooses, combines, requests revisions or rejects them, and the initial customer-validation focus is confirmed. M2 prototypes follow only an approved visual direction. No production framework, database, application code or paid service is authorized by this review.
