@@ -30,6 +30,10 @@ Document:
 - Plan backups, restore testing, observability and recovery.
 - Avoid vendor commitments before requirements and costs are understood.
 
+## Media discovery before architecture selection
+
+A non-destructive image inventory tool is available at `scripts/audit_photo_library.py`. It can report source formats, dimensions for supported formats, file sizes and exact duplicate checksums without changing originals. Use it on a small owner-approved sample first. It does not choose image storage, delivery, transformation, SKU mapping or migration strategy. See [19 — Non-Destructive Photo Library Audit](19-PHOTO-LIBRARY-AUDIT.md).
+
 ## Legacy engineering assessment
 For each proposed reuse from the old repository, document:
 - Source file/system.

@@ -55,6 +55,15 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
         self.assertIn("Mobile composition", board)
         self.assertIn("not DAG products", board)
 
+
+    def test_photo_audit_is_included_and_documented_as_read_only(self):
+        script = (ROOT / "scripts/audit_photo_library.py").read_text(encoding="utf-8")
+        guide = (ROOT / "docs/19-PHOTO-LIBRARY-AUDIT.md").read_text(encoding="utf-8")
+        self.assertIn("read-only", script.lower())
+        self.assertIn("does not rename", script.lower())
+        self.assertIn("SHA-256", guide)
+        self.assertIn("does not authorize bulk migration", guide)
+
     def test_previous_synthesis_is_historical_only(self):
         protocol = (ROOT / "docs/AI-WORKING-PROTOCOL.md").read_text(encoding="utf-8").lower()
         history = (ROOT / "docs/15-CREATIVE-DIRECTION-OPTIONS.md").read_text(encoding="utf-8").lower()
