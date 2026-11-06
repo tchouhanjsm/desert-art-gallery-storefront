@@ -1,0 +1,24 @@
+name: DAG Project Quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  documentation-and-foundation:
+    name: Documentation and foundation checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Show Python version
+        run: python3 --version
+      - name: Validate project foundation and M1 outputs
+        run: python3 scripts/validate_project.py
+      - name: Run validation unit tests
+        run: python3 -m unittest discover -s tests -v
