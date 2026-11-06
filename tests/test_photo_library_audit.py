@@ -9,11 +9,10 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-import audit_photo_library
-
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import audit_photo_library  # noqa: E402
 from audit_photo_library import audit_directory, detect_format, main, read_dimensions  # noqa: E402
 
 
