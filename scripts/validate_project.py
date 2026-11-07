@@ -90,7 +90,7 @@ def validate_project(root: Path=ROOT) -> list[str]:
  if "D-007" not in docs.get("docs/DECISIONS.md","") or "CONFIRMED" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing confirmed D-007")
  if "D-008" not in docs.get("docs/DECISIONS.md","") or "My DAG visual direction decision: reject." not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing explicit owner rejection D-008")
  if "D-009" not in docs.get("docs/DECISIONS.md","") or "pojstudio.com" not in docs.get("docs/DECISIONS.md","") or "shop.macaro-ni.jp" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing reference decision D-009")
- if "D-010" not in docs.get("docs/DECISIONS.md","") or "Status: CONFIRMED" not in docs.get("docs/DECISIONS.md","") or "Reference fidelity is BLEND" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing confirmed D-010 reference hierarchy")
+ if "D-010" not in docs.get("docs/DECISIONS.md","") or "Status: CONFIRMED" not in docs.get("docs/DECISIONS.md","") or "DAG's reference fidelity is BLEND" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing confirmed D-010 reference hierarchy")
  spec15 = root/"docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md"
  if spec15.exists():
   st=spec15.read_text(encoding="utf-8")
