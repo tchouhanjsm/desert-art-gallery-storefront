@@ -80,6 +80,27 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
         self.assertIn("must not be committed to git", agents)
         self.assertIn("owner verification", agents)
 
+    def test_confirmed_reference_hierarchy_and_page_specification(self):
+        decisions = (ROOT / "docs/DECISIONS.md").read_text(encoding="utf-8")
+        specification = (ROOT / "docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("D-010", decisions)
+        self.assertIn("Reference fidelity is BLEND", decisions)
+        self.assertIn("POJ Studio is the primary reference", decisions)
+        self.assertIn("Macaroni Shoten is the secondary reference", decisions)
+        for section in [
+            "Homepage", "Shop / All Products", "Category landing page",
+            "Collection page", "Product detail page", "Search results",
+            "Cart", "Checkout", "Maker / Artisan profile", "About DAG",
+            "Journal / Stories index", "Journal / Story article",
+            "Contact / Customer support", "Curated collection",
+            "Account", "Wishlist", "Shipping", "Legal",
+            "CSS and frontend architecture", "Responsive and interaction matrix",
+            "M2 prototype gate",
+        ]:
+            self.assertIn(section.lower(), specification.lower())
+        self.assertIn("15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md", readme)
+
     def test_previous_synthesis_is_historical_only(self):
         protocol = (ROOT / "docs/AI-WORKING-PROTOCOL.md").read_text(encoding="utf-8").lower()
         history = (ROOT / "docs/15-CREATIVE-DIRECTION-OPTIONS.md").read_text(encoding="utf-8").lower()
