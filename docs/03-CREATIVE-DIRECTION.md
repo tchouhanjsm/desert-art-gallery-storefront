@@ -10,7 +10,7 @@ Our principal references are:
 - **POJ Studio:** https://pojstudio.com/
 - **Macaroni Shoten:** https://shop.macaro-ni.jp/
 
-These are DAG's primary references for creative and retail study. Study their actual editorial presentation, merchandising, product discovery, navigation, typography, photography and responsive customer experience. Learn from their principles, but do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
+Owner-confirmed hierarchy D-010: POJ Studio is the **primary** reference for ecommerce structure, navigation, homepage, Shop/collection, product card, product detail, maker/story and supporting retail patterns. Macaroni Shoten is the **secondary** reference for select-shop curation, category grouping and concise editorial retail character. Learn from the principles, but do not copy assets, exact layouts, source code, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity. See [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md).
 
 ## Reference study
 - POJ Studio: https://pojstudio.com/
@@ -76,7 +76,7 @@ Show the differences visually. Do not label one option recommended, preferred or
 
 The owner rejected all four territories previously documented in [15 — Four Visual Direction Specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md) on 6 November 2026 (D-008). That package and its rendered board are historical only, not active candidates or preferences.
 
-The owner named [POJ Studio](https://pojstudio.com/) and [Macaroni Shoten](https://shop.macaro-ni.jp/) as the principal references for the next study (D-009). Use the observations and DAG-specific translation in [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md). Create an original DAG design with comparable retail quality and customer-experience principles; do not copy either site's identity, assets, text, product content or exact composition.
+The owner named [POJ Studio](https://pojstudio.com/) and [Macaroni Shoten](https://shop.macaro-ni.jp/) as the study references (D-009). D-010 confirms POJ as primary ecommerce/structure reference and Macaroni as secondary curation reference. Use the complete page mapping in [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md), with research detail in [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md) and [Reference Research Log](REFERENCE-RESEARCH-LOG.md). This reference hierarchy does not select a DAG visual identity. Create an original DAG design; do not copy either site's identity, assets, text, product content, source code or exact composition.
 
 The next package must again contain at least four materially different visual territories with exact colours, font/licensing specifications, rendered desktop/mobile examples, neutral trade-offs and accessibility notes. No palette, typography, overall style or art direction is approved. Do not recommend or select a winner.
 
