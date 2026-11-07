@@ -15,9 +15,10 @@ This is a concise queue of decisions that require owner input. Update it as deci
 | U-009 | Brand positioning/promise | Brand identity and content | During M1 | Owner input pending |
 | U-010 | Technology and hosting | Engineering cost and capability | M3 | Open |
 | M1-A | Visual territory selection | Sets the brand visual system and M2 prototypes | Before M2 | Four new reference-led proposals presented; explicit owner choice pending |
+| M1-REF | Reference fidelity and hierarchy | Sets which reference informs ecommerce structure vs curation | M1 | Confirmed D-010: BLEND; POJ primary, Macaroni secondary |
 | M1-B | Customer-validation cohort | Prioritizes customer research | During M1 | Owner input pending |
 | M1-C | Product/photo sample | Enables authentic product and image testing | Before M2 | Owner input pending |
 
-The current design choices are documented in [18 — Reference-Led Direction Specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md) and the [rendered board](../design/explorations/reference-led-directions.html). The owner has not approved a palette, font pairing or production style. A draft catalogue intake kit is available to prepare factual sample data without selecting a database or final category taxonomy.
+The confirmed reference hierarchy is documented in [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md) (D-010). The visual choices remain documented in [18 — Reference-Led Direction Specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md) and the [rendered board](../design/explorations/reference-led-directions.html). The owner has not approved a palette, font pairing or production style. A draft catalogue intake kit is available to prepare factual sample data without selecting a database or final category taxonomy.
 
 Do not turn unanswered questions into invented facts. Continue work that is independent of these decisions.
