@@ -91,3 +91,8 @@ Do not create named fictional personas, demographic claims or market-size estima
 - Payment studies are sponsored by payment providers and their samples/methodologies differ.
 - No price elasticity, target average order value, customer acquisition cost or conversion forecast is established.
 - No claim is made that all DAG items are made in Jaisalmer or use any particular Rajasthan craft technique. Product-specific provenance must be documented.
+
+
+## Research execution materials
+
+The proposed interview and prototype-testing workflow is now operationalized in [22 — Japan-First Customer Validation Playbook](22-CUSTOMER-VALIDATION-PLAYBOOK.md), with blank participant screener, session notes, task observation and finding-synthesis templates in `templates/research/`. These materials do not mean interviews have been conducted or that any hypothesis has been validated. The owner must confirm the initial cohort focus and recruitment route before field research begins.

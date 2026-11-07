@@ -1,13 +1,15 @@
 # M1 — Owner Review and Exit Gate
 
-**Status:** Fresh reference-led creative proposals are ready for owner review. No visual direction has been selected or approved.
+**Status:** The BLEND reference hierarchy is confirmed and the complete implementation specification is delivered. The four visual territories and initial customer-validation cohort remain owner-review items. No final visual direction is selected or approved.
 
 ## Owner decisions recorded
 - **D-008:** The owner rejected Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop. They remain historical only.
-- **D-009:** The owner named POJ Studio and Macaroni Shoten as the principal references for the next DAG design study.
+- **D-009:** The owner named POJ Studio and Macaroni Shoten as the study references.
+- **D-010:** Reference fidelity is BLEND. POJ Studio is primary for ecommerce architecture and page experience; Macaroni Shoten is secondary for curation and select-shop character.
 - The references guide retail quality and customer experience, not pixel-for-pixel cloning. DAG must retain its own Jaisalmer identity, original content and product imagery.
 
 ## Research and design delivered
+- Complete page-by-page reference-to-DAG implementation specification: [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md).
 - Japan-first customer and market research: [14 — Japan-First Customer and Market Research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md).
 - Updated reference observations and live-site limitations: [Reference Research Log](REFERENCE-RESEARCH-LOG.md).
 - Detailed translation into DAG requirements: [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md).
@@ -15,6 +17,7 @@
 - Four fresh visual territories with exact palettes, typography, composition, photography, contrast notes and trade-offs: [18 — Reference-Led Direction Specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md).
 - Rendered comparison board with desktop and mobile examples: [Reference-Led Visual Board](../design/explorations/reference-led-directions.html).
 - Mandatory owner authority and decision process: [14 — Owner-Controlled Visual Direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+- Japan-first customer validation protocol and blank research templates: [22 — Customer Validation Playbook](22-CUSTOMER-VALIDATION-PLAYBOOK.md) and `templates/research/`.
 
 ## Fresh visual proposals
 
@@ -48,3 +51,17 @@ A framework-neutral, draft catalogue intake and fact-verification kit is availab
 ## Etsy source compatibility review
 
 A source mapping plan is documented in [21 — Etsy Source Export Mapping and Reconciliation](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md). It distinguishes raw export rows, blank/duplicate SKUs and remote Etsy image URLs from owner-verified product records and local media assets. The reference export findings are historical; the original CSV is not tracked in Git and has not been re-audited. No product records or image URLs have been imported.
+
+
+## Reference hierarchy decision is not visual-identity approval
+
+D-010 determines how POJ Studio and Macaroni Shoten inform DAG. It does not select a colour palette, typeface, photography mood, page composition, production theme or design token. The four new visual proposals remain unranked and await the owner's explicit choice. The initial customer-validation cohort also remains unresolved.
+
+The research inspection on 7 November 2026 captured POJ desktop structure and Macaroni's current empty-shop state. Tablet/mobile reference screenshots were not available from the browser session; responsive details in the new specification are requirements to test in DAG prototypes, not claims of measured reference behaviour.
+
+
+## Customer validation preparation delivered
+
+A field-ready **proposed** study workflow is available in [22 — Japan-First Customer Validation Playbook](22-CUSTOMER-VALIDATION-PLAYBOOK.md). It separates exploratory interviews from later prototype usability sessions, includes neutral prompts, evidence/synthesis rules and participant-data safeguards, and provides blank templates under `templates/research/`.
+
+This is preparation only. **No participants have been recruited; no interviews or usability sessions have been run; no customer preference or product-market fit is validated.** M1-B remains open until the owner confirms the cohort focus and recruitment route. No participant spending is authorized. M1-C remains open until the owner supplies a representative product/photo sample. M1-A remains open until the owner chooses, combines, revises or rejects the visual territories.

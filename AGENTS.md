@@ -46,7 +46,7 @@ Our principal references are:
 
 **Macaroni Shoten:** https://shop.macaro-ni.jp/
 
-These are the two primary references for DAG's creative and retail study. Examine their actual customer experience, editorial presentation, product merchandising, navigation, collection structure, typography, image treatment and responsive behaviour. Translate relevant principles into DAG's own Jaisalmer identity. Do not clone either site or copy its assets, text, exact layouts or brand identity.
+Owner-confirmed reference hierarchy (D-010): **POJ Studio is primary** for overall ecommerce architecture, homepage, navigation, Shop/collection, product cards, product detail, maker/story and supporting-page patterns. **Macaroni Shoten is secondary** for select-shop curation, category grouping and concise editorial retail character. Examine actual customer experience and translate relevant principles into DAG's own Jaisalmer identity. Do not clone either site or copy its assets, text, exact layouts, source code or brand identity. See docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md and docs/REFERENCE-RESEARCH-LOG.md.
 
 ## 4. Confirmed project direction
 - Japan-first is the intended customer and market focus.
@@ -177,7 +177,7 @@ The owner exclusively selects foundational DAG visual identity. Present at least
 
 ## Current reference-led visual decision state
 
-The owner rejected all four P-015 visual proposals on 6 November 2026 (D-008). They remain historical only; do not treat their palettes, typography or compositions as active preferences. The owner named POJ Studio and Macaroni Shoten as primary design references (D-009). Read docs/17-REFERENCE-LED-DESIGN-BRIEF.md and docs/REFERENCE-RESEARCH-LOG.md before the next creative exploration. A close adaptation of general retail/customer-experience principles is in scope; exact cloning, reuse of assets/text or copying page composition is not. No final DAG visual direction is approved.
+The owner rejected all four P-015 visual proposals on 6 November 2026 (D-008). They remain historical only; do not treat their palettes, typography or compositions as active preferences. D-009 records POJ Studio and Macaroni Shoten as the selected study references. D-010 confirms the hierarchy: POJ Studio primary for ecommerce structure and page experience; Macaroni Shoten secondary for curation and select-retail character. Read docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md for the complete page-by-page implementation specification and docs/REFERENCE-RESEARCH-LOG.md for dated evidence. This reference choice is not a visual-identity approval. No final DAG palette, typography, art direction, production tokens or theme is approved.
 
 
 ## 13. Private catalogue intake and source-data handling

@@ -1,19 +1,19 @@
 # 17 — Reference-Led Design Brief
 
-**Status:** Owner-requested research and design brief. Four new reference-led visual proposals are now ready for review. No final visual identity, palette, typography or production theme is approved.
+**Status:** Owner-approved reference hierarchy (D-010) and design-research brief. The complete implementation specification is now available in docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md. Four visual proposals remain awaiting owner choice. No final visual identity, palette, typography or production theme is approved.
 
 ## 1. Owner direction
 
 On 6 November 2026, the owner explicitly rejected all four visual territories in P-015: Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop.
 
-The owner then named these two sites as the principal references for the next DAG design exploration:
+The owner first named these two sites as references (D-009). On 7 November 2026 the owner confirmed their relationship (D-010): BLEND, with POJ Studio primary and Macaroni Shoten secondary:
 
 - https://pojstudio.com/
 - https://shop.macaro-ni.jp/
 
 The owner asked whether DAG can be designed "exactly as it is" in these references. The design scope is a close, original DAG adaptation of their retail quality, customer-experience patterns, information hierarchy and editorial discipline. It is not a pixel-for-pixel clone. Do not reproduce either site's logo, brand identity, copy, product photography, proprietary assets or exact page composition. DAG must use its own products, imagery, content and Jaisalmer identity.
 
-This instruction does not select a final visual style, palette, typography, image treatment or production theme.
+This hierarchy settles which reference informs which part of the experience. It does not select a final visual style, palette, typography, image treatment, photography mood or production theme.
 
 ## 2. What the live references currently demonstrate
 
@@ -142,3 +142,10 @@ The fresh proposal package is ready:
 The four new territories are **Porcelain Index**, **Bordeaux Editions**, **Blue Current** and **Citron Signal**. They are not ranked or recommended. They are not a relabelled version of the rejected P-015 options.
 
 The owner may choose one, combine explicitly named elements, request revisions or reject all four. No palette, typography, art direction or production theme has been approved.
+
+
+## 9. Confirmed reference hierarchy and implementation brief
+
+D-010 confirms the reference relationship as **BLEND**: POJ Studio leads ecommerce architecture and the page experience; Macaroni Shoten informs the select-shop curation model, category grouping and concise editorial retail character. This hierarchy is now specified page by page in [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md).
+
+The current live-reference inspection is recorded in [Reference Research Log](REFERENCE-RESEARCH-LOG.md). The Macaroni shop was empty at the 7 November 2026 inspection, so its current product-grid and PDP behaviour remain unverified. The reference hierarchy does not approve any visual territory; the four new visual options remain an independent owner decision.

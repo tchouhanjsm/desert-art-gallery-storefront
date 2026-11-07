@@ -15,7 +15,7 @@ REQUIRED = [
  "docs/03-CREATIVE-DIRECTION.md","docs/04-VISUAL-DESIGN-SYSTEM.md","docs/05-ART-DIRECTION-AND-PHOTOGRAPHY.md",
  "docs/06-CONTENT-STRATEGY.md","docs/07-INFORMATION-ARCHITECTURE.md","docs/08-TECHNICAL-ARCHITECTURE.md",
  "docs/09-QUALITY-AND-ACCEPTANCE.md","docs/10-ROADMAP.md","docs/11-CUSTOMER-AND-MERCHANDISING-STRATEGY.md",
- "docs/12-MERCHANT-OPERATIONS.md","docs/13-DESIGN-REVIEW-PROTOCOL.md","docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md",
+ "docs/12-MERCHANT-OPERATIONS.md","docs/13-DESIGN-REVIEW-PROTOCOL.md","docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md","docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md",
  "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md","docs/19-PHOTO-LIBRARY-AUDIT.md","docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md","docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md","docs/ADR-TEMPLATE.md",
  "docs/AI-BOOTSTRAP-PROMPT.md","docs/AI-WORKING-PROTOCOL.md","docs/DECISIONS.md",
  "docs/OWNER-INPUT-REGISTER.md","docs/REFERENCE-RESEARCH-LOG.md","docs/UPDATE-VISUAL-OWNER-GATE-PROMPT.md",
@@ -90,6 +90,16 @@ def validate_project(root: Path=ROOT) -> list[str]:
  if "D-007" not in docs.get("docs/DECISIONS.md","") or "CONFIRMED" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing confirmed D-007")
  if "D-008" not in docs.get("docs/DECISIONS.md","") or "My DAG visual direction decision: reject." not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing explicit owner rejection D-008")
  if "D-009" not in docs.get("docs/DECISIONS.md","") or "pojstudio.com" not in docs.get("docs/DECISIONS.md","") or "shop.macaro-ni.jp" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing reference decision D-009")
+ if "D-010" not in docs.get("docs/DECISIONS.md","") or "Status: CONFIRMED" not in docs.get("docs/DECISIONS.md","") or "DAG's reference fidelity is BLEND" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register missing confirmed D-010 reference hierarchy")
+ spec15 = root/"docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md"
+ if spec15.exists():
+  st=spec15.read_text(encoding="utf-8")
+  for term in ["POJ Studio leads","Macaroni Shoten informs","M2 prototype gate","Responsive and interaction matrix","CSS and frontend architecture","Owner-approved reference hierarchy"]:
+   if term not in st: errors.append(f"reference implementation specification missing {term}")
+  for page in ["Homepage","Shop / All Products","Category landing page","Collection page","Product detail page","Search results","Cart","Checkout","Maker / Artisan profile","About DAG","Journal / Stories index","Journal / Story article","Contact / Customer support","Curated collection","Account","Wishlist","Shipping","Legal"]:
+   if page.lower() not in st.lower(): errors.append(f"reference implementation specification missing page {page}")
+ else: errors.append("missing reference-to-DAG implementation specification")
+ if "15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md" not in docs.get("README.md",""): errors.append("README does not link reference-to-DAG implementation specification")
  if "P-015" not in docs.get("docs/DECISIONS.md","") or "Status: REJECTED" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register must mark P-015 rejected")
  brief = root/"docs/17-REFERENCE-LED-DESIGN-BRIEF.md"
  if brief.exists():
@@ -165,6 +175,7 @@ def main() -> int:
  print("- Markdown UTF-8, internal links and heading hierarchy pass")
  print("- owner-control gate, explicit P-015 rejection, new reference decision and no-clone boundary pass")
  print("- archived rejection and fresh four-option palettes, fonts and responsive render board pass")
+ print("- D-010 reference hierarchy and page-by-page responsive implementation specification pass")
  print("- photo inventory and draft catalogue intake tools are documented; no app/framework/database/hosting scaffold introduced")
  return 0
 

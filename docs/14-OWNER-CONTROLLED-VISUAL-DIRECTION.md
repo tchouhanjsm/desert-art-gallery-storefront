@@ -82,3 +82,10 @@ Our principal references are:
 Use these two references as the primary comparative basis for the design study. Do not assume DAG must use their colours or copy their visual identity.
 
 # THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.
+
+
+## Confirmed reference hierarchy — separate from visual identity approval
+
+D-010 confirms **BLEND**: POJ Studio is the primary ecommerce/page-structure reference; Macaroni Shoten is the secondary curation/select-shop reference. The detailed page specification is [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md).
+
+This confirmation does not approve any palette, typeface, foundational layout language, photography mood, background/surface treatment or product-card styling. Continue to follow the visual-choice process above. No production tokens or final theme may be established until the owner explicitly selects or combines the visual proposals.
