@@ -20,6 +20,10 @@ A reference choice (D-010) is not a visual-identity choice. Do not treat the fou
 
 When M2-A is approved, record the exact selected colours, typography, visual personality, image treatment and any explicit combinations in the decision register before implementing tokens. Do not infer missing values from a proposal title or its preview.
 
+### Owner decision capture
+
+Use the blank [M2 Owner Entry Decision Record](../templates/prototypes/m2-owner-entry-decision.md) to capture the owner's M2-A through M2-E outcomes. It deliberately starts with every gate open and every choice unchecked. A completed worksheet is not, by itself, approval: transfer confirmed outcomes and exact evidence references into docs/DECISIONS.md and docs/OWNER-INPUT-REGISTER.md before changing a gate's authoritative status.
+
 ## 2. First prototype route set
 
 The first responsive prototype scope is limited to the six route areas below. This is a scope map, not a chosen navigation taxonomy or a decision about final URL paths.

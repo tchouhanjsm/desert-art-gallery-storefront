@@ -30,7 +30,7 @@ Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.m
 Exit: the owner explicitly chooses, combines, requests revisions or rejects the four new visual proposals and confirms the initial customer-validation focus. D-010 confirms the reference hierarchy only; it does not satisfy the visual identity gate. The implementation specification and research playbook may guide later work, but M2 production-style page prototypes remain blocked until the owner approves a visual direction. Research recruitment remains blocked until the owner confirms the cohort focus and recruitment route. The playbook does not mean customer validation has been conducted. Real cart/checkout/policy implementation remains gated by the unresolved commercial decisions.
 
 ## M2 — Responsive page prototypes
-**Readiness preparation:** The direction-neutral [M2 entry and acceptance pack](23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md) and blank [prototype review template](../templates/prototypes/prototype-review.csv) are prepared. M2 execution has not started.
+**Readiness preparation:** The direction-neutral [M2 entry and acceptance pack](23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md), blank [owner-entry decision worksheet](../templates/prototypes/m2-owner-entry-decision.md) and blank [prototype review template](../templates/prototypes/prototype-review.csv) are prepared. M2 execution has not started.
 
 **Entry gate:** Only after owner visual selection and the remaining inputs recorded in the M2 pack:
 - Homepage.

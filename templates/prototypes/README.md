@@ -1,9 +1,10 @@
 # Prototype review templates
 
-This folder contains blank review records for the future M2 prototype stage.
+This folder contains blank owner and review records for the future M2 prototype stage.
 
-- `prototype-review.csv` is a header-only evidence log.
-- Use one row per route/scenario/viewport review.
+- m2-owner-entry-decision.md is the blank worksheet for recording the owner's M2-A through M2-E decisions. It does not make or authorize decisions.
+- prototype-review.csv is a header-only evidence log.
+- Use one CSV row per route/scenario/viewport review.
 - Record the viewport dimensions, date, outcome and screenshot/evidence reference.
-- Keep participant identifiers, contact details, recordings and raw research notes out of this repository. Follow `docs/22-CUSTOMER-VALIDATION-PLAYBOOK.md`.
-- The presence of this template does not mean M2 has started or that any visual direction is approved.
+- Keep participant identifiers, contact details, recordings, populated catalogue data and raw research notes out of this repository. Follow docs/22-CUSTOMER-VALIDATION-PLAYBOOK.md.
+- The presence of these templates does not mean M2 has started or that any visual direction is approved.

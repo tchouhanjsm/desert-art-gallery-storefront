@@ -5,6 +5,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 DOC = ROOT / "docs" / "23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md"
 TEMPLATE = ROOT / "templates" / "prototypes" / "prototype-review.csv"
+DECISION_TEMPLATE = ROOT / "templates" / "prototypes" / "m2-owner-entry-decision.md"
 
 
 class M2PrototypeReadinessTests(unittest.TestCase):
@@ -35,6 +36,22 @@ class M2PrototypeReadinessTests(unittest.TestCase):
         self.assertIn("non-transactional concept", content)
         self.assertIn("no payment submission", content)
         self.assertIn("u-001–u-008", content)
+
+    def test_owner_entry_worksheet_captures_all_gates_without_preselecting_options(self):
+        content = DECISION_TEMPLATE.read_text(encoding="utf-8")
+        for gate in ["M2-A", "M2-B", "M2-C", "M2-D", "M2-E"]:
+            with self.subTest(gate=gate):
+                self.assertIn(gate, content)
+        for proposal in ["Porcelain Index", "Bordeaux Editions", "Blue Current", "Citron Signal"]:
+            with self.subTest(proposal=proposal):
+                self.assertIn(proposal, content)
+        self.assertIn("No option is preselected, recommended or approved", content)
+        self.assertIn("M2 has not started", content)
+        self.assertIn("BLOCKED until every applicable gate", content)
+        self.assertIn("Recruitment, incentives and other spending remain unauthorized", content)
+        self.assertIn("Do not commit populated catalogue data", content)
+        self.assertIn("non-production prototype only", content.lower())
+        self.assertNotIn("[x]", content.lower())
 
     def test_prototype_review_template_is_blank_and_does_not_request_direct_identifiers(self):
         with TEMPLATE.open(encoding="utf-8", newline="") as handle:
