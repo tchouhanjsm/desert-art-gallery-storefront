@@ -2,6 +2,8 @@
 
 Record every significant reference-site review.
 
+**Authority note:** All entries below are observations of third-party reference sites, not DAG design requirements. D-014 and the active root page/component inventories define DAG's current scope. Reference observations about banners, search, cart, filtering, checkout, locale controls, badges, promotions or page sections do not authorize those elements for DAG.
+
 For each entry: date accessed, source URL, page/journey reviewed, specific observation, learning for DAG, what must not be copied and design implication.
 
 ## Principal references
@@ -95,6 +97,8 @@ Reviewed pages:
 - Artisan index: https://pojstudio.com/blogs/artisan
 
 Directly observed in the desktop browser session and text-accessible page content:
+
+**Scope boundary:** The following bullets describe the reference sites only. They are research observations, not DAG requirements or approval to add announcements, country/language controls, search, cart, filtering, reviews, sticky UI or any other reference feature. D-014 and the active DAG inventories define the only current structural scope.
 - A rotating announcement region, with distinct promotional and tariff/duty messages on the live reference.
 - Main navigation includes Shop and grouped shopping destinations, plus Experiences, Kintsugi, Stories, Visit, About and Interiors. Search, cart, account and locale controls are present.
 - Homepage uses a full-width campaign image/hero with a short headline and Shop Now action. Its broader structure includes category/collection pathways, mission, press, stories and featured merchandise.

@@ -1,36 +1,28 @@
 # 05 — Art Direction and Photography
 
-## Asset position
-The owner has approximately 3,000 original photographs for roughly 300 products, around 2 GB in total. Bulk migration and hosting are deferred until the frontend direction is ready.
+## Current authority
 
-## Current rules
-- Do not commit the photo library to Git.
-- Do not bulk-download Etsy image URLs.
-- Do not assume Etsy CDN URLs are permanent media hosting.
-- Do not invent product images or use unrelated stock as product representations.
-- Use attractive, clearly labelled design placeholders.
-- Never publish a placeholder as genuine catalogue media.
+D-014 provides page and component structure only. Photography art direction, image crop rules and final visual identity remain owner-controlled and pending.
 
-## What happens now
-Photography art direction must be developed now, separately from bulk migration. When the owner can provide a representative sample of 10–20 images, use it to test the design's ability to present actual textile colours, texture, scale and detail. Do not require the full photo library for this study.
+## Evidence and rights
 
-## Art-direction brief
-Define:
-- Product backgrounds and surfaces.
-- Natural and studio lighting.
-- Textile texture and macro details.
-- Object scale and context.
-- Flat-lay, portrait and lifestyle compositions.
-- Colour fidelity and post-processing.
-- Crop and aspect-ratio rules.
-- Gallery sequence: primary, detail, scale/context, maker/process only where verified.
-- Alt text based on the actual image and product.
-- Rights, consent and publication workflow.
+D-011 confirms a mixed evidence approach for future authorized customer-experience review:
+- Genuine DAG sample photographs only where product/image identity, factual mapping, rights/permissions and prototype-use approval are verified.
+- Clearly labelled illustrative placeholders for missing product images, additional views or states.
+- No unrelated stock, generated image or remote Etsy image may be represented as genuine DAG product photography.
 
-## Future image integration
-When explicitly authorized, map stable product IDs/SKUs to source photographs, preserve originals and independent backups, generate responsive optimized formats, produce a migration report and validate image-to-product associations before publication.
+This does not confirm that a real sample has been supplied or cleared. No bulk migration, public publication or photo binary commit is authorized.
 
+## Existing photo library
 
-## Non-destructive source inventory
+Approximately 3,000 original photographs across roughly 300 products are recorded as available. Bulk migration and hosting remain deferred. Preserve originals and independent backups. Do not commit the photo library to Git or bulk-download Etsy image URLs.
 
-The repository includes a stdlib-only inventory command: `scripts/audit_photo_library.py`. It can inspect a selected image sample or, when explicitly requested, the wider folder. It reports format, dimensions where supported, size, SHA-256 and exact byte-duplicate groups. It never edits source media. See [19 — Non-Destructive Photo Library Audit](19-PHOTO-LIBRARY-AUDIT.md) for supported formats, limitations, safe output handling and usage. This is preparation only, not image migration or hosting.
+The stdlib-only inventory utility `scripts/audit_photo_library.py` is non-destructive preparation. See `docs/19-PHOTO-LIBRARY-AUDIT.md` for its usage, limitations and safe output handling.
+
+## Owner-only decisions
+
+The owner must approve lighting, backgrounds/surfaces, object scale/context, flat-lay/portrait/lifestyle approach, crop/aspect ratios, sequence, colour treatment and production art direction. Do not synthesize these decisions from P-015, P-016 or the system-token fallback. Record exact approval in `docs/DECISIONS.md`.
+
+## Publication integrity
+
+Alt text must describe the actual image. Product-image associations require verified product identity and source evidence. Do not publish placeholders as real catalogue media or assert maker/process/provenance claims without evidence.

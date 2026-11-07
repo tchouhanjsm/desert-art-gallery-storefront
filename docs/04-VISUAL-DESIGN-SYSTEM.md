@@ -1,55 +1,25 @@
-# 04 — Visual Design System
+# 04 — Structural Visual System
 
 ## Status
-Not approved. This document defines the system and approval process. Do not treat palettes or tokens from earlier chats or the previous repository as approved brand values.
 
-No final palette, font pairing, visual personality or art direction has been approved. The previous four exploratory territories were rejected by the owner (D-008) and are historical only. D-010 confirms a BLEND reference hierarchy—POJ Studio primary for ecommerce structure, Macaroni Shoten secondary for curation—but this does not authorize any foundational visual values. See [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md), [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md) and [owner authority/process](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+D-014 adopts the owner-supplied HTML/CSS kit as a structural baseline only. It does not approve a DAG brand identity, final visual system or production theme.
 
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.** Do not recommend, rank or select an option. Do not establish production tokens or a global theme until the owner explicitly chooses or combines options and the decision is recorded.
+## Source files
 
-## Required system
-Define:
-- Colour tokens and accessible contrast pairs.
-- Typography families, hierarchy and responsive scale.
-- Spacing scale and page grid.
-- Content widths and breakpoints.
-- Image ratios, crops and gallery sequence.
-- Surface, border and shadow rules.
-- Buttons, links and focus states.
-- Forms and validation states.
-- Product and collection cards.
-- Navigation, header and footer.
-- Filters, sorting, pagination and accordions.
-- Loading, empty, error and success states.
-- Motion and reduced-motion behaviour.
+The intended source directory is `design/owner-controlled-kit-v2/`. Its original `styles/layout.css`, `styles/components.css`, `styles/responsive.css` and `styles/tokens-layout-only.css` must be preserved unchanged unless the owner authorizes an exact defect fix.
 
-## Approval requirements
-Before tokens are marked approved, provide:
-1. Rendered palette sheet with real combinations.
-2. Typography specimen with headings, body and product information.
-3. Contrast checks.
-4. Desktop and mobile page samples.
-5. Product-card and product-detail examples.
-6. Rationale tied to DAG and product photography.
-7. Alternatives considered and rejected.
+## Layout-only tokens
 
-## Rules
-- Do not import the old palette by default.
-- Do not select colours solely because they are associated with Japan.
-- Do not use low-contrast muted text for essential information.
-- Do not sacrifice product-detail readability for oversized headings.
-- Build consistent, accessible components.
-- Avoid isolated CSS overrides when a shared token or component rule is appropriate.
+`tokens-layout-only.css` uses browser/system canvas colours and system fonts for structural and responsive QA. It is not a DAG palette, neutral brand identity or production token set. Do not select, rename, promote or extend these values into brand tokens.
 
-## Token lifecycle
-Exploration, Proposed, Approved, Retired. Approved/retired tokens need owner decision date and rationale.
+## Owner-only identity inputs
 
-## Owner approval gate — no default tokens
+Final colours and roles, typefaces/weights/hierarchy/type scale, logo/wordmark/descriptor and photography art direction/cropping remain pending owner input. Record exact owner-approved values in `docs/OWNER-TOKEN-INPUT.md` and `docs/DECISIONS.md` before any branded styling work.
 
-Final palette, typography, visual personality and art direction are owner-controlled. Until selected:
-- No production colour tokens may be designated as defaults.
-- No final font family or pairing may be selected.
-- No production theme or global CSS design system may be established.
-- Do not use generic browser defaults or grey wireframe canvases as a substitute for a visual proposal.
+## No-additions boundary
 
-Create temporary, clearly labelled exploratory boards only. After selection, record the owner decision, exact values, font sources/licensing and component rules here. Changes to foundational visual decisions require renewed owner approval.
+Do not add unlisted sections, components, pages, visual effects, icons, banners, testimonials, badges, reviews, animations, popups, sticky/floating UI, chat/newsletter/social modules or functionality. Do not enable controls supplied as disabled.
+
+## Quality
+
+Maintain semantic markup, accessible labels, keyboard focus and responsive behaviour without changing the approved visual contract. Validate actual supplied pages at 390, 430, 768, 1280 and 1440 CSS-pixel review widths. These are review widths, not breakpoints to impose.

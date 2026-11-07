@@ -1,0 +1,34 @@
+@media (max-width: 900px) {
+  .site-header { grid-template-columns: 1fr auto auto; }
+  .menu-toggle { display: inline-flex; order: 3; border: 1px solid var(--dag-color-border); padding: 8px 12px; background: transparent; }
+  .primary-nav { display: none; position: absolute; z-index: 10; top: 100%; left: 0; right: 0; padding: 22px 24px; background: var(--dag-color-page); border-bottom: 1px solid var(--dag-color-border); align-items: start; flex-direction: column; }
+  .site-header { position: relative; }
+  .primary-nav.is-open { display: flex; }
+  .home-hero { grid-template-columns: 1fr 1fr; }
+  .product-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-main { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .page-shell, .section-shell { width: min(100% - 32px, 1320px); }
+  .utility-bar { padding-inline: 16px; font-size: .58rem; }
+  .site-header { padding: 14px 16px; gap: 12px; }
+  .wordmark__name { font-size: 1rem; }
+  .wordmark__descriptor { font-size: .5rem; }
+  .header-actions { gap: 8px; }
+  .header-actions .text-action:first-child { display: none; }
+  .home-hero, .story-feature, .editorial-layout, .maker-layout, .contact-layout, .product-detail { grid-template-columns: 1fr; }
+  .home-hero { padding-block: 32px; }
+  .media-placeholder--hero { min-height: 260px; }
+  .category-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .product-grid--3, .product-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .story-grid, .story-grid--3 { grid-template-columns: 1fr; }
+  .section-heading { align-items: start; flex-direction: column; }
+  .catalogue-toolbar { align-items: start; flex-direction: column; }
+  .toolbar-controls { flex-wrap: wrap; }
+  .product-information { position: static; }
+  .editorial-layout--reverse > :first-child { order: 0; }
+  .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; }
+  .breadcrumbs { width: calc(100% - 32px); flex-wrap: wrap; }
+}

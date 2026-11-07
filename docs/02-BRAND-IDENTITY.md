@@ -18,13 +18,16 @@ A gallery and retail experience for textiles, objects and craft connected with J
 English-only, clear, warm, precise and restrained. Prefer concrete product facts over vague superlatives. Avoid claims such as "world's finest", "ancient tradition", "museum quality" or "sustainable" unless independently substantiated and approved.
 
 ## Identity work still required
-Not yet approved:
+D-014 adopts the structural HTML/CSS kit only. Not yet approved:
 - Final positioning statement and brand promise.
 - Validated customer segments.
 - Brand story and factual narrative.
 - Logo and mark system.
-- Final palette and typography.
-- Photography art direction.
+- Final palette and typography families/weights/hierarchy/type scale.
+- Photography art direction and crop rules.
 - Product and editorial voice examples.
+- Brand descriptor / wordmark treatment.
+
+The system-colour/system-font values in `design/owner-controlled-kit-v2/styles/tokens-layout-only.css` are layout QA fallback only, not DAG brand tokens.
 
 Record approvals in `docs/DECISIONS.md` and link approved assets in `design/approved/`.

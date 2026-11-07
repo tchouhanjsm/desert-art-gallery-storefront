@@ -1,49 +1,40 @@
-# AI Bootstrap Prompt — Fresh Start for Desert Art Gallery
+# AI Bootstrap Prompt — Desert Art Gallery
 
 Repository: https://github.com/tchouhanjsm/desert-art-gallery-storefront
 
-You are joining a newly created project, not redesigning the former storefront.
-
-## Principal design references
-- POJ Studio: https://pojstudio.com/
-- Macaroni Shoten: https://shop.macaro-ni.jp/
-
-Study their actual retail, editorial, merchandising, typography, photography and responsive customer experience. Do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
-
-## Your professional role
-Work as a premium-retail creative director, editorial art director, ecommerce UX architect, brand strategist and disciplined engineering partner. Apply Omotenashi, Shokunin, Ma, Kanso and Kaizen as working/service principles, not stereotypical Japanese motifs or Japanese-language storefront requirements.
+You are joining a new DAG repository. The root `AGENTS.md`, `README.md`, owner decisions and design authority are mandatory. The repository, not conversational memory, is the source of truth.
 
 ## First action
-Read `AGENTS.md`, `README.md`, `docs/DECISIONS.md`, `docs/10-ROADMAP.md`, the project charter and all task-relevant design/architecture documents. Inspect the current branch, tree and pull requests.
+1. Read root `AGENTS.md` and `README.md`.
+2. Read `docs/DECISIONS.md`, `docs/DESIGN-AUTHORITY.md` and `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`.
+3. Read `docs/PAGE-INVENTORY.md`, `docs/COMPONENT-INVENTORY.md` and the current reconciliation checklist.
+4. Inspect the current branch, repository tree, open PRs and relevant source before changing anything.
 
-## Confirmed direction
-- Japan-first customer focus.
-- All customer-facing content is English-only.
-- DAG identity is rooted in Jaisalmer, Rajasthan, textiles, objects and craft.
-- The prior repository is a selective business/engineering reference only; its frontend, CSS, layouts, components and visual decisions are excluded.
-- Approximately 3,000 original product photographs exist; bulk migration is deferred.
+## Current confirmed scope
+D-014 adopts the owner-supplied DAG v2 structural kit as the sole active HTML/CSS implementation source for exactly nine pages. Preserve original markup, CSS, responsive rules, prototype script, page/section order, components, placeholders and disabled states. The kit is not a production app and does not approve final brand identity.
 
-## Important unresolved business decisions
-Seller jurisdiction, exact sales territories, currency, tax/duties, shipping, payment methods, legal disclosures, returns and customer support commitments remain unresolved. Do not invent them. Direct purchase versus enquiry-led versus hybrid also remains an owner decision.
+The intended kit path is `design/owner-controlled-kit-v2/`. Verify that the files are actually present before claiming installation. The reconciliation report records any current source-materialization blocker.
 
-## Mandatory creative decision gate
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+## Owner-controlled identity
+The owner alone approves exact colours, typography families/weights/hierarchy/type scale, logo/wordmark/descriptor and photography direction/crops. These values remain pending in `docs/OWNER-TOKEN-INPUT.md`. Do not generate an option set, recommend a visual territory, blend historical ideas or select defaults. `tokens-layout-only.css` is browser/system QA fallback only, not a DAG palette or production theme.
 
-Read `docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md`. The current proposal set contains four materially different directions:
-1. Graphic Atelier.
-2. Future Relics.
-3. Living Garden.
-4. Modern Folk Pop.
+## Content and language integrity
+- Japan-first is the confirmed target-market focus; customer-facing UI/copy remains English-only.
+- Never fabricate product names, attributes, maker identities, material, dimensions, provenance, price, stock, reviews, availability, policies, contact information or delivery promises.
+- Preserve supplied placeholders until owner-approved facts and assets exist.
+- Use only owner-cleared DAG photography with verified identity/mapping and rights; label missing evidence as a placeholder.
+- Do not commit source exports, private catalogue data or the photo library to Git.
 
-The rendered desktop and mobile examples are in `design/explorations/visual-directions.html`. Exact palette, typography, layout and accessibility specifications are in `docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md`.
+## Closed scope — additions are not allowed
+Use only the nine pages and exact components in the active inventories. Do not add banners, testimonials, badges, ratings, reviews, widgets, icons, animation, popups, sticky/floating elements, chat, newsletter/social modules, extra navigation or new page sections. Existing disabled controls remain disabled.
 
-Do not recommend, rank, select or approve a winner. Ask the owner to choose, combine elements, request revisions or reject all options. STOP before final production tokens, a global theme, production styling or application visual implementation. Record the owner's exact selection in `docs/DECISIONS.md` before proceeding.
+There is no cart, checkout, account, wishlist, live search/filter/sort, functional variants, payment, order workflow, shipping calculation, return workflow or enquiry backend in this kit.
 
-## Autonomy and scope
-Proceed independently on reversible documentation, research, option exploration and quality checks. Do not start production application development, choose a framework, create a database, upload product photographs or introduce paid infrastructure as part of this visual decision gate.
+## References and IP
+D-010: POJ Studio is primary for ecommerce/page structure; Macaroni Shoten is secondary for curation/select-shop character. Study non-proprietary principles only. Do not copy code, CSS, exact layouts, text, branded graphics, logos, fonts or photography.
+
+## Authorization boundary
+D-014 does not authorize production app development, framework/database/CMS/hosting selection, public deployment, paid services, research spending or commercial/legal decisions. Record a written change request and obtain explicit owner approval before changing scope.
 
 ## Reporting
-Report exact files, references, rendered examples, tests actually run, assumptions, risks and owner decisions. Never claim unperformed work.
-
-Permanent principle:
-**DO NOT ABANDON MINIMALISM. ABANDON EMPTINESS.**
+Report exact files changed, checks actually run, test results, remaining blockers and whether the kit has been materialized and byte-verified in Git. Never claim unperformed validation.

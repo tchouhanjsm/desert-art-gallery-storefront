@@ -1,7 +1,7 @@
 # 14 — Japan-First Customer and Market Research
 
 **Research date:** 6 November 2026  
-**Status:** Evidence review completed; customer segments remain hypotheses, not validated personas.
+**Status:** Evidence review completed; customer segments remain hypotheses, not validated personas. This is market/customer research, not a visual or implementation specification. D-014 controls current page/component scope; research recommendations do not authorize filters, checkout, Japanese-language UI or any other unlisted functionality.
 
 ## Executive readout
 

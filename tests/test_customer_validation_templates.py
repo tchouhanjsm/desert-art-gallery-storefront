@@ -62,15 +62,15 @@ class CustomerValidationTemplateTests(unittest.TestCase):
         self.assertIn("research-ready, not research-complete", playbook)
         self.assertIn("M1-B", playbook)
         self.assertIn("No participant recruitment", playbook)
-        self.assertIn("visual territory", playbook)
+        self.assertIn("owner-approved identity inputs", playbook)
         self.assertIn("not statistically representative", playbook)
         self.assertIn("English-only", playbook)
 
-    def test_stage_b_requires_approved_visual_direction_and_real_sample(self):
+    def test_stage_b_requires_owner_authorization_and_verified_real_sample(self):
         guide = (TEMPLATE_DIR / "prototype-usability-guide.md").read_text(encoding="utf-8")
         self.assertIn("not permission to start M2", guide)
-        self.assertIn("owner has approved a visual territory", guide)
-        self.assertIn("verified 10–20 product/photo sample", guide)
+        self.assertIn("owner-approved identity inputs", guide)
+        self.assertIn("representative product/photo sample has been privately verified", guide)
 
     def test_recording_is_separately_optional(self):
         consent = (TEMPLATE_DIR / "session-opening-and-consent.md").read_text(encoding="utf-8").lower()
