@@ -54,4 +54,4 @@ Do not translate the interface during an English-only comprehension task. Record
 
 ## Facilitator discipline
 
-Ask open questions, follow actual examples, avoid praise/criticism of the owner's concepts, and do not show the four visual proposals as a popularity vote. Record observations and participant reports separately. Use the session ID and participant code only.
+Ask open questions and follow actual examples. Do not show historical P-015/P-016 proposals or ask participants to vote on brand identity. D-014 and the active page/component inventories define the current structural scope. Record observations and participant reports separately. Use the session ID and participant code only.
