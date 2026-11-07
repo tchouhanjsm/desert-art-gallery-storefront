@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Work+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
+.skip-link{position:absolute;left:12px;top:12px;z-index:1000;transform:translateY(-160%);padding:10px 14px;background:#20231f;color:#f7f4ed;border:2px solid #f7f4ed;text-decoration:underline;font:700 12px/1.2 Manrope,sans-serif}
+.skip-link:focus,.skip-link:focus-visible{transform:translateY(0);outline:3px solid #20231f;outline-offset:3px}
 :root{font-family:Manrope,Arial,sans-serif;color:#20231f;background:#e9e7e1}
 body{margin:0;padding:28px}
 .page{max-width:1600px;margin:0 auto}
@@ -115,19 +117,21 @@ body{margin:0;padding:28px}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#visual-options">Skip to visual options</a>
 <div class="page">
   <header class="intro">
-    <div><div class="kicker">DESERT ART GALLERY / OWNER REVIEW / 06 NOV 2026</div><h1>Reference-led.<br>Original to DAG.</h1></div>
+    <div><div class="kicker">DESERT ART GALLERY / OWNER REVIEW / UPDATED 07 NOV 2026</div><h1>Reference-led.<br>Original to DAG.</h1></div>
     <p>Four new visual territories developed after the owner rejected the first set. The study translates premium editorial retail, compact category discovery and clear product merchandising into a distinct Jaisalmer-rooted storefront. None is selected or recommended.</p>
   </header>
   <div class="gate"><strong>THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.</strong>All four directions below are proposals only. Product shapes and catalogue names are abstract placeholders, not DAG products or owner photographs. Choose one, combine named elements, request revisions or reject all four. No production theme or final tokens are approved.</div>
 
-  <article class="option">
-    <div class="option-head"><div><div class="kicker">NEW DIRECTION 01 / MATERIAL-FIRST EDITORIAL</div><h2 style="font-family:'Cormorant Garamond',serif">Porcelain Index</h2><p>A gallery-like catalogue with measured typography, a material-led index and strong object presentation. The emphasis is on considered discovery and the relationship between an object, its material and its use.</p></div><span class="proposal-tag">Proposal only</span></div>
+  <main id="visual-options" aria-label="Visual territory proposals">
+  <article class="option" aria-labelledby="porcelain-index-title">
+    <div class="option-head"><div><div class="kicker">NEW DIRECTION 01 / MATERIAL-FIRST EDITORIAL</div><h2 id="porcelain-index-title" style="font-family:'Cormorant Garamond',serif">Porcelain Index</h2><p>A gallery-like catalogue with measured typography, a material-led index and strong object presentation. The emphasis is on considered discovery and the relationship between an object, its material and its use.</p></div><span class="proposal-tag">Proposal only</span></div>
     <div class="palette"><span class="swatch"><i class="chip" style="background:#F4F0E8"></i>Paper #F4F0E8</span><span class="swatch"><i class="chip" style="background:#E3DED3"></i>Surface #E3DED3</span><span class="swatch"><i class="chip" style="background:#242827"></i>Ink #242827</span><span class="swatch"><i class="chip" style="background:#8A4F43"></i>Oxide #8A4F43</span><span class="swatch"><i class="chip" style="background:#3F5F53"></i>Spruce #3F5F53</span><span class="swatch"><i class="chip" style="background:#C8C2B7"></i>Rule #C8C2B7</span></div>
     <div class="fontline"><b>Display:</b> Cormorant Garamond 600/700 · <b>Body/UI:</b> Manrope 400/500/600/700 · <b>Type mood:</b> literary, calm, precise · <b>Preview content:</b> Shop / Collections / Stories / About</div>
     <div class="previews">
-      <div class="desktop"><div class="preview-label">Desktop composition / 1440-width concept</div><div class="screen store theme-porcelain">
+      <div class="desktop" role="group" aria-label="Desktop layout preview"><div class="preview-label">Desktop layout preview</div><div class="screen store theme-porcelain">
         <div class="topline">A curated view of objects, textiles and material culture</div><div class="nav"><div class="brand">DAG — DESERT ART GALLERY</div><div class="links"><span>Shop</span><span>Collections</span><span>Stories</span><span>About</span><span>Search</span><span>Bag</span></div></div>
         <div class="hero"><div class="copy"><div class="eyebrow">A Jaisalmer collection / 01</div><h3>Objects with<br>a sense of place.</h3><p class="sub">Textiles, useful objects and considered pieces from Rajasthan.</p><span class="cta">Explore the collection →</span></div><div class="art"><span class="stamp">ABSTRACT PLACEHOLDER / NOT PRODUCT</span></div></div>
         <div class="category-row"><span>Textiles</span><span>Objects</span><span>Table</span><span>Everyday</span></div>
@@ -135,7 +139,7 @@ body{margin:0;padding:28px}
         <div class="products"><div class="product"><div class="product-art"></div><small>TEXTILE STUDY / 01</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>OBJECT STUDY / 02</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>TABLE STUDY / 03</small><b>Product name placeholder</b></div></div>
         <div class="editorial"><div class="art"></div><div class="editorial-copy"><small>FROM THE ARCHIVE / CRAFT NOTE</small><b>Materials carry memory.</b><small>Editorial story placeholder · Read the story →</small></div></div>
       </div></div>
-      <div class="mobile"><div class="preview-label">Mobile composition / 390-width concept</div><div class="screen store theme-porcelain mobile-store">
+      <div class="mobile" role="group" aria-label="Mobile layout preview"><div class="preview-label">Mobile layout preview</div><div class="screen store theme-porcelain mobile-store">
         <div class="topline">Objects, textiles and material culture</div><div class="nav"><div class="brand">DAG — GALLERY</div><div class="links"></div></div>
         <div class="hero"><div class="copy"><div class="eyebrow">Jaisalmer / 01</div><h3>Objects with<br>a sense of place.</h3><p class="sub">Textiles and considered pieces from Rajasthan.</p><span class="cta">Explore →</span></div><div class="art"><span class="stamp">PLACEHOLDER / NOT PRODUCT</span></div></div>
         <div class="category-row"><span>Textiles</span><span>Objects</span><span>Table</span><span>Daily</span></div>
@@ -144,12 +148,12 @@ body{margin:0;padding:28px}
     </div>
   </article>
 
-  <article class="option">
-    <div class="option-head"><div><div class="kicker">NEW DIRECTION 02 / COLLECTOR'S JOURNAL</div><h2 style="font-family:Fraunces,serif">Bordeaux Editions</h2><p>A deeper, chapter-led retail experience. Collections feel like curated editions; serif-led storytelling and warm metallic details create atmosphere while keeping product names, variants and prices in clear view.</p></div><span class="proposal-tag">Proposal only</span></div>
+  <article class="option" aria-labelledby="bordeaux-editions-title">
+    <div class="option-head"><div><div class="kicker">NEW DIRECTION 02 / COLLECTOR'S JOURNAL</div><h2 id="bordeaux-editions-title" style="font-family:Fraunces,serif">Bordeaux Editions</h2><p>A deeper, chapter-led retail experience. Collections feel like curated editions; serif-led storytelling and warm metallic details create atmosphere while keeping product names, variants and prices in clear view.</p></div><span class="proposal-tag">Proposal only</span></div>
     <div class="palette"><span class="swatch"><i class="chip" style="background:#301725"></i>Plum #301725</span><span class="swatch"><i class="chip" style="background:#493042"></i>Surface #493042</span><span class="swatch"><i class="chip" style="background:#F6EBE9"></i>Porcelain #F6EBE9</span><span class="swatch"><i class="chip" style="background:#B85F73"></i>Rose #B85F73</span><span class="swatch"><i class="chip" style="background:#D9B56D"></i>Gold #D9B56D</span><span class="swatch"><i class="chip" style="background:#80566D"></i>Rule #80566D</span></div>
     <div class="fontline"><b>Display:</b> Fraunces 500/600/700 · <b>Body/UI:</b> DM Sans 400/500/600/700 · <b>Type mood:</b> expressive, collected, warm · <b>Preview content:</b> Shop / Editions / Journal / Visit</div>
     <div class="previews">
-      <div class="desktop"><div class="preview-label">Desktop composition / 1440-width concept</div><div class="screen store theme-bordeaux">
+      <div class="desktop" role="group" aria-label="Desktop layout preview"><div class="preview-label">Desktop layout preview</div><div class="screen store theme-bordeaux">
         <div class="topline">DAG / An edited selection from Jaisalmer</div><div class="nav"><div class="brand">DESERT ART GALLERY</div><div class="links"><span>Shop</span><span>Editions</span><span>Journal</span><span>Our story</span><span>Search</span><span>Bag</span></div></div>
         <div class="hero"><div class="copy"><div class="eyebrow">The object edition / No. 01</div><h3>Collected.<br>Considered.<br>Kept.</h3><p class="sub">A living selection of textiles and objects with a story to tell.</p><span class="cta">Discover this edition →</span></div><div class="art"><span class="stamp">ABSTRACT PLACEHOLDER / NOT PRODUCT</span></div></div>
         <div class="category-row"><span>New edit</span><span>Textiles</span><span>Objects</span><span>Home</span></div>
@@ -157,7 +161,7 @@ body{margin:0;padding:28px}
         <div class="products"><div class="product"><div class="product-art"></div><small>EDITION 01</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>EDITION 02</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>EDITION 03</small><b>Product name placeholder</b></div></div>
         <div class="editorial"><div class="art"></div><div class="editorial-copy"><small>JOURNAL / CRAFT & CONTEXT</small><b>Where the material begins.</b><small>Editorial story placeholder · Read the chapter →</small></div></div>
       </div></div>
-      <div class="mobile"><div class="preview-label">Mobile composition / 390-width concept</div><div class="screen store theme-bordeaux mobile-store">
+      <div class="mobile" role="group" aria-label="Mobile layout preview"><div class="preview-label">Mobile layout preview</div><div class="screen store theme-bordeaux mobile-store">
         <div class="topline">A Jaisalmer object edition</div><div class="nav"><div class="brand">DAG / GALLERY</div><div class="links"></div></div>
         <div class="hero"><div class="copy"><div class="eyebrow">Edition / No. 01</div><h3>Collected.<br>Considered.<br>Kept.</h3><p class="sub">Textiles and objects with a story to tell.</p><span class="cta">Discover →</span></div><div class="art"><span class="stamp">PLACEHOLDER / NOT PRODUCT</span></div></div>
         <div class="category-row"><span>Edit</span><span>Textile</span><span>Object</span><span>Home</span></div>
@@ -166,12 +170,12 @@ body{margin:0;padding:28px}
     </div>
   </article>
 
-  <article class="option">
-    <div class="option-head"><div><div class="kicker">NEW DIRECTION 03 / CONTEMPORARY STUDIO CATALOGUE</div><h2 style="font-family:Newsreader,serif">Blue Current</h2><p>A clear, contemporary studio catalogue with cooler surfaces, open grids and strong image-to-information rhythm. The editorial layer is present, but shopping remains the main route through the site.</p></div><span class="proposal-tag">Proposal only</span></div>
+  <article class="option" aria-labelledby="blue-current-title">
+    <div class="option-head"><div><div class="kicker">NEW DIRECTION 03 / CONTEMPORARY STUDIO CATALOGUE</div><h2 id="blue-current-title" style="font-family:Newsreader,serif">Blue Current</h2><p>A clear, contemporary studio catalogue with cooler surfaces, open grids and strong image-to-information rhythm. The editorial layer is present, but shopping remains the main route through the site.</p></div><span class="proposal-tag">Proposal only</span></div>
     <div class="palette"><span class="swatch"><i class="chip" style="background:#102D3F"></i>Navy #102D3F</span><span class="swatch"><i class="chip" style="background:#173B4A"></i>Surface #173B4A</span><span class="swatch"><i class="chip" style="background:#E5F2F4"></i>Ice #E5F2F4</span><span class="swatch"><i class="chip" style="background:#4E9DA5"></i>Cyan #4E9DA5</span><span class="swatch"><i class="chip" style="background:#F2A477"></i>Apricot #F2A477</span><span class="swatch"><i class="chip" style="background:#B8D8C8"></i>Mint #B8D8C8</span></div>
     <div class="fontline"><b>Display:</b> Newsreader 500/600/700 · <b>Body/UI:</b> Work Sans 400/500/600/700 · <b>Type mood:</b> clear, contemporary, content-led · <b>Preview content:</b> Shop / Categories / Field notes / About</div>
     <div class="previews">
-      <div class="desktop"><div class="preview-label">Desktop composition / 1440-width concept</div><div class="screen store theme-blue">
+      <div class="desktop" role="group" aria-label="Desktop layout preview"><div class="preview-label">Desktop layout preview</div><div class="screen store theme-blue">
         <div class="topline">A studio catalogue of useful objects and textiles</div><div class="nav"><div class="brand">DAG / DESERT ART GALLERY</div><div class="links"><span>Shop all</span><span>Categories</span><span>Field notes</span><span>About</span><span>Search</span><span>Bag</span></div></div>
         <div class="hero"><div class="copy"><div class="eyebrow">Jaisalmer / Rajasthan / 01</div><h3>Made to be<br>lived with.</h3><p class="sub">A considered catalogue of material, form and everyday use.</p><span class="cta">Shop the catalogue →</span></div><div class="art"><span class="stamp">ABSTRACT PLACEHOLDER / NOT PRODUCT</span></div></div>
         <div class="category-row"><span>Textiles</span><span>Living</span><span>Objects</span><span>Gifting</span></div>
@@ -179,7 +183,7 @@ body{margin:0;padding:28px}
         <div class="products"><div class="product"><div class="product-art"></div><small>TEXTILES</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>OBJECTS</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>LIVING</small><b>Product name placeholder</b></div></div>
         <div class="editorial"><div class="art"></div><div class="editorial-copy"><small>FIELD NOTE / MATERIAL STUDY</small><b>Made, used, passed on.</b><small>Editorial story placeholder · Explore the notes →</small></div></div>
       </div></div>
-      <div class="mobile"><div class="preview-label">Mobile composition / 390-width concept</div><div class="screen store theme-blue mobile-store">
+      <div class="mobile" role="group" aria-label="Mobile layout preview"><div class="preview-label">Mobile layout preview</div><div class="screen store theme-blue mobile-store">
         <div class="topline">A studio catalogue from Jaisalmer</div><div class="nav"><div class="brand">DAG / STUDIO</div><div class="links"></div></div>
         <div class="hero"><div class="copy"><div class="eyebrow">Rajasthan / 01</div><h3>Made to be<br>lived with.</h3><p class="sub">Material, form and everyday use.</p><span class="cta">Shop all →</span></div><div class="art"><span class="stamp">PLACEHOLDER / NOT PRODUCT</span></div></div>
         <div class="category-row"><span>Textile</span><span>Living</span><span>Object</span><span>Gift</span></div>
@@ -188,12 +192,12 @@ body{margin:0;padding:28px}
     </div>
   </article>
 
-  <article class="option">
-    <div class="option-head"><div><div class="kicker">NEW DIRECTION 04 / GRAPHIC OBJECT INDEX</div><h2 style="font-family:'Space Grotesk',sans-serif">Citron Signal</h2><p>A high-contrast, index-driven shop with clear product coding, compact navigation and energetic accents. The system is deliberately functional and graphic, with object imagery carrying most of the emotional weight.</p></div><span class="proposal-tag">Proposal only</span></div>
+  <article class="option" aria-labelledby="citron-signal-title">
+    <div class="option-head"><div><div class="kicker">NEW DIRECTION 04 / GRAPHIC OBJECT INDEX</div><h2 id="citron-signal-title" style="font-family:'Space Grotesk',sans-serif">Citron Signal</h2><p>A high-contrast, index-driven shop with clear product coding, compact navigation and energetic accents. The system is deliberately functional and graphic, with object imagery carrying most of the emotional weight.</p></div><span class="proposal-tag">Proposal only</span></div>
     <div class="palette"><span class="swatch"><i class="chip" style="background:#191B17"></i>Carbon #191B17</span><span class="swatch"><i class="chip" style="background:#353B31"></i>Surface #353B31</span><span class="swatch"><i class="chip" style="background:#F5F3E7"></i>Chalk #F5F3E7</span><span class="swatch"><i class="chip" style="background:#D5E85B"></i>Citron #D5E85B</span><span class="swatch"><i class="chip" style="background:#A89CE6"></i>Lavender #A89CE6</span><span class="swatch"><i class="chip" style="background:#D77A42"></i>Orange #D77A42</span></div>
     <div class="fontline"><b>Display/UI:</b> Space Grotesk 500/600/700 · <b>Metadata:</b> IBM Plex Mono 400/500 · <b>Type mood:</b> direct, coded, energetic · <b>Preview content:</b> Index / Shop / Stories / Info</div>
     <div class="previews">
-      <div class="desktop"><div class="preview-label">Desktop composition / 1440-width concept</div><div class="screen store theme-citron">
+      <div class="desktop" role="group" aria-label="Desktop layout preview"><div class="preview-label">Desktop layout preview</div><div class="screen store theme-citron">
         <div class="topline">DAG / MATERIAL CULTURE / JAISALMER / INDEX 001</div><div class="nav"><div class="brand">DAG [DESERT ART GALLERY]</div><div class="links"><span>Index</span><span>Shop</span><span>Stories</span><span>Info</span><span>Search</span><span>Bag</span></div></div>
         <div class="hero"><div class="copy"><div class="eyebrow">Catalogue / Revision 01</div><h3>Objects.<br>Without<br>noise.</h3><p class="sub">An index of textiles, craft and considered everyday objects.</p><span class="cta">Open the index →</span></div><div class="art"><span class="stamp">ABSTRACT PLACEHOLDER / NOT PRODUCT</span></div></div>
         <div class="category-row"><span>01 / Cloth</span><span>02 / Object</span><span>03 / Table</span><span>04 / Living</span></div>
@@ -201,7 +205,7 @@ body{margin:0;padding:28px}
         <div class="products"><div class="product"><div class="product-art"></div><small>ITEM 001 / TEXTILE</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>ITEM 002 / OBJECT</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>ITEM 003 / TABLE</small><b>Product name placeholder</b></div></div>
         <div class="editorial"><div class="art"></div><div class="editorial-copy"><small>NOTES / MATERIAL & MAKING</small><b>Read the material.</b><small>Editorial story placeholder · Open field note →</small></div></div>
       </div></div>
-      <div class="mobile"><div class="preview-label">Mobile composition / 390-width concept</div><div class="screen store theme-citron mobile-store">
+      <div class="mobile" role="group" aria-label="Mobile layout preview"><div class="preview-label">Mobile layout preview</div><div class="screen store theme-citron mobile-store">
         <div class="topline">DAG / INDEX 001 / JAISALMER</div><div class="nav"><div class="brand">DAG [INDEX]</div><div class="links"></div></div>
         <div class="hero"><div class="copy"><div class="eyebrow">Catalogue / 01</div><h3>Objects.<br>Without<br>noise.</h3><p class="sub">Textiles, craft and considered things.</p><span class="cta">Open index →</span></div><div class="art"><span class="stamp">PLACEHOLDER / NOT PRODUCT</span></div></div>
         <div class="category-row"><span>01 Cloth</span><span>02 Object</span><span>03 Table</span><span>04 Living</span></div>
@@ -209,6 +213,7 @@ body{margin:0;padding:28px}
       </div></div>
     </div>
   </article>
+  </main>
 
   <footer style="padding:24px 0 12px;border-top:1px solid #aaa;font-size:12px;line-height:1.7;color:#51554f">
     <b>Review status:</b> all four are fresh proposals and none is ranked, recommended, selected or approved. The production palette, font pairing, imagery and theme remain owner-controlled. The reference-site identities and assets are not used in these mockups.

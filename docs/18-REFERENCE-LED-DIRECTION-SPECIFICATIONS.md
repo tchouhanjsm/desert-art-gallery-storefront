@@ -4,7 +4,7 @@
 
 **Owner decision basis:** D-008 rejected the earlier P-015 package. D-009 names POJ Studio and Macaroni Shoten as the principal references for the next design study. This is a fresh option set, not a relabelled version of the rejected one.
 
-Rendered examples: [Reference-led desktop/mobile comparison board](../design/explorations/reference-led-directions.html).
+Rendered examples: [Reference-led desktop/mobile comparison board](../design/explorations/reference-led-directions.html). A separate M2-A review bundle contains 24 full-page renders: four unranked territories × homepage, shop/collection and product detail × 1440 px desktop and 390 px mobile. This is an owner-review artefact, not an approved page design.
 
 ## Design translation
 
@@ -240,3 +240,13 @@ All listed text pairings exceed WCAG AA 4.5:1 for normal text.
 - Only after the owner decision is recorded may the selected visual direction be converted into production tokens and M2 page prototypes.
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+
+## Owner-review board interpretation and quality checks
+
+The companion HTML board is a comparative design study, not a live storefront, a production prototype or a pixel-accurate capture of either reference site. Its desktop and mobile labels identify the layout concept shown; the preview frames are sized for side-by-side comparison and do not claim fixed 1440 px or 390 px browser viewports.
+
+The listed contrast ratios are calculated from the exact proposed HEX values using the WCAG 2.x relative-luminance formula and rounded to two decimal places. The repository test suite recalculates every documented foreground/background pairing. Any pairing below 4.5:1 must remain explicitly restricted from normal-sized text; the Bordeaux Plum/Rose pairing is documented as large-display or decorative use only.
+
+The governance validator checks the board's English language and viewport metadata, single main landmark, skip navigation, page heading, labelled option articles, labelled desktop/mobile preview groups, unique IDs, image alternative text and visible keyboard focus styling. The test suite also recalculates the proposal contrast figures.
+
+These automated checks do not replace browser-based responsive review, screen-reader testing, owner visual acceptance or the later M2 prototype review. They do not approve any palette, typography, photography direction or production visual system.

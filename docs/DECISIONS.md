@@ -64,6 +64,24 @@ Boundaries: This decision confirms the reference relationship only. It does not 
 Consequences: Follow docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md for the page-by-page implementation specification and docs/REFERENCE-RESEARCH-LOG.md for dated evidence. Preserve the separate owner-controlled visual-identity gate in D-007.
 Date: 2026-11-07
 
+### D-011 — Mixed genuine-photograph and labelled-placeholder evidence approach
+Status: CONFIRMED
+Decision: The owner directs the future M2 visual/customer-experience prototype to use a mixed image-evidence approach: genuine DAG sample photographs where product/image identity, factual mapping, rights/permissions and prototype-use approval are verified; explicitly labelled illustrative placeholders for missing product images, additional views or visual states.
+Boundaries: This confirms the evidence approach only. It does not mean a real image sample has been supplied or cleared. M2-C remains open until the representative sample is supplied and approved. No unrelated stock imagery, generated art or remote Etsy image is to be represented as a genuine DAG product photograph. No bulk migration, public publication or photo binary commit is authorized.
+Date: 2026-11-07
+
+### D-012 — Mobile is a cross-journey acceptance dimension
+Status: CONFIRMED
+Decision: Mobile testing is required across every selected customer journey; mobile recovery is not a separate journey. Journey acceptance must not be granted on desktop-only evidence. Review mobile widths alongside the tablet and desktop viewport matrix.
+Boundaries: This sets the responsive testing rule only. It does not prioritize or select any of the five candidate customer journeys; M2-D remains open for the owner's journey order.
+Date: 2026-11-07
+
+### D-013 — Shared experience shell is included in the six-page prototype scope
+Status: CONFIRMED
+Decision: The six-route non-production prototype scope includes a consistent global header, navigation, search entry/disclosure, footer and reusable presentation components across all six pages.
+Boundaries: This is a scope instruction, not authorization to start the prototype or build a production application. M2-E remains open pending explicit confirmation of the complete scope and non-transactional boundary.
+Date: 2026-11-07
+
 ## Unresolved owner decisions
 
 ### U-001 — Seller jurisdiction and legal identity

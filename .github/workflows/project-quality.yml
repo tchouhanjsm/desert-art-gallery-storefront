@@ -20,5 +20,7 @@ jobs:
         run: python3 --version
       - name: Validate project foundation and M1 outputs
         run: python3 scripts/validate_project.py
+      - name: Audit M2 owner gate consistency
+        run: python3 scripts/audit_m2_readiness.py
       - name: Run validation unit tests
         run: python3 -m unittest discover -s tests -v

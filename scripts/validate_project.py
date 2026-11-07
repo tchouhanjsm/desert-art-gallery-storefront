@@ -16,10 +16,10 @@ REQUIRED = [
  "docs/06-CONTENT-STRATEGY.md","docs/07-INFORMATION-ARCHITECTURE.md","docs/08-TECHNICAL-ARCHITECTURE.md",
  "docs/09-QUALITY-AND-ACCEPTANCE.md","docs/10-ROADMAP.md","docs/11-CUSTOMER-AND-MERCHANDISING-STRATEGY.md",
  "docs/12-MERCHANT-OPERATIONS.md","docs/13-DESIGN-REVIEW-PROTOCOL.md","docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md","docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md",
- "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md","docs/19-PHOTO-LIBRARY-AUDIT.md","docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md","docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md","docs/ADR-TEMPLATE.md",
+ "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md","docs/19-PHOTO-LIBRARY-AUDIT.md","docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md","docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md","docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md","templates/prototypes/README.md","templates/prototypes/m2-owner-entry-decision.md","templates/prototypes/prototype-review.csv","docs/ADR-TEMPLATE.md",
  "docs/AI-BOOTSTRAP-PROMPT.md","docs/AI-WORKING-PROTOCOL.md","docs/DECISIONS.md",
  "docs/OWNER-INPUT-REGISTER.md","docs/REFERENCE-RESEARCH-LOG.md","docs/UPDATE-VISUAL-OWNER-GATE-PROMPT.md",
- "scripts/validate_project.py","scripts/audit_photo_library.py","scripts/validate_catalogue_intake.py","scripts/preview_etsy_export.py","tests/test_project_validation.py","tests/test_photo_library_audit.py","tests/test_catalogue_intake.py","tests/test_etsy_export_preview.py","templates/catalogue/README.md","templates/catalogue/products.csv","templates/catalogue/product-facts.csv","templates/catalogue/product-images.csv","templates/catalogue/product-source-records.csv","templates/catalogue/etsy-image-sources.csv"]
+ "scripts/validate_project.py","scripts/audit_m2_readiness.py","scripts/audit_photo_library.py","scripts/validate_catalogue_intake.py","scripts/preview_etsy_export.py","tests/test_project_validation.py","tests/test_photo_library_audit.py","tests/test_catalogue_intake.py","tests/test_etsy_export_preview.py","templates/catalogue/README.md","templates/catalogue/products.csv","templates/catalogue/product-facts.csv","templates/catalogue/product-images.csv","templates/catalogue/product-source-records.csv","templates/catalogue/etsy-image-sources.csv"]
 OPTIONS=["Graphic Atelier","Future Relics","Living Garden","Modern Folk Pop"]
 REFERENCE_OPTIONS=["Porcelain Index","Bordeaux Editions","Blue Current","Citron Signal"]
 REFERENCE_FONTS=["Cormorant Garamond","Manrope","Fraunces","DM Sans","Newsreader","Work Sans","Space Grotesk","IBM Plex Mono"]
@@ -58,12 +58,30 @@ def check_markdown_file(path: Path, root: Path=ROOT) -> list[str]:
 
 class BoardParser(HTMLParser):
  VOID={"area","base","br","col","embed","hr","img","input","link","meta","param","source","track","wbr"}
- def __init__(self): super().__init__(convert_charrefs=True); self.stack=[]; self.errors=[]; self.cards=0; self.viewport=False; self.lang_en=False
+ def __init__(self):
+  super().__init__(convert_charrefs=True)
+  self.stack=[]; self.errors=[]; self.cards=0; self.viewport=False; self.lang_en=False
+  self.main_count=0; self.main_ids=[]; self.skip_links=[]; self.h1_count=0; self.h2_ids=set()
+  self.option_labels=[]; self.preview_groups=[]; self.ids=set(); self.duplicate_ids=[]; self.images_missing_alt=[]
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
   if tag=="html" and a.get("lang","").lower()=="en": self.lang_en=True
   if tag=="meta" and a.get("name","").lower()=="viewport": self.viewport=True
-  if tag=="article" and "option" in a.get("class","").split(): self.cards+=1
+  if a.get("id"):
+   if a["id"] in self.ids: self.duplicate_ids.append(a["id"])
+   self.ids.add(a["id"])
+  if tag=="main":
+   self.main_count+=1
+   if a.get("id"): self.main_ids.append(a["id"])
+  if tag=="a" and "skip-link" in a.get("class","").split():
+   self.skip_links.append(a.get("href",""))
+  if tag=="h1": self.h1_count+=1
+  if tag=="h2" and a.get("id"): self.h2_ids.add(a["id"])
+  if tag=="article" and "option" in a.get("class","").split():
+   self.cards+=1
+   self.option_labels.append(a.get("aria-labelledby",""))
+  if a.get("role")=="group": self.preview_groups.append(a.get("aria-label",""))
+  if tag=="img" and "alt" not in a: self.images_missing_alt.append(a.get("src","(missing src)"))
   if tag not in self.VOID: self.stack.append(tag)
  def handle_endtag(self,tag):
   if tag in self.VOID:return
@@ -100,6 +118,17 @@ def validate_project(root: Path=ROOT) -> list[str]:
    if page.lower() not in st.lower(): errors.append(f"reference implementation specification missing page {page}")
  else: errors.append("missing reference-to-DAG implementation specification")
  if "15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md" not in docs.get("README.md",""): errors.append("README does not link reference-to-DAG implementation specification")
+ m2_pack=root/"docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md"
+ if m2_pack.exists():
+  mt=m2_pack.read_text(encoding="utf-8").lower()
+  for term in ["m2-a","m2-b","m2-c","m2-d","m2-e","no visual selection, no production-style prototype","m2 has not started","non-transactional concept"]:
+   if term not in mt: errors.append(f"M2 prototype entry pack missing {term}")
+  for width in ["390 px","430 px","768 px","1280 px","1440 px"]:
+   if width not in mt: errors.append(f"M2 prototype entry pack missing review width {width}")
+  for term in ["japan-first customer-segment focus", "home and interior buyers", "craft and material enthusiasts", "gift and considered-purchase buyers", "trade and design professionals", "shared global shell", "responsive primary and category navigation", "search entry/disclosure", "global footer", "reusable presentation components", "mixed product/photo evidence", "rights/permissions", "mobile is a required test dimension across every selected journey"]:
+   if term not in mt: errors.append(f"M2 prototype entry pack missing {term}")
+  if "mobile recovery" in mt: errors.append("mobile must not be represented as a separate customer journey")
+ else: errors.append("missing M2 prototype entry and acceptance pack")
  if "P-015" not in docs.get("docs/DECISIONS.md","") or "Status: REJECTED" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register must mark P-015 rejected")
  brief = root/"docs/17-REFERENCE-LED-DESIGN-BRIEF.md"
  if brief.exists():
@@ -126,9 +155,17 @@ def validate_project(root: Path=ROOT) -> list[str]:
   if rp.stack: errors.append(f"unclosed reference board HTML tags: {rp.stack[-8:]}")
   if rp.cards!=4: errors.append(f"expected four reference-led option cards, found {rp.cards}")
   if not rp.viewport or not rp.lang_en: errors.append("reference board missing English lang or viewport metadata")
+  if rp.main_count != 1 or len(rp.main_ids) != 1: errors.append("reference board must expose one main landmark with an id")
+  elif f"#{rp.main_ids[0]}" not in rp.skip_links: errors.append("reference board skip link must target the main landmark")
+  if rp.h1_count != 1: errors.append(f"reference board must contain one page H1, found {rp.h1_count}")
+  if len(rp.option_labels) != 4 or any(label not in rp.h2_ids for label in rp.option_labels): errors.append("each reference option must be labelled by its own H2")
+  if rp.preview_groups.count("Desktop layout preview") != 4 or rp.preview_groups.count("Mobile layout preview") != 4: errors.append("each reference option must expose labelled desktop and mobile preview groups")
+  if rp.duplicate_ids: errors.append(f"reference board contains duplicate ids: {sorted(set(rp.duplicate_ids))}")
+  if rp.images_missing_alt: errors.append(f"reference board contains images without alt text: {rp.images_missing_alt}")
+  if ":focus-visible" not in rt: errors.append("reference board is missing a visible keyboard focus style")
   for n in REFERENCE_OPTIONS+REFERENCE_FONTS:
    if n not in rt: errors.append(f"reference board missing {n}")
-  if "Desktop composition" not in rt or "Mobile composition" not in rt: errors.append("reference board missing desktop/mobile compositions")
+  if "Desktop layout preview" not in rt or "Mobile layout preview" not in rt: errors.append("reference board missing labelled desktop/mobile layout previews")
   if "not dag products" not in rt.lower(): errors.append("reference board must label placeholders as not DAG products")
   if "max-width:900px" not in rt: errors.append("reference board missing responsive breakpoint")
  else: errors.append("missing reference-led visual board")
@@ -174,6 +211,8 @@ def main() -> int:
  print(f"- {len(RENDERS)} archived desktop/mobile SVG previews and four fresh reference-led previews present")
  print("- Markdown UTF-8, internal links and heading hierarchy pass")
  print("- owner-control gate, explicit P-015 rejection, new reference decision and no-clone boundary pass")
+ print("- reference-led owner-review board landmarks, keyboard access and preview labels pass")
+ print("- M2 prototype entry gates, route scope and responsive review widths are documented and enforced")
  print("- archived rejection and fresh four-option palettes, fonts and responsive render board pass")
  print("- D-010 reference hierarchy and page-by-page responsive implementation specification pass")
  print("- photo inventory and draft catalogue intake tools are documented; no app/framework/database/hosting scaffold introduced")

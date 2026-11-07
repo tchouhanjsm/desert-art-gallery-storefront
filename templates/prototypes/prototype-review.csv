@@ -1,0 +1,1 @@
+review_id,route,journey_id,viewport_width_px,viewport_height_px,device_class,scenario,preconditions,steps,expected_result,observed_result,status,severity,evidence_reference,issue_reference,reviewer_role,reviewed_at,owner_feedback,owner_decision_required

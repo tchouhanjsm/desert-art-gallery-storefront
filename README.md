@@ -5,7 +5,7 @@ Desert Art Gallery (DAG) is a premium, product-led ecommerce and gallery experie
 ## Current stage
 **M1 — Reference hierarchy, page specification and research-readiness kit delivered; owner decisions remain open.**
 
-The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce structure and page experience; Macaroni Shoten informs curation and select-retail character (D-010). A complete page-by-page implementation specification and updated live reference research are available. A Japan-first customer-validation playbook and blank anonymized research templates are also prepared; no interviews have been conducted. The four DAG-specific visual proposals remain unselected. No final palette, typography, art direction or production theme has been approved.
+The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce structure and page experience; Macaroni Shoten informs curation and select-retail character (D-010). A complete page-by-page implementation specification and updated live reference research are available. A Japan-first customer-validation playbook and blank anonymized research templates are also prepared; no interviews have been conducted. An M2 prototype-entry and acceptance pack plus a blank owner-entry worksheet are prepared, but M2 has not started because the visual direction and other owner inputs remain open. The four DAG-specific visual proposals remain unselected. No final palette, typography, art direction or production theme has been approved.
 
 ## Start here
 1. [Permanent agent instructions](AGENTS.md).
@@ -20,10 +20,17 @@ The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce 
 10. [Visual Design System](docs/04-VISUAL-DESIGN-SYSTEM.md).
 11. [Owner-Controlled Visual Direction](docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 12. [Decision Register](docs/DECISIONS.md).
+13. [M2 prototype-entry and acceptance pack](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md).
+
+## M2 prototype readiness
+
+An M2-A owner-review bundle is prepared separately with 24 full-page renders: four unranked visual territories across homepage, Shop/collection and product detail at desktop and mobile sizes. Exact palette/type specifications remain in [18 — Reference-Led Direction Specifications](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md); the scope and acceptance gates are in [23 — M2 Prototype Entry and Acceptance](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md). M2 remains blocked; no production application or approved visual system has started.
+
+Run `python3 scripts/audit_m2_readiness.py` to confirm that the owner-input register, M2 acceptance pack and worksheet agree. Pending owner decisions are reported as an expected blocked state.
 
 ## Customer research preparation
 
-The playbook defines a proposed exploratory interview cohort and a separate prototype-usability stage. The templates under `templates/research/` are blank and intentionally exclude participant identifiers. Owner confirmation of the cohort focus and recruitment route is still required; no recruitment or spending is authorized.
+The playbook defines research preparation only. M2-B is limited to selecting initial Japan-first customer-segment hypotheses (home/interior; craft/material; gift/considered purchase; trade/design professional). Japan-first is already established by D-003. Method, recruitment route, consent and spending are separately gated; no recruitment or spending is authorized. Templates under `templates/research/` are blank and exclude participant identifiers.
 
 ## New owner-review package
 
@@ -39,7 +46,11 @@ These are four new, non-ranked proposals. None is recommended, preselected or ap
 - [Compare all four desktop/mobile previews](design/explorations/reference-led-directions.html)
 - [Read exact HEX palettes, typography, layouts, photography, contrast and trade-offs](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md)
 
-All object visuals and product names shown on the board are abstract placeholders, not real DAG catalogue content or photographs.
+All current M2-A object visuals are clearly labelled design placeholders, not real DAG catalogue content or photographs. The intended M2-C evidence policy is mixed: genuine owner-supplied photographs after product/fact/rights approval, plus labelled placeholders for missing views and states. No genuine sample photo was available in the checked-in repositories at render time.
+
+### Owner-review board quality
+
+The comparison board is an owner decision artefact, not a production prototype. It includes skip navigation and semantic preview labels; the governance validator checks those structures, while the unit suite recalculates each documented WCAG contrast ratio from its HEX values. These checks do not constitute browser or screen-reader sign-off. See the verification notes in [18 — Reference-Led Direction Specifications](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md).
 
 ## Rejected historical visual proposals
 

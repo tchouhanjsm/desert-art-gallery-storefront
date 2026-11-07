@@ -36,6 +36,9 @@ Before final visual identity or production styling:
 
 The prior Material Archive / Collected Colour proposal is historical only and must not be resumed as a default. See [14 — Owner-Controlled Visual Direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 
+## M2 prototype review pack
+Use [23 — M2 Prototype Entry and Acceptance](23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md) as the route-level handoff and evidence contract. It does not waive the owner visual gate or authorize M2 before all entry inputs are recorded.
+
 ## Accessibility
 Target WCAG 2.2 AA where applicable. Test keyboard access, visible focus, semantic structure, form labels, accessible names, contrast, reduced motion and responsive touch targets.
 
