@@ -1,92 +1,27 @@
-# 03 — Creative Direction
+# 03 — Creative Direction and Design Authority
 
-## Objective
-Develop a distinctive DAG retail experience informed by premium Japanese editorial and lifestyle retail while expressing DAG's own Jaisalmer identity.
+## Current authority
 
-## Principal design references
+D-014 adopts the owner-supplied DAG Owner-Controlled Design Kit v2 as the structural source for exactly nine pages. This is not an approval of brand identity or production styling. Read `docs/DESIGN-AUTHORITY.md`, `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` before any design work.
 
-Our principal references are:
+## Owner-only identity choices
 
-- **POJ Studio:** https://pojstudio.com/
-- **Macaroni Shoten:** https://shop.macaro-ni.jp/
+The owner alone supplies or approves exact brand colours, typography families/weights/hierarchy/type scale, logo/wordmark/descriptor and photography art direction/crop rules. These inputs remain pending in `docs/OWNER-TOKEN-INPUT.md`. Do not infer a design territory, choose a palette or typography, recommend a winner, blend historical concepts or transform system fallback tokens into brand identity.
 
-Owner-confirmed hierarchy D-010: POJ Studio is the **primary** reference for ecommerce structure, navigation, homepage, Shop/collection, product card, product detail, maker/story and supporting retail patterns. Macaroni Shoten is the **secondary** reference for select-shop curation, category grouping and concise editorial retail character. Learn from the principles, but do not copy assets, exact layouts, source code, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity. See [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md).
+## Structural preservation
 
-## Reference study
-- POJ Studio: https://pojstudio.com/
-- Macaroni Shoten: https://shop.macaro-ni.jp/
+Preserve the kit's HTML, CSS, responsive rules, supplied script, page/section order, component inventory, placeholders and disabled states. Do not add sections, components, shell elements, interactions, icons, badges, promotions, testimonials, reviews, animations, popups, sticky/floating items, social/newsletter/chat modules or extra navigation.
 
-Study and document concrete observations:
-- Homepage composition and first-view hierarchy.
-- Navigation and category discovery.
-- Collection curation.
-- Product-card layout and information.
-- Image ratios and photography style.
-- Editorial storytelling.
-- Whitespace, colour and contrast.
-- Mobile navigation and shopping flow.
-- Customer reassurance and service information.
+POJ Studio is the primary reference for ecommerce/page structure; Macaroni Shoten is secondary for curation/select-shop character (D-010). Use non-proprietary principles only. Do not clone either site's code, CSS, exact composition, copy, logos, fonts, photography or assets.
 
-Record URLs and access dates. Do not clone the references or copy their assets, text, product content or distinctive layouts.
+## Historical visual material
 
-## Design process
-1. Record reference observations.
-2. Develop at least four genuinely distinct DAG visual territories.
-3. Show exact HEX roles, typography families/weights and licensing notes, layout, component and photography examples for each.
-4. Render actual desktop and mobile examples; written descriptions and swatches alone do not qualify.
-5. Review the rendered alternatives and accessibility trade-offs.
-6. Present all alternatives with neutral advantages, disadvantages and likely customer impressions. Do not recommend, rank or select a winner.
-7. Ask the owner to choose, combine, request revisions or reject all options.
-8. STOP. Do not finalize tokens, theme defaults or production visual styling before the owner responds.
-9. Record the explicit owner selection in `docs/DECISIONS.md`.
-10. Only then translate the selected direction into production application components.
+P-015 (Graphic Atelier, Future Relics, Living Garden, Modern Folk Pop) is rejected. P-016 (Porcelain Index, Bordeaux Editions, Blue Current, Citron Signal) is historical only and is not an active option set. Material Archive / Collected Colour is historical AI material only. These assets are retained under `docs/historical/` for audit context and must never be treated as a default or implementation source.
 
-## Required page concepts
-- Homepage.
-- Shop/all products.
-- Category/collection.
-- Product detail.
-- Makers/craft story.
-- About DAG.
-- Journal/editorial.
-- Contact/support.
-- Cart and checkout direction, subject to commercial decisions.
+## Language and content
 
-## Photography pending
-Use clearly identified, visually deliberate design placeholders. Establish composition, crop, tone and hierarchy without pretending placeholders are real catalogue imagery. Avoid repeating one oversized logo in every image area. Do not use unrelated stock photography as product representation.
+Customer-facing content is English-only. Japan-first is a market focus, not a Japanese-language UI requirement. Never fabricate product, maker, material, dimension, provenance, price, stock, availability, review, award, certification, business, policy or delivery facts.
 
-## Approval states
-Exploration → Proposed → Owner-approved → Implemented → Visually verified.
-An AI agent cannot promote its own proposal to owner-approved.
+## Authorization
 
-## Mandatory owner choice — no AI-selected brand direction
-
-The AI must not select the final DAG visual direction.
-
-Before production styling, present at least four materially different creative territories. They must differ meaningfully—not four minor palette variations.
-
-Each territory must include exact HEX values and colour roles, display/heading/body/UI font families and weights, font availability/licensing notes, layout/grid principles, header/navigation, hero, product-card, category/collection and editorial examples, photography mood, desktop and mobile rendered sections, and accessibility/contrast notes. The previous package in [15 — Four Visual Direction Specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md) was explicitly rejected by the owner on 6 November 2026 (D-008). It is historical only. The new reference-led design study is governed by [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md) and the [reference research log](REFERENCE-RESEARCH-LOG.md).
-
-Show the differences visually. Do not label one option recommended, preferred or best. Present neutral trade-offs, ask the owner to select, combine, request revisions or reject all, then STOP. Do not establish final production tokens or implement the final visual system until the owner chooses.
-
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
-
-
-## Current owner decision and next study
-
-The owner rejected all four territories previously documented in [15 — Four Visual Direction Specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md) on 6 November 2026 (D-008). That package and its rendered board are historical only, not active candidates or preferences.
-
-The owner named [POJ Studio](https://pojstudio.com/) and [Macaroni Shoten](https://shop.macaro-ni.jp/) as the study references (D-009). D-010 confirms POJ as primary ecommerce/structure reference and Macaroni as secondary curation reference. Use the complete page mapping in [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md), with research detail in [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md) and [Reference Research Log](REFERENCE-RESEARCH-LOG.md). This reference hierarchy does not select a DAG visual identity. Create an original DAG design; do not copy either site's identity, assets, text, product content, source code or exact composition.
-
-The next package must again contain at least four materially different visual territories with exact colours, font/licensing specifications, rendered desktop/mobile examples, neutral trade-offs and accessibility notes. No palette, typography, overall style or art direction is approved. Do not recommend or select a winner.
-
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
-
-
-## Current owner-review package
-
-The fresh reference-led visual options are ready for owner review:
-- [Rendered desktop/mobile board](../design/explorations/reference-led-directions.html)
-- [Four detailed direction specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md)
-
-The owner may choose one, combine named elements, request revisions or reject all four. No option is recommended, ranked, selected or approved. Production tokens and final styling remain blocked until the explicit owner choice is recorded.
+No production application development, branded token implementation, technology selection, commerce feature or public deployment is authorized by D-014. Any change to page/component scope requires a written proposal, explicit owner approval in `docs/DECISIONS.md` and inventory amendment before implementation.
