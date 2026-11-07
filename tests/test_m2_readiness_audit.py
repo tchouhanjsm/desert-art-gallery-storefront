@@ -93,9 +93,15 @@ class M2ReadinessAuditTests(unittest.TestCase):
         self.assertEqual(result["open_gates"], [])
 
     def test_mismatched_gate_status_is_rejected(self):
-        states = {gate: "OPEN" for gate in GATES}
-        states["M2-C"] = "CONFIRMED"
-        write_fixture(self.root, states)
+        write_fixture(self.root, {gate: "OPEN" for gate in GATES})
+        owner_path = self.root / "docs" / "OWNER-INPUT-REGISTER.md"
+        lines = owner_path.read_text(encoding="utf-8").splitlines()
+        lines = [
+            line.replace("Open — awaiting owner input", "Confirmed — D-103")
+            if line.startswith("| M1-C |") else line
+            for line in lines
+        ]
+        owner_path.write_text("\n".join(lines), encoding="utf-8")
         result = audit_m2_readiness(self.root)
         self.assertTrue(any("M2-C: conflicting statuses" in error for error in result["errors"]))
         self.assertEqual(result["overall"], "INCONSISTENT")
