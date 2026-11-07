@@ -36,3 +36,8 @@ Where supported:
 7. Availability and purchasing information.
 
 Do not force every product into a story template when facts are unavailable.
+
+
+## Evidence and publication readiness
+
+Prepare product facts through the draft [catalogue intake and fact-verification standard](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md). Keep source evidence, owner verification and public approval as distinct states. An unverified or merely source-documented fact is not automatically publishable. Customer-facing text remains English-only; the intake validator does not attempt to infer language or factual truth.

@@ -38,3 +38,8 @@ The initial customer-validation focus and representative product/photo sample re
 ## Exit criteria
 
 M1 creative direction closes only after the owner reviews the fresh reference-led options and explicitly chooses, combines, requests revisions or rejects them, and the initial customer-validation focus is confirmed. M2 prototypes follow only an approved visual direction. No production framework, database, application code or paid service is authorized by this review.
+
+
+## Catalogue preparation delivered
+
+A framework-neutral, draft catalogue intake and fact-verification kit is available in [20 — Catalogue Intake and Fact Verification](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md), with blank CSV templates and a standard-library validator. It prepares a future 10–20 product sample without importing data or deciding the final taxonomy, commerce model, currency or backend. The owner has not supplied or approved real product rows for Git.

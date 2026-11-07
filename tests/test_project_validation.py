@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from validate_project import OPTIONS, REFERENCE_OPTIONS, REFERENCE_FONTS, heading_slug, markdown_links, validate_project  # noqa: E402
+from validate_catalogue_intake import HEADERS as CATALOGUE_HEADERS  # noqa: E402
 
 
 class OwnerControlledVisualGovernanceTests(unittest.TestCase):
@@ -63,6 +64,17 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
         self.assertIn("never renames", script.lower())
         self.assertIn("SHA-256", guide)
         self.assertIn("bulk migration", guide)
+
+    def test_catalogue_intake_templates_are_header_only_and_match_contract(self):
+        template_dir = ROOT / "templates/catalogue"
+        self.assertTrue((template_dir / "README.md").is_file())
+        for filename, expected_headers in CATALOGUE_HEADERS.items():
+            content = (template_dir / filename).read_text(encoding="utf-8").splitlines()
+            self.assertEqual(content, [",".join(expected_headers)])
+        self.assertIn("draft", (ROOT / "docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md").read_text(encoding="utf-8"))
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8").lower()
+        self.assertIn("must not be committed to git", agents)
+        self.assertIn("owner verification", agents)
 
     def test_previous_synthesis_is_historical_only(self):
         protocol = (ROOT / "docs/AI-WORKING-PROTOCOL.md").read_text(encoding="utf-8").lower()

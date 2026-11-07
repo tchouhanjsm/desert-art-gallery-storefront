@@ -115,6 +115,15 @@ Owner decision: The owner explicitly rejected all four on 6 November 2026: "My D
 
 Consequences: None of the four proposals may be treated as selected, preferred, ranked, blended by the AI, a default or an active candidate. No winner exists; the entire P-015 package is rejected. Retain the assets and specifications as historical audit material only. Do not use their palettes, type pairings or preview compositions as a starting default.
 
+### P-017 — Draft source-neutral catalogue intake contract
+Status: PROPOSED
+
+Proposal: Prepare a private product-data intake package that separates product identity, factual evidence, public approval and image rights/publication approval. Blank templates and a local standard-library validator are provided in `templates/catalogue/` and `scripts/validate_catalogue_intake.py`; the draft standard is documented in `docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md`.
+
+Boundaries: This is not an approved production schema, category taxonomy, currency policy, commerce model or backend design. No product records are included in the repository. The owner must review the fields and workflow before this contract is treated as authoritative.
+
+Date: 2026-11-06
+
 ### P-016 — New reference-led DAG design exploration
 Status: PROPOSED
 

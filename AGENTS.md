@@ -178,3 +178,12 @@ The owner exclusively selects foundational DAG visual identity. Present at least
 ## Current reference-led visual decision state
 
 The owner rejected all four P-015 visual proposals on 6 November 2026 (D-008). They remain historical only; do not treat their palettes, typography or compositions as active preferences. The owner named POJ Studio and Macaroni Shoten as primary design references (D-009). Read docs/17-REFERENCE-LED-DESIGN-BRIEF.md and docs/REFERENCE-RESEARCH-LOG.md before the next creative exploration. A close adaptation of general retail/customer-experience principles is in scope; exact cloning, reuse of assets/text or copying page composition is not. No final DAG visual direction is approved.
+
+
+## 13. Private catalogue intake and source-data handling
+
+The header-only CSV files under `templates/catalogue/` are preparation templates, not a production database schema. Populated product CSVs, private source-record references, evidence locators, internal notes, source photo paths and audit reports must remain in private working storage and must not be committed to Git.
+
+Do not invent or infer product facts, price, SKU, maker identity, provenance, dimensions, material, condition, availability, image order or rights status. Preserve unknowns as blank or explicitly unverified. Keep source documentation, owner verification and public approval as separate states. Do not treat a structurally valid intake row as proof that the claim is true or approved for publication.
+
+Do not import, publish or expose catalogue records to a customer-facing application until the owner has reviewed the intake contract, confirmed the record facts and approved publication. The draft validator is a local structural check only; it does not approve products or choose the production data model.

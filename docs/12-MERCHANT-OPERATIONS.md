@@ -44,3 +44,8 @@ This is a proposal, not an approved process. Validate it with the owner.
 
 ## Future design requirement
 The admin workflow should be efficient for a small merchant team. Do not create a feature merely because enterprise platforms include it. Validate the actual operating need first.
+
+
+## Draft catalogue intake controls
+
+The proposed [catalogue intake standard](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md) separates product identity, factual evidence, public approval and image rights/publication approval. The local validator checks structure and cross-file references; it does not verify truth or approve records. Treat these statuses as draft intake conventions until the owner confirms the workflow.
