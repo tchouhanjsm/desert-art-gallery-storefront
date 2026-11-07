@@ -2,6 +2,8 @@
 
 Record every significant reference-site review.
 
+**Authority note:** All entries below are observations of third-party reference sites, not DAG design requirements. D-014 and the active root page/component inventories define DAG's current scope. Reference observations about banners, search, cart, filtering, checkout, locale controls, badges, promotions or page sections do not authorize those elements for DAG.
+
 For each entry: date accessed, source URL, page/journey reviewed, specific observation, learning for DAG, what must not be copied and design implication.
 
 ## Principal references
