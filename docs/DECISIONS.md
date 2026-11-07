@@ -38,22 +38,23 @@ Decision: Approximately 3,000 original photographs across roughly 300 products e
 Date: 2026-11-06
 
 ### D-007 — Owner controls visual identity selection
-Status: CONFIRMED
-Decision: The AI agent must not unilaterally choose DAG's final palette, typography, visual style or art direction. It must present at least four materially distinct rendered alternatives with exact values and neutral trade-offs, then wait for the owner to choose. The previous beige/grey/ivory/terracotta direction must not be used as an automatic default.
-Date: 2026-11-06
+Status: SUPERSEDED IN PART BY D-014
+Decision: The owner alone controls and approves DAG's final palette, typography, visual personality and photography art direction. The former process instruction requiring the AI to generate at least four rendered alternatives is superseded: D-014 adopts the owner-supplied structural kit and does not commission a new AI-generated direction exercise. The owner must provide or explicitly approve all foundational identity values before branded styling. No historical palette or type pairing may be used as a default.
+Consequences: Record exact owner-provided values in `docs/OWNER-TOKEN-INPUT.md` and this decision register. The principle of exclusive owner approval remains active; the old multi-option process does not.
+Date: 2026-11-06; process superseded 2026-11-07
 
 ### D-008 — Reject the four proposed visual territories
 Status: CONFIRMED
 Decision: The owner explicitly rejected all four territories in P-015 on 6 November 2026: Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop. None is selected, preferred, approved, a default or an active candidate. The full P-015 package is retained as historical evidence only.
 Owner instruction: "My DAG visual direction decision: reject."
-Consequences: Build a fresh visual review around the references named in D-009. Do not reuse the rejected palettes or type pairings as a default.
+Consequences: P-015 is archived as rejected historical evidence. D-014 defines the current structural source; do not revive P-015 concepts, palettes or font pairings.
 Date: 2026-11-06
 
 ### D-009 — POJ Studio and Macaroni Shoten as principal design references
 Status: CONFIRMED
 Decision: The owner names https://pojstudio.com/ and https://shop.macaro-ni.jp/ as the principal references for the next DAG creative and retail design study and asks whether DAG can be designed exactly like them. Use both as close references for customer experience, editorial retail quality, product discovery, merchandising and information hierarchy. The DAG deliverable must remain original: do not clone either site's identity, source assets, copy, product imagery or pixel-for-pixel page composition. This reference instruction does not select a final DAG palette, typography, art direction or page layout.
 Owner instruction: "shop.macaro-ni.jp/ and pojstudio.com - can we design exactly as it it."
-Consequences: Use docs/17-REFERENCE-LED-DESIGN-BRIEF.md to prepare new owner-review options. Keep the visual approval gate active.
+Consequences: D-010 records the confirmed reference hierarchy. This reference decision does not authorize new features or visual identity selection. D-014 and the current inventories govern structure.
 Date: 2026-11-06
 
 ### D-010 — Reference fidelity and hierarchy
@@ -61,7 +62,7 @@ Status: CONFIRMED
 Decision: DAG's reference fidelity is BLEND. POJ Studio is the primary reference for overall ecommerce architecture, global navigation, homepage composition, Shop/collection discovery, product cards, product detail, maker/story and supporting retail experience. Macaroni Shoten is the secondary reference for select-shop curation, category grouping, lifestyle-oriented selection and concise editorial retail character. DAG must remain an original Jaisalmer-rooted brand with its own products, content, imagery, taxonomy and English-only customer-facing experience.
 Owner instruction (7 November 2026): "Reference fidelity: BLEND. Primary reference: POJ Studio. Secondary reference: Macaroni Shoten."
 Boundaries: This decision confirms the reference relationship only. It does not approve a DAG colour palette, font pairing, visual personality, photography art direction, final layout, category taxonomy, commerce model, technology stack or any POJ/Macaroni feature that DAG does not actually offer. Do not clone source code, proprietary CSS, exact composition, copy, products, photography or brand identity.
-Consequences: Follow docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md for the page-by-page implementation specification and docs/REFERENCE-RESEARCH-LOG.md for dated evidence. Preserve the separate owner-controlled visual-identity gate in D-007.
+Consequences: Use `docs/REFERENCE-RESEARCH-LOG.md` for dated observations. D-014 and the active `docs/PAGE-INVENTORY.md` / `docs/COMPONENT-INVENTORY.md` govern DAG's current structure. Owner-only identity approval remains active; the former AI-generated option procedure in D-007 is superseded.
 Date: 2026-11-07
 
 ### D-011 — Mixed genuine-photograph and labelled-placeholder evidence approach
@@ -171,11 +172,11 @@ Date: 2026-11-06
 ### P-016 — New reference-led DAG design exploration
 Status: SUPERSEDED — HISTORICAL ONLY
 
-Basis: D-009 and docs/17-REFERENCE-LED-DESIGN-BRIEF.md.
+Basis: D-009 and the former reference-led design study.
 
-Proposal package delivered: [Porcelain Index], [Bordeaux Editions], [Blue Current] and [Citron Signal], each with exact HEX palettes, type families/weights/licensing, page composition and photography direction, neutral trade-offs and contrast notes. Desktop/mobile renders are presented in design/explorations/reference-led-directions.html; detailed specifications are in docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md. The four territories are proposals only, not recommendations or approvals.
+Proposal package delivered before the owner supplied the v2 structural kit: Porcelain Index, Bordeaux Editions, Blue Current and Citron Signal, with palette, typography, layout and photography proposals. The complete original board and specifications are preserved under `docs/historical/visual-proposals/` and `docs/historical/superseded/` for audit only.
 
-Owner action: Review the new options when presented and choose one, combine explicit elements, request revisions or reject all. No recommendation or winner is designated. No production tokens or theme may be finalized before the new explicit owner choice is recorded.
+Disposition: These are not approved options, current candidates, defaults or implementation instructions. Do not revive, rank, blend or reuse their values. D-014 is structural adoption only; the owner still controls all final identity inputs. The former request for an AI-generated option selection process is superseded by D-014 and D-007's updated status.
 
 Date: 2026-11-06
 
