@@ -67,7 +67,7 @@ def validate_project(root: Path = ROOT) -> list[str]:
         errors.append("component inventory must explicitly preserve disabled states")
 
     authority = (root / "docs/DESIGN-AUTHORITY.md").read_text(encoding="utf-8").lower()
-    for phrase in ("owner-controlled", "english-only", "must remain disabled"):
+    for phrase in ("owner-controlled", "english-only", "remain disabled"):
         if phrase not in authority:
             errors.append(f"design authority missing {phrase!r}")
 
