@@ -14,6 +14,12 @@ Our principal references are:
 
 These are DAG's primary references for creative and retail study. Study their actual editorial presentation, merchandising, product discovery, navigation, typography, photography and responsive customer experience. Learn from their principles, but do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
 
+## Owner-confirmed reference hierarchy (D-010)
+
+Reference fidelity is BLEND. POJ Studio is the primary reference for overall ecommerce architecture and page experience. Macaroni Shoten is the secondary reference for select-shop curation and concise editorial retail character. DAG retains its own Jaisalmer identity, product taxonomy, photography and English-only content. See [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md).
+
+This hierarchy does not select DAG's final palette, typography, visual personality, art direction, technology, commerce model or legal/operational rules.
+
 ## Product ambition
 DAG should combine:
 - Editorial sophistication and material sensitivity studied from POJ Studio.
