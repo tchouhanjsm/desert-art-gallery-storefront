@@ -56,6 +56,14 @@ Owner instruction: "shop.macaro-ni.jp/ and pojstudio.com - can we design exactly
 Consequences: Use docs/17-REFERENCE-LED-DESIGN-BRIEF.md to prepare new owner-review options. Keep the visual approval gate active.
 Date: 2026-11-06
 
+### D-010 — Reference fidelity and hierarchy
+Status: CONFIRMED
+Decision: DAG's reference fidelity is BLEND. POJ Studio is the primary reference for overall ecommerce architecture, global navigation, homepage composition, Shop/collection discovery, product cards, product detail, maker/story and supporting retail experience. Macaroni Shoten is the secondary reference for select-shop curation, category grouping, lifestyle-oriented selection and concise editorial retail character. DAG must remain an original Jaisalmer-rooted brand with its own products, content, imagery, taxonomy and English-only customer-facing experience.
+Owner instruction (7 November 2026): "Reference fidelity: BLEND. Primary reference: POJ Studio. Secondary reference: Macaroni Shoten."
+Boundaries: This decision confirms the reference relationship only. It does not approve a DAG colour palette, font pairing, visual personality, photography art direction, final layout, category taxonomy, commerce model, technology stack or any POJ/Macaroni feature that DAG does not actually offer. Do not clone source code, proprietary CSS, exact composition, copy, products, photography or brand identity.
+Consequences: Follow docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md for the page-by-page implementation specification and docs/REFERENCE-RESEARCH-LOG.md for dated evidence. Preserve the separate owner-controlled visual-identity gate in D-007.
+Date: 2026-11-07
+
 ## Unresolved owner decisions
 
 ### U-001 — Seller jurisdiction and legal identity
