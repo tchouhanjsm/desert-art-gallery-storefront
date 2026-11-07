@@ -11,10 +11,10 @@
 | Gate | Required evidence | Status before M2 |
 |---|---|---|
 | M2-A — Visual identity | Owner explicitly selects one territory, combines named elements, or requests a revised set and then selects. Record exact approved foundations in `docs/DECISIONS.md`. | Open — no territory selected |
-| M2-B — Customer-validation focus | Owner confirms the initial cohort focus and research approach. Confirm recruitment route separately; do not recruit or spend without authorization. | Open |
-| M2-C — Product evidence | Owner supplies/approves a representative 10–20 product/photo sample for prototype use, or explicitly permits clearly labelled illustrative placeholders. | Open |
-| M2-D — Journey priority | Owner confirms which customer journeys should be reviewed first. | Open |
-| M2-E — Prototype scope | Confirm that the first delivery is a non-production prototype, with no operational commerce or policy promises. | Open — owner scope confirmation required |
+| M2-B — Japan-first customer-segment focus | Owner selects the initial segment hypothesis/hypotheses to research. Japan-first is already confirmed by D-003; method, recruitment route, consent and spending remain separate approvals. | Open — segment selection pending |
+| M2-C — Mixed product/photo evidence | Use genuine owner-supplied DAG sample photos only after product identity, factual mapping, rights/permissions and prototype-use approval; use clearly labelled illustrative placeholders for missing views/states. | Open — real sample and image-level clearance pending |
+| M2-D — Journey priority | Owner ranks the five customer journeys. Mobile/tablet/desktop are mandatory review dimensions of every journey, not separate journeys. | Open — priority pending |
+| M2-E — Complete non-production prototype scope | Confirm six routes plus shared global header, navigation, search, footer and reusable presentation components. Keep all behaviour non-transactional. | Open — full shared-shell scope confirmation required |
 
 A reference choice (D-010) is not a visual-identity choice. Do not treat the four P-016 proposals as selected, combine them on the owner's behalf, or use any historical rejected palette or type pairing as a fallback.
 
@@ -41,9 +41,36 @@ The first responsive prototype scope is limited to the six route areas below. Th
 | Journal / Stories | Discover useful editorial context and return to a relevant route. | Approved article content, author/date only when verified, links only to relevant approved products or collections. | Fabricated articles, quotes, author identities or product relationships. |
 | Contact / Support | Find a usable contact route and understand what happens after sending a message. | Owner-confirmed contact method; labelled form fields if a form is approved; clear validation, success and error states. | Invented contact details, response-time promises, support hours or privacy commitments. |
 
+
+### Shared global shell — required on every route
+
+The same shell is in scope on all six pages: a global announcement/status strip with no unapproved promise; DAG brand header/wordmark; responsive primary and category navigation including mobile menu state; search entry/disclosure (visual only, no live catalogue backend); and a global footer with Discover, About and Support groupings. Contact, policy, shipping and service details remain unconfigured until verified and owner-approved.
+
+### Reusable presentation components
+
+The six routes share a content container, title/heading hierarchy, breadcrumbs, section headings and dividers, focus/link/action patterns, category/collection tiles, product cards and factual state labels, filters/sort presentation and empty states, product gallery/thumbnails, product-fact rows, maker/material context modules, editorial/story cards, related-item cards, support/contact blocks and (only if separately approved) contact-form field and validation-state patterns. This is a design inventory only; it does not authorize a production component library or application.
+
+### M2-C mixed image evidence rule
+
+The approved evidence approach is mixed: use genuine DAG photographs supplied by the owner where the exact product/image identity, fact mapping, rights/permissions and prototype-use approval are confirmed; use visibly labelled illustrative placeholders where a real item, image angle or state is missing. Never present unrelated stock, generated art or remote Etsy images as genuine DAG photography. Do not invent product facts. No genuine sample photo was present in the checked-in repositories when this pack was prepared; M2-C stays open until 10–20 representative product/photo records and the relevant approvals are supplied. Keep original media and private rights evidence outside Git; no bulk photo migration or public publication is authorized.
+
 ### Cart and checkout boundary
 
 Cart and checkout are not part of the first operational build. If a journey review requires them, show only a clearly labelled, non-transactional concept. No payment submission, order creation, tax/duty calculation, delivery promise, inventory reservation, returns promise or live customer-account action is permitted while the relevant commercial decisions remain unresolved (U-001–U-008).
+
+
+### M2-B — Initial Japan-first customer segment hypotheses
+
+Japan-first is already established by D-003. The owner decision here is only which contexts to include in the initial discovery focus. These are hypotheses, not validated personas, market-size segments or claims about Japanese shoppers; they can overlap.
+
+| Segment hypothesis | Recent shopping context | Research questions to explore |
+|---|---|---|
+| Home and interior buyers | Researched or bought textiles, furnishings or objects for their home or a space they are shaping. | Scale, colour, texture, use, care, visual fit and image completeness. |
+| Craft and material enthusiasts | Sought objects for material, construction, craft practice, cultural context or documented provenance. | Which material/process facts matter and what evidence supports them. |
+| Gift and considered-purchase buyers | Selected a considered object/textile for another person, an occasion or a meaningful purchase. | Suitability, presentation, seller confidence and information needed before deciding. |
+| Trade and design professionals | Specified or sourced objects/textiles for interior, hospitality, styling or professional projects. | Dimensions, specifications, quantity/repeatability and enquiry needs. |
+
+The owner may select one or more without ranking. Segment choice does not authorize a research method, sample size, recruitment provider, consent/recording, incentives or spending. Those remain separate approvals; no recruitment or expenditure is authorized by M2-B selection alone.
 
 ## 3. Journey scenarios
 
@@ -54,7 +81,7 @@ Use these task scenarios to assess comprehension and navigation once the owner c
 3. **Evaluate:** Open a product and identify the facts that are present, missing or unclear.
 4. **Contextualize:** Find a related approved maker/story article, then return to the product or collection.
 5. **Get support:** Find the confirmed contact route and explain what the next step communicates.
-6. **Mobile recovery:** Repeat the key discovery and product-evaluation tasks at a narrow viewport using touch and keyboard-accessible controls where available.
+**Mobile is a required test dimension across every selected journey, not a separate journey.** Review each selected task on mobile (390 px and 430 px), tablet (768 px) and desktop (1280 px and 1440 px); desktop-only evidence cannot pass a journey.
 
 Do not ask participants to validate the owner's visual identity choice. Do not run Stage B usability sessions until the approved prototype and the playbook's entry conditions are satisfied.
 

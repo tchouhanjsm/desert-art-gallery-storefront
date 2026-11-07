@@ -24,7 +24,7 @@ The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce 
 
 ## M2 prototype readiness
 
-A complete owner-review package defines the six route areas, shared global header/navigation/search/footer, reusable presentation components, five responsive review widths and the non-transactional boundary. The [M2-A full-page visual study](design/explorations/m2-visual-study.html) contains 24 full-page renders: four unranked visual territories across homepage, Shop/collection and product detail at 1440 px desktop and 390 px mobile. M2 remains blocked; no production application or approved visual system has started. See [23 — M2 Prototype Entry and Acceptance](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md), [24 — M2-A Full-Page Visual Territory Study](docs/24-M2-VISUAL-TERRITORY-RENDERED-STUDY.md), the [M2 owner-entry decision record](templates/prototypes/m2-owner-entry-decision.md) and templates/prototypes/.
+An M2-A owner-review bundle is prepared separately with 24 full-page renders: four unranked visual territories across homepage, Shop/collection and product detail at desktop and mobile sizes. Exact palette/type specifications remain in [18 — Reference-Led Direction Specifications](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md); the scope and acceptance gates are in [23 — M2 Prototype Entry and Acceptance](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md). M2 remains blocked; no production application or approved visual system has started.
 
 Run `python3 scripts/audit_m2_readiness.py` to confirm that the owner-input register, M2 acceptance pack and worksheet agree. Pending owner decisions are reported as an expected blocked state.
 

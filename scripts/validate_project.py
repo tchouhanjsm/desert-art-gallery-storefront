@@ -125,6 +125,9 @@ def validate_project(root: Path=ROOT) -> list[str]:
    if term not in mt: errors.append(f"M2 prototype entry pack missing {term}")
   for width in ["390 px","430 px","768 px","1280 px","1440 px"]:
    if width not in mt: errors.append(f"M2 prototype entry pack missing review width {width}")
+  for term in ["japan-first customer-segment focus", "home and interior buyers", "craft and material enthusiasts", "gift and considered-purchase buyers", "trade and design professionals", "shared global shell", "responsive primary and category navigation", "search entry/disclosure", "global footer", "reusable presentation components", "mixed product/photo evidence", "rights/permissions", "mobile is a required test dimension across every selected journey"]:
+   if term not in mt: errors.append(f"M2 prototype entry pack missing {term}")
+  if "mobile recovery" in mt: errors.append("mobile must not be represented as a separate customer journey")
  else: errors.append("missing M2 prototype entry and acceptance pack")
  if "P-015" not in docs.get("docs/DECISIONS.md","") or "Status: REJECTED" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register must mark P-015 rejected")
  brief = root/"docs/17-REFERENCE-LED-DESIGN-BRIEF.md"

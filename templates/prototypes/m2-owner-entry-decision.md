@@ -50,47 +50,45 @@ Current proposals:
 
 If all current proposals are rejected or revisions are requested, M2-A remains open until a later visual direction is explicitly selected and its exact foundations are recorded. D-010's reference hierarchy is not visual approval.
 
-## M2-B — Customer-validation focus
+## M2-B — Initial customer segments (Japan-first)
 
-**Initial cohort focus (customer group, market and relevant shopping context):**
+Japan-first is already confirmed by D-003. Select only which customer contexts to include in the initial research focus. These are hypotheses, not validated personas; a person may fit more than one.
 
+- [ ] **Home and interior buyers** — recently researched/bought textiles, furnishings or objects for their home or a space they are shaping. Explore scale, colour, texture, use, care and image completeness.
+- [ ] **Craft and material enthusiasts** — recently sought objects for material, construction, craft practice, cultural context or documented provenance. Explore which facts and evidence create confidence.
+- [ ] **Gift and considered-purchase buyers** — recently selected a meaningful object/textile for another person or an occasion. Explore suitability, product context, presentation and information needed before deciding.
+- [ ] **Trade and design professionals** — recently specified/sourced objects or textiles for interiors, hospitality, styling or professional projects. Explore dimensions, specifications, repeatability/quantity and enquiry needs.
 
-**Research approach and purpose:**
-
-
-**Recruitment route (record the proposed route; do not begin recruitment here):**
-
-
-**Moderator / responsible role:**
+**Owner's chosen initial segment(s):**
 
 
-**Private research storage reference (do not enter participant details or private paths):**
+**Optional priority order or exclusions:**
 
 
 **Owner decision reference:**
 
 
-Recruitment, incentives and other spending remain unauthorized unless separately and explicitly approved. Recording a cohort or research approach here does not authorize recruitment or expenditure.
+This decision does not reconfirm Japan-first or approve a research method, sample size, recruitment route/provider, consent, incentives or spending. Those are separately gated. No recruitment, interviews, recordings or paid activity may begin from this worksheet alone.
 
-## M2-C — Product and photography evidence
+## M2-C — Mixed genuine-photo and placeholder evidence
 
-Choose exactly one evidence basis for the first prototype.
+**Owner's requested approach already recorded:** use a mixed set — genuine DAG sample photographs where exact product/image identity, factual mapping, rights/permissions and prototype-use approval are verified; use visibly labelled illustrative placeholders for missing products, missing image views or visual states not covered by the sample.
 
-- [ ] Owner will supply and approve a representative sample of 10–20 products/photos.
-- [ ] Owner explicitly permits clearly labelled illustrative placeholders.
-- [ ] Both approved product/photo samples and labelled illustrative placeholders may be used.
-- [ ] Neither option is approved yet; M2-C remains open.
+The current visual study uses graphic placeholders only. No genuine DAG photo was available in the checked-in repositories. Do not present stock, generated or remote Etsy imagery as authentic DAG product photography.
 
-**Approved sample/evidence reference (keep private source files outside Git):**
+**Representative sample supplied (target 10–20 product/photo records):**
 
 
-**Product facts and images cleared for prototype display:**
+**Product identities and facts matched/verified:**
 
 
-**Rights / permission confirmation reference:**
+**Image roles/order and rights/permissions checked:**
 
 
-Do not commit populated catalogue data, product photographs, source exports, private paths or rights evidence to this repository. A sample is for prototype use only; it does not authorize catalogue import or public publication.
+**Owner approval reference for these images and prototype-use scope:**
+
+
+M2-C remains OPEN until genuine representative samples, product facts, image permissions and prototype-use approval are supplied. Keep source photos, private paths, populated catalogue data and rights evidence outside Git. No bulk migration or public publication is authorized.
 
 ## M2-D — Journey priority
 
@@ -103,7 +101,9 @@ Rank the candidate journeys in the order the owner wants reviewed. Use each rank
 | | Evaluate — inspect a product and identify verified/missing facts |
 | | Contextualize — follow an approved maker/story connection and return |
 | | Get support — find the confirmed contact route |
-| | Mobile recovery — complete key discovery/evaluation tasks on mobile |
+
+
+**Mobile is a required test dimension across every selected journey, not a separate journey.** Each journey must be checked at 390 px and 430 px mobile widths and across tablet/desktop at 768 px, 1280 px and 1440 px. Desktop-only evidence cannot pass.
 
 **Additional journey or scope note:**
 
@@ -115,6 +115,8 @@ Rank the candidate journeys in the order the owner wants reviewed. Use each rank
 
 - [ ] Confirm the first delivery is a non-production prototype only.
 - [ ] Confirm the six route areas in document 23 are the initial scope.
+- [ ] Confirm the shared global announcement/status strip, DAG brand header/wordmark, responsive primary/category navigation, non-live search entry/disclosure and global footer are included on all six routes.
+- [ ] Confirm reusable components include breadcrumbs, headings/dividers, category tiles, product cards, filters/sort/empty states, product gallery/facts, maker/story modules, editorial/related cards, support blocks and approved form-state patterns.
 - [ ] Confirm cart/checkout, if shown at all, remain labelled non-transactional concepts.
 - [ ] Confirm no payment, order, inventory reservation, tax/duty calculation, shipping promise, returns promise or live account operation is in scope.
 - [ ] Confirm customer-facing prototype content remains English-only and factual/placeholder states are explicit.
@@ -132,10 +134,10 @@ This scope does not authorize a production application, technical-stack decision
 | Gate | Status (Open / Confirmed) | Decision/evidence reference |
 |---|---|---|
 | M2-A — Visual identity | Open | |
-| M2-B — Customer-validation focus and approach | Open | |
-| M2-C — Product/photo evidence basis | Open | |
-| M2-D — Journey priority | Open | |
-| M2-E — Non-production prototype scope | Open | |
+| M2-B — Japan-first customer segment focus | Open | |
+| M2-C — Mixed product/photo evidence | Open | |
+| M2-D — Journey priority and cross-journey device coverage | Open | |
+| M2-E — Six-page shared-shell non-production scope | Open | |
 
 **Overall M2 entry status:** BLOCKED until every applicable gate is explicitly confirmed and recorded.
 

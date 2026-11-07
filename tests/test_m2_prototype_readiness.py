@@ -18,6 +18,10 @@ class M2PrototypeReadinessTests(unittest.TestCase):
         self.assertIn("M2 has not started", content)
         self.assertIn("owner explicitly", content.lower())
         self.assertIn("do not recruit or spend", content.lower())
+        for term in ["japan-first customer-segment focus", "home and interior buyers", "craft and material enthusiasts", "gift and considered-purchase buyers", "trade and design professionals", "shared global shell", "responsive primary and category navigation", "search entry/disclosure", "global footer", "reusable presentation components", "mixed product/photo evidence", "rights/permissions", "mobile is a required test dimension across every selected journey"]:
+            with self.subTest(term=term):
+                self.assertIn(term, content.lower())
+        self.assertNotIn("mobile recovery", content.lower())
 
     def test_entry_pack_covers_six_first_routes_and_five_viewports(self):
         content = DOC.read_text(encoding="utf-8")
@@ -51,6 +55,10 @@ class M2PrototypeReadinessTests(unittest.TestCase):
         self.assertIn("Recruitment, incentives and other spending remain unauthorized", content)
         self.assertIn("Do not commit populated catalogue data", content)
         self.assertIn("non-production prototype only", content.lower())
+        for term in ["initial customer segments (japan-first)", "home and interior buyers", "craft and material enthusiasts", "gift and considered-purchase buyers", "trade and design professionals", "mixed genuine-photo and placeholder evidence", "mobile is a required test dimension", "responsive primary/category navigation", "global footer"]:
+            with self.subTest(term=term):
+                self.assertIn(term, content.lower())
+        self.assertNotIn("mobile recovery", content.lower())
         self.assertNotIn("[x]", content.lower())
 
     def test_prototype_review_template_is_blank_and_does_not_request_direct_identifiers(self):
