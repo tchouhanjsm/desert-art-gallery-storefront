@@ -173,6 +173,7 @@ class EtsyReviewBundleTests(unittest.TestCase):
                 sorted(path.name for path in bundle.iterdir()),
                 [
                     "README.txt",
+                    "bundle-manifest.json",
                     "image-source-references.csv",
                     "source-row-review.csv",
                     "source-rows.jsonl",
