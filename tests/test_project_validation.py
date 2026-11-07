@@ -85,7 +85,7 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
         specification = (ROOT / "docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md").read_text(encoding="utf-8")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("D-010", decisions)
-        self.assertIn("Reference fidelity is BLEND", decisions)
+        self.assertIn("DAG's reference fidelity is BLEND", decisions)
         self.assertIn("POJ Studio is the primary reference", decisions)
         self.assertIn("Macaroni Shoten is the secondary reference", decisions)
         for section in [
