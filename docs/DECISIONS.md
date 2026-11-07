@@ -76,10 +76,17 @@ Decision: Mobile testing is required across every selected customer journey; mob
 Boundaries: This sets the responsive testing rule only. It does not prioritize or select any of the five candidate customer journeys; M2-D remains open for the owner's journey order.
 Date: 2026-11-07
 
-### D-013 — Shared experience shell is included in the six-page prototype scope
-Status: CONFIRMED
-Decision: The six-route non-production prototype scope includes a consistent global header, navigation, search entry/disclosure, footer and reusable presentation components across all six pages.
-Boundaries: This is a scope instruction, not authorization to start the prototype or build a production application. M2-E remains open pending explicit confirmation of the complete scope and non-transactional boundary.
+### D-013 — Six-route prototype scope
+Status: SUPERSEDED BY D-014
+Decision: The earlier six-route non-production prototype scope and its shared-shell assumptions are superseded by the owner-supplied nine-page structural kit in D-014.
+Boundaries: This historical decision is retained for audit context only. It does not define current routes, sections or components.
+Date: 2026-11-07
+
+### D-014 — Owner-controlled Design Kit v2 is the structural source
+Status: CONFIRMED — STRUCTURAL SCOPE ONLY
+Decision: Adopt the owner-supplied DAG Owner-Controlled Design Kit v2 as the sole active structural HTML/CSS source. Its exact nine HTML pages, CSS files, responsive styles, supplied prototype script, page order, sections and component inventory define the closed structural scope.
+Boundaries: This does not approve final brand colours, typography, type hierarchy/scale, logo, wordmark, descriptor, photography direction/cropping, final customer-facing copy, product facts or production application behaviour. `tokens-layout-only.css` is system/browser QA fallback only, not a DAG palette or production theme. Preserve supplied markup, styles, responsive rules, component structure, placeholders and disabled controls. Do not add pages, sections, shell items, features or functionality. Production application development, commerce behaviour, technical stack selection, public deployment and owner-only business/legal decisions remain unauthorised.
+Consequences: The active page and component inventories are `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md`. The former six-page M2 scope is superseded. Brand token inputs remain pending. Japan-first remains distinct from customer-facing language; the storefront remains English-only.
 Date: 2026-11-07
 
 ## Unresolved owner decisions
@@ -162,7 +169,7 @@ Boundaries: This is not an approved production schema, category taxonomy, curren
 Date: 2026-11-06
 
 ### P-016 — New reference-led DAG design exploration
-Status: PROPOSED
+Status: SUPERSEDED — HISTORICAL ONLY
 
 Basis: D-009 and docs/17-REFERENCE-LED-DESIGN-BRIEF.md.
 
