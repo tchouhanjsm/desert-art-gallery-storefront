@@ -15,13 +15,14 @@
 - Study POJ Studio and Macaroni Shoten; record dated observations and live-site limitations.
 - Translate useful retail principles into DAG-specific requirements without cloning either site.
 - Prepare a source-neutral catalogue intake kit so product facts, evidence and image references can be checked before any application or database is selected.
+- Record the historical Etsy export field mapping and preserve source-row identity, raw SKU ambiguity and remote image references separately from local media.
 - Present four new, materially different DAG visual territories. The earlier P-015 set remains rejected and archived.
 - Provide exact palette values, typography families/weights/licensing, layout and art-direction specifications.
 - Render desktop and mobile examples with accessibility/contrast notes.
 - Present neutral trade-offs; do not recommend, rank, score, select or imply a default.
 - Ask the owner to choose, combine, request revisions or reject all options. Stop before final tokens or production styling.
 
-Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md), [commercial model assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md), [reference research log](REFERENCE-RESEARCH-LOG.md), [reference-led design brief](17-REFERENCE-LED-DESIGN-BRIEF.md), [four visual specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md), [rendered desktop/mobile board](../design/explorations/reference-led-directions.html), [catalogue intake and fact-verification standard](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md), and [owner decision register](DECISIONS.md).
+Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md), [commercial model assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md), [reference research log](REFERENCE-RESEARCH-LOG.md), [reference-led design brief](17-REFERENCE-LED-DESIGN-BRIEF.md), [four visual specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md), [rendered desktop/mobile board](../design/explorations/reference-led-directions.html), [catalogue intake and fact-verification standard](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md), [Etsy source export mapping](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md), and [owner decision register](DECISIONS.md).
 
 Exit: the owner explicitly chooses, combines, requests revisions or rejects the four new proposals and confirms the initial customer-validation focus. M1 does not authorize production theme implementation before the decision.
 

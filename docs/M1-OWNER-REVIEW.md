@@ -43,3 +43,8 @@ M1 creative direction closes only after the owner reviews the fresh reference-le
 ## Catalogue preparation delivered
 
 A framework-neutral, draft catalogue intake and fact-verification kit is available in [20 — Catalogue Intake and Fact Verification](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md), with blank CSV templates and a standard-library validator. It prepares a future 10–20 product sample without importing data or deciding the final taxonomy, commerce model, currency or backend. The owner has not supplied or approved real product rows for Git.
+
+
+## Etsy source compatibility review
+
+A source mapping plan is documented in [21 — Etsy Source Export Mapping and Reconciliation](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md). It distinguishes raw export rows, blank/duplicate SKUs and remote Etsy image URLs from owner-verified product records and local media assets. The reference export findings are historical; the original CSV is not tracked in Git and has not been re-audited. No product records or image URLs have been imported.

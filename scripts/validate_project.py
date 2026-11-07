@@ -16,10 +16,10 @@ REQUIRED = [
  "docs/06-CONTENT-STRATEGY.md","docs/07-INFORMATION-ARCHITECTURE.md","docs/08-TECHNICAL-ARCHITECTURE.md",
  "docs/09-QUALITY-AND-ACCEPTANCE.md","docs/10-ROADMAP.md","docs/11-CUSTOMER-AND-MERCHANDISING-STRATEGY.md",
  "docs/12-MERCHANT-OPERATIONS.md","docs/13-DESIGN-REVIEW-PROTOCOL.md","docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md",
- "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md","docs/19-PHOTO-LIBRARY-AUDIT.md","docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md","docs/ADR-TEMPLATE.md",
+ "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md","docs/19-PHOTO-LIBRARY-AUDIT.md","docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md","docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md","docs/ADR-TEMPLATE.md",
  "docs/AI-BOOTSTRAP-PROMPT.md","docs/AI-WORKING-PROTOCOL.md","docs/DECISIONS.md",
  "docs/OWNER-INPUT-REGISTER.md","docs/REFERENCE-RESEARCH-LOG.md","docs/UPDATE-VISUAL-OWNER-GATE-PROMPT.md",
- "scripts/validate_project.py","scripts/audit_photo_library.py","scripts/validate_catalogue_intake.py","tests/test_project_validation.py","tests/test_photo_library_audit.py","tests/test_catalogue_intake.py","templates/catalogue/README.md","templates/catalogue/products.csv","templates/catalogue/product-facts.csv","templates/catalogue/product-images.csv"]
+ "scripts/validate_project.py","scripts/audit_photo_library.py","scripts/validate_catalogue_intake.py","tests/test_project_validation.py","tests/test_photo_library_audit.py","tests/test_catalogue_intake.py","templates/catalogue/README.md","templates/catalogue/products.csv","templates/catalogue/product-facts.csv","templates/catalogue/product-images.csv","templates/catalogue/product-source-records.csv","templates/catalogue/etsy-image-sources.csv"]
 OPTIONS=["Graphic Atelier","Future Relics","Living Garden","Modern Folk Pop"]
 REFERENCE_OPTIONS=["Porcelain Index","Bordeaux Editions","Blue Current","Citron Signal"]
 REFERENCE_FONTS=["Cormorant Garamond","Manrope","Fraunces","DM Sans","Newsreader","Work Sans","Space Grotesk","IBM Plex Mono"]

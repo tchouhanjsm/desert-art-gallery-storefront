@@ -75,3 +75,6 @@ A source-neutral draft intake standard and local CSV validator are available for
 - Validate a private working folder with `python scripts/validate_catalogue_intake.py /path/to/private/catalogue-intake`
 
 Do not commit populated product data or private source paths.
+
+- [Etsy source export mapping and reconciliation plan](docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md)
+- Preserve raw export records and IMAGE1–IMAGE10 references in the separate private intake tables; never treat remote Etsy image URLs as local or rights-cleared DAG imagery.

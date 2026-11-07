@@ -12,6 +12,7 @@ import re
 from dataclasses import dataclass
 from decimal import Decimal
 from pathlib import Path, PurePosixPath, PureWindowsPath
+from urllib.parse import urlsplit
 
 HEADERS = {
     "products.csv": [
@@ -28,6 +29,18 @@ HEADERS = {
         "product_id", "asset_id", "source_relative_path", "image_role",
         "sort_order", "rights_status", "publication_status", "alt_text_en",
     ],
+    "product-source-records.csv": [
+        "product_id", "source_system", "source_file_sha256", "source_data_row_number",
+        "source_record_ref", "source_record_id", "source_sku_raw", "source_title_raw",
+        "source_price_raw", "source_currency_raw", "source_quantity_raw",
+        "source_materials_raw", "source_tags_raw", "source_variations_raw",
+        "reconciliation_status", "internal_notes",
+    ],
+    "etsy-image-sources.csv": [
+        "product_id", "source_record_ref", "source_image_field", "source_image_url",
+        "local_asset_id", "rights_status", "download_status", "owner_review_status",
+        "internal_notes",
+    ],
 }
 PUBLICATION_STATES = {"draft", "in_review", "approved_for_publication", "published", "archived"}
 AVAILABILITY_STATES = {"not_verified", "available", "unavailable", "made_to_order"}
@@ -36,6 +49,13 @@ PUBLIC_APPROVAL_STATES = {"not_reviewed", "approved", "do_not_publish"}
 IMAGE_ROLES = {"primary", "detail", "scale", "context", "packaging", "other"}
 IMAGE_RIGHTS_STATES = {"unknown", "cleared", "restricted"}
 IMAGE_PUBLICATION_STATES = {"pending", "approved", "blocked"}
+SOURCE_RECONCILIATION_STATES = {"not_reviewed", "needs_reconciliation", "owner_reconciled"}
+SOURCE_SYSTEM = re.compile(r"^[a-z0-9][a-z0-9_-]{0,39}$")
+SOURCE_FILE_SHA256 = re.compile(r"^[0-9a-f]{64}$")
+SOURCE_DATA_ROW_NUMBER = re.compile(r"^[1-9][0-9]*$")
+ETSY_IMAGE_FIELD = re.compile(r"^IMAGE(?:[1-9]|10)$")
+ETSY_IMAGE_DOWNLOAD_STATES = {"not_attempted", "downloaded", "blocked"}
+ETSY_IMAGE_REVIEW_STATES = {"pending", "accepted", "rejected"}
 CURRENCY_CODE = re.compile(r"^[A-Z]{3}$")
 DECIMAL_AMOUNT = re.compile(r"^(?:0|[1-9][0-9]*)(?:\.[0-9]+)?$")
 
@@ -166,6 +186,24 @@ def _load_photo_audit(csv_path: Path, summary_path: Path) -> tuple[dict[str, dic
         ))
     return inventory, issues
 
+def _is_allowed_etsy_image_url(value: str) -> bool:
+    if not value or len(value) > 2048:
+        return False
+    try:
+        parsed = urlsplit(value)
+        return (
+            parsed.scheme == "https"
+            and parsed.hostname is not None
+            and parsed.hostname.lower() == "i.etsystatic.com"
+            and parsed.username is None
+            and parsed.password is None
+            and parsed.port is None
+            and parsed.path.startswith("/")
+        )
+    except ValueError:
+        return False
+
+
 def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None = None, photo_audit_summary: Path | None = None) -> list[Issue]:
     root = directory.expanduser().resolve()
     if not root.exists() or not root.is_dir():
@@ -175,6 +213,8 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
     product_rows = _read_rows(root, "products.csv", issues)
     fact_rows = _read_rows(root, "product-facts.csv", issues)
     image_rows = _read_rows(root, "product-images.csv", issues)
+    source_record_rows = _read_rows(root, "product-source-records.csv", issues)
+    etsy_image_source_rows = _read_rows(root, "etsy-image-sources.csv", issues)
     photo_inventory: dict[str, dict[str, str]] | None = None
     if photo_audit_csv is not None and photo_audit_summary is not None:
         photo_inventory, audit_issues = _load_photo_audit(photo_audit_csv, photo_audit_summary)
@@ -229,6 +269,46 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
                         issues.append(Issue("products.csv", line, "price_amount must be finite"))
                 if not CURRENCY_CODE.fullmatch(currency):
                     issues.append(Issue("products.csv", line, "price_currency must be a three-letter uppercase currency code"))
+
+    source_records: dict[str, dict[str, str]] = {}
+    seen_source_rows: set[tuple[str, str, str]] = set()
+    for line, row in source_record_rows:
+        product_id = _value(row, "product_id")
+        if not product_id or product_id not in products:
+            issues.append(Issue("product-source-records.csv", line, f"product_id {product_id!r} does not exist in products.csv"))
+        source_system = _value(row, "source_system").lower()
+        if not SOURCE_SYSTEM.fullmatch(source_system):
+            issues.append(Issue("product-source-records.csv", line, "source_system must be a lowercase source key such as etsy"))
+        file_hash = _value(row, "source_file_sha256")
+        if not SOURCE_FILE_SHA256.fullmatch(file_hash):
+            issues.append(Issue("product-source-records.csv", line, "source_file_sha256 must be a lowercase 64-character SHA-256 digest"))
+        data_row = _value(row, "source_data_row_number")
+        if not SOURCE_DATA_ROW_NUMBER.fullmatch(data_row):
+            issues.append(Issue("product-source-records.csv", line, "source_data_row_number must be a positive logical data-row number"))
+        record_ref = _value(row, "source_record_ref")
+        expected_ref = f"{source_system}:{file_hash}:row:{data_row}"
+        if not record_ref or record_ref != expected_ref:
+            issues.append(Issue("product-source-records.csv", line, f"source_record_ref must equal {expected_ref!r}"))
+        if not _value(row, "source_title_raw"):
+            issues.append(Issue("product-source-records.csv", line, "source_title_raw is required to support manual reconciliation"))
+        reconciliation = _value(row, "reconciliation_status")
+        if reconciliation not in SOURCE_RECONCILIATION_STATES:
+            issues.append(Issue("product-source-records.csv", line, f"reconciliation_status must be one of {sorted(SOURCE_RECONCILIATION_STATES)}"))
+        identity = (source_system, file_hash, data_row)
+        if identity in seen_source_rows:
+            issues.append(Issue("product-source-records.csv", line, f"duplicate source snapshot row {identity!r}"))
+        seen_source_rows.add(identity)
+        if record_ref:
+            if record_ref in source_records:
+                issues.append(Issue("product-source-records.csv", line, f"duplicate source_record_ref {record_ref!r}"))
+            else:
+                source_records[record_ref] = row
+        if product_id in products and _value(products[product_id], "source_record_ref") != record_ref:
+            issues.append(Issue("product-source-records.csv", line, "products.csv source_record_ref must match this source-record row"))
+    for product_id, product in products.items():
+        product_ref = _value(product, "source_record_ref")
+        if product_ref and product_ref not in source_records:
+            issues.append(Issue("products.csv", None, f"source_record_ref {product_ref!r} has no matching product-source-records.csv row"))
 
     approved_primary_images: set[str] = set()
     seen_asset_links: set[tuple[str, str]] = set()
@@ -303,6 +383,50 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
                 issues.append(Issue("product-images.csv", line, "an approved image requires alt_text_en"))
             if role == "primary" and product_id:
                 approved_primary_images.add(product_id)
+
+    local_asset_pairs = seen_asset_links
+    seen_etsy_image_fields: set[tuple[str, str]] = set()
+    for line, row in etsy_image_source_rows:
+        product_id = _value(row, "product_id")
+        if not product_id or product_id not in products:
+            issues.append(Issue("etsy-image-sources.csv", line, f"product_id {product_id!r} does not exist in products.csv"))
+        record_ref = _value(row, "source_record_ref")
+        source_record = source_records.get(record_ref)
+        if source_record is None:
+            issues.append(Issue("etsy-image-sources.csv", line, f"source_record_ref {record_ref!r} does not exist in product-source-records.csv"))
+        elif _value(source_record, "source_system").lower() != "etsy":
+            issues.append(Issue("etsy-image-sources.csv", line, "Etsy image references must link to an etsy source record"))
+        elif _value(source_record, "product_id") != product_id:
+            issues.append(Issue("etsy-image-sources.csv", line, "product_id does not match the linked source record"))
+        image_field = _value(row, "source_image_field").upper()
+        if not ETSY_IMAGE_FIELD.fullmatch(image_field):
+            issues.append(Issue("etsy-image-sources.csv", line, "source_image_field must be IMAGE1 through IMAGE10"))
+        image_key = (record_ref, image_field)
+        if image_key in seen_etsy_image_fields:
+            issues.append(Issue("etsy-image-sources.csv", line, f"duplicate source image field {image_key!r}"))
+        seen_etsy_image_fields.add(image_key)
+        source_url = _value(row, "source_image_url")
+        if not _is_allowed_etsy_image_url(source_url):
+            issues.append(Issue("etsy-image-sources.csv", line, "source_image_url must be HTTPS on the exact i.etsystatic.com host without credentials or a port"))
+        rights = _value(row, "rights_status")
+        if rights not in IMAGE_RIGHTS_STATES:
+            issues.append(Issue("etsy-image-sources.csv", line, f"rights_status must be one of {sorted(IMAGE_RIGHTS_STATES)}"))
+        download = _value(row, "download_status")
+        if download not in ETSY_IMAGE_DOWNLOAD_STATES:
+            issues.append(Issue("etsy-image-sources.csv", line, f"download_status must be one of {sorted(ETSY_IMAGE_DOWNLOAD_STATES)}"))
+        review = _value(row, "owner_review_status")
+        if review not in ETSY_IMAGE_REVIEW_STATES:
+            issues.append(Issue("etsy-image-sources.csv", line, f"owner_review_status must be one of {sorted(ETSY_IMAGE_REVIEW_STATES)}"))
+        local_asset_id = _value(row, "local_asset_id")
+        if download == "downloaded":
+            if not local_asset_id:
+                issues.append(Issue("etsy-image-sources.csv", line, "downloaded source image requires local_asset_id"))
+            elif (product_id, local_asset_id) not in local_asset_pairs:
+                issues.append(Issue("etsy-image-sources.csv", line, "local_asset_id must match a product-images.csv asset for this product"))
+        elif local_asset_id:
+            issues.append(Issue("etsy-image-sources.csv", line, "local_asset_id must remain blank until download_status=downloaded"))
+        if review == "accepted" and (rights != "cleared" or download != "downloaded" or not local_asset_id):
+            issues.append(Issue("etsy-image-sources.csv", line, "an accepted source image requires cleared rights and a downloaded local asset mapping"))
 
     for product_id, row in products.items():
         if _value(row, "publication_status") in {"approved_for_publication", "published"} and product_id not in approved_primary_images:

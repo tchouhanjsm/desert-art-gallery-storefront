@@ -72,6 +72,10 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
             content = (template_dir / filename).read_text(encoding="utf-8").splitlines()
             self.assertEqual(content, [",".join(expected_headers)])
         self.assertIn("draft", (ROOT / "docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md").read_text(encoding="utf-8"))
+        etsy_doc = (ROOT / "docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md").read_text(encoding="utf-8")
+        self.assertIn("not a fresh re-audit", etsy_doc)
+        self.assertIn("IMAGE1", etsy_doc)
+
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8").lower()
         self.assertIn("must not be committed to git", agents)
         self.assertIn("owner verification", agents)

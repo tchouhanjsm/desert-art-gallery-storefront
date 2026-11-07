@@ -115,6 +115,17 @@ Owner decision: The owner explicitly rejected all four on 6 November 2026: "My D
 
 Consequences: None of the four proposals may be treated as selected, preferred, ranked, blended by the AI, a default or an active candidate. No winner exists; the entire P-015 package is rejected. Retain the assets and specifications as historical audit material only. Do not use their palettes, type pairings or preview compositions as a starting default.
 
+### P-018 — Etsy source export mapping and remote-image reconciliation
+Status: PROPOSED
+
+Proposal: Add a source-snapshot mapping for Etsy Listings Download data, using the immutable source-file SHA-256 and logical data-row number as the row identity because the documented export has no listing ID and contains repeated titles. Preserve raw duplicate/blank SKUs, source descriptions/prices/materials/tags/quantity/variations and IMAGE1–IMAGE10 URLs in separate private intake tables. Keep remote URLs separate from local assets; no download or import is authorized by this proposal.
+
+Evidence boundary: The mapping references the historical audit written in the earlier `desert-art-gallery` repository on 4 November 2026 (527 rows and other reported observations). The original export is not tracked in the new storefront repository and has not been re-audited in this task. A current source file must be provided privately before import preview or row reconciliation.
+
+Boundaries: No raw Etsy export, populated source manifest, image URL, price, category, product or downloaded media is committed to Git. This does not approve a production import, taxonomy, currency, pricing, inventory, legal/commerce policy, backend or visual system.
+
+Date: 2026-11-07
+
 ### P-017 — Draft source-neutral catalogue intake contract
 Status: PROPOSED
 

@@ -6,7 +6,7 @@
 
 Prepare accurate source information for the eventual DAG catalogue before selecting a database, CMS, checkout implementation or hosting platform. The owner has approximately 300 products and a substantial original image library. This intake contract provides a consistent way to capture product identity, facts and image references without inventing information.
 
-The CSV templates are blank. They contain no DAG product records, prices, maker claims or image paths.
+The CSV templates are blank. They contain no DAG product records, prices, maker claims, source paths or image URLs.
 
 ## Non-negotiable content rules
 
@@ -27,7 +27,9 @@ Create a private working folder by copying the header-only files in `templates/c
 |---|---|---|
 | `products.csv` | One product record | Stable identity, English title/copy, candidate category, internal publication/availability state and evidenced price |
 | `product-facts.csv` | One fact about one product | Material, dimensions, condition, care, maker, origin, technique and any other factual attribute with evidence and publication approval |
-| `product-images.csv` | One image mapped to one product | Source path, asset ID, image role/order, rights state, publication state and English alt text |
+| `product-images.csv` | One local image mapped to one product | Local source path, asset ID, image role/order, rights state, publication state and English alt text |
+| `product-source-records.csv` | One immutable source-export row mapped to one product | Source system, source-file SHA-256, logical data-row number, raw source values and reconciliation state |
+| `etsy-image-sources.csv` | One Etsy IMAGE1–IMAGE10 URL reference | Original remote URL, source record link, rights/download/review state and eventual local asset ID |
 
 Do not add real product rows to the repository. Work on private copies outside Git and outside the original photo folder.
 
@@ -71,7 +73,7 @@ From the repository root:
 python scripts/validate_catalogue_intake.py "/path/to/private/catalogue-intake"
 ```
 
-The validator expects the three documented CSV files. It checks headers, IDs, SKU uniqueness, allowed internal states, evidenced price pairs, fact verification/public approval, image paths/rights/alt text, image ordering and cross-file product references. It never edits the CSV files or imports records into an application.
+The validator expects the five documented CSV files. It checks headers, IDs, normalized SKU uniqueness, allowed internal states, evidenced price pairs, fact verification/public approval, local image paths/rights/alt text, image ordering, source-file/row identities, remote Etsy image-host restrictions and cross-file product references. Duplicate raw source SKUs remain preserved for reconciliation and are not treated as unique catalogue SKUs. It never edits the CSV files or imports records into an application.
 
 An optional cross-check can verify every product image path against the read-only photo-audit CSV and its JSON summary. Both files must come from the same run, the summary must be marked `read_only=true` and `scan_complete=true`, and its candidate count must match the CSV rows. This also prevents an image with audit status `review` or a byte-identical duplicate from being marked approved.
 
@@ -84,6 +86,8 @@ python scripts/validate_catalogue_intake.py "/path/to/private/catalogue-intake" 
 Keep both report files private and outside Git. This optional check compares references only; it does not copy, transform or publish images.
 
 The checker validates structure and inventory references, not the truth of product claims or the legal right to publish an image. A structurally valid row can still contain inaccurate information; human source review, rights verification and owner publication approval remain mandatory.
+
+An Etsy Listings Download export also has a separate private source-record and remote-image mapping convention. See [21 — Etsy Source Export Mapping and Reconciliation](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md) for the historical source audit and field mapping.
 
 ## What this does not decide
 
