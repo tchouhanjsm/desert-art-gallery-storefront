@@ -3,7 +3,7 @@
 ## Status
 Not approved. This document defines the system and approval process. Do not treat palettes or tokens from earlier chats or the previous repository as approved brand values.
 
-No final palette, font pairing, visual personality or art direction has been approved. The previous four exploratory territories were rejected by the owner (D-008) and are historical only. The new reference-led design study is specified in [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md); see [owner authority/process](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+No final palette, font pairing, visual personality or art direction has been approved. The previous four exploratory territories were rejected by the owner (D-008) and are historical only. D-010 confirms a BLEND reference hierarchy—POJ Studio primary for ecommerce structure, Macaroni Shoten secondary for curation—but this does not authorize any foundational visual values. See [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md), [17 — Reference-Led Design Brief](17-REFERENCE-LED-DESIGN-BRIEF.md) and [owner authority/process](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.** Do not recommend, rank or select an option. Do not establish production tokens or a global theme until the owner explicitly chooses or combines options and the decision is recorded.
 
