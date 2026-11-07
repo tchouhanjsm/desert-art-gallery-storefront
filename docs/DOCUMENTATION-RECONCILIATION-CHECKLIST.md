@@ -1,40 +1,48 @@
 # Documentation Reconciliation Checklist — DAG v2
 
 ## Authority and scope
-- [x] Root agent guidance updated to define authority hierarchy.
-- [x] Design authority and documentation source-of-truth documents updated.
-- [x] Nine-page inventory transcribed from the owner-supplied kit.
-- [x] Closed component and disabled-control inventory transcribed.
-- [x] D-014 recorded; former D-013 six-page scope marked superseded.
+- [x] Root `AGENTS.md` establishes the authority hierarchy and D-014 baseline.
+- [x] Root `README.md` identifies the installed source and nine-page scope.
+- [x] `docs/DESIGN-AUTHORITY.md` and `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md` define control boundaries.
+- [x] D-014 recorded; D-013 six-page scope marked superseded.
+- [x] P-015 explicitly rejected; P-016 and Material Archive / Collected Colour historical only.
 - [x] Japan-first / English-only distinction retained.
-- [x] Owner-only brand decisions retained; layout-only tokens are not production tokens.
-- [x] POJ primary / Macaroni secondary reference hierarchy retained.
-- [x] No-fabrication and no-production-development boundaries retained.
+- [x] Owner-only brand decisions remain pending.
+- [x] Layout-only system tokens remain QA fallback, not production brand tokens.
+- [x] Closed page and component inventories reflect the supplied kit.
+- [x] Disabled controls and no-production/no-additions boundary documented.
+
+## Source kit
+- [x] All 25 kit files materialized under `design/owner-controlled-kit-v2/`.
+- [x] Nine supplied HTML pages present.
+- [x] Four supplied CSS files present.
+- [x] Supplied prototype JavaScript present.
+- [x] Eleven kit-local README/authority/inventory/governance files present and reconciled to D-014.
+- [x] All 14 original HTML/CSS/JS assets byte-verified against the owner ZIP using Git blob SHA-1.
+- [x] Validator enforces exact 25-file inventory and all 14 source-asset hashes.
+- [ ] CI run confirms source integrity validator passes.
 
 ## Repository-wide reconciliation
-- [ ] All old visual direction boards and their SVGs moved to a historical, non-operative archive.
-- [ ] Old P-015/P-016 specs replaced with historical stubs or archived without active instructions.
-- [ ] Former six-route M2 spec and worksheet archived or rewritten to nine-page contract.
-- [ ] AI bootstrap, working protocol, visual gate prompts and nested README files updated.
-- [ ] All technical, catalogue, research, merchant and content docs checked for contradictions.
-- [ ] CI validators and tests no longer require rejected options or the former six-page scope.
-- [ ] Complete path-level matrix updated to observed final dispositions (current matrix includes proposed actions, not proof of completion).
+- [x] Root README and AGENTS updated.
+- [x] Active design/creative direction, visual system, photography and information architecture docs reconciled.
+- [x] Technical, quality, roadmap and design review docs reconciled.
+- [x] AI bootstrap, working protocol and owner-gate prompt updated.
+- [x] Owner decision and owner-input registers updated.
+- [x] Six-route M2 acceptance pack replaced with nine-page D-014 acceptance contract.
+- [x] Old visual board/spec files moved to historical archive; active paths retired.
+- [x] Old M1 review and six-route M2 worksheet/pack preserved historically.
+- [x] Photo, catalogue, Etsy, research and merchant materials retained where still valid.
+- [x] CI validator, M2 readiness audit and affected tests updated.
+- [ ] Complete tracked-path stale-instruction pass recorded.
+- [ ] Final path-level matrix spot-check against the complete Git tree.
 
-## Source-kit installation
-- [ ] All 25 original kit files extracted under `design/owner-controlled-kit-v2/`.
-- [ ] Nine HTML page paths present and internal CSS/JS references resolve.
-- [ ] Original HTML/CSS/JS bytes compare exactly to the supplied archive.
-- [ ] Both inventories and governance documents are present in the kit directory.
-- [ ] No unsupplied UI, content, sections, components or interactions have been added.
-- [ ] `tokens-layout-only.css` remains QA-only; no production brand palette/fonts selected.
-
-## Final quality gate
+## Quality gate
 - [ ] Run `python3 scripts/validate_project.py`.
 - [ ] Run `python3 scripts/audit_m2_readiness.py`.
 - [ ] Run `python3 -m unittest discover -s tests -v`.
-- [ ] Run stale instruction searches distinguishing active docs from historical archives.
-- [ ] Validate every Markdown link and every kit file reference.
-- [ ] Inspect Git diff for product code, privacy, fabricated data and accidental asset migration.
-- [ ] Confirm PR CI is green before merge.
+- [ ] Validate internal Markdown links.
+- [ ] Complete contextual stale-term search and distinguish active vs historical matches.
+- [ ] Review complete PR diff for fabricated data, accidental product changes, scope additions or private data.
+- [ ] Confirm GitHub Actions is green before merge.
 
-A checked box means the evidence is visible on the branch or in a recorded run. Do not mark a check complete based only on intention or a local result that is no longer available.
+A checked box indicates evidence exists on the branch or in a recorded run. Do not mark CI or local checks complete until the actual results are known.
