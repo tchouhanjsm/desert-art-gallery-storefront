@@ -78,3 +78,46 @@ After the photo inventory and image source references exist, validate local imag
 ## Scope
 
 This plan does not execute an Etsy import, download images, choose an owner-facing category taxonomy, approve price or inventory, define legal seller arrangements, choose a database, or authorize the production storefront. The owner must review the mapping and supply the original data before any real source-row reconciliation is performed.
+
+
+## Private raw-source review bundle
+
+The read-only preflight can now create a complete private review package without assigning product identities or writing into the catalogue templates.
+
+    python scripts/build_etsy_review_bundle.py "/private/path/EtsyListingsDownload.csv" "/private/reports/dag-etsy-review-2026-11-07"
+
+The destination must be a new directory outside the source CSV directory and every Git working tree. The tool refuses symbolic-link inputs/outputs, existing destination paths, and exports with fatal header errors. It creates:
+
+- source-summary.json — source SHA-256, structural checks and warning summary.
+- source-row-review.csv — compact row index, duplicate indicators and review flags.
+- source-rows.jsonl — all raw source fields, retaining original column names and exact text values, including multiline descriptions.
+- image-source-references.csv — one row per populated image field, with source URL and host-preflight status.
+- README.txt — private-data handling and approval boundaries.
+
+This is an unassigned raw-source staging package, not the product-source-records.csv template and not a product import. It intentionally has no product_id: repeated titles and blank/duplicate SKUs still require human reconciliation. The image-reference CSV intentionally has no product assignment, leaves local asset IDs blank, marks rights as unknown and publication as not approved, and preserves invalid-host references for manual review. An accepted host is not proof of live content or image rights. No images are downloaded or transformed. The original CSV remains unchanged.
+
+Keep this bundle private and do not commit it, upload it to a public/shared folder, or feed it directly into a production import. After manual source-row-to-product reconciliation, separately verify product claims, price, inventory, image identity and rights before populating the draft catalogue templates.
+
+
+## Bundle integrity verification
+
+Every generated private review package also contains bundle-manifest.json, which records the byte length and SHA-256 digest of each payload file. After copying or storing the package, verify it before manual review:
+
+    python scripts/verify_etsy_review_bundle.py "/private/reports/dag-etsy-review-2026-11-07"
+
+The read-only verifier checks payload checksums, expected files, source-row numbering and SHA-based identities, cross-links from image references to raw source columns, allowed-host status consistency, and the requirement that image rights remain unknown and publication remain unapproved. It does not repair or modify a bundle. Any checksum mismatch, missing/extra file, broken reference or approval-state change fails verification.
+
+The manifest detects accidental corruption or incomplete handling; it is not a digital signature and does not prove who created the package or that the original Etsy export is authentic.
+
+
+## Editable source-to-product reconciliation worksheet
+
+After verifying a private review bundle, generate a separate editable owner worksheet:
+
+    python scripts/create_etsy_reconciliation_worklist.py "/private/reports/dag-etsy-review-2026-11-07" "/private/reports/dag-etsy-reconciliation-worklist.csv"
+
+The worksheet is a separate CSV outside the immutable bundle and every Git working tree. It includes each source-row reference, raw title/SKU/price/currency/quantity/materials/tags/variation summary, duplicate indicators and image-reference count. It also provides blank columns for a proposed DAG product ID, identity-match basis and evidence reference, plus an unreviewed owner status and notes.
+
+The worksheet deliberately does not assign product IDs, normalize SKUs, deduplicate titles, decide whether rows represent the same physical DAG item, approve source prices or quantities, or approve product facts, image rights or publication.
+
+The worksheet is editable and therefore is not covered by the immutable bundle checksum manifest. Keep it private and preserve the original bundle unchanged. After owner-led identity reconciliation, populate the draft product templates and run the catalogue intake validator; structural validation still does not replace factual or publication approval.

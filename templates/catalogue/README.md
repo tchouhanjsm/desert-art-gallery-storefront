@@ -11,3 +11,9 @@ These header-only CSV files are proposed preparation templates, not a production
 Copy these files to a private working folder before adding product data. Do not commit populated catalogue files or internal source paths to Git. Run `python scripts/validate_catalogue_intake.py /path/to/private/folder` to check structure and cross-file references.
 
 Review docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md and docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md before use. Category values, operational states and fields remain proposals until the owner approves the intake contract.
+
+For an unassigned, read-only raw Etsy source review bundle, see the command and safety boundaries in document 21. The bundle is intentionally separate from these product-linked templates; it does not create product IDs or catalogue records.
+
+Generated private Etsy review bundles now include a checksum manifest. Run python scripts/verify_etsy_review_bundle.py /path/to/private-bundle to verify integrity and row/image-reference consistency before manual reconciliation.
+
+After verifying a private review bundle, create a separate editable source-to-product reconciliation worksheet with python scripts/create_etsy_reconciliation_worklist.py /path/to/private-bundle /path/to/private-worklist.csv. Keep the worksheet outside Git and preserve the original bundle unchanged.
