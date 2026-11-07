@@ -52,8 +52,10 @@ class OwnerControlledVisualGovernanceTests(unittest.TestCase):
         for font in REFERENCE_FONTS:
             self.assertIn(font, spec)
             self.assertIn(font, board)
-        self.assertIn("Desktop composition", board)
-        self.assertIn("Mobile composition", board)
+        self.assertIn("Desktop layout preview", board)
+        self.assertIn("Mobile layout preview", board)
+        self.assertNotIn("1440-width concept", board)
+        self.assertNotIn("390-width concept", board)
         self.assertIn("not DAG products", board)
 
 
