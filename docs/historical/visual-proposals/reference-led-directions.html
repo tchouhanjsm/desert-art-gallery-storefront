@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>DAG — Reference-led visual territories / owner review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Work+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+.skip-link{position:absolute;left:12px;top:12px;z-index:1000;transform:translateY(-160%);padding:10px 14px;background:#20231f;color:#f7f4ed;border:2px solid #f7f4ed;text-decoration:underline;font:700 12px/1.2 Manrope,sans-serif}
+.skip-link:focus,.skip-link:focus-visible{transform:translateY(0);outline:3px solid #20231f;outline-offset:3px}
+:root{font-family:Manrope,Arial,sans-serif;color:#20231f;background:#e9e7e1}
+body{margin:0;padding:28px}
+.page{max-width:1600px;margin:0 auto}
+.kicker{font:700 10px/1.4 Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#555}
+.intro{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;border-bottom:1px solid #aaa;padding:14px 0 30px}
+.intro h1{font:600 clamp(42px,6vw,84px)/.88 "Cormorant Garamond",serif;letter-spacing:-.045em;margin:14px 0 0;max-width:900px}
+.intro p{font-size:14px;line-height:1.75;max-width:520px;margin:0;color:#4c504b}
+.gate{margin:22px 0 28px;padding:16px 20px;background:#20231f;color:#f7f4ed;line-height:1.6;font-size:13px}
+.gate strong{display:block;letter-spacing:.12em;text-transform:uppercase;font-size:11px;margin-bottom:4px}
+.option{background:#faf9f6;margin:0 0 32px;border:1px solid #cbc8c0}
+.option-head{padding:22px 26px 18px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
+.option-head h2{font:600 clamp(28px,3vw,42px)/1 "Cormorant Garamond",serif;margin:8px 0}
+.option-head p{font-size:13px;line-height:1.6;max-width:650px;margin:0;color:#4b504a}
+.proposal-tag{font:700 10px Manrope,sans-serif;letter-spacing:.14em;border:1px solid #888;padding:9px 11px;text-transform:uppercase;white-space:nowrap}
+.palette{display:flex;flex-wrap:wrap;gap:9px;padding:0 26px 18px}
+.swatch{display:flex;align-items:center;gap:7px;font:600 10px Manrope,sans-serif;color:#333}
+.chip{width:26px;height:26px;border:1px solid #0002;border-radius:50%;display:inline-block}
+.fontline{padding:0 26px 20px;font-size:12px;color:#454944;line-height:1.6}
+.previews{padding:18px 22px 24px;background:#e9e7e1;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:18px;align-items:start}
+.preview-label{font:700 9px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#555;margin:0 0 9px}
+.screen{border:1px solid #aaa;box-shadow:0 6px 18px #00000012;overflow:hidden}
+.desktop .screen{width:100%}
+.mobile .screen{width:100%;max-width:250px;margin:0 auto;border:7px solid #222;border-radius:24px}
+.store{--bg:#f4f0e8;--surface:#e3ded3;--paper:#fbf9f4;--ink:#242827;--muted:#4c5550;--accent:#8a4f43;--accent2:#3f5f53;--line:#c8c2b7;--display:"Cormorant Garamond",serif;--body:Manrope,sans-serif;background:var(--bg);color:var(--ink);font-family:var(--body)}
+.store .topline{padding:8px 18px;background:var(--ink);color:var(--paper);font-size:8px;letter-spacing:.12em;text-transform:uppercase;text-align:center}
+.store .nav{display:flex;justify-content:space-between;align-items:center;padding:15px 22px;border-bottom:1px solid var(--line);gap:12px}
+.store .brand{font:700 19px/1 var(--display);letter-spacing:.03em}
+.store .links{font-size:9px;letter-spacing:.08em;text-transform:uppercase;display:flex;gap:17px}
+.store .hero{display:grid;grid-template-columns:1.04fr .96fr;min-height:215px}
+.store .copy{padding:26px 30px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.store .eyebrow{font:600 8px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.store h3{font:600 clamp(30px,3.2vw,49px)/.94 var(--display);letter-spacing:-.035em;margin:12px 0}
+.store .sub{font:400 10px/1.55 var(--body);max-width:320px;color:var(--muted);margin:0 0 16px}
+.store .cta{font:700 8px var(--body);letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:var(--paper);padding:10px 13px}
+.art{position:relative;min-height:215px;background:var(--surface);overflow:hidden;display:grid;place-items:center}
+.art:before{content:"";position:absolute;width:48%;height:72%;border-radius:48% 48% 12% 12%;background:var(--accent);transform:rotate(-9deg);left:23%;top:15%}
+.art:after{content:"";position:absolute;width:26%;height:26%;border-radius:50%;background:var(--accent2);right:15%;top:14%;box-shadow:-170px 115px 0 -15px var(--paper)}
+.art .stamp{position:absolute;bottom:11px;right:13px;z-index:1;font:700 7px var(--body);letter-spacing:.12em;color:var(--ink);background:var(--paper);padding:5px 7px}
+.store .category-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.store .category-row span{padding:12px 8px;text-align:center;font:600 9px var(--body);border-right:1px solid var(--line)}
+.store .section-title{display:flex;align-items:end;justify-content:space-between;padding:16px 20px 9px}
+.store .section-title h4{font:600 22px var(--display);margin:0}
+.store .section-title small{font-size:8px;color:var(--muted)}
+.store .products{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 20px 20px}
+.store .product{min-width:0}
+.store .product-art{height:84px;background:var(--surface);position:relative;overflow:hidden}
+.store .product-art:before{content:"";position:absolute;inset:14px 24%;border-radius:50% 50% 8px 8px;background:var(--accent)}
+.store .product:nth-child(2) .product-art:before{background:var(--accent2);border-radius:5px;transform:rotate(8deg)}
+.store .product:nth-child(3) .product-art:before{background:var(--paper);border:7px solid var(--accent);border-radius:50%}
+.store .product small{display:block;font-size:7px;color:var(--muted);padding-top:6px}
+.store .product b{font-size:8px}
+.store .editorial{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);min-height:90px}
+.store .editorial .art{min-height:90px;background:var(--accent2)}
+.store .editorial .art:before{background:var(--paper);width:50%;height:58%;top:20%}
+.store .editorial .art:after{background:var(--accent);width:18%;height:60%;right:20%}
+.store .editorial-copy{padding:15px 18px}
+.store .editorial-copy b{font:600 19px/1.05 var(--display);display:block;margin:6px 0}
+.store .editorial-copy small{font-size:8px;color:var(--muted)}
+.store .mobile-content{display:none}
+.store .placeholder-note{font:600 6px var(--body);letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.theme-porcelain{--bg:#f4f0e8;--surface:#e3ded3;--paper:#fbf9f4;--ink:#242827;--muted:#4c5550;--accent:#8a4f43;--accent2:#3f5f53;--line:#c8c2b7;--display:"Cormorant Garamond",serif;--body:Manrope,sans-serif}
+.theme-bordeaux{--bg:#301725;--surface:#493042;--paper:#f6ebe9;--ink:#f6ebe9;--muted:#dccbd3;--accent:#b85f73;--accent2:#d9b56d;--line:#80566d;--display:Fraunces,serif;--body:"DM Sans",sans-serif}
+.theme-bordeaux .topline{background:#d9b56d;color:#301725}
+.theme-bordeaux .cta{background:#d9b56d;color:#301725}
+.theme-bordeaux .art .stamp{background:#301725;color:#f6ebe9}
+.theme-bordeaux .editorial{background:#493042}
+.theme-blue{--bg:#102d3f;--surface:#173b4a;--paper:#e5f2f4;--ink:#e5f2f4;--muted:#b8d8c8;--accent:#4e9da5;--accent2:#f2a477;--line:#56818a;--display:Newsreader,serif;--body:"Work Sans",sans-serif}
+.theme-blue .topline{background:#f2a477;color:#102d3f}
+.theme-blue .cta{background:#f2a477;color:#102d3f}
+.theme-blue .category-row span{border-color:#56818a}
+.theme-citron{--bg:#191b17;--surface:#353b31;--paper:#f5f3e7;--ink:#f5f3e7;--muted:#dbdecb;--accent:#d5e85b;--accent2:#a89ce6;--line:#6a7258;--display:"Space Grotesk",sans-serif;--body:"IBM Plex Mono",monospace}
+.theme-citron .topline{background:#d5e85b;color:#191b17}
+.theme-citron .cta{background:#d5e85b;color:#191b17}
+.theme-citron .brand,.theme-citron .section-title h4,.theme-citron h3{font-family:"Space Grotesk",sans-serif}
+.theme-citron .links,.theme-citron .eyebrow,.theme-citron .section-title small{letter-spacing:.05em}
+.mobile-store .topline{font-size:6px;padding:7px 6px}
+.mobile-store .nav{padding:11px 12px}
+.mobile-store .brand{font-size:16px}
+.mobile-store .links{font-size:0;gap:0}
+.mobile-store .links:after{content:"☰";font-size:15px}
+.mobile-store .hero{display:block}
+.mobile-store .copy{padding:20px 16px 17px;min-height:190px}
+.mobile-store h3{font-size:31px;margin:9px 0}
+.mobile-store .sub{font-size:9px}
+.mobile-store .art{min-height:170px}
+.mobile-store .category-row span{font-size:7px;padding:10px 3px}
+.mobile-store .section-title{padding:14px 12px 8px}
+.mobile-store .section-title h4{font-size:20px}
+.mobile-store .products{gap:6px;padding:0 12px 15px}
+.mobile-store .product-art{height:65px}
+.mobile-store .product small{font-size:6px}
+.mobile-store .product b{font-size:7px}
+.mobile-store .editorial{grid-template-columns:1fr}
+.mobile-store .editorial .art{display:none}
+.mobile-store .editorial-copy{padding:13px}
+.mobile-store .editorial-copy b{font-size:19px}
+.mobile-store .placeholder-note{font-size:5px}
+@media(max-width:900px){
+ body{padding:12px}.intro{grid-template-columns:1fr;gap:14px}.previews{grid-template-columns:1fr}.mobile .screen{max-width:300px}
+ .option-head{padding:18px;grid-template-columns:1fr}.palette,.fontline{padding-left:18px;padding-right:18px}
+ .desktop .store .links{gap:8px}.desktop .store .nav{padding:12px}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#visual-options">Skip to visual options</a>
+<div class="page">
+  <header class="intro">
+    <div><div class="kicker">DESERT ART GALLERY / OWNER REVIEW / UPDATED 07 NOV 2026</div><h1>Reference-led.<br>Original to DAG.</h1></div>
+    <p>Four new visual territories developed after the owner rejected the first set. The study translates premium editorial retail, compact category discovery and clear product merchandising into a distinct Jaisalmer-rooted storefront. None is selected or recommended.</p>
+  </header>
+  <div class="gate"><strong>THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.</strong>All four directions below are proposals only. Product shapes and catalogue names are abstract placeholders, not DAG products or owner photographs. Choose one, combine named elements, request revisions or reject all four. No production theme or final tokens are approved.</div>
+
+  <main id="visual-options" aria-label="Visual territory proposals">
+  <article class="option" aria-labelledby="porcelain-index-title">
+    <div class="option-head"><div><div class="kicker">NEW DIRECTION 01 / MATERIAL-FIRST EDITORIAL</div><h2 id="porcelain-index-title" style="font-family:'Cormorant Garamond',serif">Porcelain Index</h2><p>A gallery-like catalogue with measured typography, a material-led index and strong object presentation. The emphasis is on considered discovery and the relationship between an object, its material and its use.</p></div><span class="proposal-tag">Proposal only</span></div>
+    <div class="palette"><span class="swatch"><i class="chip" style="background:#F4F0E8"></i>Paper #F4F0E8</span><span class="swatch"><i class="chip" style="background:#E3DED3"></i>Surface #E3DED3</span><span class="swatch"><i class="chip" style="background:#242827"></i>Ink #242827</span><span class="swatch"><i class="chip" style="background:#8A4F43"></i>Oxide #8A4F43</span><span class="swatch"><i class="chip" style="background:#3F5F53"></i>Spruce #3F5F53</span><span class="swatch"><i class="chip" style="background:#C8C2B7"></i>Rule #C8C2B7</span></div>
+    <div class="fontline"><b>Display:</b> Cormorant Garamond 600/700 · <b>Body/UI:</b> Manrope 400/500/600/700 · <b>Type mood:</b> literary, calm, precise · <b>Preview content:</b> Shop / Collections / Stories / About</div>
+    <div class="previews">
+      <div class="desktop" role="group" aria-label="Desktop layout preview"><div class="preview-label">Desktop layout preview</div><div class="screen store theme-porcelain">
+        <div class="topline">A curated view of objects, textiles and material culture</div><div class="nav"><div class="brand">DAG — DESERT ART GALLERY</div><div class="links"><span>Shop</span><span>Collections</span><span>Stories</span><span>About</span><span>Search</span><span>Bag</span></div></div>
+        <div class="hero"><div class="copy"><div class="eyebrow">A Jaisalmer collection / 01</div><h3>Objects with<br>a sense of place.</h3><p class="sub">Textiles, useful objects and considered pieces from Rajasthan.</p><span class="cta">Explore the collection →</span></div><div class="art"><span class="stamp">ABSTRACT PLACEHOLDER / NOT PRODUCT</span></div></div>
+        <div class="category-row"><span>Textiles</span><span>Objects</span><span>Table</span><span>Everyday</span></div>
+        <div class="section-title"><h4>Selected pieces</h4><small>View the catalogue →</small></div>
+        <div class="products"><div class="product"><div class="product-art"></div><small>TEXTILE STUDY / 01</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>OBJECT STUDY / 02</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>TABLE STUDY / 03</small><b>Product name placeholder</b></div></div>
+        <div class="editorial"><div class="art"></div><div class="editorial-copy"><small>FROM THE ARCHIVE / CRAFT NOTE</small><b>Materials carry memory.</b><small>Editorial story placeholder · Read the story →</small></div></div>
+      </div></div>
+      <div class="mobile" role="group" aria-label="Mobile layout preview"><div class="preview-label">Mobile layout preview</div><div class="screen store theme-porcelain mobile-store">
+        <div class="topline">Objects, textiles and material culture</div><div class="nav"><div class="brand">DAG — GALLERY</div><div class="links"></div></div>
+        <div class="hero"><div class="copy"><div class="eyebrow">Jaisalmer / 01</div><h3>Objects with<br>a sense of place.</h3><p class="sub">Textiles and considered pieces from Rajasthan.</p><span class="cta">Explore →</span></div><div class="art"><span class="stamp">PLACEHOLDER / NOT PRODUCT</span></div></div>
+        <div class="category-row"><span>Textiles</span><span>Objects</span><span>Table</span><span>Daily</span></div>
+        <div class="section-title"><h4>Selected pieces</h4></div><div class="products"><div class="product"><div class="product-art"></div><small>01</small><b>Study item</b></div><div class="product"><div class="product-art"></div><small>02</small><b>Study item</b></div><div class="product"><div class="product-art"></div><small>03</small><b>Study item</b></div></div>
+      </div></div>
+    </div>
+  </article>
+
+  <article class="option" aria-labelledby="bordeaux-editions-title">
+    <div class="option-head"><div><div class="kicker">NEW DIRECTION 02 / COLLECTOR'S JOURNAL</div><h2 id="bordeaux-editions-title" style="font-family:Fraunces,serif">Bordeaux Editions</h2><p>A deeper, chapter-led retail experience. Collections feel like curated editions; serif-led storytelling and warm metallic details create atmosphere while keeping product names, variants and prices in clear view.</p></div><span class="proposal-tag">Proposal only</span></div>
+    <div class="palette"><span class="swatch"><i class="chip" style="background:#301725"></i>Plum #301725</span><span class="swatch"><i class="chip" style="background:#493042"></i>Surface #493042</span><span class="swatch"><i class="chip" style="background:#F6EBE9"></i>Porcelain #F6EBE9</span><span class="swatch"><i class="chip" style="background:#B85F73"></i>Rose #B85F73</span><span class="swatch"><i class="chip" style="background:#D9B56D"></i>Gold #D9B56D</span><span class="swatch"><i class="chip" style="background:#80566D"></i>Rule #80566D</span></div>
+    <div class="fontline"><b>Display:</b> Fraunces 500/600/700 · <b>Body/UI:</b> DM Sans 400/500/600/700 · <b>Type mood:</b> expressive, collected, warm · <b>Preview content:</b> Shop / Editions / Journal / Visit</div>
+    <div class="previews">
+      <div class="desktop" role="group" aria-label="Desktop layout preview"><div class="preview-label">Desktop layout preview</div><div class="screen store theme-bordeaux">
+        <div class="topline">DAG / An edited selection from Jaisalmer</div><div class="nav"><div class="brand">DESERT ART GALLERY</div><div class="links"><span>Shop</span><span>Editions</span><span>Journal</span><span>Our story</span><span>Search</span><span>Bag</span></div></div>
+        <div class="hero"><div class="copy"><div class="eyebrow">The object edition / No. 01</div><h3>Collected.<br>Considered.<br>Kept.</h3><p class="sub">A living selection of textiles and objects with a story to tell.</p><span class="cta">Discover this edition →</span></div><div class="art"><span class="stamp">ABSTRACT PLACEHOLDER / NOT PRODUCT</span></div></div>
+        <div class="category-row"><span>New edit</span><span>Textiles</span><span>Objects</span><span>Home</span></div>
+        <div class="section-title"><h4>The current edition</h4><small>Browse all pieces →</small></div>
+        <div class="products"><div class="product"><div class="product-art"></div><small>EDITION 01</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>EDITION 02</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>EDITION 03</small><b>Product name placeholder</b></div></div>
+        <div class="editorial"><div class="art"></div><div class="editorial-copy"><small>JOURNAL / CRAFT & CONTEXT</small><b>Where the material begins.</b><small>Editorial story placeholder · Read the chapter →</small></div></div>
+      </div></div>
+      <div class="mobile" role="group" aria-label="Mobile layout preview"><div class="preview-label">Mobile layout preview</div><div class="screen store theme-bordeaux mobile-store">
+        <div class="topline">A Jaisalmer object edition</div><div class="nav"><div class="brand">DAG / GALLERY</div><div class="links"></div></div>
+        <div class="hero"><div class="copy"><div class="eyebrow">Edition / No. 01</div><h3>Collected.<br>Considered.<br>Kept.</h3><p class="sub">Textiles and objects with a story to tell.</p><span class="cta">Discover →</span></div><div class="art"><span class="stamp">PLACEHOLDER / NOT PRODUCT</span></div></div>
+        <div class="category-row"><span>Edit</span><span>Textile</span><span>Object</span><span>Home</span></div>
+        <div class="section-title"><h4>Current edition</h4></div><div class="products"><div class="product"><div class="product-art"></div><small>01</small><b>Study item</b></div><div class="product"><div class="product-art"></div><small>02</small><b>Study item</b></div><div class="product"><div class="product-art"></div><small>03</small><b>Study item</b></div></div>
+      </div></div>
+    </div>
+  </article>
+
+  <article class="option" aria-labelledby="blue-current-title">
+    <div class="option-head"><div><div class="kicker">NEW DIRECTION 03 / CONTEMPORARY STUDIO CATALOGUE</div><h2 id="blue-current-title" style="font-family:Newsreader,serif">Blue Current</h2><p>A clear, contemporary studio catalogue with cooler surfaces, open grids and strong image-to-information rhythm. The editorial layer is present, but shopping remains the main route through the site.</p></div><span class="proposal-tag">Proposal only</span></div>
+    <div class="palette"><span class="swatch"><i class="chip" style="background:#102D3F"></i>Navy #102D3F</span><span class="swatch"><i class="chip" style="background:#173B4A"></i>Surface #173B4A</span><span class="swatch"><i class="chip" style="background:#E5F2F4"></i>Ice #E5F2F4</span><span class="swatch"><i class="chip" style="background:#4E9DA5"></i>Cyan #4E9DA5</span><span class="swatch"><i class="chip" style="background:#F2A477"></i>Apricot #F2A477</span><span class="swatch"><i class="chip" style="background:#B8D8C8"></i>Mint #B8D8C8</span></div>
+    <div class="fontline"><b>Display:</b> Newsreader 500/600/700 · <b>Body/UI:</b> Work Sans 400/500/600/700 · <b>Type mood:</b> clear, contemporary, content-led · <b>Preview content:</b> Shop / Categories / Field notes / About</div>
+    <div class="previews">
+      <div class="desktop" role="group" aria-label="Desktop layout preview"><div class="preview-label">Desktop layout preview</div><div class="screen store theme-blue">
+        <div class="topline">A studio catalogue of useful objects and textiles</div><div class="nav"><div class="brand">DAG / DESERT ART GALLERY</div><div class="links"><span>Shop all</span><span>Categories</span><span>Field notes</span><span>About</span><span>Search</span><span>Bag</span></div></div>
+        <div class="hero"><div class="copy"><div class="eyebrow">Jaisalmer / Rajasthan / 01</div><h3>Made to be<br>lived with.</h3><p class="sub">A considered catalogue of material, form and everyday use.</p><span class="cta">Shop the catalogue →</span></div><div class="art"><span class="stamp">ABSTRACT PLACEHOLDER / NOT PRODUCT</span></div></div>
+        <div class="category-row"><span>Textiles</span><span>Living</span><span>Objects</span><span>Gifting</span></div>
+        <div class="section-title"><h4>Browse the collection</h4><small>Filter / Sort / View all →</small></div>
+        <div class="products"><div class="product"><div class="product-art"></div><small>TEXTILES</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>OBJECTS</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>LIVING</small><b>Product name placeholder</b></div></div>
+        <div class="editorial"><div class="art"></div><div class="editorial-copy"><small>FIELD NOTE / MATERIAL STUDY</small><b>Made, used, passed on.</b><small>Editorial story placeholder · Explore the notes →</small></div></div>
+      </div></div>
+      <div class="mobile" role="group" aria-label="Mobile layout preview"><div class="preview-label">Mobile layout preview</div><div class="screen store theme-blue mobile-store">
+        <div class="topline">A studio catalogue from Jaisalmer</div><div class="nav"><div class="brand">DAG / STUDIO</div><div class="links"></div></div>
+        <div class="hero"><div class="copy"><div class="eyebrow">Rajasthan / 01</div><h3>Made to be<br>lived with.</h3><p class="sub">Material, form and everyday use.</p><span class="cta">Shop all →</span></div><div class="art"><span class="stamp">PLACEHOLDER / NOT PRODUCT</span></div></div>
+        <div class="category-row"><span>Textile</span><span>Living</span><span>Object</span><span>Gift</span></div>
+        <div class="section-title"><h4>Browse collection</h4></div><div class="products"><div class="product"><div class="product-art"></div><small>01</small><b>Study item</b></div><div class="product"><div class="product-art"></div><small>02</small><b>Study item</b></div><div class="product"><div class="product-art"></div><small>03</small><b>Study item</b></div></div>
+      </div></div>
+    </div>
+  </article>
+
+  <article class="option" aria-labelledby="citron-signal-title">
+    <div class="option-head"><div><div class="kicker">NEW DIRECTION 04 / GRAPHIC OBJECT INDEX</div><h2 id="citron-signal-title" style="font-family:'Space Grotesk',sans-serif">Citron Signal</h2><p>A high-contrast, index-driven shop with clear product coding, compact navigation and energetic accents. The system is deliberately functional and graphic, with object imagery carrying most of the emotional weight.</p></div><span class="proposal-tag">Proposal only</span></div>
+    <div class="palette"><span class="swatch"><i class="chip" style="background:#191B17"></i>Carbon #191B17</span><span class="swatch"><i class="chip" style="background:#353B31"></i>Surface #353B31</span><span class="swatch"><i class="chip" style="background:#F5F3E7"></i>Chalk #F5F3E7</span><span class="swatch"><i class="chip" style="background:#D5E85B"></i>Citron #D5E85B</span><span class="swatch"><i class="chip" style="background:#A89CE6"></i>Lavender #A89CE6</span><span class="swatch"><i class="chip" style="background:#D77A42"></i>Orange #D77A42</span></div>
+    <div class="fontline"><b>Display/UI:</b> Space Grotesk 500/600/700 · <b>Metadata:</b> IBM Plex Mono 400/500 · <b>Type mood:</b> direct, coded, energetic · <b>Preview content:</b> Index / Shop / Stories / Info</div>
+    <div class="previews">
+      <div class="desktop" role="group" aria-label="Desktop layout preview"><div class="preview-label">Desktop layout preview</div><div class="screen store theme-citron">
+        <div class="topline">DAG / MATERIAL CULTURE / JAISALMER / INDEX 001</div><div class="nav"><div class="brand">DAG [DESERT ART GALLERY]</div><div class="links"><span>Index</span><span>Shop</span><span>Stories</span><span>Info</span><span>Search</span><span>Bag</span></div></div>
+        <div class="hero"><div class="copy"><div class="eyebrow">Catalogue / Revision 01</div><h3>Objects.<br>Without<br>noise.</h3><p class="sub">An index of textiles, craft and considered everyday objects.</p><span class="cta">Open the index →</span></div><div class="art"><span class="stamp">ABSTRACT PLACEHOLDER / NOT PRODUCT</span></div></div>
+        <div class="category-row"><span>01 / Cloth</span><span>02 / Object</span><span>03 / Table</span><span>04 / Living</span></div>
+        <div class="section-title"><h4>Index / Selected objects</h4><small>Sort / Filter / All items →</small></div>
+        <div class="products"><div class="product"><div class="product-art"></div><small>ITEM 001 / TEXTILE</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>ITEM 002 / OBJECT</small><b>Product name placeholder</b></div><div class="product"><div class="product-art"></div><small>ITEM 003 / TABLE</small><b>Product name placeholder</b></div></div>
+        <div class="editorial"><div class="art"></div><div class="editorial-copy"><small>NOTES / MATERIAL & MAKING</small><b>Read the material.</b><small>Editorial story placeholder · Open field note →</small></div></div>
+      </div></div>
+      <div class="mobile" role="group" aria-label="Mobile layout preview"><div class="preview-label">Mobile layout preview</div><div class="screen store theme-citron mobile-store">
+        <div class="topline">DAG / INDEX 001 / JAISALMER</div><div class="nav"><div class="brand">DAG [INDEX]</div><div class="links"></div></div>
+        <div class="hero"><div class="copy"><div class="eyebrow">Catalogue / 01</div><h3>Objects.<br>Without<br>noise.</h3><p class="sub">Textiles, craft and considered things.</p><span class="cta">Open index →</span></div><div class="art"><span class="stamp">PLACEHOLDER / NOT PRODUCT</span></div></div>
+        <div class="category-row"><span>01 Cloth</span><span>02 Object</span><span>03 Table</span><span>04 Living</span></div>
+        <div class="section-title"><h4>Selected objects</h4></div><div class="products"><div class="product"><div class="product-art"></div><small>001</small><b>Study item</b></div><div class="product"><div class="product-art"></div><small>002</small><b>Study item</b></div><div class="product"><div class="product-art"></div><small>003</small><b>Study item</b></div></div>
+      </div></div>
+    </div>
+  </article>
+  </main>
+
+  <footer style="padding:24px 0 12px;border-top:1px solid #aaa;font-size:12px;line-height:1.7;color:#51554f">
+    <b>Review status:</b> all four are fresh proposals and none is ranked, recommended, selected or approved. The production palette, font pairing, imagery and theme remain owner-controlled. The reference-site identities and assets are not used in these mockups.
+  </footer>
+</div>
+</body>
+</html>
