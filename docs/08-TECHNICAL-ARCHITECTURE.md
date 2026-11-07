@@ -9,11 +9,11 @@ Document:
 - Product variants and inventory model.
 - Admin and content editing needs.
 - Direct purchase versus enquiry workflow.
-- Checkout and order requirements.
+- Future checkout and order requirements (discovery questions only; not authorized for the current nine-page structural kit).
 - Payment-provider availability for confirmed seller jurisdiction and target markets.
 - Shipping and tax integration.
-- Authentication and customer-account needs.
-- Search and filtering.
+- Future authentication/customer-account needs (unapproved; outside current scope).
+- Future search/filter feasibility (unapproved; the current visual controls remain disabled).
 - Image storage, transformation and delivery.
 - Traffic, availability and operational support.
 - Hosting skills, cost constraints and deployment requirements.
