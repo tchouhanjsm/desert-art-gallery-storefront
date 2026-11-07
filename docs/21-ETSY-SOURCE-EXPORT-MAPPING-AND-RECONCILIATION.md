@@ -53,6 +53,18 @@ The two CSV files and private photo-audit CSV/JSON reports must stay outside Git
 - No categories, prices, inventory, provenance, maker, condition, measurements, shipping terms, duties, taxes or Japanese-market claims are inferred.
 - All imported records, if a future import is explicitly authorized, start as drafts and remain unpublished until the owner reviews identity, facts, commercial state and media rights.
 
+## Read-only source export preflight
+
+Before creating any source-row manifest, run the read-only export preflight against the owner's private original CSV:
+
+```bash
+python scripts/preview_etsy_export.py "/private/path/EtsyListingsDownload.csv" \\
+  --json "/private/reports/etsy-source-summary.json" \\
+  --rows-csv "/private/reports/etsy-source-rows.csv"
+```
+
+The preflight computes the source-file SHA-256 and logical data-row references; checks required headers, blank/duplicate SKUs, repeated titles, price/currency and quantity pairing, IMAGE1–IMAGE10 counts and URL hosts, variation population, and the presence of category/listing-ID columns. It handles quoted multiline descriptions. Reports are private and existing report paths are never overwritten. It does not create products, source manifest rows, downloaded images or an import result.
+
 ## Local validation
 
 Once the owner supplies the original export privately and a future import-preparation step creates the source manifest, validate it with:
