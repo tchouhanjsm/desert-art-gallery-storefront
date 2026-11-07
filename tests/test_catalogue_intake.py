@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -9,7 +10,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from validate_catalogue_intake import HEADERS, validate_catalogue_directory  # noqa: E402
+from validate_catalogue_intake import HEADERS, validate_catalogue_directory, main  # noqa: E402
 
 
 def write_package(root: Path, products=None, facts=None, images=None):
@@ -143,6 +144,85 @@ class CatalogueIntakeTests(unittest.TestCase):
             ])
             messages = [str(issue) for issue in validate_catalogue_directory(root)]
             self.assertTrue(any("normalized relative path" in item for item in messages))
+
+    def write_photo_audit(self, tmp_path, rows, summary_overrides=None):
+        csv_path = tmp_path / "photo-audit.csv"
+        with csv_path.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=[
+                "relative_path", "detected_format", "status", "sha256", "duplicate_group"
+            ])
+            writer.writeheader()
+            writer.writerows(rows)
+        summary = {
+            "image_candidates": len(rows),
+            "read_only": True,
+            "scan_complete": True,
+            "directory_traversal_errors": 0,
+        }
+        summary.update(summary_overrides or {})
+        summary_path = tmp_path / "photo-audit-summary.json"
+        summary_path.write_text(json.dumps(summary), encoding="utf-8")
+        return csv_path, summary_path
+
+    def test_photo_audit_cross_check_accepts_matching_approved_image(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            write_package(
+                root,
+                products=[product_row(publication_status="published")],
+                images=[image_row(rights_status="cleared", publication_status="approved", alt_text_en="Textile detail")],
+            )
+            csv_path, summary_path = self.write_photo_audit(Path(tmp), [{
+                "relative_path": "products/p-001/image-01.jpg",
+                "detected_format": "JPEG", "status": "ok", "sha256": "a" * 64, "duplicate_group": "",
+            }])
+            self.assertEqual(validate_catalogue_directory(root, csv_path, summary_path), [])
+
+    def test_photo_audit_cross_check_rejects_missing_source_image(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            write_package(root, products=[product_row()], images=[image_row()])
+            csv_path, summary_path = self.write_photo_audit(Path(tmp), [{
+                "relative_path": "products/other/image.jpg",
+                "detected_format": "JPEG", "status": "ok", "sha256": "b" * 64, "duplicate_group": "",
+            }])
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path)]
+            self.assertTrue(any("was not found in the completed photo-audit inventory" in item for item in messages))
+
+    def test_photo_audit_requires_complete_scan_summary(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            write_package(root, products=[product_row()], images=[image_row()])
+            csv_path, summary_path = self.write_photo_audit(Path(tmp), [{
+                "relative_path": "products/p-001/image-01.jpg",
+                "detected_format": "JPEG", "status": "ok", "sha256": "c" * 64, "duplicate_group": "",
+            }], {"scan_complete": False, "directory_traversal_errors": 1})
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path)]
+            self.assertTrue(any("photo audit is incomplete" in item for item in messages))
+
+    def test_approved_image_rejects_review_or_duplicate_audit_record(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            write_package(
+                root,
+                products=[product_row()],
+                images=[image_row(rights_status="cleared", publication_status="approved", alt_text_en="Textile detail")],
+            )
+            csv_path, summary_path = self.write_photo_audit(Path(tmp), [{
+                "relative_path": "products/p-001/image-01.jpg",
+                "detected_format": "JPEG", "status": "review", "sha256": "d" * 64, "duplicate_group": "dup-123",
+            }])
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path)]
+            self.assertTrue(any("photo-audit status=ok" in item for item in messages))
+            self.assertTrue(any("byte-identical" in item for item in messages))
+
+    def test_cli_requires_photo_audit_csv_and_summary_as_a_pair(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_package(root)
+            with self.assertRaises(SystemExit) as raised:
+                main([str(root), "--photo-audit-csv", str(root / "missing.csv")])
+            self.assertEqual(raised.exception.code, 2)
 
     def test_image_reference_must_point_to_existing_product(self):
         with tempfile.TemporaryDirectory() as tmp:

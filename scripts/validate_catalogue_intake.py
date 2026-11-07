@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import re
 from dataclasses import dataclass
 from decimal import Decimal
@@ -97,7 +98,75 @@ def _validate_relative_path(value: str) -> bool:
     return all(part not in {"", ".", ".."} for part in value.split("/"))
 
 
-def validate_catalogue_directory(directory: Path) -> list[Issue]:
+
+PHOTO_AUDIT_HEADERS = {"relative_path", "detected_format", "status", "sha256", "duplicate_group"}
+
+
+def _load_photo_audit(csv_path: Path, summary_path: Path) -> tuple[dict[str, dict[str, str]], list[Issue]]:
+    issues: list[Issue] = []
+    csv_file = csv_path.expanduser().resolve()
+    summary_file = summary_path.expanduser().resolve()
+
+    for label, path in (("photo-audit.csv", csv_file), ("photo-audit-summary.json", summary_file)):
+        if path.is_symlink() or not path.is_file():
+            issues.append(Issue(label, None, "required photo-audit report is missing, unreadable or a symbolic link"))
+    if issues:
+        return {}, issues
+
+    try:
+        summary = json.loads(summary_file.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        issues.append(Issue("photo-audit-summary.json", None, f"could not read summary ({type(exc).__name__})"))
+        return {}, issues
+
+    if not isinstance(summary, dict):
+        issues.append(Issue("photo-audit-summary.json", None, "summary must be a JSON object"))
+        return {}, issues
+    if summary.get("read_only") is not True:
+        issues.append(Issue("photo-audit-summary.json", None, "summary is not marked read_only=true"))
+    if summary.get("scan_complete") is not True:
+        issues.append(Issue("photo-audit-summary.json", None, "photo audit is incomplete; run a complete read-only scan before cross-checking"))
+    if not isinstance(summary.get("image_candidates"), int) or summary.get("image_candidates") < 0:
+        issues.append(Issue("photo-audit-summary.json", None, "image_candidates must be a non-negative integer"))
+
+    inventory: dict[str, dict[str, str]] = {}
+    try:
+        with csv_file.open("r", encoding="utf-8-sig", newline="") as handle:
+            reader = csv.DictReader(handle)
+            if reader.fieldnames is None or not PHOTO_AUDIT_HEADERS.issubset(set(reader.fieldnames)):
+                issues.append(Issue("photo-audit.csv", 1, f"required columns are {sorted(PHOTO_AUDIT_HEADERS)}"))
+                return {}, issues
+            for row_number, row in enumerate(reader, start=2):
+                relative_path = (row.get("relative_path") or "").strip()
+                if not _validate_relative_path(relative_path):
+                    issues.append(Issue("photo-audit.csv", row_number, "relative_path is empty or unsafe"))
+                    continue
+                if relative_path in inventory:
+                    issues.append(Issue("photo-audit.csv", row_number, f"duplicate relative_path {relative_path!r}"))
+                    continue
+                status = (row.get("status") or "").strip()
+                if status not in {"ok", "review", "unreadable"}:
+                    issues.append(Issue("photo-audit.csv", row_number, f"unsupported audit status {status!r}"))
+                    continue
+                inventory[relative_path] = {
+                    "detected_format": (row.get("detected_format") or "").strip(),
+                    "status": status,
+                    "sha256": (row.get("sha256") or "").strip(),
+                    "duplicate_group": (row.get("duplicate_group") or "").strip(),
+                }
+    except (OSError, UnicodeError, csv.Error) as exc:
+        issues.append(Issue("photo-audit.csv", None, f"could not read inventory ({type(exc).__name__})"))
+        return {}, issues
+
+    candidate_count = summary.get("image_candidates")
+    if isinstance(candidate_count, int) and candidate_count != len(inventory):
+        issues.append(Issue(
+            "photo-audit-summary.json", None,
+            f"image_candidates ({candidate_count}) does not match inventory CSV rows ({len(inventory)})",
+        ))
+    return inventory, issues
+
+def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None = None, photo_audit_summary: Path | None = None) -> list[Issue]:
     root = directory.expanduser().resolve()
     if not root.exists() or not root.is_dir():
         return [Issue(".", None, "input path does not exist or is not a directory")]
@@ -106,6 +175,12 @@ def validate_catalogue_directory(directory: Path) -> list[Issue]:
     product_rows = _read_rows(root, "products.csv", issues)
     fact_rows = _read_rows(root, "product-facts.csv", issues)
     image_rows = _read_rows(root, "product-images.csv", issues)
+    photo_inventory: dict[str, dict[str, str]] | None = None
+    if photo_audit_csv is not None and photo_audit_summary is not None:
+        photo_inventory, audit_issues = _load_photo_audit(photo_audit_csv, photo_audit_summary)
+        issues.extend(audit_issues)
+    elif photo_audit_csv is not None or photo_audit_summary is not None:
+        issues.append(Issue("photo-audit", None, "--photo-audit-csv and --photo-audit-summary must be provided together"))
 
     products: dict[str, dict[str, str]] = {}
     seen_skus: dict[str, int] = {}
@@ -212,6 +287,15 @@ def validate_catalogue_directory(directory: Path) -> list[Issue]:
         if publication not in IMAGE_PUBLICATION_STATES:
             issues.append(Issue("product-images.csv", line, f"publication_status must be one of {sorted(IMAGE_PUBLICATION_STATES)}"))
         alt_text = _value(row, "alt_text_en")
+        if photo_inventory is not None and _validate_relative_path(source_path):
+            audited = photo_inventory.get(source_path)
+            if audited is None:
+                issues.append(Issue("product-images.csv", line, "source_relative_path was not found in the completed photo-audit inventory"))
+            elif publication == "approved":
+                if audited["status"] != "ok":
+                    issues.append(Issue("product-images.csv", line, f"an approved image must have photo-audit status=ok (found {audited['status']})"))
+                if audited["duplicate_group"]:
+                    issues.append(Issue("product-images.csv", line, "an approved image is byte-identical to another asset and requires manual review"))
         if publication == "approved":
             if rights != "cleared":
                 issues.append(Issue("product-images.csv", line, "an approved image requires rights_status=cleared"))
@@ -235,8 +319,12 @@ def main(argv: list[str] | None = None) -> int:
         description="Validate a draft DAG product intake package without modifying source CSV files."
     )
     parser.add_argument("directory", type=Path, help="Folder containing products.csv, product-facts.csv and product-images.csv")
+    parser.add_argument("--photo-audit-csv", type=Path, help="Optional private CSV inventory produced by audit_photo_library.py")
+    parser.add_argument("--photo-audit-summary", type=Path, help="JSON summary from the same complete photo-audit run; required with --photo-audit-csv")
     args = parser.parse_args(argv)
-    issues = validate_catalogue_directory(args.directory)
+    if bool(args.photo_audit_csv) != bool(args.photo_audit_summary):
+        parser.error("--photo-audit-csv and --photo-audit-summary must be used together")
+    issues = validate_catalogue_directory(args.directory, args.photo_audit_csv, args.photo_audit_summary)
     if issues:
         print(f"Catalogue intake validation: FAILED ({len(issues)} issue(s))")
         for issue in issues:
@@ -244,6 +332,8 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     print("Catalogue intake validation: PASS")
     print("- Required CSV templates and cross-file references are valid")
+    if args.photo_audit_csv:
+        print("- Product image paths match a complete, read-only photo-audit inventory")
     print("- No catalogue content was imported or modified")
     return 0
 

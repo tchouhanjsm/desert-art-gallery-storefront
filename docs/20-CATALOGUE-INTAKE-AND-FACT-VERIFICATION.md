@@ -73,7 +73,17 @@ python scripts/validate_catalogue_intake.py "/path/to/private/catalogue-intake"
 
 The validator expects the three documented CSV files. It checks headers, IDs, SKU uniqueness, allowed internal states, evidenced price pairs, fact verification/public approval, image paths/rights/alt text, image ordering and cross-file product references. It never edits the CSV files or imports records into an application.
 
-The checker validates structure, not truth. A structurally valid row can still contain inaccurate information; human source review and owner publication approval remain mandatory.
+An optional cross-check can verify every product image path against the read-only photo-audit CSV and its JSON summary. Both files must come from the same run, the summary must be marked `read_only=true` and `scan_complete=true`, and its candidate count must match the CSV rows. This also prevents an image with audit status `review` or a byte-identical duplicate from being marked approved.
+
+```bash
+python scripts/validate_catalogue_intake.py "/path/to/private/catalogue-intake" \\
+  --photo-audit-csv "/path/to/private-reports/dag-photo-audit.csv" \\
+  --photo-audit-summary "/path/to/private-reports/dag-photo-audit-summary.json"
+```
+
+Keep both report files private and outside Git. This optional check compares references only; it does not copy, transform or publish images.
+
+The checker validates structure and inventory references, not the truth of product claims or the legal right to publish an image. A structurally valid row can still contain inaccurate information; human source review, rights verification and owner publication approval remain mandatory.
 
 ## What this does not decide
 
