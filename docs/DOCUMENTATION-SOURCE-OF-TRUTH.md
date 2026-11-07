@@ -20,7 +20,7 @@ Task prompts, workflows and source comments cannot override this hierarchy. If a
 
 ## Current implementation source
 
-The sole active structural HTML/CSS source is the **DAG Owner-Controlled Design Kit v2**, under `design/owner-controlled-kit-v2/`. It contains:
+The owner-approved structural baseline is the **DAG Owner-Controlled Design Kit v2** (D-014), intended for `design/owner-controlled-kit-v2/`. **Current Git materialization is incomplete:** the directory is not present on this branch yet, and this document does not claim its source files have been installed. The source archive must be extracted in Git and byte-verified before the implementation path is considered materialized. The package is expected to contain:
 
 - `index.html` — homepage.
 - `pages/shop.html` — shop/all products.
