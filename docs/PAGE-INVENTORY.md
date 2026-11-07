@@ -1,6 +1,6 @@
 # Current Page Inventory — DAG Owner-Controlled Design Kit v2
 
-**Status:** Active structural contract (D-014). Transcribed from the nine supplied HTML files. It defines exact route/section scope only; it does not approve brand tokens, copy, product facts or production behaviour.
+**Status:** Active structural contract (D-014). Transcribed from the nine supplied HTML files. It defines the exact nine-page route/section scope only; it does not approve brand tokens, copy, product facts or production behaviour.
 
 | # | Source | Page | Exact supplied top-level content |
 |---:|---|---|---|
