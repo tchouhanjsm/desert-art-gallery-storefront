@@ -154,7 +154,7 @@ def validate_project(root: Path=ROOT) -> list[str]:
   if ":focus-visible" not in rt: errors.append("reference board is missing a visible keyboard focus style")
   for n in REFERENCE_OPTIONS+REFERENCE_FONTS:
    if n not in rt: errors.append(f"reference board missing {n}")
-  if "Desktop composition" not in rt or "Mobile composition" not in rt: errors.append("reference board missing desktop/mobile compositions")
+  if "Desktop layout preview" not in rt or "Mobile layout preview" not in rt: errors.append("reference board missing labelled desktop/mobile layout previews")
   if "not dag products" not in rt.lower(): errors.append("reference board must label placeholders as not DAG products")
   if "max-width:900px" not in rt: errors.append("reference board missing responsive breakpoint")
  else: errors.append("missing reference-led visual board")
