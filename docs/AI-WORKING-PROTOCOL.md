@@ -32,7 +32,7 @@ A repeatable protocol for every new AI chat, coding agent and autonomous session
 
 ## Design-specific protocol
 - Do not use the old storefront as the visual starting point.
-- Study POJ Studio and Macaroni Shoten; record dated observations and source URLs.
+- Follow D-010: POJ Studio is the primary ecommerce/page-structure reference; Macaroni Shoten is the secondary curation/select-shop reference. Read docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md and record dated observations in docs/REFERENCE-RESEARCH-LOG.md.
 - Develop at least four materially different creative territories.
 - Specify exact HEX values, font family/weights/licensing, layout and photography direction.
 - Use actual rendered desktop/mobile examples, not descriptions or swatches alone.
@@ -60,7 +60,7 @@ When one owner decision blocks a feature, isolate it and continue unrelated safe
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
 
-The old Material Archive / Collected Colour synthesis is historical only, not a default. The owner rejected the previous four proposals (P-015) on 6 November 2026. POJ Studio and Macaroni Shoten are the confirmed references for the next original DAG design study. Read docs/17-REFERENCE-LED-DESIGN-BRIEF.md and docs/REFERENCE-RESEARCH-LOG.md before preparing new options.
+The old Material Archive / Collected Colour synthesis is historical only, not a default. The owner rejected the previous four proposals (P-015) on 6 November 2026. D-010 confirms BLEND: POJ Studio leads ecommerce structure and page experience; Macaroni Shoten informs curation and select-retail character. The complete page-by-page brief is docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md. This reference hierarchy does not equal visual-identity approval. Read docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md and docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md; the owner must still choose, combine, request revisions or reject the four current visual proposals.
 
 Prepare at least four materially different new DAG-specific territories with exact palettes, typography/licensing, layout/art direction, desktop/mobile renders, neutral trade-offs and accessibility notes. Do not clone either reference, reuse its assets or copy its text, product content, branding or exact page composition. Do not reuse rejected P-015 options as active candidates. Do not rank or recommend options. Ask the owner to choose, combine, request revisions or reject all, then stop. No final design tokens or production theme may be implemented before that explicit choice.
 
