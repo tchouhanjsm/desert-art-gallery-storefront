@@ -97,3 +97,14 @@ The destination must be a new directory outside the source CSV directory and eve
 This is an unassigned raw-source staging package, not the product-source-records.csv template and not a product import. It intentionally has no product_id: repeated titles and blank/duplicate SKUs still require human reconciliation. The image-reference CSV intentionally has no product assignment, leaves local asset IDs blank, marks rights as unknown and publication as not approved, and preserves invalid-host references for manual review. An accepted host is not proof of live content or image rights. No images are downloaded or transformed. The original CSV remains unchanged.
 
 Keep this bundle private and do not commit it, upload it to a public/shared folder, or feed it directly into a production import. After manual source-row-to-product reconciliation, separately verify product claims, price, inventory, image identity and rights before populating the draft catalogue templates.
+
+
+## Bundle integrity verification
+
+Every generated private review package also contains bundle-manifest.json, which records the byte length and SHA-256 digest of each payload file. After copying or storing the package, verify it before manual review:
+
+    python scripts/verify_etsy_review_bundle.py "/private/reports/dag-etsy-review-2026-11-07"
+
+The read-only verifier checks payload checksums, expected files, source-row numbering and SHA-based identities, cross-links from image references to raw source columns, allowed-host status consistency, and the requirement that image rights remain unknown and publication remain unapproved. It does not repair or modify a bundle. Any checksum mismatch, missing/extra file, broken reference or approval-state change fails verification.
+
+The manifest detects accidental corruption or incomplete handling; it is not a digital signature and does not prove who created the package or that the original Etsy export is authentic.

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import io
 import json
 import sys
@@ -177,6 +178,26 @@ Do not feed this package directly into a production import.
     with (output / "README.txt").open("x", encoding="utf-8") as handle:
         handle.write(readme)
 
+    bundle_files = [
+        "README.txt",
+        "source-summary.json",
+        "source-row-review.csv",
+        "source-rows.jsonl",
+        "image-source-references.csv",
+    ]
+    manifest = {
+        "manifest_format": "dag-etsy-review-bundle-manifest-v1",
+        "files": [
+            {
+                "path": name,
+                "bytes": (output / name).stat().st_size,
+                "sha256": hashlib.sha256((output / name).read_bytes()).hexdigest(),
+            }
+            for name in bundle_files
+        ],
+    }
+    _write_json(manifest, output / "bundle-manifest.json")
+
     return {
         "bundle_directory": str(output),
         "source_rows": int(summary["source_rows"]),
@@ -205,6 +226,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"- Image references: {result['image_source_rows']}")
     print("- Product assignments created: false")
     print("- Images downloaded: false")
+    print("- Integrity manifest: bundle-manifest.json")
     return 0
 
 
