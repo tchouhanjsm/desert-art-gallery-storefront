@@ -108,3 +108,16 @@ Every generated private review package also contains bundle-manifest.json, which
 The read-only verifier checks payload checksums, expected files, source-row numbering and SHA-based identities, cross-links from image references to raw source columns, allowed-host status consistency, and the requirement that image rights remain unknown and publication remain unapproved. It does not repair or modify a bundle. Any checksum mismatch, missing/extra file, broken reference or approval-state change fails verification.
 
 The manifest detects accidental corruption or incomplete handling; it is not a digital signature and does not prove who created the package or that the original Etsy export is authentic.
+
+
+## Editable source-to-product reconciliation worksheet
+
+After verifying a private review bundle, generate a separate editable owner worksheet:
+
+    python scripts/create_etsy_reconciliation_worklist.py "/private/reports/dag-etsy-review-2026-11-07" "/private/reports/dag-etsy-reconciliation-worklist.csv"
+
+The worksheet is a separate CSV outside the immutable bundle and every Git working tree. It includes each source-row reference, raw title/SKU/price/currency/quantity/materials/tags/variation summary, duplicate indicators and image-reference count. It also provides blank columns for a proposed DAG product ID, identity-match basis and evidence reference, plus an unreviewed owner status and notes.
+
+The worksheet deliberately does not assign product IDs, normalize SKUs, deduplicate titles, decide whether rows represent the same physical DAG item, approve source prices or quantities, or approve product facts, image rights or publication.
+
+The worksheet is editable and therefore is not covered by the immutable bundle checksum manifest. Keep it private and preserve the original bundle unchanged. After owner-led identity reconciliation, populate the draft product templates and run the catalogue intake validator; structural validation still does not replace factual or publication approval.

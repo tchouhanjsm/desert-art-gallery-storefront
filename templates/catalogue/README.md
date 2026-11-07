@@ -15,3 +15,5 @@ Review docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md and docs/21-ETSY-SOURCE
 For an unassigned, read-only raw Etsy source review bundle, see the command and safety boundaries in document 21. The bundle is intentionally separate from these product-linked templates; it does not create product IDs or catalogue records.
 
 Generated private Etsy review bundles now include a checksum manifest. Run python scripts/verify_etsy_review_bundle.py /path/to/private-bundle to verify integrity and row/image-reference consistency before manual reconciliation.
+
+After verifying a private review bundle, create a separate editable source-to-product reconciliation worksheet with python scripts/create_etsy_reconciliation_worklist.py /path/to/private-bundle /path/to/private-worklist.csv. Keep the worksheet outside Git and preserve the original bundle unchanged.
