@@ -74,3 +74,72 @@ DAG learning:
 The owner rejected the four previous territories and designated POJ Studio and Macaroni Shoten as principal references on 6 November 2026. See D-008 and D-009 in DECISIONS.md and docs/17-REFERENCE-LED-DESIGN-BRIEF.md.
 
 Study their customer-experience principles and retail quality, but produce an original DAG design. Do not copy exact brand identity, layout, writing, imagery, product content or proprietary assets. These observations do not approve a palette, typeface or final visual direction.
+
+
+## Live reference inspection — 7 November 2026 (D-010 hierarchy)
+
+### POJ Studio — primary ecommerce reference
+
+**Browser inspection viewport:** desktop 1440 × 900. Tablet 768 × 1024 and mobile 390 × 844 screenshots could not be captured in this browser session. No screenshots are committed. The following notes distinguish directly observed desktop structure from unknown responsive behaviour.
+
+Reviewed pages:
+- Homepage: https://pojstudio.com/
+- Shop All: https://pojstudio.com/collections/all
+- Tableware collection: https://pojstudio.com/collections/tableware-1
+- Decor collection: https://pojstudio.com/collections/decor
+- Variant product: https://pojstudio.com/products/kohiki-rim-elliptical-bowl
+- Variant product: https://us.pojstudio.com/products/boro-sashiko-tapestry
+- Product detail: https://pojstudio.com/products/cast-iron-furin
+- About: https://pojstudio.com/pages/about
+- Stories: https://pojstudio.com/pages/stories
+- Artisan index: https://pojstudio.com/blogs/artisan
+
+Directly observed in the desktop browser session and text-accessible page content:
+- A rotating announcement region, with distinct promotional and tariff/duty messages on the live reference.
+- Main navigation includes Shop and grouped shopping destinations, plus Experiences, Kintsugi, Stories, Visit, About and Interiors. Search, cart, account and locale controls are present.
+- Homepage uses a full-width campaign image/hero with a short headline and Shop Now action. Its broader structure includes category/collection pathways, mission, press, stories and featured merchandise.
+- Shop All provides category navigation, sorting and availability/price filter content. The desktop product grid showed four cards per row in the browser inspection. Product count is volatile: one inspection returned 295 and a separate indexed page capture returned 296; do not use either as a fixed target.
+- Product cards communicate real item states such as sold out, bestseller and available size/colour variants. DAG may use equivalent state patterns only when its underlying data supports them.
+- Product pages expose multi-image galleries, product narrative, option controls where present, quantity and purchase action, with supporting maker, dimensions, care or shipping content depending on the product.
+- About connects the brand mission and team. Stories/Artisan pages group articles by editorial subject and use category, title and excerpt patterns.
+
+Unknown or not conclusively verified:
+- Sticky-header scroll behaviour and exact hover/focus transitions.
+- Exact computed CSS measurements, font declarations, content max-widths and breakpoints.
+- Exact mobile drawer, filter, grid and gallery interaction at 390px/768px.
+- Full carousel/thumbnail interaction on every product page.
+- Whether every card swatch pattern is interactive under every product option.
+
+DAG translation:
+- POJ supplies the leading ecommerce structure, product discovery and product-detail information hierarchy.
+- DAG must use its own categories, verified products, original images, English content and approved commercial facts.
+- POJ's Kintsugi, workshops, visit/interiors, Japanese language, country selectors, discounts, shipping thresholds and tariff messages are not DAG features by default.
+
+### Macaroni Shoten — secondary curation reference
+
+Reviewed:
+- Home: https://shop.macaro-ni.jp/
+- About: https://shop.macaro-ni.jp/about
+
+Browser inspection viewport: desktop approximately 1440 × 900. Tablet and mobile layouts were not directly verified; no resized screenshots are available from this session.
+
+Directly observed:
+- The active store displayed an empty-product state across the inspected categories. No live product grid, product cards, PDP variants or checkout could be assessed.
+- Header/search/cart access and a slide-in navigation pattern were present.
+- Navigation groups Home, About, Category, Contact and external links.
+- Broad category names are Kitchen, Living, Food and Daily. Visible subcategory groupings include kitchen supplies, interior goods, housekeeping, food/drinks and daily goods.
+- About describes the store as an editorially curated select shop with high-quality handmade items and carefully selected food/lifestyle items.
+- Footer/content paths include privacy and Japanese commercial-disclosure information, plus external/social links.
+
+DAG translation:
+- Use the select-shop thinking: fewer, more meaningful groups; a clear reason for selection; concise, useful editorial framing.
+- Do not copy category labels, Japanese text, BASE platform elements, addresses, social links or legal pages.
+- The live empty state limits evidence. Macaroni does not provide a current reference for populated product grids, filters, PDP or checkout.
+
+### Measurement and screenshot limitations
+
+This pass did not produce saved viewport screenshots or computed-style measurements. Desktop observations are documented at the tested viewport; 768px and 390px are reserved as explicit DAG prototype validation viewports. Do not describe inferred mobile behaviour as reference-observed. Future visual review should capture actual DAG screenshots at all three widths and record measured rather than guessed values.
+
+### Reference hierarchy interpretation (D-010)
+
+POJ Studio leads global commerce structure and the shopping journey. Macaroni Shoten informs the curated selection model. Neither reference supplies DAG's brand identity or product content. The hierarchy does not approve a DAG palette, typography, art direction or production theme.
