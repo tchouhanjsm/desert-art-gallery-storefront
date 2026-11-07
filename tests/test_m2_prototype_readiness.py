@@ -17,7 +17,7 @@ class M2PrototypeReadinessTests(unittest.TestCase):
         self.assertIn("no visual selection, no production-style prototype", content.lower())
         self.assertIn("M2 has not started", content)
         self.assertIn("owner explicitly", content.lower())
-        self.assertIn("do not recruit or spend", content.lower())
+        self.assertIn("no recruitment or expenditure is authorized", content.lower())
         for term in ["japan-first customer-segment focus", "home and interior buyers", "craft and material enthusiasts", "gift and considered-purchase buyers", "trade and design professionals", "shared global shell", "responsive primary and category navigation", "search entry/disclosure", "global footer", "reusable presentation components", "mixed product/photo evidence", "rights/permissions", "mobile is a required test dimension across every selected journey"]:
             with self.subTest(term=term):
                 self.assertIn(term, content.lower())
@@ -52,7 +52,7 @@ class M2PrototypeReadinessTests(unittest.TestCase):
         self.assertIn("No option is preselected, recommended or approved", content)
         self.assertIn("M2 has not started", content)
         self.assertIn("BLOCKED until every applicable gate", content)
-        self.assertIn("Recruitment, incentives and other spending remain unauthorized", content)
+        self.assertIn("No recruitment, interviews, recordings or paid activity may begin", content)
         self.assertIn("Do not commit populated catalogue data", content)
         self.assertIn("non-production prototype only", content.lower())
         for term in ["initial customer segments (japan-first)", "home and interior buyers", "craft and material enthusiasts", "gift and considered-purchase buyers", "trade and design professionals", "mixed genuine-photo and placeholder evidence", "mobile is a required test dimension", "responsive primary/category navigation", "global footer"]:
