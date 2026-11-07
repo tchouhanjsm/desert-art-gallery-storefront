@@ -21,6 +21,7 @@
 - Present four new, materially different DAG visual territories. The earlier P-015 set remains rejected and archived.
 - Provide exact palette values, typography families/weights/licensing, layout and art-direction specifications.
 - Render desktop and mobile examples with accessibility/contrast notes.
+- Keep the owner-review board semantically accessible and regression-check every documented contrast ratio without changing owner-controlled design proposals.
 - Present neutral trade-offs; do not recommend, rank, score, select or imply a default.
 - Ask the owner to choose, combine, request revisions or reject all options. Stop before final tokens or production styling.
 

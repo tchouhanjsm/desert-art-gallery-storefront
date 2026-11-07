@@ -41,6 +41,10 @@ These are four new, non-ranked proposals. None is recommended, preselected or ap
 
 All object visuals and product names shown on the board are abstract placeholders, not real DAG catalogue content or photographs.
 
+### Owner-review board quality
+
+The comparison board is an owner decision artefact, not a production prototype. It includes skip navigation and semantic preview labels; the governance validator checks those structures, while the unit suite recalculates each documented WCAG contrast ratio from its HEX values. These checks do not constitute browser or screen-reader sign-off. See the verification notes in [18 — Reference-Led Direction Specifications](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md).
+
 ## Rejected historical visual proposals
 
 Graphic Atelier, Future Relics, Living Garden and Modern Folk Pop were explicitly rejected by the owner on 6 November 2026 (D-008). Their comparison board and specifications remain as historical audit evidence only:
