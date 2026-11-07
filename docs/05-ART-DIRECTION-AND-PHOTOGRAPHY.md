@@ -29,3 +29,8 @@ Define:
 
 ## Future image integration
 When explicitly authorized, map stable product IDs/SKUs to source photographs, preserve originals and independent backups, generate responsive optimized formats, produce a migration report and validate image-to-product associations before publication.
+
+
+## Non-destructive source inventory
+
+The repository includes a stdlib-only inventory command: `scripts/audit_photo_library.py`. It can inspect a selected image sample or, when explicitly requested, the wider folder. It reports format, dimensions where supported, size, SHA-256 and exact byte-duplicate groups. It never edits source media. See [19 — Non-Destructive Photo Library Audit](19-PHOTO-LIBRARY-AUDIT.md) for supported formats, limitations, safe output handling and usage. This is preparation only, not image migration or hosting.
