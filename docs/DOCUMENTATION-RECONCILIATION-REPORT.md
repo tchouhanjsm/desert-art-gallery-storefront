@@ -15,7 +15,7 @@ The archive contains exactly **25 files**:
 - 1 JavaScript prototype file.
 - 11 README, handoff, authority, inventory and governance documents.
 
-All 25 are installed under `design/owner-controlled-kit-v2/`. The 14 HTML/CSS/JS assets have been compared against the original archive by Git blob SHA-1 and file size. All 14 match exactly. CI now enforces the expected blob hashes and the exact 25-file inventory in `scripts/validate_project.py`.
+All 25 are installed under `design/owner-controlled-kit-v2/`. All 14 original HTML/CSS/JS assets have been compared against the supplied ZIP by Git blob SHA-1 and exact file size. All 14 match exactly. CI now enforces the expected blob hashes and the exact 25-file inventory in `scripts/validate_project.py`.
 
 The 11 kit-local governance/readme files are reconciled to D-014 and the repository-root authority hierarchy; they are not claimed to be byte-identical to their v1-era source text. The original HTML/CSS/JS asset bytes remain unchanged.
 
