@@ -17,6 +17,7 @@
 - Four fresh visual territories with exact palettes, typography, composition, photography, contrast notes and trade-offs: [18 — Reference-Led Direction Specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md).
 - Rendered comparison board with desktop and mobile examples: [Reference-Led Visual Board](../design/explorations/reference-led-directions.html).
 - Mandatory owner authority and decision process: [14 — Owner-Controlled Visual Direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+- Japan-first customer validation protocol and blank research templates: [22 — Customer Validation Playbook](22-CUSTOMER-VALIDATION-PLAYBOOK.md) and `templates/research/`.
 
 ## Fresh visual proposals
 
@@ -57,3 +58,10 @@ A source mapping plan is documented in [21 — Etsy Source Export Mapping and Re
 D-010 determines how POJ Studio and Macaroni Shoten inform DAG. It does not select a colour palette, typeface, photography mood, page composition, production theme or design token. The four new visual proposals remain unranked and await the owner's explicit choice. The initial customer-validation cohort also remains unresolved.
 
 The research inspection on 7 November 2026 captured POJ desktop structure and Macaroni's current empty-shop state. Tablet/mobile reference screenshots were not available from the browser session; responsive details in the new specification are requirements to test in DAG prototypes, not claims of measured reference behaviour.
+
+
+## Customer validation preparation delivered
+
+A field-ready **proposed** study workflow is available in [22 — Japan-First Customer Validation Playbook](22-CUSTOMER-VALIDATION-PLAYBOOK.md). It separates exploratory interviews from later prototype usability sessions, includes neutral prompts, evidence/synthesis rules and participant-data safeguards, and provides blank templates under `templates/research/`.
+
+This is preparation only. **No participants have been recruited; no interviews or usability sessions have been run; no customer preference or product-market fit is validated.** M1-B remains open until the owner confirms the cohort focus and recruitment route. No participant spending is authorized. M1-C remains open until the owner supplies a representative product/photo sample. M1-A remains open until the owner chooses, combines, revises or rejects the visual territories.

@@ -3,22 +3,27 @@
 Desert Art Gallery (DAG) is a premium, product-led ecommerce and gallery experience rooted in Jaisalmer, Rajasthan, with a Japan-first customer focus and an English-only customer-facing storefront.
 
 ## Current stage
-**M1 — Reference hierarchy and page specification delivered; visual identity and customer-validation gates remain open.**
+**M1 — Reference hierarchy, page specification and research-readiness kit delivered; owner decisions remain open.**
 
-The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce structure and page experience; Macaroni Shoten informs curation and select-retail character (D-010). A complete page-by-page implementation specification and updated live reference research are available. The four DAG-specific visual proposals remain unselected. No final palette, typography, art direction or production theme has been approved.
+The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce structure and page experience; Macaroni Shoten informs curation and select-retail character (D-010). A complete page-by-page implementation specification and updated live reference research are available. A Japan-first customer-validation playbook and blank anonymized research templates are also prepared; no interviews have been conducted. The four DAG-specific visual proposals remain unselected. No final palette, typography, art direction or production theme has been approved.
 
 ## Start here
 1. [Permanent agent instructions](AGENTS.md).
 2. [Project Charter](docs/00-PROJECT-CHARTER.md).
 3. [Reference-to-DAG implementation specification](docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md).
-4. [Dated reference research log](docs/REFERENCE-RESEARCH-LOG.md).
-5. [Reference-led design brief](docs/17-REFERENCE-LED-DESIGN-BRIEF.md).
-6. [Fresh visual territory specifications](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md).
-7. [Rendered desktop/mobile comparison board](design/explorations/reference-led-directions.html).
-8. [Creative Direction](docs/03-CREATIVE-DIRECTION.md).
-9. [Visual Design System](docs/04-VISUAL-DESIGN-SYSTEM.md).
-10. [Owner-Controlled Visual Direction](docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
-11. [Decision Register](docs/DECISIONS.md).
+4. [Japan-first customer validation playbook](docs/22-CUSTOMER-VALIDATION-PLAYBOOK.md).
+5. [Dated reference research log](docs/REFERENCE-RESEARCH-LOG.md).
+6. [Reference-led design brief](docs/17-REFERENCE-LED-DESIGN-BRIEF.md).
+7. [Fresh visual territory specifications](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md).
+8. [Rendered desktop/mobile comparison board](design/explorations/reference-led-directions.html).
+9. [Creative Direction](docs/03-CREATIVE-DIRECTION.md).
+10. [Visual Design System](docs/04-VISUAL-DESIGN-SYSTEM.md).
+11. [Owner-Controlled Visual Direction](docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+12. [Decision Register](docs/DECISIONS.md).
+
+## Customer research preparation
+
+The playbook defines a proposed exploratory interview cohort and a separate prototype-usability stage. The templates under `templates/research/` are blank and intentionally exclude participant identifiers. Owner confirmation of the cohort focus and recruitment route is still required; no recruitment or spending is authorized.
 
 ## New owner-review package
 

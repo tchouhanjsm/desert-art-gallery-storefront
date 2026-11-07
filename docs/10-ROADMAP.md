@@ -9,8 +9,9 @@
 - Add automated documentation/link checks and CI validation.
 
 ## M1 — Customer, brand and reference-led creative strategy
-**Status: Research and proposal package delivered; owner review pending.**
+**Status: Reference, research and preparation packages delivered; owner decisions and field validation pending.**
 - Preserve evidence-led Japan-first customer/market research and define validation hypotheses.
+- Prepare a customer-validation playbook, neutral discovery interview guide, prototype usability guide and blank anonymized research templates. Do not claim field validation until sessions have actually been conducted.
 - Compare direct-purchase, enquiry-led and hybrid commercial models without making an owner decision.
 - Follow D-010: POJ Studio is the primary ecommerce/page-structure reference; Macaroni Shoten is the secondary select-shop/curation reference.
 - Record dated observations, exact page URLs, viewport limitations and current live-site state.
@@ -23,9 +24,9 @@
 - Present neutral trade-offs; do not recommend, rank, score, select or imply a default.
 - Ask the owner to choose, combine, request revisions or reject all options. Stop before final tokens or production styling.
 
-Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md), [commercial model assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md), [reference-to-DAG implementation specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md), [reference research log](REFERENCE-RESEARCH-LOG.md), [reference-led design brief](17-REFERENCE-LED-DESIGN-BRIEF.md), [four visual specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md), [rendered desktop/mobile board](../design/explorations/reference-led-directions.html), [catalogue intake and fact-verification standard](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md), [Etsy source export mapping](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md), and [owner decision register](DECISIONS.md).
+Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md), [commercial model assessment](16-COMMERCIAL-MODEL-ASSESSMENT.md), [reference-to-DAG implementation specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md), [reference research log](REFERENCE-RESEARCH-LOG.md), [reference-led design brief](17-REFERENCE-LED-DESIGN-BRIEF.md), [four visual specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md), [rendered desktop/mobile board](../design/explorations/reference-led-directions.html), [catalogue intake and fact-verification standard](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md), [Etsy source export mapping](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md), [customer validation playbook](22-CUSTOMER-VALIDATION-PLAYBOOK.md), and [owner decision register](DECISIONS.md).
 
-Exit: the owner explicitly chooses, combines, requests revisions or rejects the four new visual proposals and confirms the initial customer-validation focus. D-010 confirms the reference hierarchy only; it does not satisfy the visual identity gate. The implementation specification may guide later prototypes, but M2 production-style page prototypes remain blocked until the owner approves a visual direction. Real cart/checkout/policy implementation remains gated by the unresolved commercial decisions.
+Exit: the owner explicitly chooses, combines, requests revisions or rejects the four new visual proposals and confirms the initial customer-validation focus. D-010 confirms the reference hierarchy only; it does not satisfy the visual identity gate. The implementation specification and research playbook may guide later work, but M2 production-style page prototypes remain blocked until the owner approves a visual direction. Research recruitment remains blocked until the owner confirms the cohort focus and recruitment route. The playbook does not mean customer validation has been conducted. Real cart/checkout/policy implementation remains gated by the unresolved commercial decisions.
 
 ## M2 — Responsive page prototypes
 Only after owner visual selection:
