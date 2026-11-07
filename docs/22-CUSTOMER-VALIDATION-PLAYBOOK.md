@@ -29,7 +29,7 @@ Stage A does not require a visual prototype. Do not use it to ask participants t
 
 ### Proposed sample
 
-A small first round of **six to eight participants** is proposed as qualitative discovery only. It is not statistically representative and cannot establish market size, conversion, price elasticity or the prevalence of a need.
+A small first round of **five to eight participants** is proposed as qualitative discovery only. It is not statistically representative and cannot establish market size, conversion, price elasticity or the prevalence of a need.
 
 Recruit across the four hypotheses in document 14 without treating them as fixed personas:
 
