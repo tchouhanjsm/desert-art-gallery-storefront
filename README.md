@@ -15,7 +15,7 @@
 
 ## Preview and implementation source
 
-Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/owner-controlled-kit-v2/pages/`. Preserve all original HTML, CSS, responsive rules, script, page/section order, supplied components and disabled states. The files are a non-production structural kit, not a live store or a production app.
+The agreed installation path is `design/owner-controlled-kit-v2/`. Do not claim that this directory is installed or previewable until all 25 original source files are committed and the 14 HTML/CSS/JS source assets are byte-verified against the owner archive. Once materialized, preserve all original HTML, CSS, responsive rules, script, page/section order, supplied components and disabled states. This is a non-production structural kit, not a live store or production app.
 
 ## Exact page inventory
 
