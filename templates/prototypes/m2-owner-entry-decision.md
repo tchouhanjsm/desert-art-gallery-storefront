@@ -88,7 +88,7 @@ The current visual study uses graphic placeholders only. No genuine DAG photo wa
 **Owner approval reference for these images and prototype-use scope:**
 
 
-M2-C remains OPEN until genuine representative samples, product facts, image permissions and prototype-use approval are supplied. Keep source photos, private paths, populated catalogue data and rights evidence outside Git. No bulk migration or public publication is authorized.
+M2-C remains OPEN until genuine representative samples, product facts, image permissions and prototype-use approval are supplied. Do not commit populated catalogue data, product photographs, source exports, private paths or rights evidence to Git. No bulk migration or public publication is authorized.
 
 ## M2-D — Journey priority
 
