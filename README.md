@@ -64,3 +64,18 @@ Japan-first is the intended customer focus. English-only is the customer-facing 
 ## Visual decision authority
 
 **THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.** No final palette, fonts, visual personality, photography art direction or production theme may be implemented before the owner's explicit selection is recorded in docs/DECISIONS.md.
+
+
+## Catalogue intake preparation
+
+A source-neutral draft intake standard and local CSV validator are available for future product-data preparation. The templates are blank and are not a production schema or approved taxonomy.
+
+- [Catalogue intake and fact-verification standard](docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md)
+- Blank templates: `templates/catalogue/`
+- Validate a private working folder with `python scripts/validate_catalogue_intake.py /path/to/private/catalogue-intake`
+
+Do not commit populated product data or private source paths.
+
+- [Etsy source export mapping and reconciliation plan](docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md)
+- Read-only source preflight: `python scripts/preview_etsy_export.py /private/path/EtsyListingsDownload.csv`
+- Preserve raw export records and IMAGE1–IMAGE10 references in the separate private intake tables; never treat remote Etsy image URLs as local or rights-cleared DAG imagery.

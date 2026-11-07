@@ -18,6 +18,6 @@ This is a concise queue of decisions that require owner input. Update it as deci
 | M1-B | Customer-validation cohort | Prioritizes customer research | During M1 | Owner input pending |
 | M1-C | Product/photo sample | Enables authentic product and image testing | Before M2 | Owner input pending |
 
-The current design choices are documented in [18 — Reference-Led Direction Specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md) and the [rendered board](../design/explorations/reference-led-directions.html). The owner has not approved a palette, font pairing or production style.
+The current design choices are documented in [18 — Reference-Led Direction Specifications](18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md) and the [rendered board](../design/explorations/reference-led-directions.html). The owner has not approved a palette, font pairing or production style. A draft catalogue intake kit is available to prepare factual sample data without selecting a database or final category taxonomy.
 
 Do not turn unanswered questions into invented facts. Continue work that is independent of these decisions.

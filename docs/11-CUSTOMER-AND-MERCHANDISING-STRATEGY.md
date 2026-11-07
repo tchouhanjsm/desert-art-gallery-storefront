@@ -40,3 +40,8 @@ For each, assess customer experience, operational burden, data requirements, pay
 
 ## Merchandising acceptance
 A prototype must show how a customer discovers categories, browses products, understands a product and knows the next action. Use real catalogue data when available; otherwise label sample content clearly as design-only.
+
+
+## Catalogue fact preparation
+
+Before defining final category names or building product pages, capture a private representative sample using the draft [catalogue intake standard](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md). Distinguish source-documented facts from owner-verified facts and public approvals. A candidate category is not an approved category. Use only verified product evidence when writing customer-facing copy.
