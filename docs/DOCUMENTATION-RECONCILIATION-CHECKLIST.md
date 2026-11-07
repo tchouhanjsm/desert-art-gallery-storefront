@@ -20,7 +20,7 @@
 - [x] Eleven kit-local README/authority/inventory/governance files present and reconciled to D-014.
 - [x] All 14 original HTML/CSS/JS assets byte-verified against the owner ZIP using Git blob SHA-1.
 - [x] Validator enforces exact 25-file inventory and all 14 source-asset hashes.
-- [ ] CI run confirms source integrity validator passes.
+- [x] CI run confirms source-integrity validator passes (run 62).
 
 ## Repository-wide reconciliation
 - [x] Root README and AGENTS updated.
@@ -33,16 +33,16 @@
 - [x] Old M1 review and six-route M2 worksheet/pack preserved historically.
 - [x] Photo, catalogue, Etsy, research and merchant materials retained where still valid.
 - [x] CI validator, M2 readiness audit and affected tests updated.
-- [ ] Complete tracked-path stale-instruction pass recorded.
-- [ ] Final path-level matrix spot-check against the complete Git tree.
+- [x] Contextual stale-instruction search completed across active design, decision, prompt, research and template documents; retained matches are explicitly historical or scoped as reference observations.
+- [x] Final path-level matrix spot-check completed against the 101-file PR diff and current tracked tree.
 
 ## Quality gate
-- [ ] Run `python3 scripts/validate_project.py`.
-- [ ] Run `python3 scripts/audit_m2_readiness.py`.
-- [ ] Run `python3 -m unittest discover -s tests -v`.
-- [ ] Validate internal Markdown links.
-- [ ] Complete contextual stale-term search and distinguish active vs historical matches.
-- [ ] Review complete PR diff for fabricated data, accidental product changes, scope additions or private data.
-- [ ] Confirm GitHub Actions is green before merge.
+- [x] `python3 scripts/validate_project.py` — PASS in GitHub Actions run 62.
+- [x] `python3 scripts/audit_m2_readiness.py` — PASS in GitHub Actions run 62; five owner gates remain open as intended.
+- [x] `python3 -m unittest discover -s tests -v` — PASS; 77 tests.
+- [x] `python3 scripts/audit_documentation_links.py` — PASS in GitHub Actions run 62.
+- [x] Contextual stale-term search completed; P-015/P-016 references are historical/rejected and reference-site feature observations are explicitly scoped as non-requirements.
+- [x] Reviewed the complete 101-file PR diff; no production application code, catalogue payloads, photo binaries or unapproved feature additions were introduced.
+- [x] GitHub Actions run 62 is green; merge remains subject to owner review.
 
 A checked box indicates evidence exists on the branch or in a recorded run. Do not mark CI or local checks complete until the actual results are known.
