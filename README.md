@@ -5,7 +5,7 @@ Desert Art Gallery (DAG) is a premium, product-led ecommerce and gallery experie
 ## Current stage
 **M1 — Reference hierarchy, page specification and research-readiness kit delivered; owner decisions remain open.**
 
-The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce structure and page experience; Macaroni Shoten informs curation and select-retail character (D-010). A complete page-by-page implementation specification and updated live reference research are available. A Japan-first customer-validation playbook and blank anonymized research templates are also prepared; no interviews have been conducted. The four DAG-specific visual proposals remain unselected. No final palette, typography, art direction or production theme has been approved.
+The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce structure and page experience; Macaroni Shoten informs curation and select-retail character (D-010). A complete page-by-page implementation specification and updated live reference research are available. A Japan-first customer-validation playbook and blank anonymized research templates are also prepared; no interviews have been conducted. An M2 prototype-entry and acceptance pack is prepared, but M2 has not started because the visual direction and other owner inputs remain open. The four DAG-specific visual proposals remain unselected. No final palette, typography, art direction or production theme has been approved.
 
 ## Start here
 1. [Permanent agent instructions](AGENTS.md).
@@ -20,6 +20,11 @@ The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce 
 10. [Visual Design System](docs/04-VISUAL-DESIGN-SYSTEM.md).
 11. [Owner-Controlled Visual Direction](docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
 12. [Decision Register](docs/DECISIONS.md).
+13. [M2 prototype-entry and acceptance pack](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md).
+
+## M2 prototype readiness
+
+A direction-neutral entry pack defines the owner gates, six first-route acceptance areas, non-transactional cart/checkout boundary, five responsive review widths and blank evidence log. It is preparation only: no production-style prototype has started and no visual direction is implied or approved. See [23 — M2 Prototype Entry and Acceptance](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md) and `templates/prototypes/`.
 
 ## Customer research preparation
 

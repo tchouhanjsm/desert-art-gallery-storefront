@@ -16,7 +16,7 @@ REQUIRED = [
  "docs/06-CONTENT-STRATEGY.md","docs/07-INFORMATION-ARCHITECTURE.md","docs/08-TECHNICAL-ARCHITECTURE.md",
  "docs/09-QUALITY-AND-ACCEPTANCE.md","docs/10-ROADMAP.md","docs/11-CUSTOMER-AND-MERCHANDISING-STRATEGY.md",
  "docs/12-MERCHANT-OPERATIONS.md","docs/13-DESIGN-REVIEW-PROTOCOL.md","docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md","docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md",
- "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md","docs/19-PHOTO-LIBRARY-AUDIT.md","docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md","docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md","docs/ADR-TEMPLATE.md",
+ "docs/15-CREATIVE-DIRECTION-OPTIONS.md","docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md","docs/17-REFERENCE-LED-DESIGN-BRIEF.md","docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md","docs/19-PHOTO-LIBRARY-AUDIT.md","docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md","docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md","docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md","templates/prototypes/README.md","templates/prototypes/prototype-review.csv","docs/ADR-TEMPLATE.md",
  "docs/AI-BOOTSTRAP-PROMPT.md","docs/AI-WORKING-PROTOCOL.md","docs/DECISIONS.md",
  "docs/OWNER-INPUT-REGISTER.md","docs/REFERENCE-RESEARCH-LOG.md","docs/UPDATE-VISUAL-OWNER-GATE-PROMPT.md",
  "scripts/validate_project.py","scripts/audit_photo_library.py","scripts/validate_catalogue_intake.py","scripts/preview_etsy_export.py","tests/test_project_validation.py","tests/test_photo_library_audit.py","tests/test_catalogue_intake.py","tests/test_etsy_export_preview.py","templates/catalogue/README.md","templates/catalogue/products.csv","templates/catalogue/product-facts.csv","templates/catalogue/product-images.csv","templates/catalogue/product-source-records.csv","templates/catalogue/etsy-image-sources.csv"]
@@ -118,6 +118,14 @@ def validate_project(root: Path=ROOT) -> list[str]:
    if page.lower() not in st.lower(): errors.append(f"reference implementation specification missing page {page}")
  else: errors.append("missing reference-to-DAG implementation specification")
  if "15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md" not in docs.get("README.md",""): errors.append("README does not link reference-to-DAG implementation specification")
+ m2_pack=root/"docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md"
+ if m2_pack.exists():
+  mt=m2_pack.read_text(encoding="utf-8").lower()
+  for term in ["m2-a","m2-b","m2-c","m2-d","m2-e","no visual selection, no production-style prototype","m2 has not started","non-transactional concept"]:
+   if term not in mt: errors.append(f"M2 prototype entry pack missing {term}")
+  for width in ["390 px","430 px","768 px","1280 px","1440 px"]:
+   if width not in mt: errors.append(f"M2 prototype entry pack missing review width {width}")
+ else: errors.append("missing M2 prototype entry and acceptance pack")
  if "P-015" not in docs.get("docs/DECISIONS.md","") or "Status: REJECTED" not in docs.get("docs/DECISIONS.md",""): errors.append("decision register must mark P-015 rejected")
  brief = root/"docs/17-REFERENCE-LED-DESIGN-BRIEF.md"
  if brief.exists():
@@ -201,6 +209,7 @@ def main() -> int:
  print("- Markdown UTF-8, internal links and heading hierarchy pass")
  print("- owner-control gate, explicit P-015 rejection, new reference decision and no-clone boundary pass")
  print("- reference-led owner-review board landmarks, keyboard access and preview labels pass")
+ print("- M2 prototype entry gates, route scope and responsive review widths are documented and enforced")
  print("- archived rejection and fresh four-option palettes, fonts and responsive render board pass")
  print("- D-010 reference hierarchy and page-by-page responsive implementation specification pass")
  print("- photo inventory and draft catalogue intake tools are documented; no app/framework/database/hosting scaffold introduced")

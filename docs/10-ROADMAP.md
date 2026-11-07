@@ -1,6 +1,6 @@
 # 10 — Project Roadmap
 
-**Current milestone:** M1 — reference hierarchy confirmed and complete page-by-page implementation specification delivered. Visual identity and customer-validation gates remain open; no final visual direction is approved.
+**Current milestone:** M1 — reference hierarchy confirmed, page specification delivered and M2 entry/acceptance pack prepared. Visual identity and customer-validation gates remain open; M2 has not started and no final visual direction is approved.
 
 ## M0 — Repository and governance foundation
 **Status: Completed.**
@@ -30,7 +30,9 @@ Deliverables: [Japan-first customer research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.m
 Exit: the owner explicitly chooses, combines, requests revisions or rejects the four new visual proposals and confirms the initial customer-validation focus. D-010 confirms the reference hierarchy only; it does not satisfy the visual identity gate. The implementation specification and research playbook may guide later work, but M2 production-style page prototypes remain blocked until the owner approves a visual direction. Research recruitment remains blocked until the owner confirms the cohort focus and recruitment route. The playbook does not mean customer validation has been conducted. Real cart/checkout/policy implementation remains gated by the unresolved commercial decisions.
 
 ## M2 — Responsive page prototypes
-Only after owner visual selection:
+**Readiness preparation:** The direction-neutral [M2 entry and acceptance pack](23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md) and blank [prototype review template](../templates/prototypes/prototype-review.csv) are prepared. M2 execution has not started.
+
+**Entry gate:** Only after owner visual selection and the remaining inputs recorded in the M2 pack:
 - Homepage.
 - Shop and category.
 - Product detail.
@@ -39,6 +41,7 @@ Only after owner visual selection:
 - Contact.
 - Cart/checkout concepts, subject to business-rule decisions.
 - Responsive states and meaningful interactions.
+- Review all six route areas against the M2 pack, including 390, 430, 768, 1280 and 1440 px widths.
 
 Exit: owner reviews rendered prototypes on mobile, tablet and desktop; visual system is owner-approved.
 
