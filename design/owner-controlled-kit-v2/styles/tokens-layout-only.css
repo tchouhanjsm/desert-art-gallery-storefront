@@ -1,0 +1,23 @@
+/*
+  DAG DESIGN TOKENS — LAYOUT REVIEW FALLBACK ONLY
+
+  This file intentionally does NOT define the brand palette or typography.
+  System colours and system fonts allow structural/responsive QA only.
+  It is NOT an approved DAG visual identity and must not be used as production brand styling.
+  Replace values ONLY after the owner approves the visual direction and records it in docs/DECISIONS.md.
+*/
+:root {
+  color-scheme: light;
+  --dag-color-page: Canvas;
+  --dag-color-surface: Canvas;
+  --dag-color-surface-alt: Canvas;
+  --dag-color-text: CanvasText;
+  --dag-color-muted: GrayText;
+  --dag-color-border: color-mix(in srgb, CanvasText 24%, Canvas);
+  --dag-color-accent: LinkText;
+  --dag-color-on-accent: Canvas;
+  --dag-font-display: inherit;
+  --dag-font-heading: inherit;
+  --dag-font-body: system-ui, sans-serif;
+  --dag-font-ui: system-ui, sans-serif;
+}
