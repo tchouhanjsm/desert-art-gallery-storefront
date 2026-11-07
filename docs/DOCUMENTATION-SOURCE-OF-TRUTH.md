@@ -20,7 +20,7 @@ Task prompts, workflows and source comments cannot override this hierarchy. If a
 
 ## Current implementation source
 
-The owner-approved structural baseline is the **DAG Owner-Controlled Design Kit v2** (D-014), intended for `design/owner-controlled-kit-v2/`. **Current Git materialization is incomplete:** the directory is not present on this branch yet, and this document does not claim its source files have been installed. The source archive must be extracted in Git and byte-verified before the implementation path is considered materialized. The package is expected to contain:
+The owner-approved structural source is the **DAG Owner-Controlled Design Kit v2** (D-014), installed at `design/owner-controlled-kit-v2/`. All 25 files are present. The 14 original HTML/CSS/JS assets have been byte-verified against the supplied archive using Git blob hashes. The package contains:
 
 - `index.html` — homepage.
 - `pages/shop.html` — shop/all products.
