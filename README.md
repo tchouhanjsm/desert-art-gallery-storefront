@@ -1,6 +1,6 @@
 # Desert Art Gallery — Owner-Controlled Design Kit v2
 
-**Current structural source:** `design/owner-controlled-kit-v2/`  
+**Owner-approved structural baseline:** DAG Owner-Controlled Design Kit v2 (D-014). **Materialization status:** source files are not yet present at `design/owner-controlled-kit-v2/`; see the reconciliation report and checklist.  
 **Status:** Adopted as the single active structural HTML/CSS implementation source (D-014). This does not approve final brand identity or authorize production application development.
 
 ## Authority hierarchy
