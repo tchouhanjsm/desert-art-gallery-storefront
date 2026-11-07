@@ -1,68 +1,40 @@
 # AI Working Protocol
 
-## Purpose
-A repeatable protocol for every new AI chat, coding agent and autonomous session. The repository, not conversational memory, is the source of truth.
-
 ## Session start
-1. Read root `AGENTS.md`.
-2. Read `README.md`.
-3. Read `docs/DECISIONS.md`.
-4. Read `docs/10-ROADMAP.md`.
-5. Read the project charter and task-relevant design/architecture docs.
-6. Inspect branch, working tree, repository state and open PRs if tools allow.
-7. Identify current milestone and acceptance criteria.
-8. Separate verified facts, assumptions, proposals and blockers.
+1. Read root `AGENTS.md` and `README.md`.
+2. Read `docs/DECISIONS.md`, `docs/DESIGN-AUTHORITY.md` and `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`.
+3. Read the active page and component inventories.
+4. Inspect current Git state, branch, changed paths, existing PRs and test configuration.
+5. Distinguish confirmed decisions, proposals, assumptions and unresolved owner inputs.
 
-## Before proposing work
-- Identify the customer/business problem.
-- Inspect existing work and dependencies.
-- Check whether a decision already exists.
-- Distinguish proposal from approved direction.
-- Define measurable acceptance criteria.
-- Avoid creating work that belongs to another active PR.
+## Authority and scope
+D-014 adopts the owner-controlled nine-page DAG v2 structural kit. Preserve supplied HTML/CSS/responsive styles, page and section order, prototype script, component structure, placeholders and disabled states. Follow only the active inventories. The former six-page scope is superseded by D-014.
 
-## During work
-- Use a focused branch and reviewable commits.
-- Preserve unrelated changes.
-- Do not silently change commercial/legal assumptions.
-- Do not fabricate product or business content.
-- Add tests for meaningful behaviour.
-- Update documents when an owner decision changes.
-- Never bypass failing checks or misreport results.
+Customer-facing content remains English-only. Japan-first does not imply Japanese UI or settle seller jurisdiction, sales territories, currency, tax/duties, shipping, payments or returns. Never invent business or product facts.
 
-## Design-specific protocol
-- Do not use the old storefront as the visual starting point.
-- Follow D-010: POJ Studio is the primary ecommerce/page-structure reference; Macaroni Shoten is the secondary curation/select-shop reference. Read docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md and record dated observations in docs/REFERENCE-RESEARCH-LOG.md.
-- Develop at least four materially different creative territories.
-- Specify exact HEX values, font family/weights/licensing, layout and photography direction.
-- Use actual rendered desktop/mobile examples, not descriptions or swatches alone.
-- Present neutral trade-offs; do not recommend, rank, score, badge, preselect or select a winner.
-- Ask the owner to choose, combine, request revisions or reject all options.
-- Stop before final tokens, production theme or global visual styling until an explicit owner choice is recorded.
+## Owner-controlled identity
+The owner alone approves exact colours, typography, logo/wordmark/descriptor and photography direction/crops. These remain pending. Do not select or recommend a palette, typeface, visual territory or default. `tokens-layout-only.css` is QA fallback only. P-015 is rejected; P-016 is historical only.
 
-## Autonomous execution
-Proceed independently on reversible in-scope documentation, research, option exploration, code and tests. Do not ask routine questions about ordinary implementation details.
+## No additions
+Do not add pages, sections, navigation, shell elements, components, banners, testimonials, badges, ratings, reviews, icons, widgets, animations, popups, sticky/floating elements, chat, newsletter/social or any functionality not explicitly listed in the component inventory. Existing disabled controls remain disabled.
 
-Stop for owner decisions involving foundational visual identity, seller jurisdiction, sales territory, currency, tax, shipping commitments, returns, legal identity, payment commitments, spending, subscriptions, production data, irreversible actions or sensitive credentials.
+No cart, checkout, account, wishlist, live search/filter/sort, payment, orders, shipping calculation, returns workflow or enquiry backend is authorized.
 
-When one owner decision blocks a feature, isolate it and continue unrelated safe work.
+## Engineering discipline
+- Make focused, reviewable changes on the correct branch.
+- Preserve unrelated work.
+- Reconcile instructions rather than appending contradictory notes.
+- Do not invent application frameworks, databases or hosting architecture.
+- Add or update tests for changed validation logic.
+- Run relevant checks and report exact outcomes.
+- Inspect the full diff before proposing a merge.
+- Never bypass failing checks or claim unrun tests pass.
 
-## Completion review
-- Review the entire diff.
-- Run relevant format, lint, type, unit, integration and build checks available in the chosen stack.
-- Inspect rendered routes for UI changes.
-- Verify English-only customer-facing content.
-- Confirm no fabricated claims or test fixtures leaked into production content.
-- Record screenshots only if actually captured and reviewed.
-- Report limitations accurately.
+## Stop conditions
+Stop for owner decisions on brand identity, legal seller/jurisdiction, sales territory, currency, tax, shipping commitments, returns, payment commitments, sensitive credentials, spending, irreversible actions or scope expansion. Continue independent safe documentation and quality work.
 
-## Current visual owner gate
+## Repository-wide reconciliation
+When a source or decision changes, inspect all tracked AGENTS, READMEs, Markdown, prompts, HTML/CSS/JS, token/theme files, comments, workflows, issue templates, scripts and tests. Classify affected files RETAIN, UPDATE, SUPERSEDE, ARCHIVE or REMOVE. Update report, matrix, checklist, changelog, README and decisions as applicable. Run contextual stale-instruction and internal-link checks.
 
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
-
-The old Material Archive / Collected Colour synthesis is historical only, not a default. The owner rejected the previous four proposals (P-015) on 6 November 2026. D-010 confirms BLEND: POJ Studio leads ecommerce structure and page experience; Macaroni Shoten informs curation and select-retail character. The complete page-by-page brief is docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md. This reference hierarchy does not equal visual-identity approval. Read docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md and docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md; the owner must still choose, combine, request revisions or reject the four current visual proposals.
-
-Prepare at least four materially different new DAG-specific territories with exact palettes, typography/licensing, layout/art direction, desktop/mobile renders, neutral trade-offs and accessibility notes. Do not clone either reference, reuse its assets or copy its text, product content, branding or exact page composition. Do not reuse rejected P-015 options as active candidates. Do not rank or recommend options. Ask the owner to choose, combine, request revisions or reject all, then stop. No final design tokens or production theme may be implemented before that explicit choice.
-
-## New-chat continuity
-At each major milestone, update 10-ROADMAP.md and DECISIONS.md. Produce a short handover referencing files, commits and PRs. Never rely on the chat alone for durable project knowledge.
+## Completion
+Record actual routes and viewport sizes inspected, checks run, commit/PR identifiers and unresolved limitations. No implementation is complete solely because a plan or document exists.

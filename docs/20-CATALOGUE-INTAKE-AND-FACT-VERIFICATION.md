@@ -107,4 +107,4 @@ An Etsy Listings Download export also has a separate private source-record and r
 5. Confirm category candidates against the actual catalogue before creating a final taxonomy.
 6. Review the proposed intake conventions with the owner before treating them as the production data contract.
 
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+Do not convert this draft intake convention into an approved production schema, taxonomy or backend. The owner must review and explicitly approve any production data contract. The active D-014 page and component inventories remain the current scope.

@@ -1,83 +1,25 @@
 # 13 — Design Review Protocol
 
-## Principal design references
+## Current source
 
-Our principal references are:
+D-014 adopts the owner-controlled v2 HTML/CSS kit as the active structural source. Review its nine pages using the exact page and component inventories. Do not treat earlier exploration boards or design specs as current implementation references.
 
-- **POJ Studio:** https://pojstudio.com/
-- **Macaroni Shoten:** https://shop.macaro-ni.jp/
+## Reference hierarchy
 
-These are DAG's primary references for creative and retail study. Study their actual editorial presentation, merchandising, product discovery, navigation, typography, photography and responsive customer experience. Learn from their principles, but do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
+D-010 remains active: POJ Studio is the primary reference for ecommerce/page structure; Macaroni Shoten is secondary for curation/select-shop character. Study non-proprietary experience principles only. Do not copy code, CSS, exact branded compositions, text, photography, logos, fonts or protected assets.
 
-## Purpose
-Prevent superficial redesigns and ensure visual direction is reviewed as an actual customer experience.
+## Review scope
 
-## Design status
-Every major design asset or decision must be marked:
-- Exploration.
-- Proposed.
-- Owner-approved.
-- Implemented.
-- Visually verified.
-- Retired.
+Review the actual supplied nine pages, shared shell and components at 390, 430, 768, 1280 and 1440 CSS-pixel widths. Record date, route, viewport, observed behaviour, issues and evidence. Check keyboard navigation, semantic structure, visible focus, responsive overflow, placeholder clarity and disabled control states.
 
-An AI agent cannot approve its own proposal.
+## Closed scope
 
-## Required evidence for a major design proposal
-- Rationale and intended customer benefit.
-- Reference observations with source URLs and access dates.
-- Palette and typography specimens.
-- Page composition and component samples.
-- Responsive layouts.
-- Actual rendered HTML/CSS prototypes.
-- Explanation of alternatives considered.
-- Known limitations and content dependencies.
+No additional page, section, navigation item, banner, testimonial, badge, rating, review, icon, widget, animation, popup, sticky/floating item, chat, newsletter, social module, search/filter/sort functionality or commerce feature may be introduced without explicit owner approval and inventory amendment.
 
-## Required page review
-Review complete rendered pages, not only hero mockups:
-- Homepage.
-- Shop/category.
-- Product detail.
-- About/Makers.
-- Journal.
-- Contact.
-- Cart/checkout concept.
+## Owner-controlled brand identity
 
-## Viewports
-At minimum: 390px, 430px, 768px, 1280px and 1440px.
+Final colours, typography families/weights/hierarchy/type scale, logo/wordmark/descriptor and photography direction/cropping remain pending. The layout-only system tokens are QA fallback only. The AI must not choose, rank or synthesize a brand direction. P-015 is rejected; P-016 is historical only. Use `docs/OWNER-TOKEN-INPUT.md` to record owner-supplied values and `docs/DECISIONS.md` for approvals.
 
-## Review questions
-- Does this look and behave like a premium curated retail experience?
-- Is it unmistakably DAG rather than a generic template?
-- Are products central?
-- Is merchandising substantial without becoming cluttered?
-- Is whitespace purposeful?
-- Is hierarchy clear?
-- Are product details readable?
-- Do mobile layouts feel designed rather than merely stacked?
-- Are stories and claims authentic?
-- Is the customer journey obvious?
-- Does the design learn from POJ Studio and Macaroni Shoten without cloning them?
+## Evidence and acceptance
 
-## Anti-superficial-change test
-A redesign is not accepted if it only changes colour values, spacing, font sizes, border radii or decorative effects while retaining the same weak composition and merchandising.
-
-Compare old and proposed experiences at equivalent routes and viewports when an old design exists. For this new repository, compare the proposal against the approved creative brief and reference analysis.
-
-## Review record
-For each major review, record:
-- Date.
-- Routes and viewports.
-- Screenshots and prototype path.
-- What works.
-- What fails.
-- Required corrections.
-- Owner decision.
-
-## Owner-controlled visual selection
-
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
-
-A visual review package must present at least four materially distinct options, each with exact palette roles/HEX values, font families/weights/licensing, layout/component examples, image art direction, contrast checks and actual desktop/mobile renders. Include neutral strengths, trade-offs and risks. The AI must not recommend, rank, score or identify a winner. The owner may choose, combine, request changes or reject all. Stop until the owner decision is explicit and recorded in `DECISIONS.md`. Do not create production tokens or theme styling before that gate.
-
-Current proposal package: [four-direction specifications](15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md) and [rendered board](../design/explorations/visual-directions.html). The historic Material Archive / Collected Colour synthesis is not an approved default.
+A screenshot is not evidence of inspection unless the rendered route and viewport were actually reviewed. Distinguish proposed, owner-approved, implemented and visually verified states. Do not claim page, browser, accessibility or CI checks that were not performed.

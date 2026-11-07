@@ -1,71 +1,33 @@
 # 09 — Quality and Acceptance
 
-## Product/design quality
-- Customers understand what DAG offers.
-- Product discovery is prominent and useful.
-- Every section has a purpose.
-- Whitespace is intentional.
-- Product facts are truthful and legible.
-- Desktop and mobile are deliberately composed.
-- The experience is distinct to DAG, not a clone or generic template.
-- Customer-facing content is English-only.
+## Governing design scope
 
-## Visual review
-At minimum review 390px, 430px, 768px, 1280px and 1440px.
-Review full rendered pages, not just the first viewport:
-- Homepage.
-- Shop and category.
-- Product detail.
-- About, Makers and Journal.
-- Contact/support.
-- Cart and checkout when implemented.
+Use D-014 and the active inventories only. The nine-page source kit defines structure and disabled states. This is not approval of brand identity, production copy, commerce behaviour or an application stack.
 
-Record route, viewport and date for screenshots. A screenshot capture does not prove it was visually inspected.
+## Structural acceptance
 
-## Owner-controlled visual decision gate
+- Preserve the supplied nine page files and their page/section order.
+- Preserve original HTML, CSS, responsive rules, JavaScript and component inventory.
+- Preserve all explicit placeholders and disabled controls.
+- Do not add or remove pages, shell items, components, sections or functionality.
+- Keep customer-facing language English-only.
+- Do not fabricate product, maker, material, dimension, provenance, price, inventory, review, contact, policy or delivery claims.
+- Do not copy proprietary content, assets, CSS or branded layouts from reference sites.
 
-**THE AI PROPOSES. THE OWNER CHOOSES. THE AI IMPLEMENTS.**
+## Responsive and accessibility review
 
-Before final visual identity or production styling:
-- Present at least four genuinely distinct territories, not four neutral variations.
-- Provide exact HEX values/roles, font families/weights and licensing caveats, layout/component rules, photography direction and contrast notes for each.
-- Provide rendered desktop and mobile examples for every option.
-- State neutral trade-offs; do not recommend, rank, score, select, badge or imply a default winner.
-- Ask the owner to choose one, combine specified elements, request revisions or reject all.
-- Stop. No final tokens, theme defaults, production CSS/design system or application styling until the explicit owner choice is recorded in `DECISIONS.md`.
+Review all supplied pages at 390, 430, 768, 1280 and 1440 CSS-pixel widths. Record actual observations for overflow, clipping, reading order, navigation, touch target access, focus visibility, image behaviour and content hierarchy. These are review widths, not fixed breakpoints. Preserve the kit's design unless the owner approves a scoped correction.
 
-The prior Material Archive / Collected Colour proposal is historical only and must not be resumed as a default. See [14 — Owner-Controlled Visual Direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md).
+Test semantic HTML, heading hierarchy, accessible names, keyboard operation, visible focus, reduced motion and colour contrast once an owner-approved brand identity exists. System fallback tokens are not evidence of final brand contrast.
 
-## M2 prototype review pack
-Use [23 — M2 Prototype Entry and Acceptance](23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md) as the route-level handoff and evidence contract. It does not waive the owner visual gate or authorize M2 before all entry inputs are recorded.
+## Brand identity gate
 
-## Accessibility
-Target WCAG 2.2 AA where applicable. Test keyboard access, visible focus, semantic structure, form labels, accessible names, contrast, reduced motion and responsive touch targets.
+Final colour roles/HEX values, typefaces/weights/hierarchy/type scale, logo/wordmark/descriptor and photography art direction/crop rules remain owner-controlled and pending. Do not create an AI-selected option set, recommend a direction, select a winner or use P-015/P-016 values as defaults. Record the owner's exact choices in `docs/DECISIONS.md` and `docs/OWNER-TOKEN-INPUT.md` before branded styling.
 
-## Performance and SEO
-Set measurable Core Web Vitals budgets after selecting the stack and realistic media strategy. Validate metadata, canonical URLs, sitemap, robots rules and product structured data only when accurate catalogue information exists.
+## Functional boundary
 
-## Functional quality
-Test navigation, links, search, filters, variants, cart, forms, validation, loading/empty/error/success states and critical customer journeys.
+Disabled Search, filter/sort, option/purchase and enquiry-form concepts stay disabled. No cart, checkout, account, wishlist, live search/filter/sort, payment, order, shipping calculation or returns functionality is in scope.
 
-## Engineering quality
-Run the chosen stack's actual formatting, lint, type-check, unit/integration, build and browser tests. Do not invent scripts or claim unrun tests passed.
+## Delivery evidence
 
-## Content integrity
-No unverified prices, reviews, stock, maker claims, business details, delivery promises, legal/tax claims or fabricated product content.
-
-## Definition of done
-A task is complete only when acceptance criteria are met, affected routes/states are checked, tests are run, changes are reviewed, docs are updated and remaining limitations are disclosed.
-
-## Creative-direction acceptance gate
-
-Before production UI implementation, verify:
-- At least four materially distinct visual directions were shown.
-- Options are not all beige, grey, ivory or muted earth palettes.
-- Exact palette values and typography were provided for each.
-- Actual rendered examples were provided for desktop and mobile.
-- The owner explicitly selected or combined a direction.
-- The selected direction is recorded in `DECISIONS.md`.
-- Production tokens reflect only the owner's selection.
-
-If any condition is missing, the visual identity is not approved and production design-system implementation must not proceed.
+A task is complete only when actual checks have been run and recorded. Run the repository validators and unit tests after the kit is materialized and validators have been reconciled. Do not report unrun checks as passing. Review the full diff and disclose remaining limitations.

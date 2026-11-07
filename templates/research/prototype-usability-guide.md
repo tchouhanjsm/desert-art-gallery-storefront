@@ -2,36 +2,40 @@
 
 **This guide is not permission to start M2.**
 
-Run only after the owner has approved a visual territory, the relevant prototype is available, and a verified 10–20 product/photo sample has been prepared privately. The interface shown to participants remains English-only.
+Run only after the owner authorizes the exact test scope (M2-E), the required journey/segment gates are resolved, and a representative product/photo sample has been privately verified and cleared for the research purpose. The current structural baseline is the D-014 nine-page kit; do not add UI or activate disabled controls.
+
+The current kit is not a branded production prototype. Customer-facing interface content remains English-only. Do not ask participants to approve or rank brand identity while owner-controlled identity inputs remain pending. A branded visual evaluation requires explicit owner-approved identity inputs.
 
 ## Preparation
 
 - Record the approved prototype version and tested viewport/device.
 - Use only owner-verified product facts and images approved for the research purpose.
-- Label any scenario-only price, availability, shipping or policy content as hypothetical; never present it as a live DAG promise.
+- Label scenario-only price, availability, shipping or policy content as hypothetical; never present it as a live DAG promise.
+- Keep supplied search, filter/sort, option, purchase and enquiry-form controls disabled.
+- Do not introduce a search/filter/cart/checkout/account/payment flow solely to make a study task possible.
 - Do not test live payments, real orders or operational checkout.
 - Ask for note-taking consent and separate recording permission.
 
 ## Neutral task prompts
 
-1. “Imagine you are looking for an object like [participant's stated need]. Show me how you would begin.”
-2. “Please find a product or collection you would want to understand better.”
+1. “Please explore the pages and tell me what you think this gallery offers.”
+2. “Using the navigation that is visible, find a page or collection you would want to understand better.”
 3. “Looking at this product page, tell me in your own words what is being offered.”
 4. “What can you tell about its size, material, condition, care and maker/origin from the information shown?”
 5. “What would you still need to know before deciding?”
 6. “Please find where you would go with a question for the gallery.”
 7. “What would you expect to know about delivery, duties, payment and returns before proceeding?”
 
-Use real catalogue wording only when the underlying facts are verified. Replace the bracketed phrase with the participant's own previously stated need; do not invent a product or a customer scenario.
+Use real catalogue wording only when the underlying facts are verified. Do not imply that disabled controls are functional or that a future commercial policy is already in place.
 
 ## Observe
 
-- Whether the participant identifies the correct category or product.
-- Where they look first and which navigation/search/filter controls they use.
+- Whether the participant understands the supplied page structure and navigation.
+- What they expect a visible but disabled control to do, without enabling it.
 - What they understand from product images and factual information.
-- Whether any key information is missed, misunderstood or difficult to compare.
-- Whether mobile controls remain reachable and readable.
-- Whether support/contact information can be found.
+- Whether key information is missed, misunderstood or difficult to compare.
+- Whether mobile page content and supplied navigation remain reachable and readable.
+- Whether contact/support information can be found.
 - What the participant expects but cannot verify.
 
 Do not coach the participant through the interface. Ask “What are you looking for?” or “What do you expect this to do?” rather than explaining the answer.

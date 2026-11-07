@@ -1,22 +1,11 @@
-# Design Assets
+# Design Assets and Source Governance
 
-- explorations/: unapproved explorations and design territories.
-- approved/: owner-approved assets only; include the related decision ID and date.
-- prototypes/: runnable HTML/CSS prototypes used for design reviews.
+The active structural HTML/CSS source is intended to live at `design/owner-controlled-kit-v2/` once the owner-supplied archive is materialized. Its original source files must remain unchanged and be checked against the supplied archive.
 
-Never place unlicensed reference-site assets or the full product-photo library here.
+- `approved/` is reserved for owner-approved brand assets with decision ID and date.
+- `prototypes/` is reserved for explicitly authorized review prototypes.
+- `explorations/` is not an active source for the rejected or superseded visual proposals.
 
-## Rejected historical visual package
+P-015 was rejected. P-016 is historical only. Previous visual proposal boards and specifications have been moved to `docs/historical/` for audit context. **HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT.**
 
-- [Archived four-direction board](explorations/visual-directions.html)
-- [Rejected specifications](../docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md)
-- Individual desktop and mobile renders: explorations/rendered/.
-
-The owner rejected all four directions on 6 November 2026 (D-008). These assets are retained for audit history only and must not be treated as a current preference, default or approved direction.
-
-## Current owner-review package
-
-- [Reference-led desktop/mobile visual board](explorations/reference-led-directions.html)
-- [Exact palettes, typography, layouts, photography and contrast specifications](../docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md)
-
-All four are unapproved proposals. Do not place anything in approved/ until an explicit owner choice is recorded.
+No current palette, typography, logo/wordmark/descriptor or photography art direction has been approved. Do not put unapproved material in `approved/`.

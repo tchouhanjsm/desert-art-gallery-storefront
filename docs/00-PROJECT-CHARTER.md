@@ -12,32 +12,25 @@ Our principal references are:
 - **POJ Studio:** https://pojstudio.com/
 - **Macaroni Shoten:** https://shop.macaro-ni.jp/
 
-These are DAG's primary references for creative and retail study. Study their actual editorial presentation, merchandising, product discovery, navigation, typography, photography and responsive customer experience. Learn from their principles, but do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
+These are DAG's references for creative and retail study. Study their actual editorial presentation, merchandising, product discovery, navigation, typography, photography and responsive customer experience. Learn from their principles, but do not copy their assets, exact layouts, content or brand identity. DAG must express its own Jaisalmer textile, object and craft identity.
 
 ## Owner-confirmed reference hierarchy (D-010)
 
-Reference fidelity is BLEND. POJ Studio is the primary reference for overall ecommerce architecture and page experience. Macaroni Shoten is the secondary reference for select-shop curation and concise editorial retail character. DAG retains its own Jaisalmer identity, product taxonomy, photography and English-only content. See [15 — Reference-to-DAG Implementation Specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md).
+Reference fidelity is BLEND. POJ Studio is the primary reference for overall ecommerce architecture and page experience. Macaroni Shoten is the secondary reference for select-shop curation and concise editorial retail character. DAG retains its own Jaisalmer identity, product taxonomy, photography and English-only content.
 
 This hierarchy does not select DAG's final palette, typography, visual personality, art direction, technology, commerce model or legal/operational rules.
 
-## Product ambition
-DAG should combine:
-- Editorial sophistication and material sensitivity studied from POJ Studio.
-- Curated retail and product-discovery sensibility studied from Macaroni Shoten.
-- DAG's own Jaisalmer identity, verified products, makers and stories.
-- Clear, reliable, accessible and commercially honest ecommerce interactions.
+## Current structural scope (D-014)
 
-References:
-- https://pojstudio.com/
-- https://shop.macaro-ni.jp/
+The owner has adopted the DAG Owner-Controlled Design Kit v2 as the structural HTML/CSS source for exactly nine pages. The original HTML/CSS/responsive styles and supplied prototype script are preserved in `design/owner-controlled-kit-v2/`. See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for the closed route and component contract.
 
-Study, do not clone.
+D-014 does not approve final brand identity, production application development, a framework/backend/hosting choice, cart/checkout or other commerce functionality, or any new UI beyond the supplied kit.
 
 ## Confirmed direction
 - Japan-first is the intended customer focus.
 - All customer-facing content is English-only.
 - DAG's identity is rooted in Jaisalmer/Rajasthan textiles, objects and craft.
-- The design system and storefront must be developed afresh.
+- The design system and storefront must be original to DAG.
 - Approximately 3,000 original product photographs for roughly 300 products exist; bulk migration and media hosting are deferred.
 - Product, maker, material, provenance, price, review, inventory, policy and business claims must be verified.
 
@@ -56,17 +49,17 @@ Japan-first customer focus does not establish all legal or operational arrangeme
 Do not assume these from design references or from the previous repository.
 
 ## Customer and merchandising ambition
-The store should make it easy to understand what DAG offers, discover relevant products, evaluate quality and specifications, understand purchasing conditions and obtain help. Product presentation leads; storytelling deepens product interest.
+The future store should make it easy to understand what DAG offers, discover relevant products, evaluate quality and specifications, understand purchasing conditions and obtain help. Product presentation leads; storytelling deepens product interest. These future-state ambitions do not authorize new features in the D-014 structural kit.
 
 ## Success criteria
-- Distinctive, product-led visual identity.
+- Distinctive, product-led visual identity after owner approval.
 - Strong catalogue and category discovery.
 - Honest, useful product information.
 - Thoughtful desktop and mobile experience.
 - Clear support and trust information.
 - Accessible, secure, maintainable engineering.
 - A feasible owner/admin operating model.
-- Verified end-to-end commerce once commercial rules are settled.
+- Verified end-to-end commerce only after commercial rules and scope are approved.
 
 ## Initial scope exclusions
 - Full image-library migration.

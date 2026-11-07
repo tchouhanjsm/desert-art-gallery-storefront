@@ -1,28 +1,24 @@
-# Update the DAG repository: enforce owner-controlled creative direction
+# Owner-Controlled Brand Identity — Current Instruction
 
 Repository: https://github.com/tchouhanjsm/desert-art-gallery-storefront
 
-The owner does not want the AI agent to choose the brand palette or typography by itself.
+D-014 adopts an owner-supplied structural HTML/CSS kit. This does not approve final DAG brand identity.
 
-## Assignment
-Update authoritative repository instructions so the owner, not the AI agent, controls foundational visual identity decisions.
+## Required behaviour
+1. Preserve the source kit's original HTML, CSS, responsive styles, script, route/section order and component inventory.
+2. Do not redesign the kit, add sections/components, add functionality or invent content.
+3. Do not select or recommend brand colours, typography, logo/wordmark/descriptor, photography direction or cropping.
+4. Treat `styles/tokens-layout-only.css` as system/browser QA fallback only, not a brand theme.
+5. Keep customer-facing UI English-only.
+6. P-015 is rejected; P-016 and Material Archive / Collected Colour are historical only. Do not revive or blend those proposals.
+7. Keep all existing disabled controls disabled.
+8. Record exact owner-supplied brand inputs in `docs/OWNER-TOKEN-INPUT.md` and approved decisions in `docs/DECISIONS.md`.
 
-Read `AGENTS.md`, `docs/03-CREATIVE-DIRECTION.md`, `docs/04-VISUAL-DESIGN-SYSTEM.md`, `docs/09-QUALITY-AND-ACCEPTANCE.md`, `docs/DECISIONS.md` and `docs/AI-WORKING-PROTOCOL.md`.
+## Scope boundary
+No new pages, sections, shell elements, badges, promotions, reviews, ratings, widgets, popups, sticky/floating features, animation, chat, newsletter/social or extra navigation. No cart, checkout, accounts, wishlist, live search/filter/sort, payments, order flow, shipping calculations, returns or enquiry backend.
 
-## Mandatory behaviour
-1. The agent must never independently finalize DAG's palette, typography, visual personality or art direction.
-2. It must prepare at least four materially distinct visual territories.
-3. Options must not all be beige, grey, ivory, greige or muted earth tones.
-4. Each option must have exact HEX colours, font families/weights, layout examples, component examples and photography direction.
-5. Render desktop and mobile examples. Swatches or text-only proposals are insufficient.
-6. Present neutral trade-offs. Do not label a winner.
-7. Ask the owner to choose, combine, request revisions or reject all options.
-8. Stop before final design tokens or production visual styling are implemented.
-9. After selection, record exact values and the decision ID; follow them.
-10. Routine implementation within the approved design system may proceed without asking.
+## Authorization boundary
+D-014 does not authorize production application development, framework/backend selection, public deployment, paid services or commercial/legal decisions. Any new visible or functional scope requires a written proposal and explicit owner approval followed by inventory amendment.
 
-Remove contradictory instructions that give the AI unilateral authority to choose the final palette or style. Preserve historical research but withdraw its former recommendation as a default.
-
-This is documentation governance and visual exploration only. Do not build the production application, select a framework or implement a final theme.
-
-Report exact files changed and checks actually run.
+## Reconciliation
+Update all conflicting active prompts, docs, validators, tests and workflows. Preserve useful historical evidence with a clear **HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT** label. Report exact files changed and checks actually run.

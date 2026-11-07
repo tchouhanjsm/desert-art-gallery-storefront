@@ -37,4 +37,4 @@ Before M3, ask the owner to review:
 
 ## Recommendation
 
-Keep the interface architecture flexible enough to support both `Buy` and `Enquire` product states, but do not implement either path in production until U-001 through U-008 and the sale-ready product criteria have been reviewed. Use a prototype to test the journeys in M2; make payments, taxes, shipping and policy claims placeholders only where explicitly labelled as such.
+The controlled-hybrid proposal remains a hypothesis for owner evaluation, not an approved storefront policy. D-014 does not implement either `Buy` or `Enquire` behaviour: the supplied option and purchase controls remain disabled, and the supplied enquiry action is a link only. Do not add cart, checkout, payment, shipping calculation, return or order behaviour to the current kit. Any later prototype or customer test must have an explicit scope authorization; payment, tax, shipping and policy claims stay placeholders unless owner-approved and verified.

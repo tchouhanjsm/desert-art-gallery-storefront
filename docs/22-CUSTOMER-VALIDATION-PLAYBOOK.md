@@ -14,7 +14,7 @@ Known project constraints:
 - The four audience groups in document 14 are hypotheses, not validated segments.
 - There is no first-party DAG interview data yet.
 - Exact seller jurisdiction, sales territories, currency, shipping, duties, payment, returns and legal disclosures remain unresolved.
-- The owner controls the visual direction. M2 prototypes remain blocked until a visual territory is explicitly approved and recorded.
+- The owner controls foundational brand identity. Any branded prototype remains blocked until the exact owner-approved identity inputs are explicitly recorded; D-014 adopts structure only.
 
 This playbook is a proposed method. It does not change any confirmed decision, make a commercial promise, or establish a legal/privacy policy.
 
@@ -25,7 +25,7 @@ This playbook is a proposed method. It does not change any confirmed decision, m
 | A — Discovery | Moderated interviews about recent purchases, evaluation and trust | Owner confirms the cohort focus, recruitment route and any participant cost | Anonymized evidence log and research synthesis |
 | B — Usability | Moderated mobile-first browse and product-comprehension tests | Stage A findings are reviewed; visual direction is owner-approved; prototype and real product sample are ready | Task observations, usability findings and prioritized open questions |
 
-Stage A does not require a visual prototype. Do not use it to ask participants to choose the DAG visual territories on the owner's behalf. Stage B must use an owner-approved DAG prototype; it must not be built in production style before the visual gate.
+Stage A does not require a visual prototype. Do not use it to ask participants to choose brand identity on the owner's behalf. Stage B must use an owner-authorized DAG prototype with owner-approved identity inputs where branded evaluation is in scope; it must not be built in production style or expanded beyond D-014 without the required owner gate.
 
 ## 3. Stage A — exploratory discovery
 
@@ -86,8 +86,9 @@ Ask follow-up questions such as “What happened next?” and “Can you show or
 ## 5. Stage B — prototype usability
 
 Begin only after all of the following are true:
-- The owner has explicitly selected or combined a visual territory and recorded it in `docs/DECISIONS.md`.
-- The relevant M2 prototype is available and clearly labelled as a prototype.
+- The exact test scope and non-production boundary are explicitly authorized by the owner (M2-E) and recorded in `docs/DECISIONS.md`.
+- The v2 nine-page structural baseline in D-014 is used without adding unlisted sections or functionality; all routes are clearly labelled as a prototype.
+- Do not ask participants to approve or rank brand identity. A branded visual-identity evaluation requires the owner's exact identity inputs to be recorded first (M2-A).
 - A representative sample of 10–20 real DAG products and image sets has been supplied privately and its facts/images are verified for the test purpose.
 - Any purchase, enquiry, price, availability or service content shown in the prototype is either owner-approved or clearly identified as a research-only scenario. Do not imply that hypothetical checkout or policies are operational.
 
@@ -165,14 +166,14 @@ Do not write named personas, market-size claims, purchase forecasts or conversio
 - Confirm the recruitment route and whether any participant cost or incentive is acceptable. No spending is authorized by this playbook.
 - Confirm who will moderate and where private research notes will be stored.
 - **M1-C:** Supply a representative 10–20 product/photo sample when ready. Keep it private; do not commit it to Git.
-- **M1-A:** Separately choose, combine, revise or reject the four visual territories. A customer interview does not replace this owner decision.
+- **M1-A:** Confirm owner-supplied brand identity inputs (exact colours, typography, logo/wordmark/descriptor and photography direction) only when ready. D-014 adopts structure only; the former visual territories are not active choices. Customer interviews do not authorize brand selection or override owner decisions.
 
 Until these inputs are confirmed, this milestone is **research-ready, not research-complete**. No participant recruitment or customer validation has been claimed.
 
 ## 10. Related project documents
 
 - [Japan-first research and audience hypotheses](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md)
-- [Reference-to-DAG implementation specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md)
+- [Current nine-page structural inventory](PAGE-INVENTORY.md) and [owner gate / nine-page acceptance pack](23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md)
 - [Owner-controlled visual direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md)
 - [M1 owner review and exit gate](M1-OWNER-REVIEW.md)
 - [Owner input register](OWNER-INPUT-REGISTER.md)

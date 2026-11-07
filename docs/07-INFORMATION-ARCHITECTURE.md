@@ -1,40 +1,29 @@
 # 07 — Information Architecture
 
-## Status
-Proposed structure for design exploration. Routes and navigation are not yet approved.
+## Active structural scope
 
-## Candidate customer-facing sections
-- Home.
-- Shop/all products.
-- Categories and collections.
-- Product detail.
-- Makers/craft.
-- About DAG.
-- Journal.
-- Contact/help.
-- Cart.
-- Checkout, subject to approved commercial requirements.
-- Account, only if justified by customer and operational needs.
+D-014 adopts the owner-controlled nine-page HTML/CSS kit as the sole active structural source. The exact route list and section order are in `docs/PAGE-INVENTORY.md`; shared shell and existing components are in `docs/COMPONENT-INVENTORY.md`.
 
-## Navigation principles
-- Make product discovery obvious.
-- Use customer language rather than internal catalogue terminology.
-- Keep primary navigation concise.
-- Provide useful search.
-- Make cart and support easy to reach.
-- Avoid adding sections merely to fill the header.
+1. Home — `index.html`.
+2. Shop / all products — `pages/shop.html`.
+3. Category / collection — `pages/collection.html`.
+4. Product detail — `pages/product.html`.
+5. About DAG — `pages/about.html`.
+6. Makers — `pages/makers.html`.
+7. Journal index — `pages/journal.html`.
+8. Journal article — `pages/article.html`.
+9. Contact / support — `pages/contact.html`.
 
-## Customer journeys to prototype
-1. Arrive at homepage → understand DAG → explore category → view product.
-2. Search → refine results → compare items → product detail.
-3. Product detail → understand specifications and delivery → purchase or enquire.
-4. Cart → review items and charges → checkout when commercial rules are approved.
-5. Need help → find accurate contact/support information.
+Preserve supplied navigation labels and destination order. Do not add, remove, rename or rearrange pages, page sections, navigation or shell items without a recorded owner decision and updated inventories.
 
-## Market dependency
-Japan-first is the intended customer focus. Do not finalize country coverage, address fields, tax display, shipping, currency, payment or returns UI until operating requirements are confirmed.
+## Excluded behaviour
 
+The kit does not contain or authorize cart, checkout, account, wishlist, payment, order management, inventory reservation, live search, functional filters/sort, variants, purchase submission, shipping calculation, return workflow or an enquiry backend. Existing disabled/visual-only controls stay disabled.
 
-## Catalogue dependency
+## Customer-market and language
 
-The final category tree must be based on the actual catalogue, not assumptions drawn from competitor navigation. Use `category_candidate` during private intake only; it is not an approved taxonomy. Product IDs, facts and image references should remain traceable through the draft [catalogue intake standard](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md). Routes and customer-facing category labels remain proposed until the owner reviews the real product range.
+Japan-first is the intended customer focus. Customer-facing UI remains English-only. Seller jurisdiction, exact sales territories, currency, tax/duties, shipping/fulfilment, payments, returns and legal disclosures remain unresolved and must not be inferred from the market focus.
+
+## Catalogue and category integrity
+
+Do not invent category names, product examples, maker information or taxonomy. Any future taxonomy must be derived from verified catalogue evidence and explicitly approved before replacing placeholders.
