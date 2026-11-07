@@ -425,7 +425,12 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
                 issues.append(Issue("etsy-image-sources.csv", line, "local_asset_id must match a product-images.csv asset for this product"))
         elif local_asset_id:
             issues.append(Issue("etsy-image-sources.csv", line, "local_asset_id must remain blank until download_status=downloaded"))
-        if review == "accepted" and (rights != "cleared" or download != "downloaded" or not local_asset_id):
+        if review == "accepted" and (
+            rights != "cleared"
+            or download != "downloaded"
+            or not local_asset_id
+            or (product_id, local_asset_id) not in local_asset_pairs
+        ):
             issues.append(Issue("etsy-image-sources.csv", line, "an accepted source image requires cleared rights and a downloaded local asset mapping"))
 
     for product_id, row in products.items():

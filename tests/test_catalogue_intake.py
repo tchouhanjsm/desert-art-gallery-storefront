@@ -291,7 +291,7 @@ class CatalogueIntakeTests(unittest.TestCase):
             write_package(
                 root,
                 products=[product_row(source_record_ref="etsy:wrong:row:1")],
-                sources=[source_record_row(source_record_ref="etsy:wrong:row:1")],
+                sources=[source_record_row(source_file_sha256="wrong", source_record_ref="etsy:wrong:row:1")],
             )
             messages = [str(issue) for issue in validate_catalogue_directory(root)]
             self.assertTrue(any("lowercase 64-character SHA-256" in item for item in messages))
