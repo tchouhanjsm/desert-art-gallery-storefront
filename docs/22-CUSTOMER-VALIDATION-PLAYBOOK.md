@@ -165,14 +165,14 @@ Do not write named personas, market-size claims, purchase forecasts or conversio
 - Confirm the recruitment route and whether any participant cost or incentive is acceptable. No spending is authorized by this playbook.
 - Confirm who will moderate and where private research notes will be stored.
 - **M1-C:** Supply a representative 10–20 product/photo sample when ready. Keep it private; do not commit it to Git.
-- **M1-A:** Separately choose, combine, revise or reject the four visual territories. A customer interview does not replace this owner decision.
+- **M1-A:** Confirm owner-supplied brand identity inputs (exact colours, typography, logo/wordmark/descriptor and photography direction) only when ready. D-014 adopts structure only; the former visual territories are not active choices. Customer interviews do not authorize brand selection or override owner decisions.
 
 Until these inputs are confirmed, this milestone is **research-ready, not research-complete**. No participant recruitment or customer validation has been claimed.
 
 ## 10. Related project documents
 
 - [Japan-first research and audience hypotheses](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md)
-- [Reference-to-DAG implementation specification](15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md)
+- [Current nine-page structural inventory](PAGE-INVENTORY.md) and [owner gate / nine-page acceptance pack](23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md)
 - [Owner-controlled visual direction](14-OWNER-CONTROLLED-VISUAL-DIRECTION.md)
 - [M1 owner review and exit gate](M1-OWNER-REVIEW.md)
 - [Owner input register](OWNER-INPUT-REGISTER.md)
