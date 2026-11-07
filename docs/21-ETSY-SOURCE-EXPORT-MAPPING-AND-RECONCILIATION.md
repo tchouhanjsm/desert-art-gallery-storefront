@@ -63,7 +63,7 @@ python scripts/preview_etsy_export.py "/private/path/EtsyListingsDownload.csv" \
   --rows-csv "/private/reports/etsy-source-rows.csv"
 ```
 
-The preflight computes the source-file SHA-256 and logical data-row references; checks required headers, blank/duplicate SKUs, repeated titles, price/currency and quantity pairing, IMAGE1–IMAGE10 counts and URL hosts, variation population, and the presence of category/listing-ID columns. It handles quoted multiline descriptions. Reports are private and existing report paths are never overwritten. It does not create products, source manifest rows, downloaded images or an import result.
+The preflight computes the source-file SHA-256 and logical data-row references; checks required headers, blank/duplicate SKUs, repeated titles, price/currency and quantity pairing, IMAGE1–IMAGE10 counts and URL hosts, variation population, and the presence of category/listing-ID columns. It handles quoted multiline descriptions. Reports must be placed outside the source CSV's directory, remain private, and use new output paths because existing reports are never overwritten. It does not create products, source manifest rows, downloaded images or an import result.
 
 ## Local validation
 

@@ -45,9 +45,12 @@ def normalize_title(value: str) -> str:
 
 
 def preview_etsy_export(source_path: Path) -> tuple[dict[str, object], list[dict[str, object]], bool]:
-    source_path = source_path.expanduser().resolve()
-    if not source_path.is_file() or source_path.is_symlink():
-        raise ValueError("Source CSV must be an existing regular file, not a symbolic link.")
+    source_input = source_path.expanduser()
+    if source_input.is_symlink():
+        raise ValueError("Source CSV must not be a symbolic link.")
+    source_path = source_input.resolve()
+    if not source_path.is_file():
+        raise ValueError("Source CSV must be an existing regular file.")
 
     size = source_path.stat().st_size
     if size > MAX_SOURCE_BYTES:
@@ -157,8 +160,11 @@ def preview_etsy_export(source_path: Path) -> tuple[dict[str, object], list[dict
         if title:
             title_values.append(normalize_title(title))
 
-        if bool(price) != bool(currency):
-            issues.append({"row": source_row_number, "field": "PRICE/CURRENCY_CODE", "code": "price_currency_pair_incomplete"})
+        if not price or not currency:
+            issues.append({"row": source_row_number, "field": "PRICE/CURRENCY_CODE", "code": "price_currency_missing"})
+            row_issues += 1
+        if price and not re.fullmatch(r"(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?", price):
+            issues.append({"row": source_row_number, "field": "PRICE", "code": "price_format_review"})
             row_issues += 1
         if currency:
             currency_counts[currency] += 1
@@ -288,8 +294,8 @@ def main(argv: list[str] | None = None) -> int:
         ]
         if len({str(path).casefold() for path in destinations}) != len(destinations):
             parser.error("--json and --rows-csv must use different output paths")
-        if any(path == source for path in destinations):
-            parser.error("Report output paths must not overwrite the source CSV")
+        if any(path == source or path.is_relative_to(source.parent) for path in destinations):
+            parser.error("Report output paths must be outside the source CSV directory")
         for path in destinations:
             if path.exists():
                 parser.error(f"Report already exists; choose a new path: {path}")

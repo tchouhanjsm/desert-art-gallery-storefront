@@ -110,8 +110,9 @@ class EtsyExportPreviewTests(unittest.TestCase):
                 "Textile piece", "Description", "149", "USD", "1",
                 "SKU-1", "Cotton", "textile", "https://i.etsystatic.com/photo.jpg", "", "", "", "",
             ]])
-            summary_path = root / "report.json"
-            rows_path = root / "rows.csv"
+            report_dir = root.parent / (root.name + "-private-reports")
+            summary_path = report_dir / "report.json"
+            rows_path = report_dir / "rows.csv"
             self.assertEqual(main([str(source), "--json", str(summary_path), "--rows-csv", str(rows_path)]), 0)
             summary = json.loads(summary_path.read_text(encoding="utf-8"))
             self.assertFalse(summary["imported"])
@@ -123,6 +124,46 @@ class EtsyExportPreviewTests(unittest.TestCase):
             with self.assertRaises(SystemExit) as raised:
                 main([str(source), "--json", str(summary_path)])
             self.assertEqual(raised.exception.code, 2)
+
+    def test_rejects_report_paths_inside_source_directory(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "etsy.csv"
+            write_export(source, [[
+                "Textile piece", "Description", "149", "USD", "1",
+                "SKU-1", "Cotton", "textile", "https://i.etsystatic.com/photo.jpg", "", "", "", "",
+            ]])
+            with self.assertRaises(SystemExit) as raised:
+                main([str(source), "--json", str(Path(tmp) / "summary.json")])
+            self.assertEqual(raised.exception.code, 2)
+            self.assertTrue(source.is_file())
+
+    def test_rejects_symlinked_source_csv(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            real = root / "real.csv"
+            link = root / "link.csv"
+            write_export(real, [[
+                "Textile piece", "Description", "149", "USD", "1",
+                "SKU-1", "Cotton", "textile", "https://i.etsystatic.com/photo.jpg", "", "", "", "",
+            ]])
+            try:
+                link.symlink_to(real)
+            except OSError:
+                self.skipTest("symlinks are not available on this runner")
+            with self.assertRaises(ValueError):
+                preview_etsy_export(link)
+
+    def test_flags_non_decimal_source_price(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "etsy.csv"
+            write_export(source, [[
+                "Textile piece", "Description", "USD 149", "USD", "1",
+                "SKU-1", "Cotton", "textile", "https://i.etsystatic.com/photo.jpg", "", "", "", "",
+            ]])
+            summary, rows, fatal = preview_etsy_export(source)
+            self.assertFalse(fatal)
+            self.assertTrue(rows[0]["row_review_required"])
+            self.assertIn("price_format_review", {issue["code"] for issue in summary["issues"]})
 
     def test_invalid_row_content_is_reported_without_importing(self):
         with tempfile.TemporaryDirectory() as tmp:
