@@ -86,8 +86,9 @@ Ask follow-up questions such as “What happened next?” and “Can you show or
 ## 5. Stage B — prototype usability
 
 Begin only after all of the following are true:
-- The owner has explicitly selected or combined a visual territory and recorded it in `docs/DECISIONS.md`.
-- The relevant M2 prototype is available and clearly labelled as a prototype.
+- The exact test scope and non-production boundary are explicitly authorized by the owner (M2-E) and recorded in `docs/DECISIONS.md`.
+- The v2 nine-page structural baseline in D-014 is used without adding unlisted sections or functionality; all routes are clearly labelled as a prototype.
+- Do not ask participants to approve or rank brand identity while M2-A remains open. A branded visual-identity evaluation requires the owner's exact identity inputs to be recorded first.
 - A representative sample of 10–20 real DAG products and image sets has been supplied privately and its facts/images are verified for the test purpose.
 - Any purchase, enquiry, price, availability or service content shown in the prototype is either owner-approved or clearly identified as a research-only scenario. Do not imply that hypothetical checkout or policies are operational.
 
