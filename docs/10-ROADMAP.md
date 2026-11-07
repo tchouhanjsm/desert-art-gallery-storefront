@@ -32,6 +32,8 @@ Exit: the owner explicitly chooses, combines, requests revisions or rejects the 
 ## M2 — Responsive page prototypes
 **Readiness preparation:** The direction-neutral [M2 entry and acceptance pack](23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md), blank [owner-entry decision worksheet](../templates/prototypes/m2-owner-entry-decision.md) and blank [prototype review template](../templates/prototypes/prototype-review.csv) are prepared. M2 execution has not started.
 
+The read-only `python3 scripts/audit_m2_readiness.py` command checks cross-document gate consistency. Open gates are expected; confirmed records still require explicit owner authorization before the first route begins.
+
 **Entry gate:** Only after owner visual selection and the remaining inputs recorded in the M2 pack:
 - Homepage.
 - Shop and category.

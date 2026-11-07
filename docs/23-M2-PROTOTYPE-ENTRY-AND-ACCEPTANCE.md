@@ -14,7 +14,7 @@
 | M2-B — Customer-validation focus | Owner confirms the initial cohort focus and research approach. Confirm recruitment route separately; do not recruit or spend without authorization. | Open |
 | M2-C — Product evidence | Owner supplies/approves a representative 10–20 product/photo sample for prototype use, or explicitly permits clearly labelled illustrative placeholders. | Open |
 | M2-D — Journey priority | Owner confirms which customer journeys should be reviewed first. | Open |
-| M2-E — Prototype scope | Confirm that the first delivery is a non-production prototype, with no operational commerce or policy promises. | This pack defines the safe boundary; owner review remains required |
+| M2-E — Prototype scope | Confirm that the first delivery is a non-production prototype, with no operational commerce or policy promises. | Open — owner scope confirmation required |
 
 A reference choice (D-010) is not a visual-identity choice. Do not treat the four P-016 proposals as selected, combine them on the owner's behalf, or use any historical rejected palette or type pairing as a fallback.
 
@@ -23,6 +23,10 @@ When M2-A is approved, record the exact selected colours, typography, visual per
 ### Owner decision capture
 
 Use the blank [M2 Owner Entry Decision Record](../templates/prototypes/m2-owner-entry-decision.md) to capture the owner's M2-A through M2-E outcomes. It deliberately starts with every gate open and every choice unchecked. A completed worksheet is not, by itself, approval: transfer confirmed outcomes and exact evidence references into docs/DECISIONS.md and docs/OWNER-INPUT-REGISTER.md before changing a gate's authoritative status.
+
+### Automated gate audit
+
+Run `python3 scripts/audit_m2_readiness.py` to compare each M2-A through M2-E status across the owner-input register, this acceptance table and the worksheet outcome table. Aligned open gates are reported as **BLOCKED (expected)** and do not fail CI. Conflicting statuses, missing owner-input rows, or confirmed gates without a valid decision-register reference fail the audit. Even when every gate is confirmed, the report still requires separate owner authorization for the first route; it does not start M2.
 
 ## 2. First prototype route set
 

@@ -26,6 +26,8 @@ The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce 
 
 A direction-neutral entry pack defines the owner gates, six first-route acceptance areas, non-transactional cart/checkout boundary, five responsive review widths, a blank evidence log and an owner decision worksheet. It is preparation only: no production-style prototype has started and no visual direction is implied or approved. See [23 — M2 Prototype Entry and Acceptance](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md), the [blank M2 owner-entry decision record](templates/prototypes/m2-owner-entry-decision.md) and templates/prototypes/.
 
+Run `python3 scripts/audit_m2_readiness.py` to confirm that the owner-input register, M2 acceptance pack and worksheet agree. Pending owner decisions are reported as an expected blocked state.
+
 ## Customer research preparation
 
 The playbook defines a proposed exploratory interview cohort and a separate prototype-usability stage. The templates under `templates/research/` are blank and intentionally exclude participant identifiers. Owner confirmation of the cohort focus and recruitment route is still required; no recruitment or spending is authorized.

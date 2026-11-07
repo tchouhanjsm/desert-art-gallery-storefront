@@ -12,7 +12,7 @@ This worksheet does not authorize spending, participant recruitment, publication
 
 ## M2-A — Visual identity
 
-Choose the outcome that reflects the owner's decision. The four current proposals remain unranked.
+Choose exactly one outcome that reflects the owner's decision. The four current proposals remain unranked.
 
 - [ ] Select one proposal.
 - [ ] Combine explicitly named elements from more than one proposal.
@@ -74,7 +74,7 @@ Recruitment, incentives and other spending remain unauthorized unless separately
 
 ## M2-C — Product and photography evidence
 
-Choose the evidence basis for the first prototype.
+Choose exactly one evidence basis for the first prototype.
 
 - [ ] Owner will supply and approve a representative sample of 10–20 products/photos.
 - [ ] Owner explicitly permits clearly labelled illustrative placeholders.
@@ -144,4 +144,4 @@ This scope does not authorize a production application, technical-stack decision
 
 **Decision-register update completed:** [ ] Yes [ ] No
 
-Do not change the overall status to ready merely because this worksheet has been filled in. Verify the authoritative decision register, owner-input register and supporting evidence first.
+Do not change a gate to Confirmed merely because a worksheet option was checked. Record the owner decision and its D-number in docs/DECISIONS.md, then synchronize the owner-input register, this gate table and the M2 acceptance table. Do not change the overall status to ready merely because this worksheet has been filled in. Verify the authoritative decision register, owner-input register and supporting evidence first.
