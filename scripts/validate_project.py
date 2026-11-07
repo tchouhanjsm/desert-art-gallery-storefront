@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
-"""Validate DAG v2 documentation authority and reconciliation state.
-
-This validator deliberately distinguishes a coherent governance baseline from
-materialization of the owner-supplied source kit. A passing documentation
-check does not authorize merging while the reconciliation checklist has
-unclosed source-installation items.
-"""
+"""Validate DAG v2 authority, kit completeness, source integrity and local links."""
 from __future__ import annotations
 
-import re
+import hashlib
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+KIT_ROOT = "design/owner-controlled-kit-v2"
 REQUIRED = (
     "AGENTS.md",
     "README.md",
@@ -38,6 +35,110 @@ ROUTES = (
     "pages/article.html",
     "pages/contact.html",
 )
+KIT_FILES = {
+    "HANDOFF-PROMPT.md", "README.md",
+    "docs/COMPONENT-INVENTORY.md", "docs/DESIGN-AUTHORITY.md",
+    "docs/DOCUMENTATION-CHANGELOG.md", "docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md",
+    "docs/DOCUMENTATION-RECONCILIATION-PROMPT.md", "docs/DOCUMENTATION-SOURCE-OF-TRUTH.md",
+    "docs/OWNER-TOKEN-INPUT.md", "docs/PAGE-INVENTORY.md", "docs/REFERENCE-CREDIT-AND-IP.md",
+    "index.html",
+    "pages/about.html", "pages/article.html", "pages/collection.html", "pages/contact.html",
+    "pages/journal.html", "pages/makers.html", "pages/product.html", "pages/shop.html",
+    "scripts/prototype.js",
+    "styles/components.css", "styles/layout.css", "styles/responsive.css", "styles/tokens-layout-only.css",
+}
+# Git blob SHA-1 values computed from the original owner archive bytes.
+KIT_ASSET_BLOB_SHAS = {
+    "index.html": "6609a91541eac36f98fe1d6f8e6a2903ad5a32ee",
+    "pages/about.html": "3669d729a47d32016f9643d976179d4d63f4f6e5",
+    "pages/article.html": "83b74212ce37539af12307386347ae38a4cabc05",
+    "pages/collection.html": "89f907e4d653a9808409ab3325ceec4e98536878",
+    "pages/contact.html": "6964e9279c9c06bba1c88d11b2837c5c55afade3",
+    "pages/journal.html": "b7a5798c0031a972f1886c15b1cb19d17079b11a",
+    "pages/makers.html": "4e4de5f1713811ab3ac027b942043e899a0a65a0",
+    "pages/product.html": "046bbe1d86600746a802977651ee5264cf824c2b",
+    "pages/shop.html": "dffff96246a36448c54032803746b5ef9f56f5ac",
+    "scripts/prototype.js": "bd46c5de2e1f5ba0173c8338b90b93bb34f2cf76",
+    "styles/components.css": "4965e16ce4290708c20a79aaa50a892707de3cfa",
+    "styles/layout.css": "d3e524934d2b2169a597010ca9ecfe721e7a6dd8",
+    "styles/responsive.css": "b59304f6034f0f961f022c4efee7809ad04106e1",
+    "styles/tokens-layout-only.css": "2a0a72468db3029bbac65682f2b0d993888dce71",
+}
+
+
+class LocalReferenceParser(HTMLParser):
+    """Collect local href/src values and IDs from one supplied page."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.references: list[str] = []
+        self.ids: set[str] = set()
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = dict(attrs)
+        if values.get("id"):
+            self.ids.add(values["id"] or "")
+        for name in ("href", "src"):
+            value = values.get(name)
+            if value:
+                self.references.append(value)
+
+
+def git_blob_sha(path: Path) -> str:
+    data = path.read_bytes()
+    payload = b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+    return hashlib.sha1(payload).hexdigest()
+
+
+def validate_kit(root: Path) -> list[str]:
+    errors: list[str] = []
+    kit = root / KIT_ROOT
+    if not kit.is_dir():
+        return [f"missing owner-controlled kit directory: {KIT_ROOT}"]
+
+    actual = {
+        path.relative_to(kit).as_posix()
+        for path in kit.rglob("*")
+        if path.is_file()
+    }
+    for missing in sorted(KIT_FILES - actual):
+        errors.append(f"kit file missing: {missing}")
+    for extra in sorted(actual - KIT_FILES):
+        errors.append(f"unexpected file in closed kit: {extra}")
+
+    for rel, expected_sha in KIT_ASSET_BLOB_SHAS.items():
+        path = kit / rel
+        if not path.is_file():
+            continue
+        actual_sha = git_blob_sha(path)
+        if actual_sha != expected_sha:
+            errors.append(f"owner source asset changed: {rel} (expected {expected_sha}, got {actual_sha})")
+
+    for rel in ROUTES:
+        page = kit / rel
+        if not page.is_file():
+            continue
+        source = page.read_text(encoding="utf-8")
+        if '<html lang="en">' not in source:
+            errors.append(f"page must declare English language: {rel}")
+        parser = LocalReferenceParser()
+        parser.feed(source)
+        parser.close()
+        for raw in parser.references:
+            parsed = urlsplit(raw)
+            if parsed.scheme or parsed.netloc or raw.startswith("#") or not parsed.path:
+                continue
+            target = (page.parent / parsed.path).resolve()
+            if not target.is_file():
+                errors.append(f"broken local link/reference in {rel}: {raw}")
+            elif parsed.fragment:
+                target_source = target.read_text(encoding="utf-8", errors="replace")
+                target_parser = LocalReferenceParser()
+                target_parser.feed(target_source)
+                target_parser.close()
+                if parsed.fragment not in target_parser.ids:
+                    errors.append(f"missing fragment target in {rel}: {raw}")
+    return errors
 
 
 def validate_project(root: Path = ROOT) -> list[str]:
@@ -80,10 +181,10 @@ def validate_project(root: Path = ROOT) -> list[str]:
 
     report = (root / "docs/DOCUMENTATION-RECONCILIATION-REPORT.md").read_text(encoding="utf-8").lower()
     checklist = (root / "docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md").read_text(encoding="utf-8")
-    if "not yet present" not in report or "not ready to merge" not in report:
-        errors.append("reconciliation report must disclose incomplete kit materialization")
-    if "[ ] All 25 original kit files" not in checklist:
-        errors.append("checklist must keep source-kit materialization visibly open")
+    if "25 files" not in report or "14 source assets" not in report:
+        errors.append("reconciliation report must document kit file count and asset integrity")
+    if "[x] all 25 kit files materialized" not in checklist.lower():
+        errors.append("checklist must record verified source-kit materialization")
 
     active_stubs = (
         "docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md",
@@ -99,35 +200,33 @@ def validate_project(root: Path = ROOT) -> list[str]:
             if "historical — not active — do not implement" not in body and "superseded" not in body:
                 errors.append(f"stale design document is not clearly retired: {rel}")
 
-    active_boards = (
+    for rel in (
         "design/explorations/visual-directions.html",
         "design/explorations/reference-led-directions.html",
-    )
-    for rel in active_boards:
+    ):
         if (root / rel).exists():
             errors.append(f"historical proposal remains under active exploration path: {rel}")
 
+    errors.extend(validate_kit(root))
     return errors
 
 
 def main() -> int:
     errors = validate_project()
     if errors:
-        print(f"DAG documentation validation: FAILED ({len(errors)} issue(s))")
+        print(f"DAG v2 foundation validation: FAILED ({len(errors)} issue(s))")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    kit_path = ROOT / "design/owner-controlled-kit-v2"
-    print("DAG documentation and authority validation: PASS")
-    print(f"- {len(REQUIRED)} governance/report paths present")
+    print("DAG v2 foundation and source-integrity validation: PASS")
+    print(f"- {len(REQUIRED)} authority, decision and reconciliation paths present")
+    print(f"- all {len(KIT_FILES)} original kit files present")
+    print(f"- all {len(KIT_ASSET_BLOB_SHAS)} HTML/CSS/JS source assets byte-identical to the owner archive")
+    print("- all nine pages use English markup and local links/styles/scripts resolve")
     print("- D-014, superseded D-013 and retired visual proposals are explicit")
-    print("- nine-page inventory and owner-only token inputs are consistent")
-    if not kit_path.is_dir():
-        print("SOURCE KIT MATERIALIZATION: BLOCKED — directory is not yet present")
-        print("This is an expected draft-PR state, not evidence of kit installation.")
-    else:
-        print("SOURCE KIT DIRECTORY: present; byte-level archive verification is still required.")
+    print("- owner-only identity inputs remain pending; layout tokens are QA-only")
+    print("- disabled states and closed functionality boundaries are maintained")
     return 0
 
 
