@@ -2,7 +2,7 @@
 
 **Review date:** 2026-11-07  
 **Branch:** `feat/owner-design-kit-v2-reconciliation`  
-**Status:** Source kit materialized and byte-verified; governance and core validation aligned. Final internal-link/stale-language checks and PR CI remain to be confirmed.
+**Status:** Source kit materialized and byte-verified; governance reconciliation completed; PR CI green (run 62).
 
 ## Source and integrity evidence
 
@@ -91,11 +91,20 @@ Existing photo audit, catalogue intake, Etsy export mapping/reconciliation, cust
 - [x] All 14 HTML/CSS/JS assets verified byte-for-byte using Git blob hashes.
 - [x] Old visual proposal boards and renders removed from active exploration paths and retained historically.
 - [x] Validator and M2 audit updated to D-014.
-- [ ] Final contextual stale-instruction search across all tracked relevant files.
-- [ ] Final Markdown internal-link validation.
-- [ ] Branch validator, owner-gate audit and unit test suite green in GitHub Actions.
-- [ ] PR review and merge.
+- [x] Contextual stale-instruction search across active design, decision, prompt, research and template documents; remaining proposal mentions are explicitly historical or reference-only.
+- [x] Active Markdown internal-link validation completed by CI.
+- [x] Branch validator, owner-gate audit and full unit test suite passed in GitHub Actions run 62.
+- [ ] Owner review and merge.
+
+## CI evidence
+
+GitHub Actions workflow: **DAG Project Quality**, run **#62** (run ID `42397034833`) on the PR branch after the two documentation-validator wording corrections.
+
+- `python3 scripts/validate_project.py` — PASS.
+- `python3 scripts/audit_m2_readiness.py` — PASS; all five owner gates correctly remain open.
+- `python3 scripts/audit_documentation_links.py` — PASS across active Markdown files.
+- `python3 -m unittest discover -s tests -v` — PASS, **77 tests**.
 
 ## Remaining caution
 
-The source kit is now materialized and the original implementation asset bytes are verified. That does not approve brand styling, content publication, customer research recruitment, a production app, or any commerce capability. Owner gates and remaining CI results must remain explicit.
+The source kit is materialized and the original implementation asset bytes are verified. The documentation/link/source checks are green, and the PR is open for owner review. This does not approve brand styling, content publication, customer research recruitment, a production app, or any commerce capability. The owner gates remain intentionally open.
