@@ -16,10 +16,10 @@ This is a concise queue of decisions that require owner input. Update it as deci
 | U-010 | Technology and hosting | Engineering cost and capability | M3 | Open |
 | M1-A | Visual territory selection | Sets the brand visual system and M2 prototypes | Before M2 | Open — four new reference-led proposals presented; explicit owner choice pending |
 | M1-REF | Reference fidelity and hierarchy | Sets which reference informs ecommerce structure vs curation | M1 | Confirmed D-010: BLEND; POJ primary, Macaroni secondary |
-| M1-B | Customer-validation cohort | Prioritizes customer research | During M1 | Open — proposed playbook and blank templates prepared; cohort focus and recruitment route await owner confirmation |
-| M1-C | Product/photo sample | Enables authentic product and image testing | Before M2 | Open — owner sample/evidence input pending |
-| M2-D | Prototype journey priority | Determines which customer journeys are reviewed first | Before M2 | Open — owner confirmation pending |
-| M2-E | Non-production prototype scope | Confirms route scope and the no-transactional-commerce boundary | Before M2 | Open — owner confirmation pending |
+| M1-B | Japan-first customer-segment focus | Identifies which unvalidated customer contexts enter the initial research focus; Japan-first is already confirmed by D-003 | During M1 | Open — segment selection pending; research method, recruitment route and spending remain separately gated |
+| M1-C | Mixed product/photo evidence | Uses owner-approved genuine sample photos alongside clearly labelled placeholders for missing views/states | Before M2 | Open — mixed approach direction recorded (D-011); genuine sample, verified mapping, rights/permissions and prototype-use approval pending |
+| M2-D | Journey priority and device coverage | Sets the journey review order; mobile/tablet/desktop are mandatory dimensions of each journey (D-012) | Before M2 | Open — five-journey priority pending; mobile is cross-cutting, not a separate journey |
+| M2-E | Six-page shared-shell prototype scope | Includes all six routes, global header/navigation/search/footer and reusable presentation components (D-013) | Before M2 | Open — full scope and non-production boundary still require gate confirmation |
 
 M2-A is tracked through M1-A, M2-B through M1-B, and M2-C through M1-C. M2-D and M2-E have separate rows because they require distinct owner confirmations.
 

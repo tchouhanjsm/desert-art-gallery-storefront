@@ -24,13 +24,13 @@ The owner confirmed a BLEND reference hierarchy: POJ Studio leads the ecommerce 
 
 ## M2 prototype readiness
 
-A direction-neutral entry pack defines the owner gates, six first-route acceptance areas, non-transactional cart/checkout boundary, five responsive review widths, a blank evidence log and an owner decision worksheet. It is preparation only: no production-style prototype has started and no visual direction is implied or approved. See [23 — M2 Prototype Entry and Acceptance](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md), the [blank M2 owner-entry decision record](templates/prototypes/m2-owner-entry-decision.md) and templates/prototypes/.
+A complete owner-review package defines the six route areas, shared global header/navigation/search/footer, reusable presentation components, five responsive review widths and the non-transactional boundary. The [M2-A full-page visual study](design/explorations/m2-visual-study.html) contains 24 full-page renders: four unranked visual territories across homepage, Shop/collection and product detail at 1440 px desktop and 390 px mobile. M2 remains blocked; no production application or approved visual system has started. See [23 — M2 Prototype Entry and Acceptance](docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md), [24 — M2-A Full-Page Visual Territory Study](docs/24-M2-VISUAL-TERRITORY-RENDERED-STUDY.md), the [M2 owner-entry decision record](templates/prototypes/m2-owner-entry-decision.md) and templates/prototypes/.
 
 Run `python3 scripts/audit_m2_readiness.py` to confirm that the owner-input register, M2 acceptance pack and worksheet agree. Pending owner decisions are reported as an expected blocked state.
 
 ## Customer research preparation
 
-The playbook defines a proposed exploratory interview cohort and a separate prototype-usability stage. The templates under `templates/research/` are blank and intentionally exclude participant identifiers. Owner confirmation of the cohort focus and recruitment route is still required; no recruitment or spending is authorized.
+The playbook defines research preparation only. M2-B is limited to selecting initial Japan-first customer-segment hypotheses (home/interior; craft/material; gift/considered purchase; trade/design professional). Japan-first is already established by D-003. Method, recruitment route, consent and spending are separately gated; no recruitment or spending is authorized. Templates under `templates/research/` are blank and exclude participant identifiers.
 
 ## New owner-review package
 
@@ -46,7 +46,7 @@ These are four new, non-ranked proposals. None is recommended, preselected or ap
 - [Compare all four desktop/mobile previews](design/explorations/reference-led-directions.html)
 - [Read exact HEX palettes, typography, layouts, photography, contrast and trade-offs](docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md)
 
-All object visuals and product names shown on the board are abstract placeholders, not real DAG catalogue content or photographs.
+All current M2-A object visuals are clearly labelled design placeholders, not real DAG catalogue content or photographs. The intended M2-C evidence policy is mixed: genuine owner-supplied photographs after product/fact/rights approval, plus labelled placeholders for missing views and states. No genuine sample photo was available in the checked-in repositories at render time.
 
 ### Owner-review board quality
 

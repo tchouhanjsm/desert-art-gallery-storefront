@@ -2,6 +2,8 @@
 
 **Status:** Research operations prepared for owner review. No participant recruitment, interviews or usability sessions have been conducted. This playbook is not authorization to recruit or spend money.
 
+**M2-B decision boundary:** The owner is being asked only to identify the initial Japan-first customer segment(s) to research. Japan-first is already confirmed by D-003. Research method, sample size, recruitment route/provider, consent workflow, incentives and spending are separate operational approvals; segment selection alone authorizes none of them. The four segment hypotheses are home/interior buyers, craft/material enthusiasts, gift/considered-purchase buyers, and trade/design professionals. They are not validated personas and may overlap.
+
 ## 1. Purpose and evidence boundary
 
 Turn the research hypotheses in [14 — Japan-First Customer and Market Research](14-JAPAN-FIRST-CUSTOMER-RESEARCH.md) into a repeatable, low-bias study. The goal is to understand how people in Japan discover, evaluate and seek confidence in home, textile, craft and considered-purchase products—not to manufacture personas or claim product-market fit.

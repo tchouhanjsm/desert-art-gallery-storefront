@@ -4,7 +4,7 @@
 
 **Owner decision basis:** D-008 rejected the earlier P-015 package. D-009 names POJ Studio and Macaroni Shoten as the principal references for the next design study. This is a fresh option set, not a relabelled version of the rejected one.
 
-Rendered examples: [Reference-led desktop/mobile comparison board](../design/explorations/reference-led-directions.html).
+Rendered examples: [Reference-led desktop/mobile comparison board](../design/explorations/reference-led-directions.html). The expanded [M2-A full-page visual territory study](../design/explorations/m2-visual-study.html) renders homepage, Shop/collection and product detail for all four territories at 1440 px desktop and 390 px mobile; the page-by-page specification is in [24 — M2-A Full-Page Visual Territory Study](24-M2-VISUAL-TERRITORY-RENDERED-STUDY.md).
 
 ## Design translation
 
