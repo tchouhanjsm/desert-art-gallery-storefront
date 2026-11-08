@@ -1,59 +1,87 @@
-# Documentation Reconciliation Checklist — DAG v2
+# Repository-Wide Documentation Reset — Completion Checklist
 
-## Authority and scope
-- [x] Root `AGENTS.md` establishes the authority hierarchy and D-014 baseline.
-- [x] Root `README.md` identifies the installed source and nine-page scope.
-- [x] `docs/DESIGN-AUTHORITY.md` and `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md` define control boundaries.
-- [x] D-014 recorded; D-013 six-page scope marked superseded.
-- [x] P-015 explicitly rejected; P-016 and Material Archive / Collected Colour historical only.
-- [x] Japan-first / English-only distinction retained.
-- [x] Owner-only brand decisions remain pending.
-- [x] Layout-only system tokens remain QA fallback, not production brand tokens.
-- [x] Closed page and component inventories reflect the supplied kit.
-- [x] Disabled controls and no-production/no-additions boundary documented.
+**Audit baseline:** main at `a4b665f81433e98cd78469e0a1bc1bb81a3528df`  
+**Owner archive SHA-256:** `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`  
+**Baseline tracked paths audited:** 140
 
-## Source kit
-- [x] All 25 kit files materialized under `design/owner-controlled-kit-v2/`.
-- [x] Nine supplied HTML pages present.
-- [x] Four supplied CSS files present.
-- [x] Supplied prototype JavaScript present.
-- [x] Eleven kit-local README/authority/inventory/governance files present and reconciled to D-014.
-- [x] At PR #8 adoption, all 14 original HTML/CSS/JS assets were byte-verified against the owner ZIP using Git blob SHA-1.
-- [x] PR #9 amends only styles/components.css and styles/layout.css for focus visibility and reduced motion; the other 12 implementation assets remain byte-identical.
-- [x] Validator enforces the exact 25-file inventory and current hashes for all 14 implementation assets.
-- [x] CI run confirms source-integrity validator passes (run 62).
+## Authority and owner decisions
 
-## Repository-wide reconciliation
-- [x] Root README and AGENTS updated.
-- [x] Active design/creative direction, visual system, photography and information architecture docs reconciled.
-- [x] Technical, quality, roadmap and design review docs reconciled.
-- [x] AI bootstrap, working protocol and owner-gate prompt updated.
-- [x] Owner decision and owner-input registers updated.
-- [x] Six-route M2 acceptance pack replaced with nine-page D-014 acceptance contract.
-- [x] Old visual board/spec files moved to historical archive; active paths retired.
-- [x] Old M1 review and six-route M2 worksheet/pack preserved historically.
-- [x] Photo, catalogue, Etsy, research and merchant materials retained where still valid.
-- [x] CI validator, M2 readiness audit and affected tests updated.
-- [x] Contextual stale-instruction search completed across active design, decision, prompt, research and template documents; retained matches are explicitly historical or scoped as reference observations.
-- [x] Final path-level matrix spot-check completed against the 101-file PR diff and current tracked tree.
+- [x] Exact eight-level hierarchy documented in `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`.
+- [x] Root `AGENTS.md` separated owner-approved specs (level 5) and inventories (level 6).
+- [x] Root README and handoff follow the same order.
+- [x] Design authority explicitly governs every nested prompt, README, code comment, source file, workflow and issue template.
+- [x] D-014 remains structural-only; no owner identity values or new owner decisions invented.
+- [x] D-010 remains only the POJ-primary/Macaroni-secondary reference hierarchy; it does not import reference-site functionality.
+- [x] D-007's old four-option AI selection procedure remains superseded.
+- [x] P-015 remains rejected; P-016 remains superseded/historical.
+- [x] D-013 six-route model remains superseded by D-014.
+- [x] M2-A to M2-E and U-001 to U-010 retain their recorded open/pending statuses.
 
-## Accessibility maintenance
-- [x] Existing nine-page landmarks, headings, navigation state and labels inspected at source level.
-- [x] Shared :focus-visible outline uses currentColor; no brand token added.
-- [x] Existing smooth-scroll behaviour respects prefers-reduced-motion.
-- [x] No HTML page, component inventory item, control, section or interaction added.
-- [x] Static audit and regression tests added; browser/assistive-technology checks remain pending.
+## Owner archive and implementation
 
-## Quality gate
-- [x] `python3 scripts/validate_project.py` — PASS in GitHub Actions run 62.
-- [x] `python3 scripts/audit_m2_readiness.py` — PASS in GitHub Actions run 62; five owner gates remain open as intended.
-- [x] `python3 -m unittest discover -s tests -v` — PASS; 77 tests.
-- [x] `python3 scripts/audit_documentation_links.py` — PASS in GitHub Actions run 62.
-- [x] Contextual stale-term search completed; P-015/P-016 references are historical/rejected and reference-site feature observations are explicitly scoped as non-requirements.
-- [x] Reviewed the complete 101-file PR diff; no production application code, catalogue payloads, photo binaries or unapproved feature additions were introduced.
-- [x] PR #8 branch validation run 62 was green; PR #8 subsequently merged after run 63 and main-branch run 64 passed. PR #9 is a separate follow-up.
+- [x] Supplied ZIP read successfully.
+- [x] Archive SHA-256 recorded and matches D-014 adoption archive.
+- [x] Archive contains exactly 25 files: nine HTML, four CSS, one JS, eleven kit governance/readme/handoff files.
+- [x] All 25 files are present in the agreed repository path (verified by existing D-014 inventory/validator).
+- [x] All 14 original HTML/CSS/JS assets were verified at PR #8 adoption.
+- [x] PR #9's two documented CSS accessibility maintenance amendments remain hash-pinned.
+- [x] No structural kit source was redesigned or re-extracted in this reset.
 
-A checked box indicates evidence exists on the branch or in a recorded run. Do not mark CI or local checks complete until the actual results are known.
+## Documentation repository audit
 
-- [ ] Rendered browser review at 390, 430, 768, 1280 and 1440 CSS-pixel widths (not completed by this source-only pass).
-- [ ] Keyboard and assistive-technology review (not completed by this source-only pass).
+- [x] 140 tracked baseline paths enumerated from Git.
+- [x] All root/nested AGENTS, READMEs, handoffs and prompts included in the audit.
+- [x] All Markdown design, creative direction, visual system, implementation, business, research, quality, roadmap and decision documents classified.
+- [x] HTML/CSS/JS source, theme tokens, source comments, workflows and issue templates included in path inventory.
+- [x] Scripts and tests classified.
+- [x] Catalogue, prototype and research templates (including CSV files) classified.
+- [x] Full per-path matrix generated in `docs/DOCUMENTATION-RECONCILIATION-MATRIX.md`.
+- [x] Unchanged technical/business knowledge retained where valid.
+- [x] Active visual-option paths remain non-operative stubs; full old material remains archived.
+- [x] Nine superseded historical Markdown files receive a mandatory non-operative banner.
+- [x] No files removed; no useful legacy technical/business knowledge discarded.
+
+## Stale instruction prevention
+
+- [x] New tracked-file-aware `scripts/audit_documentation_consistency.py` added.
+- [x] New automated consistency tests added.
+- [x] Source validator checks the eight-level order and known stale kit-materialization instructions.
+- [x] Workflow executes the repository-wide consistency audit.
+- [x] Historical mentions in decisions/audit reports are not treated as active instructions.
+- [ ] Final consistency audit passes on the committed PR head (pending CI).
+- [ ] Final Markdown internal-link audit passes on the committed PR head (pending CI).
+
+## Remaining owner/visual constraints preserved
+
+- [x] Final colours remain owner-controlled and pending.
+- [x] Typography/type hierarchy remains owner-controlled and pending.
+- [x] Logo/wordmark/descriptor remains owner-controlled and pending.
+- [x] Photography direction/cropping remains owner-controlled and pending.
+- [x] Layout-only system tokens remain QA-only.
+- [x] English-only customer-facing UI remains active.
+- [x] No fabricated product, maker, provenance, pricing, policy or business content added.
+- [x] No extra pages, sections, controls, banners, testimonials, widgets, animations or functions added.
+- [x] No production app, stack, commerce flow, deployment, research recruitment or paid services started.
+
+## Follow-up after merged PR #11
+
+- [x] PR #11 merged into main at `95079bbb5ccf6aaf888d4523a5adfda582ab448c`.
+- [x] The three newly tracked browser-QA paths are individually classified in the reconciliation matrix.
+- [x] PR #11's responsive Product Detail fix is reflected in the current owner-source history and CSS asset-integrity hash.
+- [x] Dedicated Chromium workflow run #5 passed 45/45 page/viewport combinations (nine pages × five widths).
+- [x] Reduced-motion, keyboard-focus and mobile-navigation checks passed; no overflow, browser page errors or failed local assets were reported.
+- [x] 18 full-page screenshots and JSON/Markdown summaries were published as the PR #11 CI artifact.
+- [ ] Re-run the complete project-quality workflow after PR #10 is based on the PR #11 main commit.
+
+## Final validation and review
+
+- [ ] `python3 scripts/validate_project.py` — pending final CI.
+- [ ] `python3 scripts/audit_m2_readiness.py` — pending final CI.
+- [ ] `python3 scripts/audit_kit_accessibility.py` — pending final CI.
+- [ ] `python3 scripts/audit_documentation_consistency.py` — pending final CI.
+- [ ] `python3 scripts/audit_documentation_links.py` — pending final CI.
+- [ ] `python3 -m unittest discover -s tests -v` — pending final CI.
+- [ ] Complete PR diff reviewed and no unrelated implementation changes found.
+- [ ] PR merged.
+
+A checked item records a source/repository fact already verified in this reset. Items under final validation remain unchecked until the final PR head's actual GitHub Actions results are available.

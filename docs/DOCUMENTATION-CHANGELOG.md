@@ -30,6 +30,22 @@
 - Kept brand colours, typography, photography direction and all M2 owner gates unchanged.
 
 
+## 2026-11-08 — Repository-wide documentation reset
+
+- Re-verified the uploaded owner archive SHA-256: `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`; it matches the PR #8 adoption archive.
+- Enumerated the complete 140-file tracked baseline, including root/nested prompts, HTML/CSS/JS, workflow/template paths, scripts, tests and CSV templates.
+- Replaced the bundled seven-level hierarchy with the exact eight-level order, separating owner-approved specifications and current page/component inventories.
+- Updated root `AGENTS.md`, `README.md`, handoff, design README, design authority, source policy, project charter and AI bootstrap prompt.
+- Corrected the stale “kit not yet materialized” language and clarified that D-010 references do not authorize POJ/Macaroni features.
+- Clarified the active reference-spec path as a D-010 credit/reference note only; former page-by-page implementation guidance remains superseded.
+- Added mandatory non-operative banners to all nine Markdown files under `docs/historical/superseded/`, preserving their source content beneath the banners.
+- Added a per-path reconciliation matrix and refreshed the report/checklist against the 140-file baseline.
+- Added tracked-tree-aware stale-instruction audit, regression tests and GitHub Actions workflow step.
+- Preserved the decision register, open owner inputs, kit files, technical/business knowledge and all production/brand scope boundaries unchanged.
+- No extra page, section, component, brand token, catalogue data, product fact, commerce behaviour or production application code was added.
+
+Validation outcome for this reset is recorded only after the final PR head's GitHub Actions run completes.
+
 ## 2026-11-08 — Chromium browser review and mobile gallery correction
 - Added a dedicated Playwright/Chromium workflow covering all nine owner-controlled pages at the five required responsive review widths (45 route/viewport combinations).
 - Added runtime checks for stylesheet loads, document overflow, page landmarks, mobile navigation state, keyboard focus visibility, browser page errors and reduced-motion behaviour.

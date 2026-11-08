@@ -1,6 +1,6 @@
 # Design Assets and Source Governance
 
-The active structural HTML/CSS source is intended to live at `design/owner-controlled-kit-v2/` once the owner-supplied archive is materialized. Its original source files must remain unchanged and be checked against the supplied archive.
+The active structural HTML/CSS source is materialized at `design/owner-controlled-kit-v2/` under D-014. The owner archive contains 25 files and has SHA-256 `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`. PR #8 verified all 14 original HTML/CSS/JS assets; PR #9 records two narrow CSS accessibility maintenance amendments and the current hashes are enforced by `scripts/validate_project.py`. Do not re-extract, redesign or reinterpret the active kit as part of documentation work.
 
 - `approved/` is reserved for owner-approved brand assets with decision ID and date.
 - `prototypes/` is reserved for explicitly authorized review prototypes.
