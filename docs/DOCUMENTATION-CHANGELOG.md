@@ -93,3 +93,7 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Final PR #13 Chromium Browser Review run #15 passed 45/45 route/viewport checks, 25/25 journey/viewport checks, 54 keyboard-operation sequences and reduced-motion; 18 screenshots plus JSON/Markdown summaries were uploaded.
 - Recorded the final CI evidence in the M2 acceptance pack, decision pack, roadmap and accessibility review.
 - Retained M2-A and M2-C as owner-evidence blockers; M2-B/M2-D human/owner approval remains separate from automation; D-015 remains limited to non-production structural review.
+
+## 2026-11-08 — M2 final evidence links synchronized
+- Updated the M2 acceptance, decision, roadmap and accessibility documents to link to final documentation-sync validation: Project Quality run #89 and Chromium Browser Review run #16.
+- Removed the obsolete note that journey CI was still pending.

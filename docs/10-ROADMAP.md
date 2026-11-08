@@ -52,8 +52,8 @@ See docs/25-M2-DECISION-AND-REVIEW-PACK.md for segment reasoning, exact journey 
 
 ### M2 implementation validation status — PASS on final PR #13 head
 
-- [DAG Project Quality run #88](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140897): PASS; all repository audits and **101/101 Python tests** passed.
-- [DAG Structural Kit Browser Review run #15](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888): PASS; **45/45** route/viewport, **25/25** journey/viewport, **54** keyboard-operation sequences, reduced-motion and **18** screenshots passed/uploaded. JSON/Markdown summaries are included in [artifact 13617964823](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888/artifacts/13617964823).
+- [DAG Project Quality run #89](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463438): PASS; all repository audits and **101/101 Python tests** passed.
+- [DAG Structural Kit Browser Review run #16](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352): PASS; **45/45** route/viewport, **25/25** journey/viewport, **54** keyboard-operation sequences, reduced-motion and **18** screenshots passed/uploaded. JSON/Markdown summaries are included in [artifact 13617964823](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352/artifacts/13619045256).
 
 These checks verify the bounded non-production structural review. They do not close owner-dependent M2-A/M2-C inputs or substitute for human research/visual acceptance.
 

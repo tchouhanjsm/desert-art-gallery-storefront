@@ -103,7 +103,7 @@ This order follows increasing information depth: entry/discovery, item finding, 
 
 Every selected journey must be exercised at **390, 430, 768, 1280 and 1440 CSS pixels**. Mobile is cross-cutting, not a standalone journey (D-012).
 
-The final-head Chromium workflow [run #15](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888) passed and uploaded 18 full-page screenshots plus JSON/Markdown summaries; the artifact is available [here](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888/artifacts/13617964823). The accompanying Project Quality [run #88](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140897) passed all repository audits and **101/101 Python tests**.
+The final-head Chromium workflow [run #16](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352) passed and uploaded 18 full-page screenshots plus JSON/Markdown summaries; the artifact is available [here](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352/artifacts/13619045256). The accompanying Project Quality [run #89](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463438) passed all repository audits and **101/101 Python tests**.
 
 The automated matrix is:
 - Nine supplied routes × five widths = **45/45** route/viewport checks.

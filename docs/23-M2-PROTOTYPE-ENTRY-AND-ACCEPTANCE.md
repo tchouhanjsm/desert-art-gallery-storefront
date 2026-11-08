@@ -46,14 +46,14 @@ PR #12 final-head evidence (already merged):
 - [DAG Project Quality run #81](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466218616) — PASS, **89/89 Python tests**.
 - [DAG Structural Kit Browser Review run #8](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466218645) — PASS, **45/45 route/viewport checks**, **54** mobile Enter/Space navigation sequences, reduced-motion check and 18 screenshots.
 
-The M2 branch extends browser review with **25 journey/viewport checks** (five bounded journeys × five viewport widths). Its final results are not claimed until the new PR's GitHub Actions runs complete.
+The M2 branch adds **25 journey/viewport checks** (five bounded journeys × five viewport widths). Their successful final-head results are recorded in the PR #13 evidence section below.
 
 ## PR #13 — Final M2 browser and quality acceptance evidence
 
-On final PR #13 head `1c3a992b9d061b86851620eedc4e636ef35b1e12`:
+On PR #13's final code head before the documentation-only evidence sync:
 
-- [DAG Project Quality run #88](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140897) — PASS: **101/101 Python tests**, foundation/source-integrity checks, M2 disposition audit, accessibility source audit, documentation consistency and Markdown links.
-- [DAG Structural Kit Browser Review run #15](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888) — PASS: **45/45** route/viewport checks, **25/25** journey/viewport checks, **54** mobile Enter/Space focus-retention sequences, reduced-motion check and **18** full-page screenshots. The artifact contains JSON/Markdown summaries: [CI artifact](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888/artifacts/13617964823).
+- [DAG Project Quality run #89](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463438) — PASS: **101/101 Python tests**, foundation/source-integrity checks, M2 disposition audit, accessibility source audit, documentation consistency and Markdown links.
+- [DAG Structural Kit Browser Review run #16](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352) — PASS: **45/45** route/viewport checks, **25/25** journey/viewport checks, **54** mobile Enter/Space focus-retention sequences, reduced-motion check and **18** full-page screenshots. The artifact contains JSON/Markdown summaries: [CI artifact](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352/artifacts/13619045256).
 
 This automated evidence verifies the bounded structural review only. It does not replace owner visual sign-off, participant usability research, screen-reader testing, WCAG certification or acceptance of genuine product content/photos.
 
