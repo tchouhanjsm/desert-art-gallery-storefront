@@ -75,6 +75,7 @@ The root must be a real directory outside the public repository. The validator c
 - Inline event handlers, link `ping`, form-associated submission overrides and background/cross-context worker APIs are rejected. Owner approval dates must be real calendar dates.
 - No symlinks or paths escaping the private prototype directory.
 - No inline event-handler attributes, `ping` beacons, form override attributes, service-worker/worker registration or cross-context messaging APIs.
+- Inline SVG image/symbol references are checked for local-only paths; image-type submit controls are rejected.
 
 The command is intentionally expected to fail until M2-A is explicitly approved and a complete prototype/manifest is supplied. It does not create test products, images or example customer content.
 
