@@ -58,7 +58,7 @@ The owner expects to supply approximately 10–20 genuine product photographs an
 
 The existing private intake and fact-verification process remains in [20 — Catalogue Intake and Fact Verification](20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md). The strict 10–20 product sample validator continues to require owner-reconciled source rows, fact evidence, image-rights evidence and separate private prototype-use permissions. Keep all actual photography, exports and populated intake reports private and outside Git.
 
-**Disposition:** Placeholder/image-frame approach approved; genuine product/photo sample pending and fact validation pending. No migration of the approximately 3,000-image library is authorized.
+**Disposition:** Placeholder/image-frame approach approved; genuine product/photo sample pending and fact validation pending. No full-library migration is authorized. The approximately 3,000-image library must remain in its current private source location.
 
 ## M2-D — Owner-approved journey priority and responsive acceptance
 
