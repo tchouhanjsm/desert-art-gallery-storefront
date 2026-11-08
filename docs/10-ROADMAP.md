@@ -72,7 +72,7 @@ The same PR extends the readiness gate without starting prototype styling:
 - The local Chromium runner rejects symlinked prototype roots, checks the viewport meta tag and records browser-console errors, failed requests and unsuccessful HTTP resource responses as review failures.
 - Regression coverage adds eleven tests for malformed metadata, path normalization, inline event handlers, worker/network overrides, approval-date validation, SVG references, image-type submit controls and review-root boundaries.
 
-The continuation was validated at an earlier PR #14 head; the SVG and image-submit extension is part of the current follow-up and its final-head CI evidence will be recorded after the latest workflow completes. The private Chromium review was not run because no approved private prototype exists; it remains a local-only step after M2-A approval. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
+The continuation is implemented and validated at PR #14 head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`. [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) passed source/foundation, M2 gate, accessibility, documentation consistency and Markdown link audits, with **136/136 Python tests** passing. The private Chromium review was not run because no approved private prototype exists; it remains a local-only step after M2-A approval. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
 
 ## Technical and commercial work
 
