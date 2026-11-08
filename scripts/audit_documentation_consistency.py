@@ -74,6 +74,10 @@ def audit_repository(root: Path = ROOT) -> dict:
     for path in active_text_paths:
         content = (root / path).read_text(encoding="utf-8", errors="replace")
         for number, line in enumerate(content.splitlines(), start=1):
+            # The auditor's own regex literals describe retired phrases; they
+            # are detection rules, not active repository instructions.
+            if path == "scripts/audit_documentation_consistency.py" and "re.compile(" in line:
+                continue
             # Do not flag a line whose purpose is explicitly to say the phrase
             # is retired, historical, superseded, or not an instruction.
             lower = line.lower()

@@ -82,7 +82,7 @@
 | `docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md` | RETAIN | Current D-014 nine-page pack and five open owner gates remain authoritative. |
 | `docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md` | RETAIN | PR #9 source-level accessibility record preserved; browser and assistive-tech checks remain outstanding. |
 | `docs/ADR-TEMPLATE.md` | RETAIN | Decision-record template remains compatible with repository governance. |
-| `docs/AI-BOOTSTRAP-PROMPT.md` | UPDATE | Remove stale source-materialization blocker; require exact authority sequence and repository-wide reconciliation. |
+| `docs/AI-BOOTSTRAP-PROMPT.md` | UPDATE | Historical audit note: the stale source-materialization blocker was removed; the active prompt requires the exact authority sequence and repository-wide reconciliation. |
 | `docs/AI-WORKING-PROTOCOL.md` | RETAIN | Existing engineering workflow remains subordinate to root authority and inventories. |
 | `docs/COMPONENT-INVENTORY.md` | RETAIN | Nine-page component inventory remains the closed structure baseline. |
 | `docs/DECISIONS.md` | RETAIN | D-001–D-014 and P-015/P-016 statuses were verified; no new owner design decision is invented. |
@@ -108,8 +108,8 @@
 | `docs/historical/superseded/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE-v1-six-route.md` | ARCHIVE | Superseded six-route M2 pack retained with mandatory non-operative banner. |
 | `docs/historical/superseded/M1-OWNER-REVIEW.md` | ARCHIVE | Former M1 review retained with mandatory non-operative banner. |
 | `docs/historical/superseded/m2-owner-entry-decision-v1-six-route.md` | ARCHIVE | Former six-route M2 worksheet retained with mandatory non-operative banner. |
-| `docs/historical/visual-proposals/m1-territory-study.html` | ARCHIVE | Original M1 visual exploration preserved for traceability only. |
-| `docs/historical/visual-proposals/reference-led-directions.html` | ARCHIVE | Original P-016 board preserved for traceability only; no candidate is active. |
+| `docs/historical/visual-proposals/m1-territory-study.html` | ARCHIVE | Original M1 visual exploration preserved for traceability only with a non-operative HTML comment banner. |
+| `docs/historical/visual-proposals/reference-led-directions.html` | ARCHIVE | Original P-016 board preserved for traceability only with a non-operative HTML comment banner; no candidate is active. |
 | `docs/historical/visual-proposals/rendered/future-relics-desktop.svg` | ARCHIVE | Rejected P-015 desktop render preserved for traceability only. |
 | `docs/historical/visual-proposals/rendered/future-relics-mobile.svg` | ARCHIVE | Rejected P-015 mobile render preserved for traceability only. |
 | `docs/historical/visual-proposals/rendered/graphic-atelier-desktop.svg` | ARCHIVE | Rejected P-015 desktop render preserved for traceability only. |
@@ -118,7 +118,7 @@
 | `docs/historical/visual-proposals/rendered/living-garden-mobile.svg` | ARCHIVE | Rejected P-015 mobile render preserved for traceability only. |
 | `docs/historical/visual-proposals/rendered/modern-folk-pop-desktop.svg` | ARCHIVE | Rejected P-015 desktop render preserved for traceability only. |
 | `docs/historical/visual-proposals/rendered/modern-folk-pop-mobile.svg` | ARCHIVE | Rejected P-015 mobile render preserved for traceability only. |
-| `docs/historical/visual-proposals/visual-directions.html` | ARCHIVE | Rejected P-015 visual board preserved for traceability only. |
+| `docs/historical/visual-proposals/visual-directions.html` | ARCHIVE | Rejected P-015 visual board preserved for traceability only with a non-operative HTML comment banner. |
 | `scripts/audit_documentation_consistency.py` | UPDATE | New tracked-tree audit flags stale active directives and checks the eight-level hierarchy; historic references are handled separately. |
 | `scripts/audit_documentation_links.py` | RETAIN | Existing Markdown internal-link audit retained; run in CI. |
 | `scripts/audit_kit_accessibility.py` | RETAIN | Existing D-014 static accessibility audit retained. |

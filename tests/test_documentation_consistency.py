@@ -22,6 +22,18 @@ class DocumentationConsistencyTests(unittest.TestCase):
         self.assertFalse(is_historical("docs/DECISIONS.md"))
         self.assertFalse(is_historical("design/owner-controlled-kit-v2/README.md"))
 
+    def test_historical_visual_html_is_explicitly_non_operative(self):
+        root = Path(__file__).resolve().parents[1]
+        paths = (
+            "docs/historical/visual-proposals/m1-territory-study.html",
+            "docs/historical/visual-proposals/reference-led-directions.html",
+            "docs/historical/visual-proposals/visual-directions.html",
+        )
+        for relative in paths:
+            with self.subTest(path=relative):
+                source = (root / relative).read_text(encoding="utf-8")
+                self.assertIn(ARCHIVE_BANNER, source[:700])
+
     def test_archival_banner_is_explicit(self):
         self.assertIn("HISTORICAL", ARCHIVE_BANNER)
         self.assertIn("DO NOT IMPLEMENT", ARCHIVE_BANNER)
