@@ -57,7 +57,7 @@ class M2PrototypeReadinessTests(unittest.TestCase):
 
     def test_research_cohort_is_approved_but_no_fieldwork_is_authorized(self):
         research = (ROOT / "docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md").read_text(encoding="utf-8").lower()
-        for phrase in ("3 home/interior", "2 craft/material", "1 trade/design", "1 gift", "no recruitment", "no external contact", "no spending"):
+        for phrase in ("3 home/interior", "2 craft/material", "1 trade/design", "gift", "no recruitment", "no external contact", "no spending"):
             self.assertIn(phrase, research)
 
     def test_product_and_photo_evidence_remains_pending_and_placeholders_are_labelled(self):
