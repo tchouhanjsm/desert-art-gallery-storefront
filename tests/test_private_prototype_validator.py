@@ -293,5 +293,126 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         self.assertFalse(missing["ok"])
 
 
+    def test_inline_event_handler_attributes_are_rejected(self):
+        (self.proto / "pages/about.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<button onclick="fetch(\\'/api/orders\\')">Explore</button>'
+            '</main></body></html>',
+            encoding="utf-8",
+        )
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("inline event-handler attributes are not allowed" in error for error in result["errors"]))
+
+    def test_background_workers_and_form_override_attributes_are_rejected(self):
+        (self.proto / "pages/contact.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<button type="submit" form="remote-form" formaction="/checkout">Continue</button>'
+            '<script>navigator.serviceWorker.register("/worker.js")</script>'
+            '</main></body></html>',
+            encoding="utf-8",
+        )
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("form/network override attributes" in error for error in result["errors"]))
+        self.assertTrue(any("background worker registration" in error for error in result["errors"]))
+
+    def test_malformed_manifest_types_fail_closed_without_crashing(self):
+        manifest = json.loads((self.proto / "prototype-manifest.json").read_text())
+        manifest["schema_version"] = True
+        manifest["owner_visual_approval"]["status"] = []
+        manifest["asset_ledger"] = {"assets/missing.jpg": {"kind": []}}
+        self.write_manifest(**manifest)
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("schema_version must be integer 1" in error for error in result["errors"]))
+        self.assertTrue(any("status must be pending or approved" in error for error in result["errors"]))
+        self.assertTrue(any("asset kind must be a string" in error for error in result["errors"]))
+
+    def test_asset_ledger_rejects_non_normalized_paths(self):
+        (self.proto / "assets").mkdir()
+        (self.proto / "assets/frame.svg").write_text(
+            "<svg xmlns='http://www.w3.org/2000/svg'></svg>", encoding="utf-8"
+        )
+        (self.proto / "pages/product.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<img src="../assets/frame.svg" alt="Illustrative image placeholder">'
+            '<p>ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING</p>'
+            '</main></body></html>',
+            encoding="utf-8",
+        )
+        self.write_manifest(asset_ledger={
+            "assets/../assets/frame.svg": {
+                "kind": "illustrative_frame",
+                "label": "ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING",
+            }
+        })
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("normalized relative POSIX path" in error for error in result["errors"]))
+
+    def test_asset_ledger_rejects_unknown_metadata_fields(self):
+        (self.proto / "assets").mkdir()
+        (self.proto / "assets/frame.svg").write_text(
+            "<svg xmlns='http://www.w3.org/2000/svg'></svg>", encoding="utf-8"
+        )
+        (self.proto / "pages/product.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<img src="../assets/frame.svg" alt="Illustrative image placeholder">'
+            '<p>ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING</p>'
+            '</main></body></html>',
+            encoding="utf-8",
+        )
+        self.write_manifest(asset_ledger={
+            "assets/frame.svg": {
+                "kind": "illustrative_frame",
+                "label": "ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING",
+                "owner_note": "unrecognised field",
+            }
+        })
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("unsupported asset ledger field" in error for error in result["errors"]))
+
+    def test_owner_approval_rejects_unknown_fields(self):
+        manifest = json.loads((self.proto / "prototype-manifest.json").read_text())
+        manifest["owner_visual_approval"]["approval_comment"] = "not part of the signed gate"
+        (self.proto / "prototype-manifest.json").write_text(
+            json.dumps(manifest), encoding="utf-8"
+        )
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("unsupported field(s)" in error for error in result["errors"]))
+
+    def test_invalid_calendar_date_is_rejected(self):
+        manifest = json.loads((self.proto / "prototype-manifest.json").read_text())
+        manifest["owner_visual_approval"]["approved_at"] = "2026-99-99"
+        (self.proto / "prototype-manifest.json").write_text(
+            json.dumps(manifest), encoding="utf-8"
+        )
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("valid calendar date" in error for error in result["errors"]))
+
+    def test_browser_runner_rejects_symlink_prototype_root(self):
+        link = self.base / "prototype-link"
+        try:
+            link.symlink_to(self.proto, target_is_directory=True)
+        except OSError:
+            self.skipTest("directory symlinks are not supported in this environment")
+        output = self.base / "owner-review-output"
+        result = run_private_review(link, output)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("root must not be a symlink" in error for error in result["errors"]))
+        self.assertFalse(output.exists())
+
+    def test_browser_runner_reports_missing_root_without_traceback(self):
+        output = self.base / "owner-review-output"
+        result = run_private_review(self.base / "missing-prototype", output)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("does not exist or cannot be resolved" in error for error in result["errors"]))
+        self.assertFalse(output.exists())
+
+
 if __name__ == "__main__":
     unittest.main()
