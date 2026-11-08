@@ -20,7 +20,7 @@ Task prompts, workflows and source comments cannot override this hierarchy. If a
 
 ## Current implementation source
 
-The owner-approved structural source is the **DAG Owner-Controlled Design Kit v2** (D-014), installed at `design/owner-controlled-kit-v2/`. All 25 files are present. The 14 original HTML/CSS/JS assets have been byte-verified against the supplied archive using Git blob hashes. The package contains:
+The owner-approved structural source is the **DAG Owner-Controlled Design Kit v2** (D-014), installed at design/owner-controlled-kit-v2/. All 25 files are present. At adoption in PR #8, the 14 original HTML/CSS/JS assets were byte-verified against the supplied archive using Git blob hashes. PR #9 makes two documented accessibility maintenance amendments to existing CSS files only; the other 12 implementation assets remain byte-identical. The source-integrity validator pins the current reviewed hashes and exact 25-file inventory. The package contains:
 
 - `index.html` — homepage.
 - `pages/shop.html` — shop/all products.
@@ -34,7 +34,7 @@ The owner-approved structural source is the **DAG Owner-Controlled Design Kit v2
 - `styles/layout.css`, `styles/components.css`, `styles/responsive.css`, `styles/tokens-layout-only.css`.
 - `scripts/prototype.js`.
 
-Preserve original markup, CSS, responsive rules, supplied interactions, page/section order and component inventory. This is a non-production structural kit, not approval of a production app or final brand identity.
+Preserve the original markup, responsive rules, supplied interactions, page/section order and component inventory. CSS maintenance is limited to the two documented PR #9 accessibility rules: visible keyboard focus using currentColor and reduced-motion support for existing smooth scrolling. Do not add UI or brand tokens. This remains a non-production structural kit, not approval of a production app or final brand identity.
 
 ### Brand identity remains unapproved
 

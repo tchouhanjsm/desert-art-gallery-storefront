@@ -22,6 +22,8 @@ jobs:
         run: python3 scripts/validate_project.py
       - name: Audit M2 owner gate consistency
         run: python3 scripts/audit_m2_readiness.py
+      - name: Audit kit accessibility source support
+        run: python3 scripts/audit_kit_accessibility.py
       - name: Audit active Markdown links
         run: python3 scripts/audit_documentation_links.py
       - name: Run validation unit tests

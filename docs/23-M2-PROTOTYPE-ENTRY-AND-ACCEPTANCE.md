@@ -1,6 +1,6 @@
 # M2 — Structural Kit Review and Prototype Entry
 
-**Status:** The owner-supplied nine-page structural scope is recorded in D-014. The extracted kit files are not yet present in the current branch; do not claim the kit is materialized or begin branded production styling. M2 customer validation and any later prototype work remain owner-gated.
+**Status:** The owner-supplied nine-page structural scope is recorded in D-014 and materialized at design/owner-controlled-kit-v2/ (25 files). PR #8 verified all 14 original HTML/CSS/JS assets against the owner archive. PR #9 adds two CSS-only accessibility maintenance rules documented in docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md; all nine HTML pages remain unchanged. M2 customer validation and any later prototype work remain owner-gated.
 
 ## Governing baseline
 
@@ -40,13 +40,23 @@ Customer-facing language remains English-only. Japan-first does not authorize Ja
 
 Review the supplied layout at 390, 430, 768, 1280 and 1440 CSS-pixel widths. These are review widths, not permission to invent or change breakpoints. Record observed clipping, overflow, navigation access, image behaviour, focus visibility and reading order. Do not restyle the kit or add functionality to resolve a visual defect without owner approval when it changes the visual contract.
 
+## Static accessibility maintenance already applied
+
+- All nine pages retain lang=en, exactly one main landmark with id=main-content, exactly one h1 and the supplied mobile navigation toggle with aria-expanded, aria-controls and its text label.
+- The supplied sort, variant and enquiry controls remain disabled and retain their existing labels.
+- styles/components.css provides a visible :focus-visible outline using currentColor; no palette or token value was selected.
+- styles/layout.css disables existing smooth scrolling when prefers-reduced-motion: reduce is active.
+- No skip-link component, page, section, navigation destination, control or interaction was added. The current closed inventory remains authoritative.
+
+These are static source checks only. Actual browser rendering, keyboard traversal, screen-reader behaviour and responsive review at all specified widths remain unverified until run.
+
 ## Entry and acceptance sequence
 
-1. Materialize every original source file under `design/owner-controlled-kit-v2/` and byte-compare the 14 HTML/CSS/JS source assets to the owner archive.
-2. Validate all page links, relative stylesheet/script paths, semantics, keyboard focus and responsive behaviour.
-3. Resolve owner gates M2-A through M2-E before any branded prototype/customer study that depends on them.
-4. Use only verified product facts and owner-cleared sample photographs; label placeholders clearly.
-5. Review all nine routes against the page and component inventories; record evidence at all responsive widths.
+1. Complete: the 25 source-kit files are materialized; the 14 original implementation assets were byte-verified at D-014 adoption. Current source hashes are enforced by scripts/validate_project.py.
+2. Complete at source level: validate all page links, relative stylesheet/script paths, English language, main landmarks, heading count, menu state, focus CSS and reduced-motion support.
+3. Still required: run rendered browser review at 390, 430, 768, 1280 and 1440 CSS-pixel widths; record clipping, overflow, focus, navigation, image behaviour and reading order.
+4. Resolve owner gates M2-A through M2-E before any branded prototype/customer study that depends on them.
+5. Use only verified product facts and owner-cleared sample photographs; label placeholders clearly.
 6. Obtain explicit owner acceptance before advancing to production design or application work.
 
 **No production application development, technology selection or public deployment is authorized by this pack.**

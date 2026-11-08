@@ -2,7 +2,7 @@
 
 ## Completed milestone — D-014 structural kit adoption
 
-The owner-approved DAG Owner-Controlled Design Kit v2 is materialized at `design/owner-controlled-kit-v2/`. All 25 files are present; the 14 original HTML/CSS/JS files are byte-verified against the supplied ZIP by Git blob SHA-1 and exact file size. The source-integrity validator enforces the closed file inventory and original source hashes.
+The owner-approved DAG Owner-Controlled Design Kit v2 is materialized at `design/owner-controlled-kit-v2/`. All 25 files are present. At adoption (PR #8), all 14 original HTML/CSS/JS files were byte-verified against the supplied ZIP by Git blob SHA-1 and exact file size. PR #9 amends only two CSS files for accessibility maintenance; the other 12 implementation assets remain byte-identical. The source-integrity validator enforces the closed file inventory and current reviewed source hashes.
 
 This milestone adopts structure only. It does not approve brand identity, production styling, production app development, commerce functionality, hosting or technology choices.
 
@@ -15,11 +15,21 @@ This milestone adopts structure only. It does not approve brand identity, produc
 6. CI validators and relevant tests updated for the new authority.
 7. Repository reconciliation report, matrix, changelog and checklist committed.
 
-### Remaining PR quality gates
-- Run `python3 scripts/validate_project.py`.
-- Run `python3 scripts/audit_m2_readiness.py`.
-- Run `python3 -m unittest discover -s tests -v`.
-- Complete final contextual stale-instruction and Markdown-link checks.
+## Current maintenance delivery — source-level accessibility (PR #9)
+
+The follow-up maintenance patch is limited to the supplied kit's existing CSS and does not alter the nine HTML pages, structure, copy, controls, disabled states, responsive breakpoints or token values:
+- styles/components.css adds an explicit :focus-visible outline using currentColor; no brand colour is introduced.
+- styles/layout.css respects prefers-reduced-motion by disabling the existing smooth-scroll behaviour.
+- A read-only audit script and regression tests check the nine-page landmarks, heading and navigation state, focus treatment and reduced-motion rule.
+
+This is source-level support only. No claim is made about rendered-page, keyboard, assistive-technology or viewport acceptance; those checks remain outstanding and are listed in docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md.
+
+### Validation required for PR #9
+- Run python3 scripts/validate_project.py.
+- Run python3 scripts/audit_m2_readiness.py.
+- Run python3 scripts/audit_kit_accessibility.py.
+- Run python3 -m unittest discover -s tests -v.
+- Run python3 scripts/audit_documentation_links.py.
 - Confirm the PR workflow is green before merge.
 
 ## Owner gates retained

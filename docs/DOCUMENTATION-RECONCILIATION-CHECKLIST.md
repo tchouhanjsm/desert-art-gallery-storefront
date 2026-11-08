@@ -18,8 +18,9 @@
 - [x] Four supplied CSS files present.
 - [x] Supplied prototype JavaScript present.
 - [x] Eleven kit-local README/authority/inventory/governance files present and reconciled to D-014.
-- [x] All 14 original HTML/CSS/JS assets byte-verified against the owner ZIP using Git blob SHA-1.
-- [x] Validator enforces exact 25-file inventory and all 14 source-asset hashes.
+- [x] At PR #8 adoption, all 14 original HTML/CSS/JS assets were byte-verified against the owner ZIP using Git blob SHA-1.
+- [x] PR #9 amends only styles/components.css and styles/layout.css for focus visibility and reduced motion; the other 12 implementation assets remain byte-identical.
+- [x] Validator enforces the exact 25-file inventory and current hashes for all 14 implementation assets.
 - [x] CI run confirms source-integrity validator passes (run 62).
 
 ## Repository-wide reconciliation
@@ -36,6 +37,13 @@
 - [x] Contextual stale-instruction search completed across active design, decision, prompt, research and template documents; retained matches are explicitly historical or scoped as reference observations.
 - [x] Final path-level matrix spot-check completed against the 101-file PR diff and current tracked tree.
 
+## Accessibility maintenance
+- [x] Existing nine-page landmarks, headings, navigation state and labels inspected at source level.
+- [x] Shared :focus-visible outline uses currentColor; no brand token added.
+- [x] Existing smooth-scroll behaviour respects prefers-reduced-motion.
+- [x] No HTML page, component inventory item, control, section or interaction added.
+- [x] Static audit and regression tests added; browser/assistive-technology checks remain pending.
+
 ## Quality gate
 - [x] `python3 scripts/validate_project.py` — PASS in GitHub Actions run 62.
 - [x] `python3 scripts/audit_m2_readiness.py` — PASS in GitHub Actions run 62; five owner gates remain open as intended.
@@ -46,3 +54,6 @@
 - [x] GitHub Actions run 62 is green; merge remains subject to owner review.
 
 A checked box indicates evidence exists on the branch or in a recorded run. Do not mark CI or local checks complete until the actual results are known.
+
+- [ ] Rendered browser review at 390, 430, 768, 1280 and 1440 CSS-pixel widths (not completed by this source-only pass).
+- [ ] Keyboard and assistive-technology review (not completed by this source-only pass).

@@ -8,7 +8,7 @@ This directory contains the owner-supplied, framework-independent HTML/CSS struc
 
 The project-root authority remains controlling: read repository-root `AGENTS.md`, `docs/DECISIONS.md`, `docs/DESIGN-AUTHORITY.md`, `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`, and the active page/component inventories. These kit-local documents are subordinate and must not override the repository-root hierarchy.
 
-The original 14 HTML/CSS/JS source assets are preserved. The four `styles/` files include `tokens-layout-only.css`, which uses browser system canvas colours and system fonts for layout QA only. It is not a DAG palette or production theme. Exact brand colours, typography, wordmark/descriptor and photography direction remain owner-controlled and pending.
+At D-014 adoption, all 14 original HTML/CSS/JS source assets were byte-verified against the owner archive. PR #9 amends only styles/components.css and styles/layout.css for keyboard focus visibility and reduced-motion support; the remaining 12 implementation assets are still byte-identical. The four styles/ files include tokens-layout-only.css, which uses browser system canvas colours and system fonts for layout QA only. It is not a DAG palette or production theme. Exact brand colours, typography, wordmark/descriptor and photography direction remain owner-controlled and pending.
 
 ## Preview
 

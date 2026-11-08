@@ -18,7 +18,7 @@ Use D-014 and the active inventories only. The nine-page source kit defines stru
 
 Review all supplied pages at 390, 430, 768, 1280 and 1440 CSS-pixel widths. Record actual observations for overflow, clipping, reading order, navigation, touch target access, focus visibility, image behaviour and content hierarchy. These are review widths, not fixed breakpoints. Preserve the kit's design unless the owner approves a scoped correction.
 
-Test semantic HTML, heading hierarchy, accessible names, keyboard operation, visible focus, reduced motion and colour contrast once an owner-approved brand identity exists. System fallback tokens are not evidence of final brand contrast.
+The supplied pages retain one English-language document, one main landmark, one page-level heading and a named mobile-navigation toggle with an exposed aria-expanded state. Existing disabled sort, variant and enquiry controls retain their supplied labels and disabled states. The CSS maintenance adds a :focus-visible outline using currentColor and a prefers-reduced-motion override for smooth scrolling. No skip-link component is added because it is outside the closed inventory; use the existing main landmark for landmark navigation. Static source checks do not replace keyboard, browser, screen-reader or touch testing. Final colour-contrast acceptance remains blocked until the owner supplies exact brand tokens; system fallback tokens are not evidence of final brand contrast.
 
 ## Brand identity gate
 

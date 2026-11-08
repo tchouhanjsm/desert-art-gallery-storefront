@@ -16,3 +16,13 @@
 
 ## Remaining validation
 - PR CI, internal Markdown links and contextual stale-instruction checks remain open until their actual runs are recorded.
+
+
+## 2026-11-08 — D-014 kit accessibility maintenance
+- Added an authored keyboard focus-visible outline using currentColor to the existing shared component stylesheet; no palette or colour token was introduced.
+- Added a reduced-motion override for the existing smooth-scroll rule; no animation or interaction was added.
+- Preserved the nine HTML pages, structure, labels, placeholders, disabled states, supplied script and responsive breakpoints.
+- Added a read-only nine-page accessibility source audit and regression tests.
+- Corrected stale kit-materialization statements in the root M2 pack and handoff; documented current source integrity and static-review limits.
+- Added docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md and reconciled the roadmap, quality guide, README, authority docs and checklist.
+- Kept brand colours, typography, photography direction and all M2 owner gates unchanged.
