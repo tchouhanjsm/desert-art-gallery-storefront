@@ -1,6 +1,6 @@
 # DAG v2 Handoff — Owner-Controlled Structural Kit
 
-Read root `AGENTS.md`, `README.md`, `docs/DECISIONS.md`, `docs/DESIGN-AUTHORITY.md`, `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`, the page/component inventories and the reconciliation report before implementation.
+Read root `AGENTS.md` and `README.md`; then follow the exact eight-level authority order in `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`: decisions, root agent rules, design authority, source-of-truth policy, owner-approved specifications, page/component inventories, compatible technical docs, and finally historical audit material. Also inspect the reconciliation matrix/report/checklist before changing repository guidance.
 
 ## Current decision
 D-014 adopts the owner-supplied DAG v2 kit as the structural source for exactly nine pages. It does not approve brand identity, production copy, product facts, functionality, technology or production application development. D-013's former six-page scope is superseded.

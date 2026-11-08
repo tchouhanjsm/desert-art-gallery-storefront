@@ -1,3 +1,7 @@
+**HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT.** This file is preserved for audit traceability only. All instructions, proposal choices, page/component guidance and links below are non-operative; they do not override the current eight-level authority hierarchy, D-014, or the active page/component inventories.
+
+---
+
 # 15 — Reference-to-DAG Implementation Specification
 
 **Status:** Owner-approved reference hierarchy; implementation specification ready for responsive prototyping after the remaining visual-identity gate is satisfied.  

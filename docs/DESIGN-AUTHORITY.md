@@ -1,10 +1,14 @@
 # Design Authority and Change Control
 
+## Authority and governing rule
+
+This document is level 3 in the root authority hierarchy defined in `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`. It is subordinate only to explicit owner decisions and root `AGENTS.md`; it governs lower-level specifications and implementation documentation.
+
 ## Governing rule
 
 **DAG Owner-Controlled Design Kit v2 is the sole active structural HTML/CSS implementation source.** Its original HTML pages, CSS files, responsive styles, structural components, page order and component inventory must be preserved as supplied. Do not redesign, silently restyle, expand or reinterpret the kit.
 
-The kit is structurally adopted (D-014). This does **not** approve final brand identity. Final brand colours, typography, logo/wordmark/descriptor and photography art direction remain owner-controlled and pending.
+The kit is structurally adopted (D-014) and materialized in `design/owner-controlled-kit-v2/`. The archive SHA-256 is `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`; the 14 original implementation assets were checked at adoption and PR #9's two CSS maintenance amendments are hash-pinned by the project validator. This does **not** approve final brand identity. Final brand colours, typography, logo/wordmark/descriptor and photography art direction remain owner-controlled and pending.
 
 ## Owner-controlled identity
 
@@ -35,7 +39,9 @@ D-010: POJ Studio is the primary ecommerce/page-structure reference; Macaroni Sh
 
 ## Documentation governance
 
-The repository-wide source hierarchy is in `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`. Every prompt, README, source comment, workflow and issue template must comply. Historical proposals must be labelled **HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT** and must never be used as defaults or instructions.
+This document is level 3 in the exact eight-level hierarchy. Every root/nested prompt, README, source comment, workflow, issue template, HTML/CSS/JS file and technical guide must comply. A lower-level artifact may explain implementation detail but may not create brand, route, component or feature authority. Historical proposals must carry the prefix **HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT** and must never be used as defaults or instructions.
+
+The owner archive was re-supplied for the repository-wide reset and independently verified: it contains 25 files and its SHA-256 matches D-014 adoption. Do not duplicate or redesign the kit to satisfy a documentation task.
 
 ## Permitted maintenance
 

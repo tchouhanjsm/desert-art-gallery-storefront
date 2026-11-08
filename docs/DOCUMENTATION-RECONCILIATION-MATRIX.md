@@ -1,66 +1,195 @@
-# Documentation Reconciliation Matrix — Design Kit v2
+# Repository-Wide Documentation Reconciliation Matrix
 
-**Review date:** 2026-11-07  
-**Branch:** `feat/owner-design-kit-v2-reconciliation`  
-**Review basis:** Complete tracked tree on the feature branch plus owner archive `DAG-owner-controlled-design-kit-v2.zip`, SHA-256 `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`.
+**Review date:** 2026-11-08  
+**Audited baseline:** `main` at `a4b665f81433e98cd78469e0a1bc1bb81a3528df` (PR #9 merge)  
+**Owner archive:** `DAG-owner-controlled-design-kit-v2.zip`  
+**Owner archive SHA-256:** `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`  
+**Tracked baseline:** 140 files, enumerated from the Git index using `git ls-files` and the GitHub recursive tree API.
 
-Disposition definitions: **RETAIN** = remains valid without material change; **UPDATE** = reconciled with D-014; **SUPERSEDE** = active instruction replaced by a higher-authority source; **ARCHIVE** = preserved as historical, non-operative evidence; **REMOVE** = deleted because obsolete or misleading.
+## Disposition definitions
 
-| Tracked path / group | Disposition | Reconciliation outcome |
+- **RETAIN** — inspected and compatible; no content change required.
+- **UPDATE** — active file changed to correct authority, current repository state, scope or validation evidence.
+- **SUPERSEDE** — active path remains as a concise non-operative notice or gated worksheet; former operative content is replaced by higher authority.
+- **ARCHIVE** — preserved for audit/provenance only and explicitly labelled non-operative.
+- **REMOVE** — deleted as obsolete or misleading. None was required in this reset because the old material could be preserved without remaining an active instruction.
+
+## Path-by-path disposition
+
+| Tracked path | Disposition | Review finding / reason |
 |---|---|---|
-| `AGENTS.md`, `README.md` | UPDATE | Root authority, verified source path, nine-page baseline, closed scope, English-only content and owner identity boundaries documented. |
-| `HANDOFF-PROMPT.md` | UPDATE | New root handoff enforces D-014 and discloses source/validation requirements. |
-| `design/README.md` | UPDATE | Clarifies kit source, owner approval and historical design assets. |
-| `design/owner-controlled-kit-v2/` (25 files) | UPDATE / RETAIN | All 25 installed. PR #8 verified the original 14 HTML/CSS/JS files against the ZIP. PR #9 amends only styles/components.css and styles/layout.css for focus visibility and reduced motion; the other 12 implementation assets remain byte-identical. |
-| `design/approved/.gitkeep`, `design/prototypes/.gitkeep` | RETAIN | Empty governed locations; no branded design identity or production prototype is approved. |
-| `design/explorations/m1-territory-study.html` | ARCHIVE | Original retained at `docs/historical/visual-proposals/m1-territory-study.html`. |
-| `design/explorations/visual-directions.html` and P-015 SVG renders | ARCHIVE | Rejected P-015 board and four desktop/mobile SVGs preserved under `docs/historical/visual-proposals/`; active paths removed. |
-| `design/explorations/reference-led-directions.html` | ARCHIVE | Superseded P-016 board retained under `docs/historical/visual-proposals/`; active path removed. |
-| `docs/00-PROJECT-CHARTER.md`, `docs/01-DESIGN-PHILOSOPHY.md`, `docs/02-BRAND-IDENTITY.md` | UPDATE | Current D-014 scope and pending brand-identity decisions documented; Japanese-inspired service principles do not imply Japanese UI. |
-| `docs/03-CREATIVE-DIRECTION.md`, `docs/04-VISUAL-DESIGN-SYSTEM.md`, `docs/05-ART-DIRECTION-AND-PHOTOGRAPHY.md` | UPDATE | No AI-selected colours, fonts, logo, photo art direction or unlisted UI. Layout-only tokens are QA fallback only. |
-| `docs/06-CONTENT-STRATEGY.md` | RETAIN | Verified-facts-first and English-only policy remains compatible; no unsupported claim or structural feature is authorized. |
-| `docs/07-INFORMATION-ARCHITECTURE.md` | UPDATE | Current nine-page route list and excluded interactions aligned to D-014. |
-| `docs/08-TECHNICAL-ARCHITECTURE.md` | UPDATE | Checkout/account/search references qualified as future discovery only and outside current kit; no stack is selected. |
-| `docs/09-QUALITY-AND-ACCEPTANCE.md`, `docs/10-ROADMAP.md`, `docs/13-DESIGN-REVIEW-PROTOCOL.md` | UPDATE | Structural review, owner gates, test evidence and no-production boundaries aligned to source kit. |
-| `docs/11-CUSTOMER-AND-MERCHANDISING-STRATEGY.md`, `docs/12-MERCHANT-OPERATIONS.md`, `docs/16-COMMERCIAL-MODEL-ASSESSMENT.md` | RETAIN | Business hypotheses and unresolved commercial choices remain context, not approved operating policy or UI scope. |
-| `docs/14-JAPAN-FIRST-CUSTOMER-RESEARCH.md` | UPDATE | Explicitly distinguishes market research from design authority; customer-facing language remains English-only. |
-| `docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md` | SUPERSEDE | Active-path instructions reduced to owner-only identity input and links to controlling D-014 policy; full previous file archived. |
-| `docs/15-CREATIVE-DIRECTION-OPTIONS.md`, `docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md` | ARCHIVE | Active paths are non-operative stubs; original content preserved under `docs/historical/superseded/`. |
-| `docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md` | SUPERSEDE | Active path is a concise D-010 reference note; original research preserved under `docs/historical/superseded/`. |
-| `docs/17-REFERENCE-LED-DESIGN-BRIEF.md`, `docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md` | ARCHIVE | Active paths are historical stubs; full previous proposal specs preserved under `docs/historical/superseded/`. |
-| `docs/19-PHOTO-LIBRARY-AUDIT.md`, `docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md`, `docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md` | RETAIN | Valid data-ingestion, evidence and photo-audit preparation retained; private catalogue/export/media remain outside Git. |
-| `docs/22-CUSTOMER-VALIDATION-PLAYBOOK.md` | UPDATE | Research gates and prototype tasks aligned to D-014; no recruitment or fieldwork claimed. |
-| `docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md` | UPDATE | Former six-page scope replaced with nine-page D-014 structural baseline and five explicit open owner gates. Old version archived. |
-| `docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md` | ADD | Records the PR #9 source-level accessibility changes, preserved boundaries and browser/assistive-technology checks still outstanding. |
-| `docs/ADR-TEMPLATE.md`, `docs/REFERENCE-RESEARCH-LOG.md` | RETAIN | Ongoing decision and dated-reference evidence documents remain compatible. |
-| `docs/AI-BOOTSTRAP-PROMPT.md`, `docs/AI-WORKING-PROTOCOL.md`, `docs/UPDATE-VISUAL-OWNER-GATE-PROMPT.md` | UPDATE | Stale option-selection and AI authority removed; prompts now follow root authority and closed scope. |
-| `docs/DECISIONS.md`, `docs/OWNER-INPUT-REGISTER.md`, `docs/OWNER-TOKEN-INPUT.md` | UPDATE | D-014 added; D-013 superseded; P-015 rejected; P-016 historical; owner inputs remain pending. |
-| `docs/DESIGN-AUTHORITY.md`, `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`, `docs/PAGE-INVENTORY.md`, `docs/COMPONENT-INVENTORY.md` | UPDATE | Active owner authority, source hierarchy and exact nine-page/closed-component contract established. |
-| `docs/M1-OWNER-REVIEW.md`, `templates/prototypes/m2-owner-entry-decision.md` | SUPERSEDE / ARCHIVE | Active paths are short historical stubs or v2-gate worksheet; original six-route/M1 source preserved in history. |
-| `docs/historical/**` | RETAIN | Superseded source docs, old M1/M2 package and rejected visual boards/renders retained with non-operative labels. |
-| `scripts/validate_project.py`, `scripts/audit_m2_readiness.py`, scripts/audit_kit_accessibility.py | UPDATE | Enforce D-014, exact 25-file kit inventory, current implementation blob hashes, relative page links, source-level accessibility support and five open owner gates. |
-| `scripts/audit_photo_library.py`, catalogue/Etsy validation and reconciliation scripts | RETAIN | Independent data-quality tooling preserved. |
-| `tests/test_project_validation.py`, `tests/test_visual_review_quality.py`, `tests/test_m2_prototype_readiness.py`, `tests/test_m2_readiness_audit.py` | UPDATE | Tests target v2 identity inputs, source/inventory scope and open owner gates, not historical option sets or former six-route scope. |
-| `tests/test_kit_accessibility.py` | ADD | Guards nine-page semantic structure, navigation state, source focus/reduced-motion rules and supplied disabled-control labels. |
-| Catalogue, photo-audit, Etsy, research and privacy-template tests | RETAIN | Independent checks retained; update only for an actual contract change. |
-| `.github/workflows/project-quality.yml` | RETAIN | Existing pull-request workflow runs the updated source validator, M2 gate audit and complete unittest suite. |
-| `.github/ISSUE_TEMPLATE/.gitkeep`, `.github/workflows/.gitkeep` | RETAIN | Empty repository scaffolding. |
+| `.github/ISSUE_TEMPLATE/.gitkeep` | RETAIN | Empty issue-template scaffold; no contradictory instruction. |
+| `.github/workflows/.gitkeep` | RETAIN | Empty workflow scaffold; no contradictory instruction. |
+| `.github/workflows/project-quality.yml` | UPDATE | Add repository-wide contextual documentation-consistency audit to existing PR/push quality workflow. |
+| `AGENTS.md` | UPDATE | Exact eight-level hierarchy; enumerate and reconcile nested prompts, source comments, code, workflows and templates; preserve closed D-014 scope. |
+| `HANDOFF-PROMPT.md` | UPDATE | Directs agents to the precise eight-level hierarchy and path-level reconciliation evidence. |
+| `README.md` | UPDATE | Exact eight-level hierarchy and confirmed owner archive/source status. |
+| `design/README.md` | UPDATE | Remove stale “once materialized” language; identify the currently installed source and verified archive. |
+| `design/approved/.gitkeep` | RETAIN | Empty owner-approved brand-asset area; no identity asset is approved. |
+| `design/explorations/.gitkeep` | RETAIN | Empty active exploration area; retired proposal boards are not active here. |
+| `design/owner-controlled-kit-v2/HANDOFF-PROMPT.md` | RETAIN | Kit-local handoff remains subordinate to root authority and aligned with D-014. |
+| `design/owner-controlled-kit-v2/README.md` | RETAIN | Kit overview and limitations remain aligned; owner-supplied package preserved. |
+| `design/owner-controlled-kit-v2/docs/COMPONENT-INVENTORY.md` | RETAIN | Owner-supplied kit inventory preserved. |
+| `design/owner-controlled-kit-v2/docs/DESIGN-AUTHORITY.md` | RETAIN | Kit-local authority preserved beneath root authority. |
+| `design/owner-controlled-kit-v2/docs/DOCUMENTATION-CHANGELOG.md` | RETAIN | Owner-supplied kit provenance preserved. |
+| `design/owner-controlled-kit-v2/docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md` | RETAIN | Kit-local source evidence retained. |
+| `design/owner-controlled-kit-v2/docs/DOCUMENTATION-RECONCILIATION-PROMPT.md` | RETAIN | Kit-local prompt remains subordinate; root hierarchy controls. |
+| `design/owner-controlled-kit-v2/docs/DOCUMENTATION-SOURCE-OF-TRUTH.md` | RETAIN | Kit-local governance preserved; root policy is authoritative. |
+| `design/owner-controlled-kit-v2/docs/OWNER-TOKEN-INPUT.md` | RETAIN | Blank owner-only token inputs; no palette or typeface invented. |
+| `design/owner-controlled-kit-v2/docs/PAGE-INVENTORY.md` | RETAIN | Nine-page owner source inventory preserved. |
+| `design/owner-controlled-kit-v2/docs/REFERENCE-CREDIT-AND-IP.md` | RETAIN | Reference/IP rules remain compatible with D-010 and root scope. |
+| `design/owner-controlled-kit-v2/index.html` | RETAIN | Owner-supplied Home structure preserved; no markup changes in this reset. |
+| `design/owner-controlled-kit-v2/pages/about.html` | RETAIN | Owner-supplied About structure preserved. |
+| `design/owner-controlled-kit-v2/pages/article.html` | RETAIN | Owner-supplied Article structure preserved. |
+| `design/owner-controlled-kit-v2/pages/collection.html` | RETAIN | Owner-supplied Collection structure preserved. |
+| `design/owner-controlled-kit-v2/pages/contact.html` | RETAIN | Owner-supplied Contact structure and disabled form concept preserved. |
+| `design/owner-controlled-kit-v2/pages/journal.html` | RETAIN | Owner-supplied Journal structure preserved. |
+| `design/owner-controlled-kit-v2/pages/makers.html` | RETAIN | Owner-supplied Makers structure preserved. |
+| `design/owner-controlled-kit-v2/pages/product.html` | RETAIN | Owner-supplied Product structure and disabled purchase control preserved. |
+| `design/owner-controlled-kit-v2/pages/shop.html` | RETAIN | Owner-supplied Shop structure and disabled controls preserved. |
+| `design/owner-controlled-kit-v2/scripts/prototype.js` | RETAIN | Supplied minimal prototype script preserved. |
+| `design/owner-controlled-kit-v2/styles/components.css` | RETAIN | Existing D-014 kit CSS including the documented PR #9 focus rule preserved; this reset adds no styling. |
+| `design/owner-controlled-kit-v2/styles/layout.css` | RETAIN | Existing D-014 kit CSS including the documented PR #9 reduced-motion rule preserved. |
+| `design/owner-controlled-kit-v2/styles/responsive.css` | RETAIN | Owner-supplied responsive rules preserved. |
+| `design/owner-controlled-kit-v2/styles/tokens-layout-only.css` | RETAIN | System/browser QA fallback remains non-brand; no production palette selected. |
+| `design/prototypes/.gitkeep` | RETAIN | Empty governed prototype location; no production prototype authorized. |
+| `docs/00-PROJECT-CHARTER.md` | UPDATE | Verify D-014 materialization and clarify D-010 reference hierarchy does not add features to the closed kit. |
+| `docs/01-DESIGN-PHILOSOPHY.md` | RETAIN | Current philosophy is compatible with owner-controlled identity and D-014 boundaries. |
+| `docs/02-BRAND-IDENTITY.md` | RETAIN | Brand identity inputs remain pending and owner-controlled. |
+| `docs/03-CREATIVE-DIRECTION.md` | RETAIN | No active AI-selected identity direction; D-014 governs structure. |
+| `docs/04-VISUAL-DESIGN-SYSTEM.md` | RETAIN | Layout-only fallback remains QA-only; no production token set is approved. |
+| `docs/05-ART-DIRECTION-AND-PHOTOGRAPHY.md` | RETAIN | Owner approval, genuine-photo evidence and placeholder boundaries remain intact. |
+| `docs/06-CONTENT-STRATEGY.md` | RETAIN | English-only and verified-facts-first guidance remains aligned. |
+| `docs/07-INFORMATION-ARCHITECTURE.md` | RETAIN | Current nine-page information architecture is aligned to the kit inventory. |
+| `docs/08-TECHNICAL-ARCHITECTURE.md` | RETAIN | Technology choices and production architecture remain unresolved and outside D-014. |
+| `docs/09-QUALITY-AND-ACCEPTANCE.md` | RETAIN | Acceptance guidance preserves disabled states and distinguishes static from browser checks. |
+| `docs/10-ROADMAP.md` | RETAIN | Roadmap preserves D-014 and open owner gates; no new production milestone is authorized by this reset. |
+| `docs/11-CUSTOMER-AND-MERCHANDISING-STRATEGY.md` | RETAIN | Business hypotheses remain context, not implementation authority. |
+| `docs/12-MERCHANT-OPERATIONS.md` | RETAIN | Operational guidance retained; unresolved operational commitments remain gated. |
+| `docs/13-DESIGN-REVIEW-PROTOCOL.md` | RETAIN | Review protocol remains within D-014 and owner approval boundaries. |
+| `docs/14-JAPAN-FIRST-CUSTOMER-RESEARCH.md` | RETAIN | Japan-first research context remains separate from English-only UI and owner authorization. |
+| `docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md` | SUPERSEDE | Active-path stub is non-operative; P-015/P-016 cannot be reactivated from this path. |
+| `docs/15-CREATIVE-DIRECTION-OPTIONS.md` | SUPERSEDE | Active-path stub retires the old option workflow; no palette/type option is active. |
+| `docs/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md` | SUPERSEDE | Active-path stub retires P-015 specifications; original file remains archived. |
+| `docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md` | UPDATE | Distinguish confirmed D-010 reference hierarchy note from the superseded page-by-page implementation proposal. |
+| `docs/16-COMMERCIAL-MODEL-ASSESSMENT.md` | RETAIN | Commercial model remains exploratory and is not converted into policy or UI scope. |
+| `docs/17-REFERENCE-LED-DESIGN-BRIEF.md` | SUPERSEDE | Active-path stub marks former brief historical; D-010 reference credit remains, not an option-generation instruction. |
+| `docs/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md` | SUPERSEDE | Active-path stub marks P-016 proposals historical; no proposal values become defaults. |
+| `docs/19-PHOTO-LIBRARY-AUDIT.md` | RETAIN | Read-only photo-audit knowledge preserved; no bulk migration or publication authorized. |
+| `docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md` | RETAIN | Intake/fact-verification guidance retained without approving production schema or facts. |
+| `docs/21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md` | RETAIN | Export-mapping/reconciliation knowledge retained; no source export or import approved. |
+| `docs/22-CUSTOMER-VALIDATION-PLAYBOOK.md` | RETAIN | Research playbook remains gated by M2-B/C/D/E; no recruitment is authorized here. |
+| `docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md` | RETAIN | Current D-014 nine-page pack and five open owner gates remain authoritative. |
+| `docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md` | RETAIN | PR #9 source-level accessibility record preserved; browser and assistive-tech checks remain outstanding. |
+| `docs/ADR-TEMPLATE.md` | RETAIN | Decision-record template remains compatible with repository governance. |
+| `docs/AI-BOOTSTRAP-PROMPT.md` | UPDATE | Historical audit note: the stale source-materialization blocker was removed; the active prompt requires the exact authority sequence and repository-wide reconciliation. |
+| `docs/AI-WORKING-PROTOCOL.md` | RETAIN | Existing engineering workflow remains subordinate to root authority and inventories. |
+| `docs/COMPONENT-INVENTORY.md` | RETAIN | Nine-page component inventory remains the closed structure baseline. |
+| `docs/DECISIONS.md` | RETAIN | D-001–D-014 and P-015/P-016 statuses were verified; no new owner design decision is invented. |
+| `docs/DESIGN-AUTHORITY.md` | UPDATE | Explicitly designate level 3, confirm current archive state and reiterate that historical content is non-operative. |
+| `docs/DOCUMENTATION-CHANGELOG.md` | UPDATE | Record the 2026-11-08 repository-wide reset and audit tooling. |
+| `docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md` | UPDATE | Replace prior grouped/PR #8 checklist with current per-file audit, this reset’s validation and remaining browser checks. |
+| `docs/DOCUMENTATION-RECONCILIATION-MATRIX.md` | UPDATE | Replace previous grouped matrix with this 140-row current tracked-path matrix. |
+| `docs/DOCUMENTATION-RECONCILIATION-REPORT.md` | UPDATE | Record current baseline, archive verification, exact paths, findings, scan method and real CI evidence. |
+| `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md` | UPDATE | Split owner-approved specs and inventories into separate levels; define the exact eight-level hierarchy. |
+| `docs/M1-OWNER-REVIEW.md` | SUPERSEDE | Active path is a non-operative historical stub; full review is retained in the archive. |
+| `docs/OWNER-INPUT-REGISTER.md` | RETAIN | Owner gates remain open as recorded; no owner responses inferred. |
+| `docs/OWNER-TOKEN-INPUT.md` | RETAIN | Brand inputs remain pending; no palette, typography or logo is selected. |
+| `docs/PAGE-INVENTORY.md` | RETAIN | Nine-page inventory remains the single active route baseline. |
+| `docs/REFERENCE-RESEARCH-LOG.md` | RETAIN | Dated research retained as evidence; it cannot add features or override D-014. |
+| `docs/UPDATE-VISUAL-OWNER-GATE-PROMPT.md` | RETAIN | Owner-gate prompt remains constrained by root decisions and D-014. |
+| `docs/historical/README.md` | RETAIN | Archive index explains historical, non-operative status. |
+| `docs/historical/superseded/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md` | ARCHIVE | Original owner-control process preserved with mandatory non-operative banner; old multi-option instruction is not active. |
+| `docs/historical/superseded/15-CREATIVE-DIRECTION-OPTIONS.md` | ARCHIVE | Historical proposals retained with mandatory non-operative banner. |
+| `docs/historical/superseded/15-FOUR-VISUAL-DIRECTION-SPECIFICATIONS.md` | ARCHIVE | Rejected P-015 palette/type specifications retained with mandatory banner. |
+| `docs/historical/superseded/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md` | ARCHIVE | Former reference-led implementation detail retained with mandatory banner; D-010 remains only as the reference hierarchy decision. |
+| `docs/historical/superseded/17-REFERENCE-LED-DESIGN-BRIEF.md` | ARCHIVE | Former reference-led creative brief retained with mandatory non-operative banner. |
+| `docs/historical/superseded/18-REFERENCE-LED-DIRECTION-SPECIFICATIONS.md` | ARCHIVE | P-016 visual proposal specification retained with mandatory non-operative banner. |
+| `docs/historical/superseded/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE-v1-six-route.md` | ARCHIVE | Superseded six-route M2 pack retained with mandatory non-operative banner. |
+| `docs/historical/superseded/M1-OWNER-REVIEW.md` | ARCHIVE | Former M1 review retained with mandatory non-operative banner. |
+| `docs/historical/superseded/m2-owner-entry-decision-v1-six-route.md` | ARCHIVE | Former six-route M2 worksheet retained with mandatory non-operative banner. |
+| `docs/historical/visual-proposals/m1-territory-study.html` | ARCHIVE | Original M1 visual exploration preserved for traceability only with a non-operative HTML comment banner. |
+| `docs/historical/visual-proposals/reference-led-directions.html` | ARCHIVE | Original P-016 board preserved for traceability only with a non-operative HTML comment banner; no candidate is active. |
+| `docs/historical/visual-proposals/rendered/future-relics-desktop.svg` | ARCHIVE | Rejected P-015 desktop render preserved for traceability only. |
+| `docs/historical/visual-proposals/rendered/future-relics-mobile.svg` | ARCHIVE | Rejected P-015 mobile render preserved for traceability only. |
+| `docs/historical/visual-proposals/rendered/graphic-atelier-desktop.svg` | ARCHIVE | Rejected P-015 desktop render preserved for traceability only. |
+| `docs/historical/visual-proposals/rendered/graphic-atelier-mobile.svg` | ARCHIVE | Rejected P-015 mobile render preserved for traceability only. |
+| `docs/historical/visual-proposals/rendered/living-garden-desktop.svg` | ARCHIVE | Rejected P-015 desktop render preserved for traceability only. |
+| `docs/historical/visual-proposals/rendered/living-garden-mobile.svg` | ARCHIVE | Rejected P-015 mobile render preserved for traceability only. |
+| `docs/historical/visual-proposals/rendered/modern-folk-pop-desktop.svg` | ARCHIVE | Rejected P-015 desktop render preserved for traceability only. |
+| `docs/historical/visual-proposals/rendered/modern-folk-pop-mobile.svg` | ARCHIVE | Rejected P-015 mobile render preserved for traceability only. |
+| `docs/historical/visual-proposals/visual-directions.html` | ARCHIVE | Rejected P-015 visual board preserved for traceability only with a non-operative HTML comment banner. |
+| `scripts/audit_documentation_consistency.py` | UPDATE | New tracked-tree audit flags stale active directives and checks the eight-level hierarchy; historic references are handled separately. |
+| `scripts/audit_documentation_links.py` | RETAIN | Existing Markdown internal-link audit retained; run in CI. |
+| `scripts/audit_kit_accessibility.py` | RETAIN | Existing D-014 static accessibility audit retained. |
+| `scripts/audit_m2_readiness.py` | RETAIN | Existing five-open-gate M2 readiness audit retained. |
+| `scripts/audit_photo_library.py` | RETAIN | Existing read-only photo audit utility retained. |
+| `scripts/build_etsy_review_bundle.py` | RETAIN | Existing private/local review-bundle utility retained; no import/publication authorized. |
+| `scripts/create_etsy_reconciliation_worklist.py` | RETAIN | Existing source-export reconciliation utility retained. |
+| `scripts/preview_etsy_export.py` | RETAIN | Existing read-only export preview utility retained. |
+| `scripts/validate_catalogue_intake.py` | RETAIN | Existing local catalogue validation utility retained; not a production schema approval. |
+| `scripts/validate_project.py` | UPDATE | Enforce current source, exact eight-level hierarchy and archival labels in addition to D-014 asset hashes. |
+| `scripts/verify_etsy_review_bundle.py` | RETAIN | Existing verification utility retained. |
+| `templates/catalogue/README.md` | RETAIN | Blank catalogue-intake instructions remain; no source data is committed. |
+| `templates/catalogue/etsy-image-sources.csv` | RETAIN | Blank Etsy image-source template retained. |
+| `templates/catalogue/product-facts.csv` | RETAIN | Blank product-facts template retained. |
+| `templates/catalogue/product-images.csv` | RETAIN | Blank product-image mapping template retained. |
+| `templates/catalogue/product-source-records.csv` | RETAIN | Blank product-source evidence template retained. |
+| `templates/catalogue/products.csv` | RETAIN | Blank product intake template retained. |
+| `templates/prototypes/README.md` | RETAIN | Prototype template guidance remains gated by owner approval. |
+| `templates/prototypes/m2-owner-entry-decision.md` | SUPERSEDE | Worksheet remains a decision-capture aid; current M2 acceptance pack and owner decision register supersede former six-route assumptions. |
+| `templates/prototypes/prototype-review.csv` | RETAIN | Blank prototype review template retained; no study authorized. |
+| `templates/research/README.md` | RETAIN | Research templates retained; no recruitment/spend authorization inferred. |
+| `templates/research/discovery-interview-guide.md` | RETAIN | Interview template retained as gated preparation only. |
+| `templates/research/finding-synthesis.csv` | RETAIN | Blank synthesis template retained. |
+| `templates/research/participant-screener.csv` | RETAIN | Blank screener template retained; recruitment remains gated. |
+| `templates/research/prototype-usability-guide.md` | RETAIN | Usability guide retained as preparation; no prototype study authorized. |
+| `templates/research/research-session-notes.csv` | RETAIN | Blank research notes template retained. |
+| `templates/research/session-opening-and-consent.md` | RETAIN | Consent template retained; no sessions or recruitment authorized. |
+| `templates/research/task-observations.csv` | RETAIN | Blank task-observation template retained. |
+| `tests/test_catalogue_intake.py` | RETAIN | Existing catalogue-intake regression tests unchanged. |
+| `tests/test_customer_validation_templates.py` | RETAIN | Existing customer-validation template tests unchanged. |
+| `tests/test_etsy_export_preview.py` | RETAIN | Existing export-preview regression tests unchanged. |
+| `tests/test_etsy_reconciliation_worklist.py` | RETAIN | Existing reconciliation-worklist tests unchanged. |
+| `tests/test_etsy_review_bundle.py` | RETAIN | Existing review-bundle tests unchanged. |
+| `tests/test_etsy_review_bundle_verification.py` | RETAIN | Existing review-bundle verification tests unchanged. |
+| `tests/test_documentation_consistency.py` | UPDATE | New regression tests for tracked-file audit scope, hierarchy and non-operative historical handling. |
+| `tests/test_kit_accessibility.py` | RETAIN | Existing nine-page accessibility-source tests unchanged. |
+| `tests/test_m2_prototype_readiness.py` | RETAIN | Existing M2 D-014 scope regression tests unchanged. |
+| `tests/test_m2_readiness_audit.py` | RETAIN | Existing open-gate audit tests unchanged. |
+| `tests/test_photo_library_audit.py` | RETAIN | Existing photo-audit tests unchanged. |
+| `tests/test_project_validation.py` | RETAIN | Existing project validator tests remain compatible; validator gained governance assertions. |
+| `tests/test_visual_review_quality.py` | RETAIN | Existing owner-identity pending-state tests unchanged. |
 
-## Source archive integrity
+## Totals
 
-The uploaded ZIP contains exactly 25 files: 9 HTML pages, 4 CSS files, 1 JavaScript file and 11 kit-local governance/README/handoff documents. All 25 are installed under `design/owner-controlled-kit-v2/`. The SHA-256 of the uploaded ZIP is:
+| Disposition | Count |
+|---|---:|
+| UPDATE | 24 |
+| RETAIN | 85 |
+| SUPERSEDE | 7 |
+| ARCHIVE | 24 |
+| REMOVE | 0 |
+| **Total tracked paths in reviewed baseline** | **140** |
 
-`64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`
-
-At D-014 adoption (PR #8), all 14 original HTML/CSS/JS assets were compared using Git's blob SHA-1 formula and exact byte length; every expected SHA and size matched. PR #9 amends only two existing CSS files for focus visibility and reduced-motion support. The other 12 implementation assets remain byte-identical to the ZIP. The validator now enforces current reviewed hashes and the exact 25-path kit inventory. The 11 kit-local documents were aligned to the root hierarchy and are not claimed as byte-identical source assets.
-
-The source kit was installed and byte-verified at PR #8 adoption. PR #9 amends two CSS files for accessibility; the other 12 implementation assets remain byte-identical and the current validator checks all 14 reviewed hashes. Brand identity, production application, commercial/legal decisions, customer research recruitment and unlisted functionality remain unapproved.
-
-## PR #8 validation history and current review
-
-The preceding checklist was completed for PR #8. PR #8 merged after PR workflow run #63 and main-branch push run #64 both passed. PR #9 adds a separate source-level accessibility audit and tests; its own validation status is maintained on the current pull request. Rendered browser, keyboard traversal and assistive-technology checks remain outstanding and are explicitly not claimed as complete.
+This table is exhaustive for the 140-path baseline enumerated before this reset. The two newly added paths (`scripts/audit_documentation_consistency.py` and `tests/test_documentation_consistency.py`) are listed explicitly above; after their addition, the branch contains 142 tracked paths.
 
 
-## 2026-11-08 accessibility maintenance disposition
+## Post-baseline paths added by merged PR #11
 
-The v2 source directory remains the only active structural source. The follow-up is a permitted accessibility maintenance amendment, not a new visual direction or component inventory change. Only the shared focus treatment and reduced-motion rule changed; no HTML page, route, section, navigation destination, label, placeholder or disabled state changed. See docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md for the source review and outstanding browser acceptance.
+The exhaustive disposition table above remains anchored to the 140-path baseline at
+`a4b665f81433e98cd78469e0a1bc1bb81a3528df`. PR #11 subsequently merged a focused
+browser-QA batch, adding the following three tracked paths. Existing PR #11 modifications
+to AGENTS, README, the source-of-truth policy, changelog, structural accessibility review,
+responsive CSS and project validator are reconciled in the merged PR #10 branch content.
+
+| Tracked path | Disposition | Reconciliation outcome |
+|---|---|---|
+| `.github/workflows/kit-browser-review.yml` | RETAIN | Dedicated Chromium QA workflow for all nine supplied routes and five responsive review widths; produces CI evidence only and adds no product functionality. |
+| `requirements-browser.txt` | RETAIN | Isolated pinned Playwright dependency used only by browser QA; it is not a storefront runtime dependency. |
+| `scripts/kit_browser_review.py` | RETAIN | Browser QA runner checks routes, viewport overflow, navigation state, keyboard focus, reduced-motion behaviour, local assets and screenshot evidence without changing the kit structure. |
+
+After PR #11, main contained 143 tracked paths. PR #10 adds the two audit implementation files
+listed explicitly in the original matrix; the resulting tracked tree contains 145 paths. The
+140-path disposition totals above describe the original baseline only and are not silently
+re-labelled as the post-PR #11 total.
