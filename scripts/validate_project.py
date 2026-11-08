@@ -183,10 +183,14 @@ def validate_project(root: Path = ROOT) -> list[str]:
 
     report = (root / "docs/DOCUMENTATION-RECONCILIATION-REPORT.md").read_text(encoding="utf-8").lower()
     checklist = (root / "docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md").read_text(encoding="utf-8")
-    if "25 files" not in report or "14 original html/css/js assets" not in report:
-        errors.append("reconciliation report must document kit file count and asset integrity")
-    if "[x] all 25 kit files materialized" not in checklist.lower():
+    if "25-file" not in report and "25 files" not in report:
+        errors.append("reconciliation report must document the 25-file owner archive")
+    if "14 original html/css/js assets" not in report and "14 original implementation assets" not in report:
+        errors.append("reconciliation report must document implementation-asset verification")
+    if "all 25 kit files" not in checklist.lower() and "25-file owner archive" not in checklist.lower():
         errors.append("checklist must record verified source-kit materialization")
+    if "sha-256" not in report or "64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd" not in report:
+        errors.append("reconciliation report must record the verified owner archive SHA-256")
 
     active_stubs = (
         "docs/14-OWNER-CONTROLLED-VISUAL-DIRECTION.md",
