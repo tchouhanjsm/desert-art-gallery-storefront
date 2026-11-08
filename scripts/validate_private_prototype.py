@@ -507,9 +507,18 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
             for label, pattern in NETWORK_PATTERNS:
                 if pattern.search(code):
                     errors.append(f"{route}: disallowed {label} capability in {script_path.name}")
-            for match in re.finditer(r"""(?:href|src|location(?:\.href)?)\s*=\s*['"]([^'"]+)['"]""", code, re.I):
-                if TRANSACTION_TARGET.search(urlsplit(match.group(1)).path):
-                    errors.append(f"{route}: transactional destination in script: {match.group(1)[:120]}")
+            navigation_patterns = (
+                r"""(?:href|src|location(?:\.href)?)\s*=\s*['"]([^'"]+)['"]""",
+                r"""(?:window\.open|window\.location(?:\.assign|\.replace)?|location(?:\.assign|\.replace)?)\s*\(?\s*['"]([^'"]+)['"]""",
+            )
+            for pattern in navigation_patterns:
+                for match in re.finditer(pattern, code, re.I):
+                    target = match.group(1)
+                    parsed_target = urlsplit(target)
+                    if parsed_target.scheme not in {"", "mailto", "tel"} or parsed_target.netloc or target.startswith("//"):
+                        errors.append(f"{route}: external script navigation is not allowed: {target[:120]}")
+                    if TRANSACTION_TARGET.search(parsed_target.path):
+                        errors.append(f"{route}: transactional destination in script: {target[:120]}")
 
         for form in parser.forms:
             action = str(form["action"])
