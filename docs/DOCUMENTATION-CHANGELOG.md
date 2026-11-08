@@ -62,3 +62,12 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Prevented the tracked-file auditor from treating its own regex definitions as active repository instructions.
 - Clarified a historical audit explanation in the path matrix so it is not misclassified as a live directive.
 - GitHub Actions DAG Project Quality run #77 passed on PR #10 head `1f11b0eca7be4f34b2088cb94f94bdb041936a2a`: foundation, five owner gates, kit accessibility, repository-wide consistency, Markdown links and unit tests.
+
+
+## 2026-11-08 — PR #12 semantic and keyboard QA hardening
+- Replaced the order-sensitive kit accessibility regex checks with a standard-library HTML parser covering page language/title, landmark and heading structure, accessible names, form labels, image alternatives, unique IDs, ARIA relationships and positive tabindex.
+- Added parser regression tests for valid semantics and deliberately malformed markup.
+- Extended Chromium review to validate rendered DOM semantics on all nine pages at the five required viewport widths.
+- Added 54 mobile Enter/Space keyboard-operation sequences across the nine pages at 390px, 430px and 768px, checking the existing disclosure state and focus retention without changing runtime JavaScript.
+- Confirmed CI success: Project Quality run #79 passed 89 Python tests; Chromium Browser Review run #7 passed 45/45 route/viewport combinations and uploaded 18 screenshots plus JSON/Markdown summaries.
+- Recorded the result in the M2 entry pack, roadmap and structural accessibility review. D-014 and M2-A through M2-E owner gates remain unchanged.

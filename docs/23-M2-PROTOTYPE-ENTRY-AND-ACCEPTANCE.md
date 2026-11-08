@@ -1,6 +1,6 @@
 # M2 — Structural Kit Review and Prototype Entry
 
-**Status:** The owner-supplied nine-page structural scope is recorded in D-014 and materialized at design/owner-controlled-kit-v2/ (25 files). PR #8 verified all 14 original HTML/CSS/JS assets against the owner archive. PR #9 adds two CSS-only accessibility maintenance rules documented in docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md; all nine HTML pages remain unchanged. M2 customer validation and any later prototype work remain owner-gated.
+**Status:** The owner-supplied nine-page structural scope is recorded in D-014 and materialized at `design/owner-controlled-kit-v2/` (25 files). PR #8 verified all 14 original HTML/CSS/JS assets against the owner archive. PR #9 adds two CSS-only accessibility maintenance rules; PR #11 applies the documented mobile Product Detail grid correction. PR #12 strengthens semantic accessibility auditing and Chromium keyboard/responsive QA without changing any owner-supplied HTML, CSS or JavaScript asset. The latest PR #12 CI passed 45/45 route/viewport checks, 54 mobile keyboard-operation sequences and reduced-motion review. M2 customer validation and any later prototype work remain owner-gated.
 
 ## Governing baseline
 
@@ -38,7 +38,7 @@ Customer-facing language remains English-only. Japan-first does not authorize Ja
 
 ## Responsive review
 
-Review the supplied layout at 390, 430, 768, 1280 and 1440 CSS-pixel widths. These are review widths, not permission to invent or change breakpoints. Record observed clipping, overflow, navigation access, image behaviour, focus visibility and reading order. Do not restyle the kit or add functionality to resolve a visual defect without owner approval when it changes the visual contract.
+Review the supplied layout at 390, 430, 768, 1280 and 1440 CSS-pixel widths. These are review widths, not permission to invent or change breakpoints. PR #11 corrected the Product Detail thumbnail-grid overflow at 390px and 430px. PR #12's latest Chromium run passed all 45 route/viewport combinations, with no horizontal overflow, browser page errors or failed local document/style/script assets. It also passed 54 Enter/Space mobile navigation sequences across the nine pages and three mobile/tablet widths, checking disclosure state and focus retention. The run uploaded 18 full-page screenshots plus JSON/Markdown summaries; see the linked workflow and current evidence in `docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md`. Do not restyle the kit or add functionality to resolve a visual defect without owner approval when it changes the visual contract.
 
 ## Static accessibility maintenance already applied
 
@@ -48,13 +48,13 @@ Review the supplied layout at 390, 430, 768, 1280 and 1440 CSS-pixel widths. The
 - styles/layout.css disables existing smooth scrolling when prefers-reduced-motion: reduce is active.
 - No skip-link component, page, section, navigation destination, control or interaction was added. The current closed inventory remains authoritative.
 
-These are static source checks only. Actual browser rendering, keyboard traversal, screen-reader behaviour and responsive review at all specified widths remain unverified until run.
+PR #12 adds a structural HTML parser audit for document titles, accessible names, form labels, image alternatives, unique IDs, sequential heading levels, ARIA ID relationships and positive `tabindex`, plus regression fixtures for valid and deliberately malformed markup. The successful Chromium run provides browser-rendered responsive and keyboard evidence for the current pages. Screen-reader behaviour, touch-target adequacy, zoom/reflow and WCAG conformance remain unverified.
 
 ## Entry and acceptance sequence
 
 1. Complete: the 25 source-kit files are materialized; the 14 original implementation assets were byte-verified at D-014 adoption. Current source hashes are enforced by scripts/validate_project.py.
 2. Complete at source level: validate all page links, relative stylesheet/script paths, English language, main landmarks, heading count, menu state, focus CSS and reduced-motion support.
-3. Still required: run rendered browser review at 390, 430, 768, 1280 and 1440 CSS-pixel widths; record clipping, overflow, focus, navigation, image behaviour and reading order.
+3. Complete for the current structural baseline: PR #12 Chromium run [#42466004123](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004123) passed 45/45 route/viewport combinations at 390, 430, 768, 1280 and 1440 CSS-pixel widths; 54 mobile keyboard-operation sequences and reduced-motion review also passed. The run uploaded 18 full-page screenshots and JSON/Markdown summaries.
 4. Resolve owner gates M2-A through M2-E before any branded prototype/customer study that depends on them.
 5. Use only verified product facts and owner-cleared sample photographs; label placeholders clearly.
 6. Obtain explicit owner acceptance before advancing to production design or application work.
