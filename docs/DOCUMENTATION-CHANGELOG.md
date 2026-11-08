@@ -119,3 +119,10 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Added a local-only Playwright/Chromium review runner. It runs only after the static gate passes, blocks non-loopback requests, checks nine routes at five viewport widths and writes screenshots plus JSON/Markdown summaries outside both the public repository and prototype source.
 - Added regression coverage for approval state/hash, exact routes/areas, placeholder and genuine-photo evidence, remote/network/transaction rejection, private-root constraints and browser-entry gating.
 - No private prototype, product sample, genuine photographs, customer data or screenshots are committed. M2-A visual approval remains pending; D-014 kit assets and QA token fallback remain unchanged.
+
+## 2026-11-09 — PR #14 private prototype review hardening
+- Tightened the private manifest validator to fail closed on malformed types, unknown approval/asset fields, non-normalized asset paths and invalid calendar dates; kept the JSON schema, pending template and runtime checks aligned.
+- Rejected inline event handlers, link ping beacons, form-associated submission overrides, background worker registration and cross-context messaging APIs in the non-transactional prototype scope.
+- Hardened local browser review against symlinked prototype roots and added viewport-meta, browser-console, failed-request and HTTP resource-status evidence.
+- Added eight regression tests for the new bypasses and malformed manifest conditions; CI validation is recorded only after the updated PR head workflow completes.
+- Kept M2-A visual approval pending and made no changes to D-014 source assets, brand tokens, photography, catalogue records or private prototype files.
