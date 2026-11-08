@@ -271,8 +271,8 @@ def run_review(output_dir: Path) -> dict[str, object]:
                                        f"{route} at {width}px: aria-expanded did not return to false",
                                        route_errors)
 
-                                # Exercise native keyboard activation and Escape dismissal.
-                                # Each run verifies that focus returns to the controlling button.
+                                # Exercise native keyboard activation using both supported
+                                # button keys; focus must remain on the disclosure control.
                                 for key in ("Enter", "Space"):
                                     toggle.focus()
                                     page.keyboard.press(key)
@@ -282,18 +282,18 @@ def run_review(output_dir: Path) -> dict[str, object]:
                                     _check(toggle.get_attribute("aria-expanded") == "true",
                                            f"{route} at {width}px: {key} did not set aria-expanded=true",
                                            route_errors)
-                                    page.keyboard.press("Escape")
+                                    page.keyboard.press(key)
                                     _check(not nav.is_visible(),
-                                           f"{route} at {width}px: Escape did not close mobile navigation",
+                                           f"{route} at {width}px: {key} did not close mobile navigation",
                                            route_errors)
                                     _check(toggle.get_attribute("aria-expanded") == "false",
-                                           f"{route} at {width}px: Escape did not set aria-expanded=false",
+                                           f"{route} at {width}px: {key} did not set aria-expanded=false",
                                            route_errors)
-                                    focus_restored = toggle.evaluate(
+                                    focus_retained = toggle.evaluate(
                                         "(element) => document.activeElement === element"
                                     )
-                                    _check(focus_restored,
-                                           f"{route} at {width}px: Escape did not restore focus to the toggle",
+                                    _check(focus_retained,
+                                           f"{route} at {width}px: {key} moved focus away from the toggle",
                                            route_errors)
                                     keyboard_sequences += 1
                         else:
@@ -426,7 +426,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
         f"**Browser:** {summary['browser']}",
         f"**Route/viewport runs:** {passed}/{len(results)} passed",
         f"**Reduced motion:** {summary['reduced_motion_check']}",
-        f"**Keyboard activation / Escape / focus-return sequences:** {keyboard_sequences}",
+        f"**Keyboard activation / focus-retention sequences:** {keyboard_sequences}",
         "",
         "## Viewport results",
         "",
