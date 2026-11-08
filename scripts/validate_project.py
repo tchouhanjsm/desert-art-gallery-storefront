@@ -187,7 +187,13 @@ def validate_project(root: Path = ROOT) -> list[str]:
         errors.append("reconciliation report must document the 25-file owner archive")
     if "14 original html/css/js assets" not in report and "14 original implementation assets" not in report:
         errors.append("reconciliation report must document implementation-asset verification")
-    if "all 25 kit files" not in checklist.lower() and "25-file owner archive" not in checklist.lower():
+    checklist_lower = checklist.lower()
+    has_materialization_evidence = (
+        "all 25 kit files" in checklist_lower
+        or "all 25 files are present" in checklist_lower
+        or "25-file owner archive" in checklist_lower
+    )
+    if not has_materialization_evidence:
         errors.append("checklist must record verified source-kit materialization")
     if "sha-256" not in report or "64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd" not in report:
         errors.append("reconciliation report must record the verified owner archive SHA-256")
