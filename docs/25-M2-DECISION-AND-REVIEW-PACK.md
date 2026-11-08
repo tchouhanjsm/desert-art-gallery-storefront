@@ -99,6 +99,8 @@ D-015 remains the basis of the completed structural review and its automation. D
 
 **Disposition:** Six-area private prototype scope is authorized conditionally on M2-A approval. Production and public deployment remain excluded.
 
+The engineering entry and local review pipeline is now documented in [29 — M2 Private Prototype Validation and Review](29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md). The validator and browser runner are readiness tools only; no actual private prototype has been created or run.
+
 ## Remaining owner handoff
 
 1. **M2-A:** Review and explicitly approve, reject or request exact revisions to the single proposal in docs/27. No visual value is approved by default.
