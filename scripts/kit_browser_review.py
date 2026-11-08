@@ -35,6 +35,15 @@ MOBILE_NAV_MAX_WIDTH = 900
 SCREENSHOT_WIDTHS = {390, 1440}
 EXPECTED_NAV_LINKS = 6
 
+# Bounded journeys built only from D-014's existing links and controls.
+JOURNEY_SCENARIOS = (
+    "discover",
+    "browse",
+    "evaluate",
+    "contextualize",
+    "support",
+)
+
 
 class QuietHandler(SimpleHTTPRequestHandler):
     """Serve the static kit without noisy per-request access logs."""
@@ -66,6 +75,91 @@ def _check(condition: bool, message: str, errors: list[str]) -> None:
 
 def _route_slug(route: str) -> str:
     return route.replace("/", "-").replace(".html", "")
+
+
+def _navigate_from_primary_nav(page, label: str, target: str) -> None:
+    nav = page.locator("#primary-nav")
+    if not nav.is_visible():
+        toggle = page.locator(".menu-toggle")
+        if not toggle.is_visible():
+            raise AssertionError("primary navigation is hidden and no mobile toggle is available")
+        toggle.click()
+    nav.get_by_role("link", name=label, exact=True).click()
+    page.wait_for_url(f"**/{target}", timeout=10000)
+
+
+def _run_customer_journey(page, base_url: str, journey: str) -> list[str]:
+    """Exercise current structural links; never enable commerce or submit forms."""
+    errors: list[str] = []
+    starts = {
+        "discover": "index.html",
+        "browse": "pages/shop.html",
+        "evaluate": "pages/product.html",
+        "contextualize": "pages/about.html",
+        "support": "pages/product.html",
+    }
+    visited: list[str] = [starts[journey]]
+    page.goto(base_url + starts[journey], wait_until="networkidle", timeout=20000)
+
+    try:
+        if journey == "discover":
+            page.locator('a.button--primary[href="pages/shop.html"]').click()
+            page.wait_for_url("**/pages/shop.html", timeout=10000)
+            visited.append("pages/shop.html")
+            page.locator(".category-links a[href='collection.html']").first.click()
+            page.wait_for_url("**/pages/collection.html", timeout=10000)
+            visited.append("pages/collection.html")
+
+        elif journey == "browse":
+            page.locator(".category-links a[href='collection.html']").first.click()
+            page.wait_for_url("**/pages/collection.html", timeout=10000)
+            visited.append("pages/collection.html")
+            page.locator('a.product-card[href="product.html"]').first.click()
+            page.wait_for_url("**/pages/product.html", timeout=10000)
+            visited.append("pages/product.html")
+
+        elif journey == "evaluate":
+            accordions = page.locator(".details-list details")
+            _check(accordions.count() == 4,
+                   "Product Detail must retain four supplied information accordions", errors)
+            for index in range(accordions.count()):
+                item = accordions.nth(index)
+                item.locator("summary").click()
+                _check(item.get_attribute("open") is not None,
+                       f"Product information accordion {index + 1} did not open", errors)
+            _check(page.locator("#variant").is_disabled(),
+                   "Variant control must remain disabled in the structural kit", errors)
+            _check(page.locator("button.button--primary").is_disabled(),
+                   "Purchase action must remain disabled in the structural kit", errors)
+
+        elif journey == "contextualize":
+            _navigate_from_primary_nav(page, "Makers", "pages/makers.html")
+            visited.append("pages/makers.html")
+            _navigate_from_primary_nav(page, "Journal", "pages/journal.html")
+            visited.append("pages/journal.html")
+            page.locator('a.story-card[href="article.html"]').first.click()
+            page.wait_for_url("**/pages/article.html", timeout=10000)
+            visited.append("pages/article.html")
+
+        elif journey == "support":
+            page.locator('a.button--secondary[href="contact.html"]').click()
+            page.wait_for_url("**/pages/contact.html", timeout=10000)
+            visited.append("pages/contact.html")
+            _check(page.locator(".contact-panel input").is_disabled(),
+                   "Product reference field must remain disabled", errors)
+            _check(page.locator(".contact-panel textarea").is_disabled(),
+                   "Message field must remain disabled", errors)
+            _check(page.locator(".contact-panel button").is_disabled(),
+                   "Enquiry submission must remain disabled without an approved endpoint", errors)
+
+        _check(page.locator("main#main-content").count() == 1,
+               "Journey destination must retain one main landmark", errors)
+        _check(page.locator("h1").count() == 1,
+               "Journey destination must retain one page h1", errors)
+    except Exception as exc:
+        errors.append(f"{journey} journey raised {type(exc).__name__}: {exc}")
+
+    return errors
 
 
 def run_review(output_dir: Path) -> dict[str, object]:
@@ -364,6 +458,40 @@ def run_review(output_dir: Path) -> dict[str, object]:
                     results.append(result)
                     failures.extend(route_errors)
 
+            # Exercise five customer journeys at mobile, tablet and desktop widths.
+            journey_results: list[dict[str, object]] = []
+            for journey in JOURNEY_SCENARIOS:
+                for width in VIEWPORT_WIDTHS:
+                    journey_page = browser.new_page(
+                        viewport={"width": width, "height": VIEWPORT_HEIGHT},
+                        device_scale_factor=1,
+                    )
+                    page_errors: list[str] = []
+                    failed_assets: list[str] = []
+                    journey_page.on("pageerror", lambda error: page_errors.append(str(error)))
+                    journey_page.on(
+                        "requestfailed",
+                        lambda request: failed_assets.append(
+                            f"{request.method} {request.url}: {request.failure}"
+                        )
+                        if request.url.startswith(base_url)
+                        and request.resource_type in {"document", "stylesheet", "script"}
+                        else None,
+                    )
+                    journey_errors = _run_customer_journey(journey_page, base_url, journey)
+                    journey_errors.extend(f"browser page error: {error}" for error in page_errors)
+                    journey_errors.extend(f"local asset request failed: {asset}" for asset in failed_assets)
+                    journey_results.append({
+                        "journey": journey,
+                        "viewport_width": width,
+                        "status": "PASS" if not journey_errors else "FAIL",
+                        "errors": journey_errors,
+                    })
+                    failures.extend(
+                        f"{journey} at {width}px: {error}" for error in journey_errors
+                    )
+                    journey_page.close()
+
             reduced_context = browser.new_context(
                 viewport={"width": 390, "height": VIEWPORT_HEIGHT},
                 reduced_motion="reduce",
@@ -386,6 +514,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
             browser.close()
 
     passed = len(results) - sum(1 for item in results if item["status"] == "FAIL")
+    journey_passed = len(journey_results) - sum(1 for item in journey_results if item["status"] == "FAIL")
     summary: dict[str, object] = {
         "browser": "Chromium (Playwright)",
         "routes": list(ROUTES),
@@ -396,6 +525,11 @@ def run_review(output_dir: Path) -> dict[str, object]:
         "failed_route_viewport_checks": len(results) - passed,
         "reduced_motion_check": "PASS" if not any("reduced-motion" in e for e in failures) else "FAIL",
         "keyboard_navigation_sequences": keyboard_sequences,
+        "journey_scenarios": list(JOURNEY_SCENARIOS),
+        "journey_viewport_checks": len(journey_results),
+        "passed_journey_viewport_checks": journey_passed,
+        "failed_journey_viewport_checks": len(journey_results) - journey_passed,
+        "journey_results": journey_results,
         "status": "PASS" if not failures else "FAIL",
         "results": results,
         "failures": failures,
@@ -427,6 +561,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
         f"**Route/viewport runs:** {passed}/{len(results)} passed",
         f"**Reduced motion:** {summary['reduced_motion_check']}",
         f"**Keyboard activation / focus-retention sequences:** {keyboard_sequences}",
+        f"**Customer journey checks:** {journey_passed}/{len(journey_results)} passed",
         "",
         "## Viewport results",
         "",
@@ -448,6 +583,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
     print(f"- {passed}/{len(results)} route/viewport checks passed")
     print(f"- reduced-motion: {summary['reduced_motion_check']}")
     print(f"- keyboard navigation sequences: {keyboard_sequences}")
+    print(f"- customer journeys: {journey_passed}/{len(journey_results)}")
     print(f"- screenshots: {len(summary['screenshots'])}")
     for failure in failures:
         print(f"FAIL: {failure}")
