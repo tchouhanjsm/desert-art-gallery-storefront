@@ -567,6 +567,19 @@ def run_review(output_dir: Path) -> dict[str, object]:
         "",
         *table,
         "",
+        "## Customer journey results",
+        "",
+        "| Journey | " + " | ".join(f"{width}px" for width in VIEWPORT_WIDTHS) + " |",
+        "|---|" + "---:|" * len(VIEWPORT_WIDTHS),
+        *[
+            "| " + journey + " | " + " | ".join(
+                next(item["status"] for item in journey_results
+                     if item["journey"] == journey and item["viewport_width"] == width)
+                for width in VIEWPORT_WIDTHS
+            ) + " |"
+            for journey in JOURNEY_SCENARIOS
+        ],
+        "",
         "## Failures",
         "",
         *(["- None."] if not failures else [f"- {failure}" for failure in failures]),
