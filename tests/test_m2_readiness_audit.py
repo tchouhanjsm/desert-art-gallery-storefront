@@ -29,7 +29,8 @@ class M2ReadinessAuditTests(unittest.TestCase):
 
         decisions = (ROOT / "docs/DECISIONS.md").read_text(encoding="utf-8")
         self.assertIn("D-015", decisions)
-        self.assertIn("bounded non-production review scope", decisions.lower())
+        self.assertIn("limited non-production review scope", decisions.lower())
+        self.assertIn("bounded structural review", decisions.lower())
 
 
 if __name__ == "__main__":

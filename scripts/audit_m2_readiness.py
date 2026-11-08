@@ -62,8 +62,10 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
         errors.append("M2 pack must record the former six-page scope as superseded")
     if "no production application development" not in pack.lower():
         errors.append("M2 pack must preserve the no-production authorization boundary")
-    if "D-015" not in decisions or "bounded non-production review scope" not in decisions.lower():
-        errors.append("decision register must record D-015 bounded non-production review authorization")
+    if "D-015" not in decisions or "limited non-production review scope" not in decisions.lower():
+        errors.append("decision register must record D-015 limited non-production review authorization")
+    if "D-015" in decisions and "bounded structural review" not in decisions.lower():
+        errors.append("D-015 must define the bounded structural review authorization")
 
     states = {
         "M2-A": "BLOCKED_OWNER_INPUT",
