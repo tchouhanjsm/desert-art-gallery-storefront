@@ -51,7 +51,7 @@ Checks include:
 - Reduced-motion computed style.
 - Full-page screenshots for each route at 390px and 1440px, plus JSON and Markdown summaries.
 
-The first real run completed **43/45** route/viewport checks and correctly failed only Product Detail at 390px and 430px. It reported a document width of 700px and identified the three 220px thumbnail tracks as the cause. The responsive correction above is now included; the post-fix workflow result must be checked before this review can be marked green.
+The first real run completed **43/45** route/viewport checks and correctly failed only Product Detail at 390px and 430px. It reported a document width of 700px and identified the three 220px thumbnail tracks as the cause. After the responsive correction, Chromium workflow run **#4** passed **45/45** route/viewport checks across all nine pages and five widths; reduced-motion, keyboard-focus and mobile-navigation checks passed, with no browser errors, failed local assets or overflow. The run produced 18 full-page screenshots and JSON/Markdown summaries in CI artifact `dag-kit-browser-review-4-3aac02d8b2244f4caa5b862fc5fb93ccfd4aebf7`.
 
 The workflow artifact is diagnostic evidence, not owner visual sign-off. It does not claim screen-reader coverage, WCAG conformance, final colour contrast, or review in every browser engine.
 
