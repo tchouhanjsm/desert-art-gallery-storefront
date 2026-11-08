@@ -296,7 +296,7 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
     def test_inline_event_handler_attributes_are_rejected(self):
         (self.proto / "pages/about.html").write_text(
             '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
-            '<button onclick="fetch(\\'/api/orders\\')">Explore</button>'
+            "<button onclick=\"fetch('/api/orders')\">Explore</button>"
             '</main></body></html>',
             encoding="utf-8",
         )
