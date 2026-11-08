@@ -64,6 +64,16 @@ Following PR #13's merge, the next bulk engineering slice adds the private-proto
 
 **This is readiness tooling, not the private prototype itself.** M2-A remains awaiting your explicit approval; no DAG brand tokens or styling have been applied, no photo sample has been supplied and no private prototype has been created. The next actual design implementation must wait for the M2-A decision and remain local/private.
 
+### PR #14 continuation — private review assurance hardening
+
+The same PR extends the readiness gate without starting prototype styling:
+- The manifest validator now fails closed on non-integer schema versions, malformed approval states, non-calendar dates, unsupported approval/asset metadata fields, unnormalized asset paths and non-string genuine-photo evidence references.
+- It rejects inline event handlers, link `ping` beacons, form-associated submission overrides, service-worker/worker registration and cross-context messaging APIs in addition to the existing transaction/network restrictions.
+- The local Chromium runner rejects symlinked prototype roots, checks the viewport meta tag and records browser-console errors, failed requests and unsuccessful HTTP resource responses as review failures.
+- Regression coverage adds eight tests for malformed metadata, path normalization, inline event handlers, worker/network overrides, approval-date validation and review-root boundaries.
+
+The continuation is implementation in PR #14; final validation status is recorded after the latest head's CI run completes. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
+
 ## Technical and commercial work
 
 Preserve existing catalogue intake, photo audit, Etsy mapping, research and merchant documentation where valid. Do not select a production framework, database, CMS, hosting provider, payment provider, currency, sales territory, tax treatment, shipping terms, return policy or commercial model by inference.
