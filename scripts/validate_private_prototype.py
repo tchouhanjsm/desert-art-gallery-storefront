@@ -78,6 +78,9 @@ class PageParser(HTMLParser):
         self.scripts: list[str] = []
         self.inline_scripts: list[str] = []
         self.inline_styles: list[str] = []
+        self.base_hrefs: list[str] = []
+        self.meta_refresh: list[str] = []
+        self.embedded_content: list[str] = []
         self.forms: list[dict[str, object]] = []
         self.form_stack: list[dict[str, object]] = []
         self.controls: list[dict[str, object]] = []
@@ -90,7 +93,13 @@ class PageParser(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = {key: value for key, value in attrs}
-        if tag == "html":
+        if tag == "base":
+            self.base_hrefs.append(values.get("href") or "")
+        elif tag == "meta" and (values.get("http-equiv") or "").lower() == "refresh":
+            self.meta_refresh.append(values.get("content") or "")
+        elif tag in {"iframe", "object", "embed", "video", "audio"}:
+            self.embedded_content.append(tag)
+        elif tag == "html":
             self.lang = values.get("lang")
         elif tag == "title":
             self.title_count += 1
@@ -348,7 +357,8 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
 
     _audit_owner_approval(manifest, repo, errors)
 
-    if tuple(manifest.get("routes", ())) != ROUTES:
+    declared_routes = manifest.get("routes")
+    if not isinstance(declared_routes, list) or tuple(declared_routes) != ROUTES:
         errors.append("manifest routes must equal the exact nine D-014 routes in their approved order")
     expected_areas = {name: list(routes) for name, routes in AREA_ROUTES.items()}
     areas = manifest.get("areas")
@@ -395,6 +405,12 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
             errors.append(f"{route}: exactly one main landmark is required")
 
         page_refs: set[str] = set()
+        if parser.base_hrefs:
+            errors.append(f"{route}: base href is not permitted in a private prototype")
+        if parser.meta_refresh:
+            errors.append(f"{route}: meta refresh navigation is not permitted")
+        if parser.embedded_content:
+            errors.append(f"{route}: embedded/remote media elements are not permitted: {', '.join(sorted(set(parser.embedded_content)))}")
         for href in parser.links:
             if not href:
                 errors.append(f"{route}: anchor has an empty href")
@@ -402,9 +418,9 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
             parsed_href = urlsplit(href)
             if parsed_href.scheme in {"mailto", "tel"}:
                 continue
-            target = _safe_local_path(href, path, root, errors, f"{route} link")
-            if target and TRANSACTION_TARGET.search(parsed_href.path):
+            if TRANSACTION_TARGET.search(parsed_href.path):
                 errors.append(f"{route}: transactional destination is not allowed: {href[:160]}")
+            _safe_local_path(href, path, root, errors, f"{route} link")
 
         for image_src, alt, srcset in parser.images:
             if not alt.strip():
@@ -415,10 +431,13 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
                     errors.append(f"{route}: image is missing a local src")
                     continue
                 asset = _safe_local_path(raw, path, root, errors, f"{route} image")
-                if asset and asset.suffix.lower() in IMAGE_SUFFIXES:
-                    rel = _normalise_asset_reference(asset, root)
-                    page_refs.add(rel)
-                    all_assets.add(rel)
+                if asset:
+                    if asset.suffix.lower() not in IMAGE_SUFFIXES:
+                        errors.append(f"{route}: referenced img/srcset file is not a supported image: {raw}")
+                    else:
+                        rel = _normalise_asset_reference(asset, root)
+                        page_refs.add(rel)
+                        all_assets.add(rel)
 
         stylesheet_sources: list[tuple[Path, str]] = []
         for href in parser.stylesheets:
@@ -428,6 +447,8 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
         for style in parser.inline_styles:
             stylesheet_sources.append((path, style))
         for sheet_path, css in stylesheet_sources:
+            for imported in re.finditer(r"""@import\s+(?:url\(\s*)?['"]?([^'")\s;]+)""", css, re.I):
+                _safe_local_path(imported.group(1), sheet_path, root, errors, f"{route} CSS import")
             for match in CSS_URL.finditer(css):
                 raw = match.group(2).strip()
                 if not raw or raw.startswith("data:") or raw.startswith("#"):
