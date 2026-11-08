@@ -82,6 +82,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
 
     results: list[dict[str, object]] = []
     failures: list[str] = []
+    keyboard_sequences = 0
 
     with serve_kit() as base_url, sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
@@ -122,6 +123,71 @@ def run_review(output_dir: Path) -> dict[str, object]:
                         _check(main_count == 1,
                                f"{route} at {width}px: expected one main#main-content, found {main_count}",
                                route_errors)
+
+                        semantic_state = page.evaluate(
+                            """() => {
+                              const issues = [];
+                              const ids = Array.from(document.querySelectorAll("[id]"))
+                                .map((element) => element.id);
+                              const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
+                              if (duplicates.length) issues.push(`duplicate IDs: ${[...new Set(duplicates)].join(", ")}`);
+
+                              const hasLabelledByName = (element) => {
+                                const ids = (element.getAttribute("aria-labelledby") || "").trim().split(/\\s+/).filter(Boolean);
+                                return ids.length > 0 && ids.every((id) => {
+                                  const target = document.getElementById(id);
+                                  return target && (target.textContent || "").trim().length > 0;
+                                });
+                              };
+                              const hasName = (element) => Boolean(
+                                (element.getAttribute("aria-label") || "").trim() ||
+                                hasLabelledByName(element) ||
+                                (element.cloneNode(true).textContent || "").trim() ||
+                                Array.from(element.querySelectorAll("img[alt]")).some((img) => img.alt.trim())
+                              );
+
+                              for (const element of document.querySelectorAll("a")) {
+                                if (!element.hasAttribute("href") || !element.getAttribute("href").trim()) {
+                                  issues.push("anchor is missing a non-empty href");
+                                }
+                                if (!hasName(element)) issues.push("anchor has no accessible name");
+                              }
+                              for (const element of document.querySelectorAll("button")) {
+                                if (!hasName(element)) issues.push("button has no accessible name");
+                              }
+                              for (const element of document.querySelectorAll("input, select, textarea")) {
+                                if (!(element.labels && element.labels.length) &&
+                                    !(element.getAttribute("aria-label") || "").trim() &&
+                                    !hasLabelledByName(element)) {
+                                  issues.push(`${element.tagName.toLowerCase()} control has no programmatic label`);
+                                }
+                              }
+                              for (const image of document.querySelectorAll("img")) {
+                                if (!image.hasAttribute("alt")) issues.push("image is missing an alt attribute");
+                              }
+                              for (const element of document.querySelectorAll('[role="img"]')) {
+                                if (!(element.getAttribute("aria-label") || "").trim() && !hasLabelledByName(element)) {
+                                  issues.push("role=img element has no accessible name");
+                                }
+                              }
+                              for (const element of document.querySelectorAll("[aria-controls]")) {
+                                for (const id of element.getAttribute("aria-controls").split(/\\s+/).filter(Boolean)) {
+                                  if (!document.getElementById(id)) issues.push(`aria-controls references missing id: ${id}`);
+                                }
+                              }
+                              for (const element of document.querySelectorAll("[aria-labelledby]")) {
+                                for (const id of element.getAttribute("aria-labelledby").split(/\\s+/).filter(Boolean)) {
+                                  if (!document.getElementById(id)) issues.push(`aria-labelledby references missing id: ${id}`);
+                                }
+                              }
+                              const positiveTabindex = Array.from(document.querySelectorAll("[tabindex]"))
+                                .filter((element) => Number(element.getAttribute("tabindex")) > 0);
+                              if (positiveTabindex.length) issues.push("positive tabindex values are not permitted");
+                              return {issues: [...new Set(issues)]};
+                            }"""
+                        )
+                        for semantic_issue in semantic_state["issues"]:
+                            route_errors.append(f"{route} at {width}px: accessibility semantics: {semantic_issue}")
 
                         stylesheet_state = page.locator('link[rel="stylesheet"]').evaluate_all(
                             "(links) => links.map((link) => ({href: link.href, loaded: Boolean(link.sheet)}))"
@@ -204,6 +270,32 @@ def run_review(output_dir: Path) -> dict[str, object]:
                                 _check(toggle.get_attribute("aria-expanded") == "false",
                                        f"{route} at {width}px: aria-expanded did not return to false",
                                        route_errors)
+
+                                # Exercise native keyboard activation using both supported
+                                # button keys; focus must remain on the disclosure control.
+                                for key in ("Enter", "Space"):
+                                    toggle.focus()
+                                    page.keyboard.press(key)
+                                    _check(nav.is_visible(),
+                                           f"{route} at {width}px: {key} did not open mobile navigation",
+                                           route_errors)
+                                    _check(toggle.get_attribute("aria-expanded") == "true",
+                                           f"{route} at {width}px: {key} did not set aria-expanded=true",
+                                           route_errors)
+                                    page.keyboard.press(key)
+                                    _check(not nav.is_visible(),
+                                           f"{route} at {width}px: {key} did not close mobile navigation",
+                                           route_errors)
+                                    _check(toggle.get_attribute("aria-expanded") == "false",
+                                           f"{route} at {width}px: {key} did not set aria-expanded=false",
+                                           route_errors)
+                                    focus_retained = toggle.evaluate(
+                                        "(element) => document.activeElement === element"
+                                    )
+                                    _check(focus_retained,
+                                           f"{route} at {width}px: {key} moved focus away from the toggle",
+                                           route_errors)
+                                    keyboard_sequences += 1
                         else:
                             _check(not toggle_visible,
                                    f"{route} at {width}px: mobile toggle should be hidden on desktop",
@@ -303,6 +395,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
         "passed_route_viewport_checks": passed,
         "failed_route_viewport_checks": len(results) - passed,
         "reduced_motion_check": "PASS" if not any("reduced-motion" in e for e in failures) else "FAIL",
+        "keyboard_navigation_sequences": keyboard_sequences,
         "status": "PASS" if not failures else "FAIL",
         "results": results,
         "failures": failures,
@@ -333,6 +426,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
         f"**Browser:** {summary['browser']}",
         f"**Route/viewport runs:** {passed}/{len(results)} passed",
         f"**Reduced motion:** {summary['reduced_motion_check']}",
+        f"**Keyboard activation / focus-retention sequences:** {keyboard_sequences}",
         "",
         "## Viewport results",
         "",
@@ -353,6 +447,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
     print(f"DAG structural kit browser review: {summary['status']}")
     print(f"- {passed}/{len(results)} route/viewport checks passed")
     print(f"- reduced-motion: {summary['reduced_motion_check']}")
+    print(f"- keyboard navigation sequences: {keyboard_sequences}")
     print(f"- screenshots: {len(summary['screenshots'])}")
     for failure in failures:
         print(f"FAIL: {failure}")

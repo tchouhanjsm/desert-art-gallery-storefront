@@ -2,7 +2,7 @@
 
 **Review date:** 2026-11-08  
 **Baseline:** D-014; `design/owner-controlled-kit-v2/`  
-**Scope:** Static source review, narrowly scoped accessibility maintenance, and automated Chromium responsive/interaction review. This is not a brand redesign, production acceptance or WCAG certification.
+**Scope:** Static semantic review, narrowly scoped accessibility maintenance, and automated Chromium responsive/keyboard review. This is not a brand redesign, production acceptance, screen-reader sign-off or WCAG certification.
 
 ## Source baseline and change boundary
 
@@ -20,7 +20,7 @@ PR #11 corrects that defect in **styles/responsive.css** at the existing 640px m
 - Uses three `minmax(0, 1fr)` thumbnail tracks.
 - Removes the thumbnail placeholders' conflicting 220px minimum height so their existing square aspect ratio can size to the available mobile width.
 
-The three supplied thumbnail slots remain in the same order. No HTML, route, page section, control, label, component, supplied JavaScript or desktop/tablet breakpoint is changed. Three of the original 14 implementation assets now contain narrowly scoped, documented CSS maintenance; the other 11 remain byte-identical to the owner archive. The current asset hashes are enforced by `scripts/validate_project.py`.
+The three supplied thumbnail slots remain in the same order. No HTML, route, page section, control, label, component, supplied JavaScript or desktop/tablet breakpoint is changed. Three of the original 14 implementation assets now contain narrowly scoped, documented CSS maintenance; the other 11 remain byte-identical to the owner archive. The current asset hashes are enforced by `scripts/validate_project.py`. PR #12 changes only repository QA scripts and tests: no supplied HTML, CSS or JavaScript asset is modified by that PR.
 
 ## Static findings and treatment
 
@@ -29,11 +29,12 @@ The three supplied thumbnail slots remain in the same order. No HTML, route, pag
 | Document language | All 9 pages declare English (`lang=en`). | Retained. |
 | Main landmark | All 9 pages contain exactly one main landmark with `id=main-content`. | Retained. |
 | Page heading | All 9 pages contain exactly one h1. | Retained. |
-| Mobile navigation | All 9 pages have a named toggle, `aria-expanded`, `aria-controls` and a matching labelled navigation landmark. | Supplied JavaScript is retained and exercised in Chromium. |
+| Mobile navigation | All 9 pages have a named toggle, `aria-expanded`, `aria-controls` and a matching labelled navigation landmark. | Supplied JavaScript is retained; Chromium verifies pointer operation and native Enter/Space activation with `aria-expanded` and focus retention. |
 | Form/control labels | Shop and Collection sort selects are labelled; Product variant has its existing `for/id` label; Contact input and textarea remain nested within labels. | Retained; disabled states unchanged. |
 | Keyboard focus | Shared `:focus-visible` rule uses `currentColor`. | Retained; no brand token introduced. |
 | Reduced motion | Existing smooth scrolling is disabled under `prefers-reduced-motion: reduce`. | Retained and browser-checked. |
 | Product Detail mobile gallery | Original thumbnail grid expanded to 684px at narrow widths because of automatic minimum grid tracks. | Corrected at the existing mobile breakpoint without changing slot count or markup. |
+| Semantic relationships | Unique IDs, named links/buttons/navigation, programmatic control labels, image alternatives and ARIA ID references are checked by a standard-library HTML parser and browser DOM audit. | PR #12 adds source and rendered-DOM regression coverage. |
 | Brand contrast | Production colour tokens are not approved; fallback uses system/browser values. | Not assessed or claimed. |
 
 ## Automated browser review
@@ -46,6 +47,8 @@ Checks include:
 - Horizontal document overflow.
 - Desktop versus mobile navigation visibility.
 - Mobile navigation open/close and `aria-expanded` state.
+- Native Enter and Space activation on the existing mobile navigation button, with focus retention.
+- DOM semantics: accessible names, labelled form controls, image alternatives, unique IDs, valid `aria-controls` / `aria-labelledby` targets and no positive `tabindex`.
 - Keyboard focus-visible outline.
 - Browser page errors and failed local document/style/script requests.
 - Reduced-motion computed style.
@@ -54,6 +57,8 @@ Checks include:
 The first real run completed **43/45** route/viewport checks and correctly failed only Product Detail at 390px and 430px. It reported a document width of 700px and identified the three 220px thumbnail tracks as the cause. After the responsive correction, Chromium workflow run **#4** passed **45/45** route/viewport checks across all nine pages and five widths; reduced-motion, keyboard-focus and mobile-navigation checks passed, with no browser errors, failed local assets or overflow. The run produced 18 full-page screenshots and JSON/Markdown summaries in CI artifact `dag-kit-browser-review-4-3aac02d8b2244f4caa5b862fc5fb93ccfd4aebf7`.
 
 The workflow artifact is diagnostic evidence, not owner visual sign-off. It does not claim screen-reader coverage, WCAG conformance, final colour contrast, or review in every browser engine.
+
+PR #12 added semantic and keyboard-operation checks without modifying the supplied HTML, CSS or JavaScript. On PR #12 head `d5ad89d768ef641ed865d1f4e16fae70ef101f10`, GitHub Actions [DAG Structural Kit Browser Review run #7](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004123) passed **45/45** route/viewport combinations, **54** native Enter/Space mobile navigation sequences across nine pages at 390px, 430px and 768px, and the reduced-motion check. No horizontal overflow, browser page errors or failed local document/style/script assets were reported. The run uploaded 18 full-page screenshots plus JSON and Markdown summaries in artifact `dag-kit-browser-review-7-c0381a76d2298ab2a1077c4ce754ee19bbb6a9b3`. The companion [DAG Project Quality run #79](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004185) passed the foundation, owner-gate, accessibility, documentation and link audits and the complete **89-test** Python suite.
 
 ## Not yet verified
 
