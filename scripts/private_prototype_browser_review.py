@@ -63,7 +63,13 @@ def _check(condition: bool, message: str, errors: list[str]) -> None:
 
 
 def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, object]:
-    root = prototype_root.expanduser().resolve(strict=True)
+    prototype_path = prototype_root.expanduser()
+    if prototype_path.is_symlink():
+        return {"ok": False, "errors": ["prototype root must not be a symlink"], "checks": 0}
+    try:
+        root = prototype_path.resolve(strict=True)
+    except (OSError, RuntimeError):
+        return {"ok": False, "errors": ["prototype root does not exist or cannot be resolved"], "checks": 0}
     output = output_dir.expanduser().resolve()
     repo = ROOT.resolve()
     if _within(output, repo):
@@ -71,7 +77,7 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
     if _within(output, root):
         return {"ok": False, "errors": ["review output directory must be outside the prototype source directory"], "checks": 0}
 
-    validation = validate_private_prototype(root, ROOT)
+    validation = validate_private_prototype(prototype_path, ROOT)
     if not validation["ok"]:
         return {
             "ok": False,
@@ -103,7 +109,28 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
                         service_workers="block",
                     )
                     page_errors: list[str] = []
+                    console_errors: list[str] = []
+                    request_errors: list[str] = []
+                    response_errors: list[str] = []
                     page.on("pageerror", lambda error: page_errors.append(str(error)))
+                    page.on(
+                        "console",
+                        lambda message: console_errors.append(message.text)
+                        if message.type == "error"
+                        else None,
+                    )
+                    page.on(
+                        "requestfailed",
+                        lambda request: request_errors.append(
+                            f"{request.url} ({request.failure or 'request failed'})"
+                        ),
+                    )
+
+                    def capture_response(response):
+                        if response.status >= 400:
+                            response_errors.append(f"{response.status} {response.url}")
+
+                    page.on("response", capture_response)
 
                     def network_guard(request_route):
                         parsed = urlsplit(request_route.request.url)
@@ -131,6 +158,9 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
                               width: document.documentElement.scrollWidth,
                               viewport: window.innerWidth,
                               reduced: matchMedia('(prefers-reduced-motion: reduce)').matches,
+                              title: document.title.trim(),
+                              lang: document.documentElement.lang,
+                              viewportMeta: Boolean(document.querySelector('meta[name="viewport"]')),
                               images: Array.from(document.images).map(image => ({
                                 alt: image.alt,
                                 complete: image.complete,
@@ -142,6 +172,9 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
                                f"{route} at {width}px: horizontal overflow {layout['width']} > {layout['viewport']}",
                                local_errors)
                         _check(layout["reduced"], f"{route} at {width}px: reduced-motion preference not applied", local_errors)
+                        _check(bool(layout["title"]), f"{route} at {width}px: document title is empty", local_errors)
+                        _check(layout["lang"] == "en", f"{route} at {width}px: document language is not en", local_errors)
+                        _check(layout["viewportMeta"], f"{route} at {width}px: viewport meta tag is missing", local_errors)
                         for image in layout["images"]:
                             _check(bool(image["alt"].strip()), f"{route} at {width}px: image has no alt text", local_errors)
                             _check(image["complete"] and image["naturalWidth"] > 0,
@@ -173,6 +206,12 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
                         page.keyboard.press("Tab")
                         focus = page.evaluate("() => Boolean(document.activeElement && document.activeElement !== document.body)")
                         _check(focus, f"{route} at {width}px: Tab did not move focus to a control", local_errors)
+                        for browser_error in console_errors:
+                            local_errors.append(f"{route} at {width}px: browser console error: {browser_error}")
+                        for request_error in request_errors:
+                            local_errors.append(f"{route} at {width}px: failed request: {request_error}")
+                        for response_error in response_errors:
+                            local_errors.append(f"{route} at {width}px: unsuccessful resource response: {response_error}")
 
                         if width in SCREENSHOT_WIDTHS:
                             screenshot = screenshots / f"{route.replace('/', '-')}-{width}.png"
@@ -186,6 +225,9 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
                             "image_count": len(layout["images"]),
                             "keyboard_focus": focus,
                             "page_errors": page_errors,
+                            "console_errors": console_errors,
+                            "failed_requests": request_errors,
+                            "http_errors": response_errors,
                             "errors": local_errors,
                         }
                         checks.append(check)
