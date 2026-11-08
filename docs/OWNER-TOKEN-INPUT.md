@@ -1,6 +1,6 @@
 # DAG Owner Token and Identity Input — Pending
 
-**Status:** PENDING OWNER APPROVAL. A single reference-led proposal is available in [docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md](27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md); none of its proposed values is approved. No values below are owner-approved or inferred.
+**Status:** PENDING OWNER INPUT (PENDING OWNER APPROVAL). A single reference-led proposal is available in [docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md](27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md); none of its proposed values is approved. No values below are owner-approved or inferred.
 
 D-014 adopts a structural HTML/CSS kit only. The fallback `tokens-layout-only.css` uses system/browser values for QA and must not be treated as DAG brand identity or a production theme.
 
