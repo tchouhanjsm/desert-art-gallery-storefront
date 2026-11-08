@@ -97,3 +97,16 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 ## 2026-11-08 — M2 final evidence links synchronized
 - Updated the M2 acceptance, decision, roadmap and accessibility documents to link to final documentation-sync validation: Project Quality run #89 and Chromium Browser Review run #16.
 - Removed the obsolete note that journey CI was still pending.
+
+
+## 2026-11-08 — Owner M2 decisions, reference-led visual proposal and conditional private prototype scope
+
+- Recorded D-016: POJ Studio primary, Macaroni Shoten secondary, Jaisalmer as DAG identity source; one coherent visual proposal requested with owner approval pending.
+- Added docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md with live reference observations, measured/unmeasured findings, one exact proposed HEX system, proposed typography/hierarchy, wordmark requirements, six-area compositions, image-frame ratios, CSS tokens/components and desktop/mobile examples.
+- Added docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md for the owner-approved seven-person Japan qualitative cohort, screening, objectives, neutral interview prompts, recruitment options, consent/privacy safeguards and indicative incentive/vendor costs. No recruitment, contact, personal-data collection, recording or spending is authorized.
+- Added docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md mapping exactly six owner review areas to the unchanged nine-page D-014 kit and preparing desktop/mobile owner acceptance.
+- M2-C now explicitly uses labelled layout placeholders and image frames pending approximately 10–20 genuine owner-supplied product photos and verified facts; no full photo-library migration.
+- M2-D owner-approved five-journey priority replaces the previous recommendation-only state. Mobile remains cross-cutting; automated tests are explicitly not human usability acceptance.
+- M2-E authorizes exactly six local/private non-transactional prototype areas only after M2-A visual approval. Prototype implementation must stay outside the public repository; no production app, public deployment, live transactions, recruitment or spending is authorized.
+- Reconciled README, AGENTS, design authority, source-of-truth, owner registers, M2 pack, roadmap, catalogue intake, accessibility review and brand/visual system guidance.
+- Updated M2 readiness audit and regression tests to enforce D-016, the visual-approval gate, seven-person cohort, placeholder boundaries and six-area private prototype scope. D-014 HTML/CSS/JS assets and the current token fallback remain unchanged.
