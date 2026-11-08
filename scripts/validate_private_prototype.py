@@ -265,8 +265,14 @@ def _audit_owner_approval(manifest: dict[str, object], repo_root: Path, errors: 
             errors.append(f"owner decision register does not contain {decision_ref}")
         else:
             section = match.group(1).lower()
-            if "m2-a" not in section or "visual" not in section or "approved" not in section:
-                errors.append(f"{decision_ref} does not explicitly record approved M2-A visual direction")
+            if (
+                "status: confirmed" not in section
+                or "m2-a" not in section
+                or "visual" not in section
+                or not re.search(r"\b(?:approved|approves|approval)\b", section)
+                or "not approved" in section
+            ):
+                errors.append(f"{decision_ref} does not explicitly record confirmed approval of the M2-A visual direction")
 
     digest = approval.get("approved_proposal_sha256")
     proposal = repo_root / PROPOSAL_PATH
