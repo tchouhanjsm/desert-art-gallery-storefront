@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DAG D-016 private prototype manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "base_decision_ref",
+    "prototype_mode",
+    "routes",
+    "areas",
+    "owner_visual_approval",
+    "asset_ledger"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "base_decision_ref": {
+      "const": "D-016"
+    },
+    "prototype_mode": {
+      "const": "private-local-nontransactional"
+    },
+    "routes": {
+      "const": [
+        "index.html",
+        "pages/shop.html",
+        "pages/collection.html",
+        "pages/product.html",
+        "pages/about.html",
+        "pages/makers.html",
+        "pages/journal.html",
+        "pages/article.html",
+        "pages/contact.html"
+      ]
+    },
+    "areas": {
+      "const": {
+        "Homepage": [
+          "index.html"
+        ],
+        "Shop and Collections": [
+          "pages/shop.html",
+          "pages/collection.html"
+        ],
+        "Product Detail": [
+          "pages/product.html"
+        ],
+        "About and Makers": [
+          "pages/about.html",
+          "pages/makers.html"
+        ],
+        "Journal and Stories": [
+          "pages/journal.html",
+          "pages/article.html"
+        ],
+        "Contact and Support": [
+          "pages/contact.html"
+        ]
+      }
+    },
+    "owner_visual_approval": {
+      "type": "object",
+      "required": [
+        "status",
+        "decision_ref",
+        "approved_proposal_sha256",
+        "approved_at"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "approved"
+          ]
+        },
+        "decision_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^D-[0-9]{3}$"
+        },
+        "approved_proposal_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "approved_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        }
+      },
+      "additionalProperties": false
+    },
+    "asset_ledger": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "kind",
+              "label"
+            ],
+            "properties": {
+              "kind": {
+                "const": "illustrative_frame"
+              },
+              "label": {
+                "const": "ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "kind",
+              "label"
+            ],
+            "properties": {
+              "kind": {
+                "const": "layout_placeholder"
+              },
+              "label": {
+                "const": "LAYOUT PLACEHOLDER — NOT A DAG PRODUCT"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "kind",
+              "rights_status",
+              "rights_evidence_ref",
+              "prototype_use_status",
+              "prototype_use_evidence_ref",
+              "product_record_ref"
+            ],
+            "properties": {
+              "kind": {
+                "const": "genuine_dag_photo"
+              },
+              "rights_status": {
+                "const": "cleared"
+              },
+              "rights_evidence_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "prototype_use_status": {
+                "const": "approved"
+              },
+              "prototype_use_evidence_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "product_record_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "owner_visual_approval": {
+            "properties": {
+              "status": {
+                "const": "approved"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "owner_visual_approval": {
+            "properties": {
+              "decision_ref": {
+                "type": "string",
+                "pattern": "^D-[0-9]{3}$"
+              },
+              "approved_proposal_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "approved_at": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
