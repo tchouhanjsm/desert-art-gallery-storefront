@@ -308,6 +308,7 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         (self.proto / "pages/contact.html").write_text(
             '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
             '<button type="submit" form="remote-form" formaction="/checkout">Continue</button>'
+            '<a href="mailto:help@example.com" ping="https://tracker.example/">Email</a>'
             '<script>navigator.serviceWorker.register("/worker.js")</script>'
             '</main></body></html>',
             encoding="utf-8",
@@ -316,6 +317,7 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         self.assertFalse(result["ok"])
         self.assertTrue(any("form/network override attributes" in error for error in result["errors"]))
         self.assertTrue(any("background worker registration" in error for error in result["errors"]))
+        self.assertTrue(any("ping" in error for error in result["errors"]))
 
     def test_malformed_manifest_types_fail_closed_without_crashing(self):
         manifest = json.loads((self.proto / "prototype-manifest.json").read_text())
