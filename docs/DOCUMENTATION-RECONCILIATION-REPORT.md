@@ -106,9 +106,11 @@ GitHub Actions workflow: **DAG Project Quality**, run **#62** (run ID `423970348
 - `python3 scripts/audit_documentation_links.py` — PASS across active Markdown files.
 - `python3 -m unittest discover -s tests -v` — PASS, **77 tests**.
 
-## Remaining caution
+## PR #8 final status and current follow-up
 
-The source kit is materialized and the original implementation asset bytes are verified. The documentation/link/source checks are green, and the PR is open for owner review. This does not approve brand styling, content publication, customer research recruitment, a production app, or any commerce capability. The owner gates remain intentionally open.
+The paragraph above described the state when the original reconciliation report was drafted. PR #8 was subsequently merged on 2026-11-07; its PR workflow run #63 and main-branch push run #64 both passed. PR #9 is a separate, narrowly scoped accessibility-maintenance follow-up. Its CI result is reported on the live pull request. The original 14-asset archive comparison remains the D-014 adoption baseline; PR #9 changes two CSS files and leaves the other 12 implementation assets unchanged.
+
+This does not approve brand styling, content publication, customer research recruitment, a production app, or any commerce capability. The M2-A through M2-E owner gates remain intentionally open. Browser/assistive-technology validation remains outstanding as documented in docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md.
 
 
 ## 2026-11-08 accessibility maintenance addendum — PR #9

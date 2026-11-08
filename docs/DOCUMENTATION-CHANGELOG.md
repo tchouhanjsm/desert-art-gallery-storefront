@@ -14,8 +14,10 @@
 - Preserved pending owner identity inputs and no-production/no-additions boundaries.
 - Added source-integrity validation for the exact 25-file inventory and 14 original asset hashes.
 
-## Remaining validation
-- PR CI, internal Markdown links and contextual stale-instruction checks remain open until their actual runs are recorded.
+## PR #8 validation outcome
+- PR workflow run #63 passed before merge; main-branch push run #64 passed after merge.
+- Source integrity, active Markdown links, M2 gate consistency and the complete test suite were green for the PR #8 baseline.
+- PR #9 is a separate accessibility-maintenance follow-up; see the 2026-11-08 entry and structural accessibility review.
 
 
 ## 2026-11-08 — D-014 kit accessibility maintenance

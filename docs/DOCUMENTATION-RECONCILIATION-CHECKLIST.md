@@ -51,7 +51,7 @@
 - [x] `python3 scripts/audit_documentation_links.py` — PASS in GitHub Actions run 62.
 - [x] Contextual stale-term search completed; P-015/P-016 references are historical/rejected and reference-site feature observations are explicitly scoped as non-requirements.
 - [x] Reviewed the complete 101-file PR diff; no production application code, catalogue payloads, photo binaries or unapproved feature additions were introduced.
-- [x] GitHub Actions run 62 is green; merge remains subject to owner review.
+- [x] PR #8 branch validation run 62 was green; PR #8 subsequently merged after run 63 and main-branch run 64 passed. PR #9 is a separate follow-up.
 
 A checked box indicates evidence exists on the branch or in a recorded run. Do not mark CI or local checks complete until the actual results are known.
 
