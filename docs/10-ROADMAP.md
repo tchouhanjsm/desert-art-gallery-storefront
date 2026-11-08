@@ -36,7 +36,7 @@ D-015 records the owner's 8 November 2026 instruction as authorization for the e
 
 - **M2-A — blocked on owner input:** no brand colours, type families/weights/hierarchy, wordmark/logo/descriptor or photo direction have been supplied/approved. The system-token fallback and historic proposals cannot be reused.
 - **M2-B — recommendation prepared:** first qualitative cohort proposed as home/interior shoppers with textile/craft interest, alongside craft/material enthusiasts and a small trade/gift contrast. No interviews, recruitment, incentives or external data collection are claimed.
-- **M2-C — blocked on source evidence:** no owner-supplied 10–20 product photo/fact sample is present. The private intake validator now distinguishes prototype-use permission from public publication approval and enforces rights evidence and completed photo-audit checks.
+- **M2-C — blocked on source evidence:** no owner-supplied 10–20 product photo/fact sample is present. The private intake validator now distinguishes prototype-use permission from public publication approval, requires owner-reconciled source rows, enforces rights evidence and checks a completed photo audit.
 - **M2-D — automation implemented:** five structural journeys and five viewport widths create 25 journey/viewport checks. Journey order is recommended, not represented as an owner-approved customer priority. Human usability evaluation remains separate.
 - **M2-E — authorized for bounded review:** D-015 permits only the non-production review described in the M2 pack. It does not authorize final brand styling, external participant studies, new UI scope, production application work or deployment.
 
@@ -48,7 +48,7 @@ See docs/25-M2-DECISION-AND-REVIEW-PACK.md for segment reasoning, exact journey 
 - **Customer validation:** Japan-first segments and journey priority remain to be confirmed; no fieldwork is represented as complete.
 - **Product/photo evidence:** only owner-approved genuine sample photographs with verified mapping and rights may be used; label placeholders for missing views (D-011).
 - **Responsive journey acceptance:** mobile/tablet/desktop must be tested across every selected journey (D-012).
-- **Next-phase authorization:** D-014 alone does not authorize added prototype scope or production development.
+- **Bounded review authorization:** D-014 alone did not authorize added prototype scope; D-015 now authorizes the limited structural journey review only. Branded prototype, external research and production development remain unauthorized.
 
 ### M2 implementation validation status
 

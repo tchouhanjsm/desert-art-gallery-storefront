@@ -30,7 +30,7 @@ Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/own
 8. Journal article — `pages/article.html`
 9. Contact / support — `pages/contact.html`
 
-See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for exact sections, slot counts and components. See docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md for structural source and browser assurance, and docs/25-M2-DECISION-AND-REVIEW-PACK.md for the consolidated M2 gate disposition and journey plan.
+See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for exact sections, slot counts and components. See docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md for structural source and browser assurance, docs/25-M2-DECISION-AND-REVIEW-PACK.md for the consolidated M2 gate disposition and journey plan, and docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md for the private sample evidence validator.
 
 ## Brand identity remains owner-controlled
 

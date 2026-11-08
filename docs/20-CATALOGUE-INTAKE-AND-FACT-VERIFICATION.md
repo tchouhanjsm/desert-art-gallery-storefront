@@ -29,7 +29,7 @@ Create a private working folder by copying the header-only files in `templates/c
 | `product-facts.csv` | One fact about one product | Material, dimensions, condition, care, maker, origin, technique and any other factual attribute with evidence and publication approval |
 | `product-images.csv` | One local image mapped to one product | Local source path, asset ID, image role/order, rights state, publication state and English alt text |
 | `product-source-records.csv` | One immutable source-export row mapped to one product | Source system, source-file SHA-256, logical data-row number, raw source values and reconciliation state |
-| `etsy-image-sources.csv` | One Etsy IMAGE1–IMAGE10 URL reference | Original remote URL, source record link, rights/download/review state and eventual local asset ID |
+| `etsy-image-sources.csv` | One Etsy IMAGE1–IMAGE10 URL reference | Original remote URL, source record link, rights evidence, download/review state and eventual local asset ID |
 
 Do not add real product rows to the repository. Work on private copies outside Git and outside the original photo folder.
 
@@ -87,7 +87,7 @@ Keep both report files private and outside Git. This optional check compares ref
 
 The checker validates structure and inventory references, not the truth of product claims or the legal right to publish an image. A structurally valid row can still contain inaccurate information; human source review, rights verification and owner publication approval remain mandatory.
 
-An Etsy Listings Download export also has a separate private source-record and remote-image mapping convention. See [21 — Etsy Source Export Mapping and Reconciliation](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md) for the historical source audit and field mapping.
+An Etsy Listings Download export also has a separate private source-record and remote-image mapping convention. A source image marked rights-cleared must carry its own rights_evidence_reference, even before it has a local asset mapping. See [21 — Etsy Source Export Mapping and Reconciliation](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md) for the historical source audit and field mapping.
 
 ## Private prototype-use approval (M2 sample)
 
@@ -103,7 +103,7 @@ The intake CSV templates include these separate fields. A private 10–20 produc
 
     python scripts/validate_catalogue_intake.py "/path/to/private/catalogue-intake" --photo-audit-csv "/path/to/private-reports/dag-photo-audit.csv" --photo-audit-summary "/path/to/private-reports/dag-photo-audit-summary.json" --m2-sample
 
-This stricter mode requires 10–20 distinct products, explicit product/fact/image prototype-use approval, at least one owner-verified fact per product, a rights-cleared primary image with evidence, and a completed audit with readable, non-duplicate images. It rejects public publication approval states in the private-sample validation mode. This is a structural validator; it cannot prove the underlying real-world fact or right is valid. Keep the filled CSVs, source export, photos and reports private and outside Git.
+This stricter mode requires 10–20 distinct products, an owner-reconciled source-export row per product, explicit product/fact/image prototype-use approval, at least one owner-verified fact per product, a rights-cleared primary image with evidence, and a completed audit with readable, non-duplicate images. It rejects public publication approval states in the private-sample validation mode. This is a structural validator; it cannot prove the underlying real-world fact or right is valid. Keep the filled CSVs, source export, photos and reports private and outside Git.
 
 ## What this does not decide
 

@@ -81,3 +81,9 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Extended private catalogue intake templates/validation so product facts and images require distinct prototype-use approval/evidence, and image rights clearance evidence is recorded separately from public publication approval.
 - Added an M2-specific 10–20 product/photo-audit validation mode. No private catalogue data, customer data or product photographs were added to Git.
 - M2-A and M2-C remain blocked on owner-supplied identity inputs and product/photo evidence; no recruitment, customer fieldwork, branded theme, production feature or deployment was started.
+
+## 2026-11-08 — M2 source reconciliation and image-rights evidence hardening
+- Required every product in a private M2 sample to trace to an owner-reconciled source-export row.
+- Added rights_evidence_reference to Etsy source-image records and required it whenever source-image rights are marked cleared.
+- Added regression coverage for missing source reconciliation and missing Etsy-image rights evidence.
+- Updated the owner input queue, catalogue intake rules, M2 decision pack and roadmap.

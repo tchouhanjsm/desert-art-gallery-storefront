@@ -73,7 +73,7 @@ The repository/library inputs available for this review contain the owner-suppli
 
 The private sample remains 10–20 distinct real DAG products, with:
 
-1. Stable owner-reviewed product identity and source-record trace.
+1. Stable owner-reviewed product identity mapped to a source-export row with reconciliation_status=owner_reconciled.
 2. Only factual fields supported by an evidence reference; unknown values left blank.
 3. Original photos mapped to the correct products and roles, with image identity checked by visual review.
 4. A completed private photo-audit report; unreadable and byte-identical duplicates cannot pass as approved sample images.
@@ -81,7 +81,7 @@ The private sample remains 10–20 distinct real DAG products, with:
 6. Separate explicit permission to use each product, fact and image in the named private prototype/review.
 7. Product/publication status remains draft/in-review; prototype-use approval does not grant public publication permission.
 
-The updated CSV templates add prototype_use_approval and prototype_use_evidence_reference for product/fact/image records, plus rights_evidence_reference for product images marked rights-cleared. The command scripts/validate_catalogue_intake.py --m2-sample enforces a complete 10–20-product evidence set when paired with the same complete photo-audit CSV/JSON output. Its regression tests include valid/invalid sample size, missing approval, missing rights evidence, dirty/duplicate photo-audit records and attempted public publication.
+The updated CSV templates add prototype_use_approval and prototype_use_evidence_reference for product/fact/image records, plus rights_evidence_reference for both local product images and Etsy source-image references marked rights-cleared. The sample validator also requires an owner-reconciled product-source-records.csv mapping for each sample product. The command scripts/validate_catalogue_intake.py --m2-sample enforces a complete 10–20-product evidence set when paired with the same complete photo-audit CSV/JSON output. Its regression tests include valid/invalid sample size, missing approval, missing rights evidence, dirty/duplicate photo-audit records and attempted public publication.
 
 All sample records, raw exports, photo audits and actual photo binaries must remain outside Git and outside public/shared workspaces. This validation is structural: it cannot prove a rights claim or product fact is true.
 
