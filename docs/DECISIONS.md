@@ -98,6 +98,60 @@ Boundaries: This authorization covers repository-side review tooling, private no
 Consequences: M2-E is authorized for the exact bounded review scope. M2-A and M2-C remain blocked on owner-controlled inputs/evidence; M2-B and M2-D have recommendations and automation prepared but owner adoption and any external research remain outstanding. No supplied kit HTML/CSS/JS asset is changed by this authorization.
 Date: 2026-11-08
 
+
+### D-016 — Owner authorization for M2 visual proposal, research preparation and private prototypes
+Status: CONFIRMED — PROPOSAL REVIEW AND CONDITIONAL PRIVATE-PROTOTYPE AUTHORIZATION
+Owner instruction (8 November 2026): the owner confirms the M2-A reference hierarchy, adopts the seven-person qualitative research cohort, approves the mixed placeholder/image-frame approach, approves the five customer-journey priorities, and authorizes private non-transactional prototypes for six named areas.
+
+M2-A — Visual direction:
+- POJ Studio is the primary reference for overall website/ecommerce composition, navigation, product grids, product detail and customer experience. Macaroni Shoten is secondary for curation, category grouping and editorial retail character. Jaisalmer remains DAG's source of identity.
+- Prepare one coherent, evidence-led visual proposal with exact proposed HEX roles, reference typography observations, proposed typefaces/weights/hierarchy, logo/wordmark requirements, header, homepage, shop/grid, PDP, photography treatment, CSS tokens/components and desktop/mobile examples.
+- The four rejected P-015 territories remain rejected. Do not create another arbitrary palette set or reuse historic directions.
+- Every colour/type/logo/descriptor/photo value in the proposal is a proposal only. The owner retains final approval. No production token, theme or branded prototype may be finalized or applied before explicit owner visual approval.
+
+M2-B — Initial customer-validation cohort:
+- The initial Japan-based qualitative cohort is accepted as a research plan: 3 home/interior shoppers interested in textiles or décor; 2 craft/material enthusiasts; 1 trade/design professional; 1 gift or considered-purchase shopper.
+- These are research contexts and hypotheses, not validated personas or a representative sample.
+- Prepare eligibility, objectives, interview questions, recruitment options, consent/privacy workflow and indicative cost ranges.
+- This decision does not authorize recruitment, external contact, participant-data collection, recording, participant incentives or any spend. Those require a separate explicit authorization.
+
+M2-C — Product and image evidence:
+- Use clearly labelled illustrative layout placeholders and image-frame compositions to demonstrate intended ratios and gallery structure.
+- Do not invent catalogue products, use generated artwork as DAG product photography, or represent placeholders as genuine products.
+- Product-image validation remains pending until the owner supplies approximately 10–20 genuine product photographs and associated verified product information.
+- Prepare intake and fact-verification only. No full photography-library migration is authorized.
+
+M2-D — Customer-journey priority:
+1. Discover Desert Art Gallery and understand its identity.
+2. Browse products, categories and collections.
+3. Evaluate a product, its images and verified specifications.
+4. Explore makers, materials and editorial stories.
+5. Contact the gallery and obtain useful information.
+Mobile responsiveness and usability are cross-cutting acceptance requirements for every journey, not a sixth journey. Automated testing does not equal human usability acceptance.
+
+M2-E — Private prototype authorization:
+Authorize private/local, non-transactional HTML/CSS prototypes for exactly these six areas:
+1. Homepage.
+2. Shop and Collections.
+3. Product Detail.
+4. About and Makers.
+5. Journal and Stories.
+6. Contact and Support.
+The global header, navigation, search presentation, shared components and footer are included only where already relevant to those areas. The six areas are review groupings over the unchanged nine-page D-014 structural inventory; they do not add or remove routes, sections or components.
+
+This authorization is conditional: branded prototype implementation may begin only after the owner explicitly approves the M2-A visual proposal. The prototypes must remain local/private and outside the public repository. Existing non-transactional concept states may be shown only if needed to explain the journey; cart/checkout concepts must never imply live purchases or commercial commitments.
+
+Explicit exclusions remain: production application development; live payments/orders; real shipping or tax calculations; external participant recruitment; public deployment; paid services/subscriptions; migration of the full product-photography library; new pages, sections, widgets, promotional content or unapproved interactions; and unapproved changes to identity or commercial model. No technology, seller jurisdiction, currency, fulfilment, tax, payment or returns policy is approved by D-016.
+
+Relationship to D-015: D-015 records the earlier limited structural journey-review authorization and its completed automation. D-016 adds the owner's later, more specific M2 decision and conditionally authorizes six private non-transactional prototype areas after visual approval. D-015 remains valid historical authority for the completed structural review; it is not the ceiling for the newly authorized private prototype phase.
+
+Consequences:
+- M2-B cohort and M2-D journey order are owner-approved as plans/priorities; neither is evidence of demand or human usability acceptance.
+- M2-A remains awaiting explicit visual approval; the proposal itself is not approved identity.
+- M2-C remains pending actual owner-supplied sample and evidence.
+- M2-E private prototypes are authorized only after M2-A visual approval, with the exact six-area and non-production boundaries above.
+Date: 2026-11-08
+
 ## Unresolved owner decisions
 
 ### U-001 — Seller jurisdiction and legal identity
