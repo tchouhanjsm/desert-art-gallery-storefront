@@ -44,7 +44,7 @@ jobs:
       - name: Install Chromium and system dependencies
         run: python -m playwright install --with-deps chromium
 
-      - name: Review all nine pages at five required widths
+      - name: Review nine pages and five customer journeys at five required widths
         run: |
           python3 scripts/kit_browser_review.py \
             --output-dir artifacts/kit-browser-review
