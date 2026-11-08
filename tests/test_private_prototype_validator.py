@@ -47,6 +47,7 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
 
     def write_manifest(self, **overrides):
         manifest = {
+            "schema_version": 1,
             "base_decision_ref": "D-016",
             "prototype_mode": "private-local-nontransactional",
             "routes": list(ROUTES),
@@ -257,6 +258,31 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
             template["areas"],
             {name: list(routes) for name, routes in AREA_ROUTES.items()},
         )
+
+
+    def test_picture_source_and_inline_css_external_assets_are_rejected(self):
+        (self.proto / "pages/shop.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<picture><source srcset="https://cdn.example/alt.webp"><img src="missing.jpg" alt="x"></picture>'
+            '<div style="background-image:url(https://cdn.example/bg.jpg)">x</div>'
+            '</main></body></html>',
+            encoding="utf-8",
+        )
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("picture source: external or non-file URL" in error for error in result["errors"]))
+        self.assertTrue(any("CSS asset: external or non-file URL" in error for error in result["errors"]))
+
+    def test_external_script_navigation_is_rejected(self):
+        (self.proto / "pages/shop.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<script>window.location.assign("https://checkout.example/")</script>'
+            '</main></body></html>',
+            encoding="utf-8",
+        )
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("external script navigation is not allowed" in error for error in result["errors"]))
 
     def test_missing_manifest_and_nonexistent_root_are_reported(self):
         (self.proto / "prototype-manifest.json").unlink()
