@@ -17,13 +17,17 @@ A gallery and retail experience for textiles, objects and craft connected with J
 ## Brand voice
 English-only, clear, warm, precise and restrained. Prefer concrete product facts over vague superlatives. Avoid claims such as "world's finest", "ancient tradition", "museum quality" or "sustainable" unless independently substantiated and approved.
 
+## Reference-led visual proposal — awaiting owner decision
+
+D-016 requests one coherent visual proposal grounded in POJ Studio (primary) and Macaroni Shoten (secondary), while retaining Jaisalmer as DAG's identity source. The proposal is in [27 — M2-A Reference-Led Visual Proposal](27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md). Proposed values are not approved. Do not implement the proposed palette, typefaces, wordmark, descriptor or photo direction before explicit owner approval.
+
 ## Identity work still required
 D-014 adopts the structural HTML/CSS kit only. Not yet approved:
 - Final positioning statement and brand promise.
 - Validated customer segments.
 - Brand story and factual narrative.
 - Logo and mark system.
-- Final palette and typography families/weights/hierarchy/type scale.
+- Final palette and typography families/weights/hierarchy/type scale (proposal prepared; owner approval pending).
 - Photography art direction and crop rules.
 - Product and editorial voice examples.
 - Brand descriptor / wordmark treatment.

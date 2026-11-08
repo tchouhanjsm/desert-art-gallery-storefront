@@ -85,3 +85,19 @@
 - [ ] PR merged.
 
 A checked item records a source/repository fact already verified in this reset. Items under final validation remain unchecked until the final PR head's actual GitHub Actions results are available.
+
+
+## D-016 M2 owner decision and prototype-scope reconciliation
+
+- [x] D-016 recorded the POJ-primary / Macaroni-secondary reference hierarchy and one reference-led visual proposal; approval remains pending.
+- [x] Seven-person Japan qualitative cohort approved as a research plan; external recruitment, contact, consent, recording and any spend remain separately unauthorized.
+- [x] Placeholder and image-frame approach approved; real product/photo sample and image validation remain pending; no full-library migration.
+- [x] Five-journey priority confirmed; responsive automated coverage is retained; human owner/customer usability acceptance remains outstanding.
+- [x] Exactly six local/private non-transactional prototype areas authorized after M2-A visual approval; no public repository prototype, production app or public deployment.
+- [x] Decision, owner register, reference log, M2 pack, roadmap, visual proposal, research operations, walkthroughs, catalogue guidance, governance and regression audits reconciled.
+- [x] D-014 nine-page HTML/CSS/JS structural kit, inventories and QA-only token fallback retained unchanged.
+- [ ] Owner approval of the M2-A visual proposal.
+- [ ] Owner supplies approximately 10–20 genuine product photographs and verified product information.
+- [ ] Separate fieldwork authorization (recruitment route, consent/privacy, data handling and budget).
+- [ ] Private six-area prototype build after visual approval.
+- [ ] Owner-led walkthrough and any separately authorized human usability research.

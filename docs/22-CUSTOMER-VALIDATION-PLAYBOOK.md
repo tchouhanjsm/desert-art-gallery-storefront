@@ -1,8 +1,8 @@
 # 22 — Japan-First Customer Validation Playbook
 
-**Status:** Research operations prepared for owner review. No participant recruitment, interviews or usability sessions have been conducted. This playbook is not authorization to recruit or spend money.
+**Status:** Seven-person Japan-based qualitative cohort approved by D-016; research operations are prepared, but fieldwork is not authorized. No participant recruitment, interviews or usability sessions have been conducted.
 
-**M2-B decision boundary:** The owner is being asked only to identify the initial Japan-first customer segment(s) to research. Japan-first is already confirmed by D-003. Research method, sample size, recruitment route/provider, consent workflow, incentives and spending are separate operational approvals; segment selection alone authorizes none of them. The four segment hypotheses are home/interior buyers, craft/material enthusiasts, gift/considered-purchase buyers, and trade/design professionals. They are not validated personas and may overlap.
+**M2-B decision boundary:** D-016 accepts exactly seven Japan-based qualitative research contexts: 3 home/interior shoppers interested in textiles or décor; 2 craft/material enthusiasts; 1 trade/design professional; and 1 gift or considered-purchase shopper. These are research hypotheses, not validated personas or a representative sample. Cohort approval does not authorize recruitment, external contact, personal-data collection, recording, incentives or spending. See docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md for eligibility, objectives, interview questions, route options, consent/privacy and indicative costs.
 
 ## 1. Purpose and evidence boundary
 
@@ -11,10 +11,10 @@ Turn the research hypotheses in [14 — Japan-First Customer and Market Research
 Known project constraints:
 - Japan is the intended primary customer market.
 - Customer-facing storefront content remains English-only.
-- The four audience groups in document 14 are hypotheses, not validated segments.
+- The seven-person cohort is a purposive qualitative plan, not validated personas, statistically representative evidence or market sizing.
 - There is no first-party DAG interview data yet.
 - Exact seller jurisdiction, sales territories, currency, shipping, duties, payment, returns and legal disclosures remain unresolved.
-- The owner controls foundational brand identity. Any branded prototype remains blocked until the exact owner-approved identity inputs are explicitly recorded; D-014 adopts structure only.
+- D-016 authorizes exactly six private prototype areas after explicit M2-A visual approval. The current proposal is not approved and no branded prototype has begun.
 
 This playbook is a proposed method. It does not change any confirmed decision, make a commercial promise, or establish a legal/privacy policy.
 
@@ -25,15 +25,15 @@ This playbook is a proposed method. It does not change any confirmed decision, m
 | A — Discovery | Moderated interviews about recent purchases, evaluation and trust | Owner confirms the cohort focus, recruitment route and any participant cost | Anonymized evidence log and research synthesis |
 | B — Usability | Moderated mobile-first browse and product-comprehension tests | Stage A findings are reviewed; visual direction is owner-approved; prototype and real product sample are ready | Task observations, usability findings and prioritized open questions |
 
-Stage A does not require a visual prototype. Do not use it to ask participants to choose brand identity on the owner's behalf. Stage B must use an owner-authorized DAG prototype with owner-approved identity inputs where branded evaluation is in scope; it must not be built in production style or expanded beyond D-014 without the required owner gate.
+Stage A does not require a visual prototype. Do not ask participants to choose brand identity. Stage B must use a private prototype built only after the owner's explicit approval of the M2-A proposal; it must stay within D-016's six areas and must not be public or production.
 
 ## 3. Stage A — exploratory discovery
 
 ### Proposed sample
 
-A small first round of **five to eight participants** is proposed as qualitative discovery only. It is not statistically representative and cannot establish market size, conversion, price elasticity or the prevalence of a need.
+The owner-approved first round is **seven participants**: three home/interior shoppers interested in textiles or décor, two craft/material enthusiasts, one trade/design professional and one gift/considered-purchase shopper. It is qualitative discovery only, not statistically representative and cannot establish market size, conversion, price elasticity or prevalence of a need.
 
-Recruit across the four hypotheses in document 14 without treating them as fixed personas:
+Recruit to the four owner-approved research contexts without treating them as fixed personas:
 
 1. Home and interior purchase context.
 2. Craft and material interest.
@@ -45,8 +45,9 @@ Participants may fit more than one context. Record the context evidenced in the 
 ### Proposed eligibility checks
 
 Use only the minimum checks needed for the study:
-- The person lives in Japan or regularly shops online for delivery in Japan.
-- They have recently researched or purchased home, textile, craft, object or considered-purchase goods online; trade participants may instead specify or source products professionally.
+- The person currently lives in Japan.
+- They have recently researched or purchased relevant home/interior, textile, décor, craft or considered-purchase goods online (normally within 12 months); a trade participant may instead have specified, styled or sourced relevant goods professionally within 24 months.
+- The proposed study is for adults aged 18 or older; do not set an upper age limit.
 - They can take part in the intended discussion format. The customer-facing prototype remains English-only; the facilitator may explain the research process in a participant's preferred language, but must not translate interface content during an English-comprehension task.
 
 Do not screen by age, gender, income, ethnicity, religion or other irrelevant personal characteristics. Do not collect home addresses, personal email/phone details, payment details or exact birth dates in the research templates. Keep recruitment contact details, if needed, in a separate owner-controlled system outside Git.
@@ -69,6 +70,8 @@ Avoid asking “Would you buy this?” as a proxy for actual demand. Prefer ques
 
 ## 4. Stage A — discussion prompts
 
+The full interview script, recruitment alternatives, indicative cost range and separate authorization checklist are consolidated in [28 — M2-B Research Operations Plan](28-M2-B-RESEARCH-OPERATIONS-PLAN.md). No recruitment route has been selected and no outreach is authorized.
+
 Use the [discovery interview guide](../templates/research/discovery-interview-guide.md) for the full neutral script. Core prompts:
 
 - Tell me about the last time you searched for or bought a home, textile, craft or decorative object online.
@@ -86,13 +89,13 @@ Ask follow-up questions such as “What happened next?” and “Can you show or
 ## 5. Stage B — prototype usability
 
 Begin only after all of the following are true:
-- The exact test scope and non-production boundary are explicitly authorized by the owner (M2-E) and recorded in `docs/DECISIONS.md`.
-- The v2 nine-page structural baseline in D-014 is used without adding unlisted sections or functionality; all routes are clearly labelled as a prototype.
-- Do not ask participants to approve or rank brand identity. A branded visual-identity evaluation requires the owner's exact identity inputs to be recorded first (M2-A).
-- A representative sample of 10–20 real DAG products and image sets has been supplied privately and its facts/images are verified for the test purpose.
+- The exact six-area local/private non-transactional test scope is authorized by D-016 and recorded in docs/DECISIONS.md.
+- The six-area grouping maps only to the unchanged nine-page D-014 structure; all prototype pages are clearly labelled and kept private/local.
+- Do not ask participants to approve or rank brand identity. A branded visual-identity evaluation requires the owner's exact owner-approved identity inputs to be recorded first (M2-A).
+- A representative sample of approximately 10–20 real DAG products/photos has been supplied privately and the facts, image identity, rights and prototype-use permissions are verified. Until then use labelled image frames/placeholders and do not claim image validation.
 - Any purchase, enquiry, price, availability or service content shown in the prototype is either owner-approved or clearly identified as a research-only scenario. Do not imply that hypothetical checkout or policies are operational.
 
-Use five moderated sessions as an initial usability pass, not a statistical benchmark. Test the real browse and product-evaluation journey on a participant's phone or an equivalent mobile viewport. Review desktop and tablet separately as part of the owner design review.
+Use up to seven moderated sessions only after separate fieldwork authorization; this is an initial qualitative usability pass, not a statistical benchmark. Test the real browse and product-evaluation journey on a participant's phone or an equivalent mobile viewport. Review desktop and tablet separately as part of the owner design review.
 
 Suggested tasks:
 1. Find a product or category using the participant's own words.

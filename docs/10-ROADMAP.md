@@ -30,13 +30,29 @@ The follow-up maintenance patch is limited to the supplied kit's existing CSS an
 - [DAG Structural Kit Browser Review run #7](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004123) — PASS: **45/45** route/viewport combinations, **54** mobile keyboard-operation sequences, reduced-motion review and **18** full-page screenshots with JSON/Markdown summaries.
 - These results provide automated structural and browser evidence only; they are not screen-reader testing, WCAG certification, colour-contrast approval or owner visual sign-off.
 
-## Owner gates retained
+## M2 owner decisions and next delivery gates — D-016
 
-- **Brand identity:** exact colours, typography, logo/wordmark/descriptor and photography direction remain pending owner input. The system-token fallback is QA only.
-- **Customer validation:** Japan-first segments and journey priority remain to be confirmed; no fieldwork is represented as complete.
-- **Product/photo evidence:** only owner-approved genuine sample photographs with verified mapping and rights may be used; label placeholders for missing views (D-011).
-- **Responsive journey acceptance:** mobile/tablet/desktop must be tested across every selected journey (D-012).
-- **Next-phase authorization:** D-014 alone does not authorize added prototype scope or production development.
+The owner has now confirmed the M2-A through M2-E decisions. The previous PR #13 structural-review automation remains complete; D-016 defines the current owner-approved plan and conditional private-prototype scope.
+
+- **M2-A — proposal ready, visual approval pending:** One reference-led visual proposal is prepared in docs/27. POJ Studio is primary, Macaroni Shoten secondary; no proposed colours/type/logo/photo direction is approved or applied. The owner retains final authority.
+- **M2-B — cohort accepted:** Seven Japan-based qualitative participants are approved as a research plan (3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase). The full operations plan is docs/28. Recruitment, external contact, consent/data handling, recording, incentives and spend remain separately unauthorized.
+- **M2-C — placeholder approach accepted, evidence pending:** Use clearly labelled layout placeholders and image-frame compositions. Product-image validation remains pending until approximately 10–20 genuine photos and verified product information are supplied. No full photography-library migration.
+- **M2-D — journey order accepted:** Discover identity → browse products/categories/collections → evaluate product/images/verified specifications → explore makers/materials/editorial → contact/support. Mobile is cross-cutting across every journey. Automated testing passed; owner visual walkthrough and human usability acceptance remain separate.
+- **M2-E — private prototypes conditionally authorized:** Exactly six local/private non-transactional areas: Homepage; Shop and Collections; Product Detail; About and Makers; Journal and Stories; Contact and Support. This is a six-area grouping across the unchanged nine-page D-014 kit. The shared shell appears only as already supplied. Begin branded implementation only after explicit M2-A visual approval. Keep prototype files out of the public repository.
+
+### Owner review sequence
+1. Review the single proposal in docs/27 and record exact accept/revise/reject decisions.
+2. After M2-A approval, build the six private prototype areas using the approved visual tokens and D-014's exact page/section inventory.
+3. Use labelled placeholders until the genuine product sample and verified facts are available.
+4. Run responsive and accessibility automation; prepare the owner walkthrough in docs/26.
+5. Record owner visual feedback separately from any future participant usability evidence.
+
+### Completed automated structural evidence
+- [DAG Project Quality run #90](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483703448): PASS, 101/101 Python tests and repository audits.
+- [DAG Structural Kit Browser Review run #17](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483703451): PASS, 45/45 route/viewport, 25/25 journey/viewport, 54 keyboard sequences, reduced motion and 18 screenshots.
+- [Browser artifact](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483703451/artifacts/13617914179).
+
+These checks assess structural automation only. They do not validate customer demand, conduct human usability testing or constitute owner visual acceptance.
 
 ## Technical and commercial work
 

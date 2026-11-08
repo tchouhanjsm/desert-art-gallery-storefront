@@ -20,14 +20,18 @@ HEADERS = {
         "short_description_en", "description_en", "category_candidate",
         "publication_status", "availability_status", "price_amount",
         "price_currency", "price_evidence_reference", "internal_notes",
+        "prototype_use_approval", "prototype_use_evidence_reference",
     ],
     "product-facts.csv": [
         "product_id", "fact_key", "fact_value", "unit",
         "verification_status", "evidence_reference", "public_approval",
+        "prototype_use_approval", "prototype_use_evidence_reference",
     ],
     "product-images.csv": [
         "product_id", "asset_id", "source_relative_path", "image_role",
-        "sort_order", "rights_status", "publication_status", "alt_text_en",
+        "sort_order", "rights_status", "rights_evidence_reference",
+        "publication_status", "alt_text_en", "prototype_use_approval",
+        "prototype_use_evidence_reference",
     ],
     "product-source-records.csv": [
         "product_id", "source_system", "source_file_sha256", "source_data_row_number",
@@ -38,7 +42,7 @@ HEADERS = {
     ],
     "etsy-image-sources.csv": [
         "product_id", "source_record_ref", "source_image_field", "source_image_url",
-        "local_asset_id", "rights_status", "download_status", "owner_review_status",
+        "local_asset_id", "rights_status", "rights_evidence_reference", "download_status", "owner_review_status",
         "internal_notes",
     ],
 }
@@ -46,6 +50,7 @@ PUBLICATION_STATES = {"draft", "in_review", "approved_for_publication", "publish
 AVAILABILITY_STATES = {"not_verified", "available", "unavailable", "made_to_order"}
 FACT_VERIFICATION_STATES = {"unverified", "source_documented", "owner_verified"}
 PUBLIC_APPROVAL_STATES = {"not_reviewed", "approved", "do_not_publish"}
+PROTOTYPE_USE_STATES = {"not_reviewed", "approved", "rejected"}
 IMAGE_ROLES = {"primary", "detail", "scale", "context", "packaging", "other"}
 IMAGE_RIGHTS_STATES = {"unknown", "cleared", "restricted"}
 IMAGE_PUBLICATION_STATES = {"pending", "approved", "blocked"}
@@ -204,7 +209,12 @@ def _is_allowed_etsy_image_url(value: str) -> bool:
         return False
 
 
-def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None = None, photo_audit_summary: Path | None = None) -> list[Issue]:
+def validate_catalogue_directory(
+    directory: Path,
+    photo_audit_csv: Path | None = None,
+    photo_audit_summary: Path | None = None,
+    require_m2_sample: bool = False,
+) -> list[Issue]:
     root = directory.expanduser().resolve()
     if not root.exists() or not root.is_dir():
         return [Issue(".", None, "input path does not exist or is not a directory")]
@@ -216,6 +226,8 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
     source_record_rows = _read_rows(root, "product-source-records.csv", issues)
     etsy_image_source_rows = _read_rows(root, "etsy-image-sources.csv", issues)
     photo_inventory: dict[str, dict[str, str]] | None = None
+    if require_m2_sample and (photo_audit_csv is None or photo_audit_summary is None):
+        issues.append(Issue("photo-audit", None, "M2 sample validation requires --photo-audit-csv and --photo-audit-summary from the same completed scan"))
     if photo_audit_csv is not None and photo_audit_summary is not None:
         photo_inventory, audit_issues = _load_photo_audit(photo_audit_csv, photo_audit_summary)
         issues.extend(audit_issues)
@@ -223,6 +235,9 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
         issues.append(Issue("photo-audit", None, "--photo-audit-csv and --photo-audit-summary must be provided together"))
 
     products: dict[str, dict[str, str]] = {}
+    prototype_approved_products: set[str] = set()
+    prototype_approved_facts: set[str] = set()
+    prototype_approved_primary_images: set[str] = set()
     seen_skus: dict[str, int] = {}
     for line, row in product_rows:
         product_id = _value(row, "product_id")
@@ -233,6 +248,15 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
             issues.append(Issue("products.csv", line, f"duplicate product_id {product_id!r}"))
             continue
         products[product_id] = row
+
+        prototype_approval = _value(row, "prototype_use_approval")
+        if prototype_approval not in PROTOTYPE_USE_STATES:
+            issues.append(Issue("products.csv", line, f"prototype_use_approval must be one of {sorted(PROTOTYPE_USE_STATES)}"))
+        elif prototype_approval == "approved":
+            if not _value(row, "prototype_use_evidence_reference"):
+                issues.append(Issue("products.csv", line, "prototype-use approval requires prototype_use_evidence_reference"))
+            else:
+                prototype_approved_products.add(product_id)
 
         if not _value(row, "title_en"):
             issues.append(Issue("products.csv", line, "title_en is required; keep customer-facing content in English"))
@@ -333,6 +357,18 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
         if public_approval == "approved" and (verification != "owner_verified" or not evidence):
             issues.append(Issue("product-facts.csv", line, "public approval requires owner_verified status and an evidence_reference"))
 
+        prototype_approval = _value(row, "prototype_use_approval")
+        prototype_evidence = _value(row, "prototype_use_evidence_reference")
+        if prototype_approval not in PROTOTYPE_USE_STATES:
+            issues.append(Issue("product-facts.csv", line, f"prototype_use_approval must be one of {sorted(PROTOTYPE_USE_STATES)}"))
+        elif prototype_approval == "approved":
+            if verification != "owner_verified" or not evidence:
+                issues.append(Issue("product-facts.csv", line, "prototype-use approval requires an owner_verified fact with an evidence_reference"))
+            if not prototype_evidence:
+                issues.append(Issue("product-facts.csv", line, "prototype-use approval requires prototype_use_evidence_reference"))
+            if product_id and verification == "owner_verified" and evidence and prototype_evidence:
+                prototype_approved_facts.add(product_id)
+
     for line, row in image_rows:
         product_id = _value(row, "product_id")
         if not product_id or product_id not in products:
@@ -361,8 +397,11 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
                 issues.append(Issue("product-images.csv", line, f"sort_order {order} is duplicated for product_id {product_id!r}"))
             seen_sort_orders.add(sort_key)
         rights = _value(row, "rights_status")
+        rights_evidence = _value(row, "rights_evidence_reference")
         if rights not in IMAGE_RIGHTS_STATES:
             issues.append(Issue("product-images.csv", line, f"rights_status must be one of {sorted(IMAGE_RIGHTS_STATES)}"))
+        elif rights == "cleared" and not rights_evidence:
+            issues.append(Issue("product-images.csv", line, "rights_status=cleared requires rights_evidence_reference"))
         publication = _value(row, "publication_status")
         if publication not in IMAGE_PUBLICATION_STATES:
             issues.append(Issue("product-images.csv", line, f"publication_status must be one of {sorted(IMAGE_PUBLICATION_STATES)}"))
@@ -383,6 +422,21 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
                 issues.append(Issue("product-images.csv", line, "an approved image requires alt_text_en"))
             if role == "primary" and product_id:
                 approved_primary_images.add(product_id)
+
+        prototype_approval = _value(row, "prototype_use_approval")
+        prototype_evidence = _value(row, "prototype_use_evidence_reference")
+        if prototype_approval not in PROTOTYPE_USE_STATES:
+            issues.append(Issue("product-images.csv", line, f"prototype_use_approval must be one of {sorted(PROTOTYPE_USE_STATES)}"))
+        elif prototype_approval == "approved":
+            if rights != "cleared" or not rights_evidence:
+                issues.append(Issue("product-images.csv", line, "prototype-use approval requires cleared image rights with rights_evidence_reference"))
+            if not alt_text:
+                issues.append(Issue("product-images.csv", line, "prototype-use approval requires alt_text_en"))
+            if not prototype_evidence:
+                issues.append(Issue("product-images.csv", line, "prototype-use approval requires prototype_use_evidence_reference"))
+            if product_id and rights == "cleared" and rights_evidence and alt_text and prototype_evidence:
+                if role == "primary":
+                    prototype_approved_primary_images.add(product_id)
 
     local_asset_pairs = seen_asset_links
     seen_etsy_image_fields: set[tuple[str, str]] = set()
@@ -409,8 +463,11 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
         if not _is_allowed_etsy_image_url(source_url):
             issues.append(Issue("etsy-image-sources.csv", line, "source_image_url must be HTTPS on the exact i.etsystatic.com host without credentials or a port"))
         rights = _value(row, "rights_status")
+        rights_evidence = _value(row, "rights_evidence_reference")
         if rights not in IMAGE_RIGHTS_STATES:
             issues.append(Issue("etsy-image-sources.csv", line, f"rights_status must be one of {sorted(IMAGE_RIGHTS_STATES)}"))
+        elif rights == "cleared" and not rights_evidence:
+            issues.append(Issue("etsy-image-sources.csv", line, "rights_status=cleared requires rights_evidence_reference"))
         download = _value(row, "download_status")
         if download not in ETSY_IMAGE_DOWNLOAD_STATES:
             issues.append(Issue("etsy-image-sources.csv", line, f"download_status must be one of {sorted(ETSY_IMAGE_DOWNLOAD_STATES)}"))
@@ -440,6 +497,42 @@ def validate_catalogue_directory(directory: Path, photo_audit_csv: Path | None =
                 f"product_id {product_id!r} is approved/published but has no approved primary image in product-images.csv",
             ))
 
+    if require_m2_sample:
+        if photo_inventory is None:
+            issues.append(Issue("photo-audit", None, "M2 sample acceptance requires a complete photo-audit inventory"))
+        if not 10 <= len(products) <= 20:
+            issues.append(Issue("products.csv", None, f"M2 sample must contain 10–20 distinct products; found {len(products)}"))
+        for product_id, product in products.items():
+            product_ref = _value(product, "source_record_ref")
+            source_record = source_records.get(product_ref)
+            if not product_ref or source_record is None:
+                issues.append(Issue("product-source-records.csv", None, f"M2 sample product {product_id!r} must map to an owner-reviewed source record"))
+            elif _value(source_record, "reconciliation_status") != "owner_reconciled":
+                issues.append(Issue("product-source-records.csv", None, f"M2 sample product {product_id!r} source record must have reconciliation_status=owner_reconciled"))
+            if product_id not in prototype_approved_products:
+                issues.append(Issue("products.csv", None, f"M2 sample product {product_id!r} lacks explicit prototype-use approval and evidence"))
+            if product_id not in prototype_approved_facts:
+                issues.append(Issue("product-facts.csv", None, f"M2 sample product {product_id!r} lacks at least one owner-verified, prototype-approved fact"))
+            if product_id not in prototype_approved_primary_images:
+                issues.append(Issue("product-images.csv", None, f"M2 sample product {product_id!r} lacks a rights-cleared, prototype-approved primary image"))
+            if _value(product, "publication_status") not in {"draft", "in_review"}:
+                issues.append(Issue("products.csv", None, f"M2 sample product {product_id!r} must remain draft/in_review; prototype approval is not public publication approval"))
+        for line, row in fact_rows:
+            if _value(row, "public_approval") == "approved":
+                issues.append(Issue("product-facts.csv", line, "M2 private prototype sample must not use public_approval=approved; prototype-use approval is separate"))
+        for line, row in image_rows:
+            if _value(row, "publication_status") == "approved":
+                issues.append(Issue("product-images.csv", line, "M2 private prototype sample must not use public image publication approval"))
+        if photo_inventory is not None:
+            for line, row in image_rows:
+                if _value(row, "prototype_use_approval") == "approved":
+                    source_path = _value(row, "source_relative_path")
+                    audited = photo_inventory.get(source_path)
+                    if audited is None:
+                        issues.append(Issue("product-images.csv", line, "prototype-approved image is missing from the complete photo-audit inventory"))
+                    elif audited["status"] != "ok" or audited["duplicate_group"]:
+                        issues.append(Issue("product-images.csv", line, "prototype-approved image must be readable, audit status=ok and not byte-identical to another asset"))
+
     return issues
 
 
@@ -450,10 +543,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("directory", type=Path, help="Folder containing products.csv, product-facts.csv and product-images.csv")
     parser.add_argument("--photo-audit-csv", type=Path, help="Optional private CSV inventory produced by audit_photo_library.py")
     parser.add_argument("--photo-audit-summary", type=Path, help="JSON summary from the same complete photo-audit run; required with --photo-audit-csv")
+    parser.add_argument("--m2-sample", action="store_true", help="Require 10–20 products with owner-approved prototype-use facts/images and complete photo-audit evidence; does not approve public publication")
     args = parser.parse_args(argv)
     if bool(args.photo_audit_csv) != bool(args.photo_audit_summary):
         parser.error("--photo-audit-csv and --photo-audit-summary must be used together")
-    issues = validate_catalogue_directory(args.directory, args.photo_audit_csv, args.photo_audit_summary)
+    if args.m2_sample and not args.photo_audit_csv:
+        parser.error("--m2-sample requires both --photo-audit-csv and --photo-audit-summary")
+    issues = validate_catalogue_directory(args.directory, args.photo_audit_csv, args.photo_audit_summary, args.m2_sample)
     if issues:
         print(f"Catalogue intake validation: FAILED ({len(issues)} issue(s))")
         for issue in issues:
@@ -463,6 +559,9 @@ def main(argv: list[str] | None = None) -> int:
     print("- Required CSV templates and cross-file references are valid")
     if args.photo_audit_csv:
         print("- Product image paths match a complete, read-only photo-audit inventory")
+    if args.m2_sample:
+        print("- M2 sample: 10–20 distinct products have explicit prototype-use evidence, owner-verified facts, rights-cleared primary images and clean photo-audit results")
+        print("- Prototype-use approval remains separate from public publication approval")
     print("- No catalogue content was imported or modified")
     return 0
 

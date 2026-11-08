@@ -193,3 +193,24 @@ After PR #11, main contained 143 tracked paths. PR #10 adds the two audit implem
 listed explicitly in the original matrix; the resulting tracked tree contains 145 paths. The
 140-path disposition totals above describe the original baseline only and are not silently
 re-labelled as the post-PR #11 total.
+
+
+## M2 D-016 reconciliation overlay — 8 November 2026
+
+The following paths were reconciled to the owner's new M2-A–E decisions. This overlay supplements the baseline path inventory above; it does not alter the D-014 kit file inventory or imply that proposed identity values are approved.
+
+| Path | Disposition | Reconciliation |
+|---|---|---|
+| docs/DECISIONS.md | UPDATE | Add D-016; retain D-015 as authority for completed structural QA and clarify conditional prototype scope. |
+| docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md | ADD | One reference-led DAG proposal; all colour, type, logo, descriptor and photo values pending owner approval. |
+| docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md | ADD | Approved seven-person cohort; operations prepared; fieldwork and costs not authorized. |
+| docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md | ADD | Six-area owner walkthrough mapped to the unchanged nine-page kit; human acceptance pending. |
+| docs/OWNER-INPUT-REGISTER.md; docs/OWNER-TOKEN-INPUT.md | UPDATE | Reflect cohort/journey decisions and proposal review; keep all final identity values pending. |
+| docs/REFERENCE-RESEARCH-LOG.md | UPDATE | Add live 8 November observations, measurement limitations and IP boundaries. |
+| docs/22-CUSTOMER-VALIDATION-PLAYBOOK.md; docs/25-M2-DECISION-AND-REVIEW-PACK.md; docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md; docs/10-ROADMAP.md | UPDATE | Reconcile gate statuses and the owner-approved cohort, journey order and conditional six-area prototype authorization. |
+| AGENTS.md; README.md; docs/DESIGN-AUTHORITY.md; docs/DOCUMENTATION-SOURCE-OF-TRUTH.md; docs/02-BRAND-IDENTITY.md; docs/04-VISUAL-DESIGN-SYSTEM.md | UPDATE | Permit only the separate private prototype under D-016, after visual approval; preserve D-014 source assets and pending identity status. |
+| docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md; docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md | UPDATE | Add placeholder/image-frame rules and owner journey priority; preserve photo evidence and human-review gates. |
+| scripts/audit_m2_readiness.py; tests/test_m2_readiness_audit.py; tests/test_m2_prototype_readiness.py | UPDATE | Enforce new gate statuses and D-016 boundaries with regression coverage. |
+| docs/DOCUMENTATION-CHANGELOG.md | UPDATE | Record all D-016, proposal, research and prototype walkthrough changes. |
+
+The D-014 owner kit assets, active PAGE-INVENTORY and COMPONENT-INVENTORY are RETAINED unchanged. The owner token input remains pending; no production tokens are written.

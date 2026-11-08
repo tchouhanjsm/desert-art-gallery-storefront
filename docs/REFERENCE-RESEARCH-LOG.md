@@ -147,3 +147,37 @@ This pass did not produce saved viewport screenshots or computed-style measureme
 ### Reference hierarchy interpretation (D-010)
 
 POJ Studio leads global commerce structure and the shopping journey. Macaroni Shoten informs the curated selection model. Neither reference supplies DAG's brand identity or product content. The hierarchy does not approve a DAG palette, typography, art direction or production theme.
+
+
+## Live browser reference review — 8 November 2026 (M2-A)
+
+### POJ Studio — primary reference
+Reviewed live:
+- https://pojstudio.com/
+- https://pojstudio.com/collections/all
+- https://pojstudio.com/products/kohiki-slim-angled-cup
+
+Directly observed in the browser:
+- Full-width photography-led hero; editorial statements and image-led category/story entry points below.
+- Separate navigation areas for shopping, experiences, stories and brand information.
+- Shop All showed 295 products and 13 pages at review time, with a left filter/navigation rail and responsive product grid.
+- Desktop Product Detail was approximately a 50/50 gallery and information split, with portrait product imagery and thumbnails; maker context appeared in the product story.
+- CSS design system exposed --shadow-* variable names for surfaces, text, borders, forms and buttons; typography used fluid clamp() sizes and observed weights 400/500/600.
+- Exact resolved POJ HEX values, exact loaded font family and font-file identity were not resolved. Browser viewport dimensions were not captured. These are unknowns, not inferred values.
+
+### Macaroni Shoten — secondary reference
+Reviewed live:
+- https://shop.macaro-ni.jp/
+- https://shop.macaro-ni.jp/about
+- https://shop.macaro-ni.jp/categories/3902202
+- https://shop.macaro-ni.jp/categories/3902214
+
+Directly observed:
+- Four broad category groups: Kitchen, Living, Food and Daily, with nested subcategories.
+- Compact slide-out navigation, large lifestyle-image presentation and concise editorial introduction; About expands the curation philosophy.
+- Shop product area was empty during this review, so current product merchandising could not be assessed.
+- Browser DOM reported Yu Mincho (yumin) editorial serif and sans-serif navigation. Reported sizes: 32px title, 16px tagline/menu, 14px navigation, 12px footer.
+- Reported direct DOM colour values: #000000 primary text, #FF6700 icon accent, #FECB8B logo detail and #CCCCCC menu background. These are Macaroni's observed values only.
+
+### Implications and IP boundary
+POJ informs the larger ecommerce composition and product-evaluation structure; Macaroni informs compact curation and editorial framing. Both are learning references only. No exact layout, brand token, image, font file, copy, logo, taxonomy or proprietary implementation is copied. The single DAG adaptation proposal is documented in docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md. D-016 keeps all proposed identity values pending owner approval.

@@ -36,6 +36,8 @@ def product_row(**overrides):
         "title_en": "Sample title",
         "publication_status": "draft",
         "availability_status": "not_verified",
+        "prototype_use_approval": "not_reviewed",
+        "prototype_use_evidence_reference": "",
     })
     row.update(overrides)
     return row
@@ -49,6 +51,8 @@ def fact_row(**overrides):
         "fact_value": "Cotton",
         "verification_status": "unverified",
         "public_approval": "not_reviewed",
+        "prototype_use_approval": "not_reviewed",
+        "prototype_use_evidence_reference": "",
     })
     row.update(overrides)
     return row
@@ -63,7 +67,10 @@ def image_row(**overrides):
         "image_role": "primary",
         "sort_order": "1",
         "rights_status": "unknown",
+        "rights_evidence_reference": "",
         "publication_status": "pending",
+        "prototype_use_approval": "not_reviewed",
+        "prototype_use_evidence_reference": "",
     })
     row.update(overrides)
     return row
@@ -102,6 +109,7 @@ def etsy_image_source_row(**overrides):
         "source_image_url": "https://i.etsystatic.com/123456/photo.jpg",
         "local_asset_id": "",
         "rights_status": "unknown",
+        "rights_evidence_reference": "",
         "download_status": "not_attempted",
         "owner_review_status": "pending",
     })
@@ -174,7 +182,7 @@ class CatalogueIntakeTests(unittest.TestCase):
             write_package(
                 root,
                 products=[product_row(publication_status="published")],
-                images=[image_row(rights_status="cleared", publication_status="approved", alt_text_en="Folded textile detail")],
+                images=[image_row(rights_status="cleared", rights_evidence_reference="private-rights-record:p-001:image-01", publication_status="approved", alt_text_en="Folded textile detail")],
             )
             self.assertEqual(validate_catalogue_directory(root), [])
 
@@ -206,13 +214,153 @@ class CatalogueIntakeTests(unittest.TestCase):
         summary_path.write_text(json.dumps(summary), encoding="utf-8")
         return csv_path, summary_path
 
+
+    def write_m2_sample(self, root: Path, product_count: int = 10, image_audit_overrides=None):
+        products = []
+        facts = []
+        images = []
+        sources = []
+        audit_rows = []
+        for index in range(1, product_count + 1):
+            product_id = f"p-{index:03d}"
+            image_path = f"products/{product_id}/image-01.jpg"
+            source_hash = "b" * 64
+            source_ref = f"etsy:{source_hash}:row:{index}"
+            products.append(product_row(
+                product_id=product_id,
+                source_record_ref=source_ref,
+                publication_status="draft",
+                prototype_use_approval="approved",
+                prototype_use_evidence_reference=f"owner-approval:prototype:{product_id}",
+            ))
+            sources.append(source_record_row(
+                product_id=product_id,
+                source_file_sha256=source_hash,
+                source_data_row_number=str(index),
+                source_record_ref=source_ref,
+                reconciliation_status="owner_reconciled",
+            ))
+            facts.append(fact_row(
+                product_id=product_id,
+                fact_key="verified_sample_fact",
+                fact_value=f"Synthetic verified fixture fact {index}",
+                verification_status="owner_verified",
+                evidence_reference=f"private-source-record:{product_id}:fact-01",
+                public_approval="not_reviewed",
+                prototype_use_approval="approved",
+                prototype_use_evidence_reference=f"owner-approval:prototype-fact:{product_id}",
+            ))
+            images.append(image_row(
+                product_id=product_id,
+                asset_id=f"asset-{index:03d}",
+                source_relative_path=image_path,
+                image_role="primary",
+                rights_status="cleared",
+                rights_evidence_reference=f"private-rights-record:{product_id}:image-01",
+                publication_status="pending",
+                alt_text_en=f"Prototype-only image fixture {index}",
+                prototype_use_approval="approved",
+                prototype_use_evidence_reference=f"owner-approval:prototype-image:{product_id}",
+            ))
+            audit_row = {
+                "relative_path": image_path,
+                "detected_format": "JPEG",
+                "status": "ok",
+                "sha256": f"{index:064x}",
+                "duplicate_group": "",
+            }
+            if image_audit_overrides and index in image_audit_overrides:
+                audit_row.update(image_audit_overrides[index])
+            audit_rows.append(audit_row)
+
+        write_package(root, products=products, facts=facts, images=images, sources=sources)
+        csv_path, summary_path = self.write_photo_audit(root.parent, audit_rows)
+        return csv_path, summary_path, products, facts, images
+
+    def test_m2_sample_accepts_10_owner_approved_products_without_publication(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, products, facts, images = self.write_m2_sample(root, 10)
+            self.assertTrue(all(row["publication_status"] == "draft" for row in products))
+            self.assertTrue(all(row["public_approval"] == "not_reviewed" for row in facts))
+            self.assertTrue(all(row["publication_status"] == "pending" for row in images))
+            self.assertEqual(validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True), [])
+
+    def test_m2_sample_rejects_fewer_than_10_products(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, *_ = self.write_m2_sample(root, 9)
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True)]
+            self.assertTrue(any("must contain 10–20 distinct products" in item for item in messages))
+
+    def test_m2_sample_rejects_more_than_20_products(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, *_ = self.write_m2_sample(root, 21)
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True)]
+            self.assertTrue(any("must contain 10–20 distinct products" in item for item in messages))
+
+    def test_m2_sample_requires_photo_audit_pair(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            self.write_m2_sample(root, 10)
+            messages = [str(issue) for issue in validate_catalogue_directory(root, require_m2_sample=True)]
+            self.assertTrue(any("M2 sample validation requires" in item for item in messages))
+
+    def test_m2_sample_requires_explicit_product_fact_and_image_use_approvals(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, products, facts, images = self.write_m2_sample(root, 10)
+            products[0]["prototype_use_approval"] = "not_reviewed"
+            facts[1]["verification_status"] = "source_documented"
+            images[2]["prototype_use_approval"] = "rejected"
+            write_package(root, products=products, facts=facts, images=images)
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True)]
+            self.assertTrue(any("lacks explicit prototype-use approval" in item for item in messages))
+            self.assertTrue(any("lacks at least one owner-verified" in item for item in messages))
+            self.assertTrue(any("lacks a rights-cleared, prototype-approved primary image" in item for item in messages))
+
+    def test_m2_sample_requires_image_rights_evidence(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, products, facts, images = self.write_m2_sample(root, 10)
+            images[0]["rights_evidence_reference"] = ""
+            write_package(root, products=products, facts=facts, images=images)
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True)]
+            self.assertTrue(any("rights_status=cleared requires rights_evidence_reference" in item for item in messages))
+
+    def test_m2_sample_requires_clean_non_duplicate_photo_audit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, *_ = self.write_m2_sample(
+                root, 10, image_audit_overrides={
+                    1: {"status": "review"},
+                    2: {"duplicate_group": "duplicate-1"},
+                }
+            )
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True)]
+            self.assertGreaterEqual(sum("prototype-approved image must be readable" in item for item in messages), 2)
+
+    def test_m2_sample_prototype_approval_does_not_allow_public_publication(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, products, facts, images = self.write_m2_sample(root, 10)
+            products[0]["publication_status"] = "published"
+            facts[0]["public_approval"] = "approved"
+            images[0]["publication_status"] = "approved"
+            write_package(root, products=products, facts=facts, images=images)
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True)]
+            self.assertTrue(any("must remain draft/in_review" in item for item in messages))
+            self.assertTrue(any("public_approval=approved" in item for item in messages))
+            self.assertTrue(any("must not use public image publication approval" in item for item in messages))
+
     def test_photo_audit_cross_check_accepts_matching_approved_image(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "catalogue"
             write_package(
                 root,
                 products=[product_row(publication_status="published")],
-                images=[image_row(rights_status="cleared", publication_status="approved", alt_text_en="Textile detail")],
+                images=[image_row(rights_status="cleared", rights_evidence_reference="private-rights-record:p-001:image-01", publication_status="approved", alt_text_en="Textile detail")],
             )
             csv_path, summary_path = self.write_photo_audit(Path(tmp), [{
                 "relative_path": "products/p-001/image-01.jpg",
@@ -248,7 +396,7 @@ class CatalogueIntakeTests(unittest.TestCase):
             write_package(
                 root,
                 products=[product_row()],
-                images=[image_row(rights_status="cleared", publication_status="approved", alt_text_en="Textile detail")],
+                images=[image_row(rights_status="cleared", rights_evidence_reference="private-rights-record:p-001:image-01", publication_status="approved", alt_text_en="Textile detail")],
             )
             csv_path, summary_path = self.write_photo_audit(Path(tmp), [{
                 "relative_path": "products/p-001/image-01.jpg",
@@ -321,6 +469,7 @@ class CatalogueIntakeTests(unittest.TestCase):
                 etsy_images=[etsy_image_source_row(
                     local_asset_id="asset-local-1",
                     rights_status="cleared",
+                    rights_evidence_reference="private-rights-record:p-001:etsy-source",
                     download_status="downloaded",
                     owner_review_status="accepted",
                 )],
@@ -328,6 +477,28 @@ class CatalogueIntakeTests(unittest.TestCase):
             messages = [str(issue) for issue in validate_catalogue_directory(root)]
             self.assertTrue(any("local_asset_id must match" in item for item in messages))
             self.assertTrue(any("accepted source image requires" in item for item in messages))
+
+    def test_etsy_cleared_rights_requires_evidence_reference(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = source_record_row()
+            write_package(
+                root,
+                products=[product_row(source_record_ref=source["source_record_ref"])],
+                sources=[source],
+                etsy_images=[etsy_image_source_row(rights_status="cleared")],
+            )
+            messages = [str(issue) for issue in validate_catalogue_directory(root)]
+            self.assertTrue(any("rights_status=cleared requires rights_evidence_reference" in item for item in messages))
+
+    def test_m2_sample_requires_owner_reconciled_source_record(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, products, facts, images = self.write_m2_sample(root, 10)
+            products[0]["source_record_ref"] = ""
+            write_package(root, products=products, facts=facts, images=images)
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True)]
+            self.assertTrue(any("must map to an owner-reviewed source record" in item for item in messages))
 
     def test_etsy_downloaded_image_passes_when_linked_to_local_image_record(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -341,6 +512,7 @@ class CatalogueIntakeTests(unittest.TestCase):
                 etsy_images=[etsy_image_source_row(
                     local_asset_id="asset-local-1",
                     rights_status="cleared",
+                    rights_evidence_reference="private-rights-record:p-001:etsy-source",
                     download_status="downloaded",
                     owner_review_status="accepted",
                 )],

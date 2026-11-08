@@ -60,6 +60,21 @@ The workflow artifact is diagnostic evidence, not owner visual sign-off. It does
 
 PR #12 added semantic and keyboard-operation checks without modifying the supplied HTML, CSS or JavaScript. On PR #12 head `d5ad89d768ef641ed865d1f4e16fae70ef101f10`, GitHub Actions [DAG Structural Kit Browser Review run #7](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004123) passed **45/45** route/viewport combinations, **54** native Enter/Space mobile navigation sequences across nine pages at 390px, 430px and 768px, and the reduced-motion check. No horizontal overflow, browser page errors or failed local document/style/script assets were reported. The run uploaded 18 full-page screenshots plus JSON and Markdown summaries in artifact `dag-kit-browser-review-7-c0381a76d2298ab2a1077c4ce754ee19bbb6a9b3`. The companion [DAG Project Quality run #79](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004185) passed the foundation, owner-gate, accessibility, documentation and link audits and the complete **89-test** Python suite.
 
+## M2 structural journey coverage and owner-prioritized journeys
+
+D-016 now confirms the owner priority for these five journeys. The structural test automation uses only links and controls already present in D-014:
+1. Home → Shop → Collection (discover).
+2. Shop → Collection → Product (browse).
+3. Product information accordions and verification that variant/purchase remain disabled (evaluate).
+4. About → Makers → Journal → Article (contextualise).
+5. Product → Enquire → Contact, with supplied form controls/submission still disabled (support).
+
+Each journey is executed at 390, 430, 768, 1280 and 1440 CSS-pixel widths (25 journey/viewport combinations). On final PR #13 head, [Chromium Browser Review run #16](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352) passed 25/25 journey/viewport combinations, the existing nine-page × five-width matrix (45 checks), 54 mobile Enter/Space focus-retention sequences and reduced-motion. It uploaded 18 full-page screenshots plus JSON/Markdown summaries in [artifact 13617964823](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352/artifacts/13619045256). Companion [Project Quality run #89](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463438) passed all audits and 101/101 Python tests. This evidence is structural automation, not human usability or owner visual acceptance. The owner walkthrough plan is docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md. Each of the five owner-approved journeys is reviewed on mobile, tablet and desktop; the owner-led visual walkthrough is not participant usability research. No customer usability validation is claimed.
+
+## Owner review and human acceptance still pending
+
+D-016 approves the priority order: (1) discover DAG identity, (2) browse products/categories/collections, (3) evaluate product/images/verified specifications, (4) explore makers/materials/editorial, and (5) contact/support. Mobile responsiveness/usability is cross-cutting across all five. Owner visual acceptance and any later participant usability study remain outstanding.
+
 ## Not yet verified
 
 - Screen-reader behaviour with VoiceOver, NVDA or another assistive technology.

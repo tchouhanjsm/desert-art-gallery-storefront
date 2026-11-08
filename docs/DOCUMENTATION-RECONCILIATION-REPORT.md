@@ -192,3 +192,14 @@ browser page errors or failed local assets were reported. The run published 18 f
 screenshots and JSON/Markdown summaries as a CI artifact. The project-quality workflow run
 #74 also passed. This automated evidence does not claim screen-reader, WCAG, contrast or owner
 visual approval.
+
+
+## 9. M2 owner-decision reconciliation — 8 November 2026
+
+D-016 supersedes the former M2-A through M2-E gate state without modifying the D-014 structural kit. The owner approved the initial seven-person qualitative research cohort and five-journey priority; this is not evidence of customer demand or usability. The owner approved labelled image-frame/layout placeholders while genuine 10–20 product/photo evidence remains pending. The owner conditionally authorized exactly six local/private non-transactional prototype areas after explicit M2-A visual approval.
+
+One coherent live-reference-led proposal is documented in docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md. POJ Studio is primary for ecommerce architecture and product evaluation; Macaroni Shoten informs curation and editorial framing. Directly resolved POJ font/colour values were not available in the browser inspection; Macaroni's observed DOM values are recorded as its values only. All proposed DAG values remain unapproved.
+
+New companion documents are docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md and docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md. Recruitment, external contact, personal-data collection, recordings, incentives/spend, public deployment and production application work remain unauthorized. The six prototype areas are a review grouping across the unchanged nine D-014 pages and must remain outside this public repository.
+
+The D-014 HTML/CSS/JS files, page inventory, component inventory and QA-only token fallback are retained. No actual product photographs, catalogue rows or personal research data were added.

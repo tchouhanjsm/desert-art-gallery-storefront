@@ -1,1 +1,1 @@
-product_id,asset_id,source_relative_path,image_role,sort_order,rights_status,publication_status,alt_text_en
+product_id,asset_id,source_relative_path,image_role,sort_order,rights_status,rights_evidence_reference,publication_status,alt_text_en,prototype_use_approval,prototype_use_evidence_reference

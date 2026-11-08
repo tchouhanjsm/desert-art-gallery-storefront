@@ -1,6 +1,6 @@
 # M2 — Structural Kit Review and Prototype Entry
 
-**Status:** The owner-supplied nine-page structural scope is recorded in D-014 and materialized at `design/owner-controlled-kit-v2/` (25 files). PR #8 verified all 14 original HTML/CSS/JS assets against the owner archive. PR #9 adds two CSS-only accessibility maintenance rules; PR #11 applies the documented mobile Product Detail grid correction. PR #12 strengthens semantic accessibility auditing and Chromium keyboard/responsive QA without changing any owner-supplied HTML, CSS or JavaScript asset. The latest PR #12 CI passed 45/45 route/viewport checks, 54 mobile keyboard-operation sequences and reduced-motion review. M2 customer validation and any later prototype work remain owner-gated.
+**Status:** D-014's nine-page structural kit remains unchanged. D-016 records the owner's new M2-A–E decisions: the single visual proposal is awaiting explicit approval; the seven-person Japan research cohort and five-journey priority are approved as plans; the placeholder/image-frame approach is approved while genuine product evidence remains pending; and exactly six local/private non-transactional prototype areas are authorized only after M2-A visual approval. No production or public deployment is authorized.
 
 ## Governing baseline
 
@@ -8,13 +8,31 @@ D-014 establishes the exact nine-page structural baseline. Use only `docs/PAGE-I
 
 | Gate | Required owner input / evidence | Current status |
 |---|---|---|
-| M2-A — Brand identity | Exact owner-approved colours, typography/weights/hierarchy, logo/wordmark/descriptor and photography direction; documented in `docs/OWNER-TOKEN-INPUT.md` and `DECISIONS.md`. | Open — structural kit is not identity approval |
-| M2-B — Customer segment / journey | Confirm initial Japan-first customer segment and prioritized customer tasks before recruiting or running sessions. | Open — no fieldwork is complete |
-| M2-C — Product/photo evidence | Owner-approved representative real sample with verified product/image mapping and rights/permissions; labelled placeholders for missing views/states (D-011). | Open — sample and rights approval outstanding |
-| M2-D — Responsive journey coverage | Owner confirms journey order; evaluate mobile/tablet/desktop across every selected journey (D-012). | Open — mobile is a required dimension, not a separate journey |
-| M2-E — Next-phase authorization | Explicit owner authorization for the exact prototype/review work, acceptance criteria and non-production boundary. | Open — D-014 alone does not authorize expansion or production implementation |
+| M2-A — Visual identity | Review the single reference-led proposal and explicitly approve/revise colours, typography, logo/wordmark/descriptor and photo direction. | **Proposal prepared; owner visual approval pending** — no token or identity value is approved/applied |
+| M2-B — Customer research | Approved seven-person Japan-based cohort; separately approve route, consent, data handling, moderator, recording and any costs before fieldwork. | **Cohort approved as a plan; fieldwork authorization pending** — no recruitment, contact or collection |
+| M2-C — Product/photo evidence | Use labelled placeholders and image frames until owner supplies 10–20 genuine product photos and verified information; keep intake/fact checks ready. | **Placeholder approach approved; sample pending** — no image validation or full-library migration |
+| M2-D — Responsive journeys | Five owner-prioritized journeys; evaluate each on mobile, tablet and desktop; retain human owner and usability acceptance. | **Priority approved; automation passed; human review pending** — automation is not usability validation |
+| M2-E — Private prototype authorization | Exactly six local/private non-transactional areas under D-016; start branded implementation only after M2-A approval. | **Conditionally authorized after visual approval** — no production, public deployment or new UI scope |
 
-Open gates block only dependent work. They do not block safe documentation maintenance, source-kit verification, accessibility review of the supplied markup or factual catalogue preparation.
+## Private prototype authorization under D-016
+
+D-016 authorizes private/local, non-transactional HTML/CSS prototypes for exactly six areas:
+1. Homepage — index.html.
+2. Shop and Collections — pages/shop.html and pages/collection.html.
+3. Product Detail — pages/product.html.
+4. About and Makers — pages/about.html and pages/makers.html.
+5. Journal and Stories — pages/journal.html and pages/article.html.
+6. Contact and Support — pages/contact.html.
+
+Global header, supplied navigation, search presentation, shared components and footer are included only where relevant. These six review groupings do not replace or expand the exact nine-page D-014 structural inventory.
+
+**Start gate:** branded prototype implementation begins only after the owner explicitly approves the single M2-A visual proposal. Build locally/private and keep all implementation outside this public repository. Use only the proposed/approved layout within current page and component inventories. Until genuine 10–20 product sample records and images are supplied and verified, use clearly labelled image frames and layout placeholders.
+
+Allowed: responsive layout implementation, shared component demonstrations and non-transactional interaction demonstrations within the six areas. Cart/checkout concepts may be represented only when needed to explain the journey, never as a live transaction or approved commercial commitment.
+
+Excluded: production application, live payment/orders, shipping/tax calculations, external recruitment, public deployment, paid services/subscriptions, full photography-library migration, new pages/sections/widgets/promotional content/interactions, or unapproved brand/commercial model changes. Search/filter/sort, variant, purchase and enquiry submission remain disabled.
+
+D-015 remains the decision record for the completed repository-side structural review and its automated checks. D-016 extends the authorized scope only to the six private prototype areas after M2-A visual approval.
 
 ## Nine-page baseline
 
@@ -29,6 +47,23 @@ Open gates block only dependent work. They do not block safe documentation maint
 9. `pages/contact.html` — Contact: intro, contact-information panel and disabled enquiry-form concept.
 
 Shared shell elements are limited to the kit-only notice, utility location row, text wordmark/descriptor placeholder, six supplied navigation destinations, mobile navigation toggle, disabled Search where present, Enquire where supplied and supplied footer groups. Preserve page-specific omissions exactly.
+
+## Latest structural browser assurance
+
+PR #12 final-head evidence (already merged):
+- [DAG Project Quality run #81](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466218616) — PASS, **89/89 Python tests**.
+- [DAG Structural Kit Browser Review run #8](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466218645) — PASS, **45/45 route/viewport checks**, **54** mobile Enter/Space navigation sequences, reduced-motion check and 18 screenshots.
+
+The M2 branch adds **25 journey/viewport checks** (five bounded journeys × five viewport widths). Their successful final-head results are recorded in the PR #13 evidence section below.
+
+## PR #13 — Final M2 browser and quality acceptance evidence
+
+On PR #13's final code head before the documentation-only evidence sync:
+
+- [DAG Project Quality run #89](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463438) — PASS: **101/101 Python tests**, foundation/source-integrity checks, M2 disposition audit, accessibility source audit, documentation consistency and Markdown links.
+- [DAG Structural Kit Browser Review run #16](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352) — PASS: **45/45** route/viewport checks, **25/25** journey/viewport checks, **54** mobile Enter/Space focus-retention sequences, reduced-motion check and **18** full-page screenshots. The artifact contains JSON/Markdown summaries: [CI artifact](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483463352/artifacts/13619045256).
+
+This automated evidence verifies the bounded structural review only. It does not replace owner visual sign-off, participant usability research, screen-reader testing, WCAG certification or acceptance of genuine product content/photos.
 
 ## Closed behaviour and content boundary
 
@@ -55,8 +90,9 @@ PR #12 adds a structural HTML parser audit for document titles, accessible names
 1. Complete: the 25 source-kit files are materialized; the 14 original implementation assets were byte-verified at D-014 adoption. Current source hashes are enforced by scripts/validate_project.py.
 2. Complete at source level: validate all page links, relative stylesheet/script paths, English language, main landmarks, heading count, menu state, focus CSS and reduced-motion support.
 3. Complete for the current structural baseline: PR #12 Chromium run [#42466004123](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004123) passed 45/45 route/viewport combinations at 390, 430, 768, 1280 and 1440 CSS-pixel widths; 54 mobile keyboard-operation sequences and reduced-motion review also passed. The run uploaded 18 full-page screenshots and JSON/Markdown summaries.
-4. Resolve owner gates M2-A through M2-E before any branded prototype/customer study that depends on them.
-5. Use only verified product facts and owner-cleared sample photographs; label placeholders clearly.
-6. Obtain explicit owner acceptance before advancing to production design or application work.
+4. Obtain explicit M2-A visual approval before implementing the six authorized private prototype areas.
+5. Until the 10–20 genuine sample is supplied, use labelled image frames and layout placeholders; do not claim image validation.
+6. Keep M2-B fieldwork separately blocked until recruitment, consent/privacy, data handling and cost are authorized.
+7. Conduct the owner-led six-area visual walkthrough and record requested changes; do not equate automation with human usability acceptance.
 
 **No production application development, technology selection or public deployment is authorized by this pack.**

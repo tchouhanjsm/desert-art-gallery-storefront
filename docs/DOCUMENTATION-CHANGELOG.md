@@ -71,3 +71,42 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Added 54 mobile Enter/Space keyboard-operation sequences across the nine pages at 390px, 430px and 768px, checking the existing disclosure state and focus retention without changing runtime JavaScript.
 - Confirmed CI success: Project Quality run #79 passed 89 Python tests; Chromium Browser Review run #7 passed 45/45 route/viewport combinations and uploaded 18 screenshots plus JSON/Markdown summaries.
 - Recorded the result in the M2 entry pack, roadmap and structural accessibility review. D-014 and M2-A through M2-E owner gates remain unchanged.
+
+
+## 2026-11-08 — Combined M2 A–E decision and structural journey review
+- Recorded D-015 from the owner's instruction to achieve M2 A–E, narrowly authorizing the bounded non-production structural journey-review scope.
+- Added a consolidated M2 decision/review pack separating owner-controlled inputs, proposed customer research, missing source evidence, responsive journey order and the limits of D-015 authorization.
+- Proposed (not owner-validated) a first Japan qualitative cohort centred on home/interior shoppers with textile/craft interest, with craft/material enthusiasts and small trade/gift contrasts.
+- Added five Playwright journey scenarios across five responsive widths; the nine-page viewport checks, mobile keyboard operations and disabled commerce states remain in scope.
+- Extended private catalogue intake templates/validation so product facts and images require distinct prototype-use approval/evidence, and image rights clearance evidence is recorded separately from public publication approval.
+- Added an M2-specific 10–20 product/photo-audit validation mode. No private catalogue data, customer data or product photographs were added to Git.
+- M2-A and M2-C remain blocked on owner-supplied identity inputs and product/photo evidence; no recruitment, customer fieldwork, branded theme, production feature or deployment was started.
+
+## 2026-11-08 — M2 source reconciliation and image-rights evidence hardening
+- Required every product in a private M2 sample to trace to an owner-reconciled source-export row.
+- Added rights_evidence_reference to Etsy source-image records and required it whenever source-image rights are marked cleared.
+- Added regression coverage for missing source reconciliation and missing Etsy-image rights evidence.
+- Updated the owner input queue, catalogue intake rules, M2 decision pack and roadmap.
+
+## 2026-11-08 — M2 A–E final-head validation
+- Final PR #13 Project Quality run #88 passed all source/foundation, M2 disposition, accessibility, documentation consistency and Markdown link audits; all 101 Python tests passed.
+- Final PR #13 Chromium Browser Review run #15 passed 45/45 route/viewport checks, 25/25 journey/viewport checks, 54 keyboard-operation sequences and reduced-motion; 18 screenshots plus JSON/Markdown summaries were uploaded.
+- Recorded the final CI evidence in the M2 acceptance pack, decision pack, roadmap and accessibility review.
+- Retained M2-A and M2-C as owner-evidence blockers; M2-B/M2-D human/owner approval remains separate from automation; D-015 remains limited to non-production structural review.
+
+## 2026-11-08 — M2 final evidence links synchronized
+- Updated the M2 acceptance, decision, roadmap and accessibility documents to link to final documentation-sync validation: Project Quality run #89 and Chromium Browser Review run #16.
+- Removed the obsolete note that journey CI was still pending.
+
+
+## 2026-11-08 — Owner M2 decisions, reference-led visual proposal and conditional private prototype scope
+
+- Recorded D-016: POJ Studio primary, Macaroni Shoten secondary, Jaisalmer as DAG identity source; one coherent visual proposal requested with owner approval pending.
+- Added docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md with live reference observations, measured/unmeasured findings, one exact proposed HEX system, proposed typography/hierarchy, wordmark requirements, six-area compositions, image-frame ratios, CSS tokens/components and desktop/mobile examples.
+- Added docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md for the owner-approved seven-person Japan qualitative cohort, screening, objectives, neutral interview prompts, recruitment options, consent/privacy safeguards and indicative incentive/vendor costs. No recruitment, contact, personal-data collection, recording or spending is authorized.
+- Added docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md mapping exactly six owner review areas to the unchanged nine-page D-014 kit and preparing desktop/mobile owner acceptance.
+- M2-C now explicitly uses labelled layout placeholders and image frames pending approximately 10–20 genuine owner-supplied product photos and verified facts; no full photo-library migration.
+- M2-D owner-approved five-journey priority replaces the previous recommendation-only state. Mobile remains cross-cutting; automated tests are explicitly not human usability acceptance.
+- M2-E authorizes exactly six local/private non-transactional prototype areas only after M2-A visual approval. Prototype implementation must stay outside the public repository; no production app, public deployment, live transactions, recruitment or spending is authorized.
+- Reconciled README, AGENTS, design authority, source-of-truth, owner registers, M2 pack, roadmap, catalogue intake, accessibility review and brand/visual system guidance.
+- Updated M2 readiness audit and regression tests to enforce D-016, the visual-approval gate, seven-person cohort, placeholder boundaries and six-area private prototype scope. D-014 HTML/CSS/JS assets and the current token fallback remain unchanged.

@@ -29,7 +29,7 @@ Create a private working folder by copying the header-only files in `templates/c
 | `product-facts.csv` | One fact about one product | Material, dimensions, condition, care, maker, origin, technique and any other factual attribute with evidence and publication approval |
 | `product-images.csv` | One local image mapped to one product | Local source path, asset ID, image role/order, rights state, publication state and English alt text |
 | `product-source-records.csv` | One immutable source-export row mapped to one product | Source system, source-file SHA-256, logical data-row number, raw source values and reconciliation state |
-| `etsy-image-sources.csv` | One Etsy IMAGE1–IMAGE10 URL reference | Original remote URL, source record link, rights/download/review state and eventual local asset ID |
+| `etsy-image-sources.csv` | One Etsy IMAGE1–IMAGE10 URL reference | Original remote URL, source record link, rights evidence, download/review state and eventual local asset ID |
 
 Do not add real product rows to the repository. Work on private copies outside Git and outside the original photo folder.
 
@@ -87,7 +87,23 @@ Keep both report files private and outside Git. This optional check compares ref
 
 The checker validates structure and inventory references, not the truth of product claims or the legal right to publish an image. A structurally valid row can still contain inaccurate information; human source review, rights verification and owner publication approval remain mandatory.
 
-An Etsy Listings Download export also has a separate private source-record and remote-image mapping convention. See [21 — Etsy Source Export Mapping and Reconciliation](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md) for the historical source audit and field mapping.
+An Etsy Listings Download export also has a separate private source-record and remote-image mapping convention. A source image marked rights-cleared must carry its own rights_evidence_reference, even before it has a local asset mapping. See [21 — Etsy Source Export Mapping and Reconciliation](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md) for the historical source audit and field mapping.
+
+## Private prototype-use approval (M2 sample)
+
+The private M2 sample uses three separate approval/evidence boundaries:
+
+- Product record: prototype-use approval and evidence for the product record.
+- Product fact: owner-verified fact evidence plus separate prototype-use approval/evidence.
+- Product image: rights-clearance evidence plus separate prototype-use approval/evidence and the completed photo-audit record.
+
+A rights-cleared image is not automatically approved for a private prototype. A prototype-approved fact or image is not approved for public publication. Keep product records in draft/in-review, fact public approval at not_reviewed and image publication status pending throughout private M2 review.
+
+The intake CSV templates include these separate fields. A private 10–20 product M2 sample can be checked with the validator's --m2-sample option and both reports from one complete photo audit:
+
+    python scripts/validate_catalogue_intake.py "/path/to/private/catalogue-intake" --photo-audit-csv "/path/to/private-reports/dag-photo-audit.csv" --photo-audit-summary "/path/to/private-reports/dag-photo-audit-summary.json" --m2-sample
+
+This stricter mode requires 10–20 distinct products, an owner-reconciled source-export row per product, explicit product/fact/image prototype-use approval, at least one owner-verified fact per product, a rights-cleared primary image with evidence, and a completed audit with readable, non-duplicate images. It rejects public publication approval states in the private-sample validation mode. This is a structural validator; it cannot prove the underlying real-world fact or right is valid. Keep the filled CSVs, source export, photos and reports private and outside Git.
 
 ## What this does not decide
 
@@ -108,3 +124,18 @@ An Etsy Listings Download export also has a separate private source-record and r
 6. Review the proposed intake conventions with the owner before treating them as the production data contract.
 
 Do not convert this draft intake convention into an approved production schema, taxonomy or backend. The owner must review and explicitly approve any production data contract. The active D-014 page and component inventories remain the current scope.
+
+
+## M2-C — Placeholder and image-frame display rules (D-016)
+
+The owner has approved a clearly labelled placeholder approach for private prototypes:
+- Use image frames to demonstrate the proposed aspect ratio, image count and gallery sequence.
+- Label an empty product-photo frame exactly: “ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING”.
+- Label a non-product layout tile: “LAYOUT PLACEHOLDER — NOT A DAG PRODUCT”.
+- Label each absent angle/view; do not silently duplicate an image and imply multiple real photographs.
+- Never invent products, maker names, verified attributes, prices or reviews.
+- Never use generated artwork, unrelated stock or remote Etsy imagery as a real DAG catalogue image.
+
+The owner expects to provide approximately 10–20 genuine product photographs with associated verified product information when available. Until the sample is supplied and reconciled, product-image validation is PENDING. Keep all photos, raw export rows and completed intake/audit reports in the owner's private storage. The 3,000-photo library must not be bulk migrated or committed.
+
+These display rules do not waive the existing fact, rights, source-row or separate prototype-use approval checks. The D-016 private prototype must remain local/private and outside the public repository.
