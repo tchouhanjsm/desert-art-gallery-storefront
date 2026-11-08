@@ -1,3 +1,7 @@
+**HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT.** This file is preserved for audit traceability only. All instructions, proposal choices, page/component guidance and links below are non-operative; they do not override the current eight-level authority hierarchy, D-014, or the active page/component inventories.
+
+---
+
 # M1 — Owner Review and Exit Gate
 
 **Status:** The BLEND reference hierarchy is confirmed and the complete implementation specification is delivered. The four visual territories and initial customer-validation cohort remain owner-review items. No final visual direction is selected or approved.

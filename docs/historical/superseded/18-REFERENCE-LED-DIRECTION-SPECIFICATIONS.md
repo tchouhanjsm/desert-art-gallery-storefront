@@ -1,3 +1,7 @@
+**HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT.** This file is preserved for audit traceability only. All instructions, proposal choices, page/component guidance and links below are non-operative; they do not override the current eight-level authority hierarchy, D-014, or the active page/component inventories.
+
+---
+
 # 18 — Reference-Led DAG Visual Territory Specifications
 
 **Status:** Four new proposals for owner comparison. None is recommended, preferred, selected or approved.

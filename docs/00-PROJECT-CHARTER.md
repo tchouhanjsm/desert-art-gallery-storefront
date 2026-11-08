@@ -18,11 +18,11 @@ These are DAG's references for creative and retail study. Study their actual edi
 
 Reference fidelity is BLEND. POJ Studio is the primary reference for overall ecommerce architecture and page experience. Macaroni Shoten is the secondary reference for select-shop curation and concise editorial retail character. DAG retains its own Jaisalmer identity, product taxonomy, photography and English-only content.
 
-This hierarchy does not select DAG's final palette, typography, visual personality, art direction, technology, commerce model or legal/operational rules.
+This hierarchy does not select DAG's final palette, typography, visual personality, art direction, technology, commerce model or legal/operational rules. It identifies references for non-proprietary experience study only; it does not authorize importing their navigation, banners, filters, checkout, service features or other UI into the closed D-014 kit.
 
 ## Current structural scope (D-014)
 
-The owner has adopted the DAG Owner-Controlled Design Kit v2 as the structural HTML/CSS source for exactly nine pages. The original HTML/CSS/responsive styles and supplied prototype script are preserved in `design/owner-controlled-kit-v2/`. See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for the closed route and component contract.
+The owner has adopted the DAG Owner-Controlled Design Kit v2 as the structural HTML/CSS source for exactly nine pages. The 25-file owner archive is materialized in `design/owner-controlled-kit-v2/`; its SHA-256 is `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`. The 14 original HTML/CSS/JS implementation assets were verified at adoption; PR #9 applies two documented CSS-only accessibility maintenance rules. See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for the closed route and component contract.
 
 D-014 does not approve final brand identity, production application development, a framework/backend/hosting choice, cart/checkout or other commerce functionality, or any new UI beyond the supplied kit.
 

@@ -1,7 +1,7 @@
 # Desert Art Gallery — Owner-Controlled Design Kit v2
 
 **Current structural source:** `design/owner-controlled-kit-v2/`  
-**Status:** Adopted by D-014. All 25 kit files are present. PR #8 verified all 14 original HTML/CSS/JS assets against the supplied ZIP. PR #9 updates only styles/components.css (keyboard focus visibility) and styles/layout.css (reduced-motion support); the nine HTML pages and 12 other implementation assets remain unchanged. CI verifies the current implementation hashes and exact file inventory. This remains structural-only, not brand identity approval or production application authorization.
+**Status:** Adopted by D-014. The uploaded 25-file owner archive is materialized in the repository and its SHA-256 (`64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`) matches the adoption archive. PR #8 verified all 14 original HTML/CSS/JS assets. PR #9 amended only styles/components.css (keyboard focus visibility) and styles/layout.css (reduced-motion support); the nine HTML pages and 12 other implementation assets remain unchanged. CI pins the current implementation hashes and exact file inventory. This remains structural-only, not brand identity approval or production application authorization.
 
 ## Authority hierarchy
 
@@ -9,9 +9,10 @@
 2. Root `AGENTS.md` — permanent agent rules.
 3. `docs/DESIGN-AUTHORITY.md` — owner control and closed design scope.
 4. `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md` — repository-wide hierarchy/reconciliation policy.
-5. Owner-approved design specifications and `docs/PAGE-INVENTORY.md` / `docs/COMPONENT-INVENTORY.md`.
-6. Technical documentation that does not conflict.
-7. Historical files — audit context only, never active instructions.
+5. Owner-approved design specifications.
+6. Current page and component inventories: `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md`.
+7. Technical and implementation documentation, only where it does not conflict with levels 1–6.
+8. Historical files — audit context only, never active instructions.
 
 ## Preview and implementation source
 

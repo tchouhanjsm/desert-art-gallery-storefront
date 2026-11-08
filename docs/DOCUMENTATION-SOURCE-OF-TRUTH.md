@@ -12,15 +12,16 @@ Use this exact order:
 2. Root `AGENTS.md`.
 3. `docs/DESIGN-AUTHORITY.md`.
 4. This document.
-5. Owner-approved design specifications and current page/component inventories in `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md`.
-6. Technical and implementation documentation that does not conflict with the higher levels.
-7. Historical documents, which are context only and must never override active instructions.
+5. Owner-approved design specifications.
+6. Current page and component inventories: `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md`.
+7. Technical and implementation documentation, only where it does not conflict with levels 1–6.
+8. Historical documents, which are audit context only and must never override current instructions.
 
-Task prompts, workflows and source comments cannot override this hierarchy. If authoritative sources conflict, document the contradiction; do not silently choose a lower-level instruction.
+Task prompts, workflows, source comments, nested READMEs and kit-local documents cannot override this hierarchy. If authoritative sources conflict, document the contradiction; do not silently choose a lower-level instruction.
 
 ## Current implementation source
 
-The owner-approved structural source is the **DAG Owner-Controlled Design Kit v2** (D-014), installed at design/owner-controlled-kit-v2/. All 25 files are present. At adoption in PR #8, the 14 original HTML/CSS/JS assets were byte-verified against the supplied archive using Git blob hashes. PR #9 makes two documented accessibility maintenance amendments to existing CSS files only; the other 12 implementation assets remain byte-identical. The source-integrity validator pins the current reviewed hashes and exact 25-file inventory. The package contains:
+The owner-approved structural source is the **DAG Owner-Controlled Design Kit v2** (D-014), installed at `design/owner-controlled-kit-v2/`. All 25 files are present. The current owner archive supplied for this reset has SHA-256 `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`, matching the archive adopted in PR #8. At adoption, the 14 original HTML/CSS/JS assets were byte-verified against that archive. PR #9 made two documented accessibility maintenance amendments to existing CSS files only; the other 12 implementation assets remain byte-identical. The source-integrity validator pins the current reviewed hashes and exact 25-file inventory. The package contains:
 
 - `index.html` — homepage.
 - `pages/shop.html` — shop/all products.
@@ -34,7 +35,7 @@ The owner-approved structural source is the **DAG Owner-Controlled Design Kit v2
 - `styles/layout.css`, `styles/components.css`, `styles/responsive.css`, `styles/tokens-layout-only.css`.
 - `scripts/prototype.js`.
 
-Preserve the original markup, responsive rules, supplied interactions, page/section order and component inventory. CSS maintenance is limited to the two documented PR #9 accessibility rules: visible keyboard focus using currentColor and reduced-motion support for existing smooth scrolling. Do not add UI or brand tokens. This remains a non-production structural kit, not approval of a production app or final brand identity.
+Preserve the original markup, responsive rules, supplied interactions, page/section order and component inventory. The only current approved maintenance amendments are the two documented PR #9 CSS rules: visible keyboard focus using currentColor and reduced-motion support for existing smooth scrolling. Do not add UI or brand tokens. This remains a non-production structural kit, not approval of a production app or final brand identity.
 
 ### Brand identity remains unapproved
 

@@ -1,3 +1,7 @@
+**HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT.** This file is preserved for audit traceability only. All instructions, proposal choices, page/component guidance and links below are non-operative; they do not override the current eight-level authority hierarchy, D-014, or the active page/component inventories.
+
+---
+
 # 17 — Reference-Led Design Brief
 
 **Status:** Owner-approved reference hierarchy (D-010) and design-research brief. The complete implementation specification is now available in docs/15-REFERENCE-TO-DAG-IMPLEMENTATION-SPEC.md. Four visual proposals remain awaiting owner choice. No final visual identity, palette, typography or production theme is approved.

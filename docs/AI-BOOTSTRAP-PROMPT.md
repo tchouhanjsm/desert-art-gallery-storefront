@@ -7,13 +7,13 @@ You are joining a new DAG repository. The root `AGENTS.md`, `README.md`, owner d
 ## First action
 1. Read root `AGENTS.md` and `README.md`.
 2. Read `docs/DECISIONS.md`, `docs/DESIGN-AUTHORITY.md` and `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`.
-3. Read `docs/PAGE-INVENTORY.md`, `docs/COMPONENT-INVENTORY.md` and the current reconciliation checklist.
-4. Inspect the current branch, repository tree, open PRs and relevant source before changing anything.
+3. Read owner-approved design specifications (level 5), then `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` (level 6), and the current reconciliation checklist.
+4. Inspect the current branch, complete tracked repository tree, open PRs, relevant sources, workflows and issue templates before changing anything.
 
 ## Current confirmed scope
 D-014 adopts the owner-supplied DAG v2 structural kit as the sole active HTML/CSS implementation source for exactly nine pages. Preserve original markup, CSS, responsive rules, prototype script, page/section order, components, placeholders and disabled states. The kit is not a production app and does not approve final brand identity.
 
-The intended kit path is `design/owner-controlled-kit-v2/`. Verify that the files are actually present before claiming installation. The reconciliation report records any current source-materialization blocker.
+The active kit is materialized at `design/owner-controlled-kit-v2/`. The current owner archive SHA-256 is `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`; verify the 25-file inventory and current implementation asset hashes with `scripts/validate_project.py`. Do not describe kit materialization as blocked or treat this document as permission to re-extract/alter the supplied kit.
 
 ## Owner-controlled identity
 The owner alone approves exact colours, typography families/weights/hierarchy/type scale, logo/wordmark/descriptor and photography direction/crops. These values remain pending in `docs/OWNER-TOKEN-INPUT.md`. Do not generate an option set, recommend a visual territory, blend historical ideas or select defaults. `tokens-layout-only.css` is browser/system QA fallback only, not a DAG palette or production theme.
@@ -36,5 +36,8 @@ D-010: POJ Studio is primary for ecommerce/page structure; Macaroni Shoten is se
 ## Authorization boundary
 D-014 does not authorize production app development, framework/database/CMS/hosting selection, public deployment, paid services, research spending or commercial/legal decisions. Record a written change request and obtain explicit owner approval before changing scope.
 
+## Documentation hierarchy and reset rule
+Follow the exact eight levels in `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`. If a lower-level prompt or file conflicts with a higher level, reconcile the lower-level active text; do not merely add a note alongside it. Historical paths are audit-only and cannot be used as current implementation instructions. When a decision changes, update the root decisions and affected specifications/inventories, then run the repository-wide contextual consistency and link audits.
+
 ## Reporting
-Report exact files changed, checks actually run, test results, remaining blockers and whether the kit has been materialized and byte-verified in Git. Never claim unperformed validation.
+Report exact files changed, checks actually run, test results, remaining blockers and whether the kit has been materialized and hash-verified in Git. Never claim unperformed validation.

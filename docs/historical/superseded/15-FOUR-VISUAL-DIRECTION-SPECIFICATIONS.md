@@ -1,3 +1,7 @@
+**HISTORICAL — NOT ACTIVE — DO NOT IMPLEMENT.** This file is preserved for audit traceability only. All instructions, proposal choices, page/component guidance and links below are non-operative; they do not override the current eight-level authority hierarchy, D-014, or the active page/component inventories.
+
+---
+
 # 15 — Four Visual Direction Specifications
 
 **Status: REJECTED by the owner on 6 November 2026 (D-008).** Historical archive only; none of these proposals is active, selected, preferred or approved. Do not reuse these directions as defaults or active candidates.

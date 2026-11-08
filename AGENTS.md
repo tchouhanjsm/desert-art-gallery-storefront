@@ -4,7 +4,7 @@
 
 Build Desert Art Gallery (DAG) as an original, product-led ecommerce and gallery experience rooted in the textiles, objects, material culture and craft identity of Jaisalmer, Rajasthan, with Japan-first customer focus.
 
-**Owner-approved structural source: `design/owner-controlled-kit-v2/` (D-014).** All 25 kit files are materialized in this branch. At D-014 adoption (PR #8), all 14 original HTML/CSS/JS assets were verified byte-for-byte against the owner archive using Git blob hashes. PR #9 applies two narrowly scoped accessibility maintenance changes: an authored :focus-visible outline using currentColor, and a reduced-motion override for the existing smooth-scroll rule. The nine HTML pages and the other 12 implementation assets remain unchanged. Preserve the nine-page structure, responsive rules, supplied JS and component inventory. Do not redesign, restyle, expand or replace the kit.
+**Owner-approved structural source: `design/owner-controlled-kit-v2/` (D-014).** All 25 kit files are materialized in `design/owner-controlled-kit-v2/`. The owner archive SHA-256 is `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`, matching the D-014 adoption archive. At adoption (PR #8), all 14 original HTML/CSS/JS assets were verified byte-for-byte against the archive using Git blob hashes. PR #9 applies two narrowly scoped accessibility maintenance changes: an authored :focus-visible outline using currentColor, and a reduced-motion override for the existing smooth-scroll rule. The nine HTML pages and the other 12 implementation assets remain unchanged. Preserve the nine-page structure, responsive rules, supplied JS and component inventory. Do not redesign, restyle, expand or replace the kit.
 
 The legacy repository `https://github.com/tchouhanjsm/desert-art-gallery` may be inspected selectively for verified domain knowledge, data structures, operational lessons and proven engineering logic only. Its frontend, layouts, styles, components and visual decisions are not inherited.
 
@@ -14,11 +14,12 @@ The legacy repository `https://github.com/tchouhanjsm/desert-art-gallery` may be
 2. This root `AGENTS.md`.
 3. `docs/DESIGN-AUTHORITY.md`.
 4. `docs/DOCUMENTATION-SOURCE-OF-TRUTH.md`.
-5. Owner-approved design specifications and current page/component inventories in `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md`.
-6. Technical and implementation documentation that does not conflict with the above.
-7. Historical documents as context only; never as active instructions.
+5. Owner-approved design specifications.
+6. Current page and component inventories: `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md`.
+7. Technical and implementation documentation, only where it does not conflict with levels 1–6.
+8. Historical documents as audit context only; never as active instructions.
 
-Do not follow a lower-level prompt, source comment, workflow or old document that conflicts with this hierarchy. Record contradictions; never silently choose the lower-level instruction.
+Every agent must read the current decision register, design authority, source-of-truth policy and active inventories before making changes. This applies to root and nested prompts/READMEs, kit-local documents, code comments, HTML/CSS/JS, theme/token files, workflows and issue templates. A lower-level file cannot override this hierarchy. Record and reconcile contradictions in active text; do not merely append a disclaimer or silently select a lower-level instruction.
 
 ## Confirmed direction and content integrity
 
