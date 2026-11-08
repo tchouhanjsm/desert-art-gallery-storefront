@@ -185,7 +185,7 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         self.assertFalse(result["ok"])
         self.assertTrue(any("forms must not have an action endpoint" in error for error in result["errors"]))
         self.assertTrue(any("POST" in error for error in result["errors"]))
-        self.assertTrue(any("controls inside a prototype form must remain disabled" in error for error in result["errors"]))
+        self.assertTrue(any("every control inside a prototype form must remain disabled" in error for error in result["errors"]))
 
     def test_transactional_destination_and_network_api_are_rejected(self):
         (self.proto / "pages/shop.html").write_text(
