@@ -91,7 +91,7 @@ Ask follow-up questions such as “What happened next?” and “Can you show or
 Begin only after all of the following are true:
 - The exact six-area local/private non-transactional test scope is authorized by D-016 and recorded in docs/DECISIONS.md.
 - The six-area grouping maps only to the unchanged nine-page D-014 structure; all prototype pages are clearly labelled and kept private/local.
-- Do not ask participants to approve or rank brand identity. A branded visual-identity evaluation requires the owner's exact identity inputs to be recorded first (M2-A).
+- Do not ask participants to approve or rank brand identity. A branded visual-identity evaluation requires the owner's exact owner-approved identity inputs to be recorded first (M2-A).
 - A representative sample of approximately 10–20 real DAG products/photos has been supplied privately and the facts, image identity, rights and prototype-use permissions are verified. Until then use labelled image frames/placeholders and do not claim image validation.
 - Any purchase, enquiry, price, availability or service content shown in the prototype is either owner-approved or clearly identified as a research-only scenario. Do not imply that hypothetical checkout or policies are operational.
 
