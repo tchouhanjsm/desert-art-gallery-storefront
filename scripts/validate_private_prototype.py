@@ -75,6 +75,8 @@ class PageParser(HTMLParser):
         self.images: list[tuple[str, str, str]] = []
         self.links: list[str] = []
         self.stylesheets: list[str] = []
+        self.resource_links: list[str] = []
+        self.srcsets: list[str] = []
         self.scripts: list[str] = []
         self.inline_scripts: list[str] = []
         self.inline_styles: list[str] = []
@@ -93,6 +95,8 @@ class PageParser(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = {key: value for key, value in attrs}
+        if values.get("style"):
+            self.inline_styles.append(values["style"])
         if tag == "base":
             self.base_hrefs.append(values.get("href") or "")
         elif tag == "meta" and (values.get("http-equiv") or "").lower() == "refresh":
@@ -110,10 +114,16 @@ class PageParser(HTMLParser):
             self.main_count += 1
         elif tag == "img":
             self.images.append((values.get("src") or "", values.get("alt") or "", values.get("srcset") or ""))
+        elif tag == "source":
+            if values.get("srcset"):
+                self.srcsets.append(values["srcset"] or "")
         elif tag == "a":
             self.links.append(values.get("href") or "")
         elif tag == "link" and "stylesheet" in (values.get("rel") or "").lower().split():
             self.stylesheets.append(values.get("href") or "")
+        elif tag == "link":
+            if values.get("href"):
+                self.resource_links.append(values["href"] or "")
         elif tag == "script":
             src = values.get("src")
             if src:
@@ -215,6 +225,14 @@ def _asset_references_from_srcset(srcset: str) -> list[str]:
 
 
 def _audit_owner_approval(manifest: dict[str, object], repo_root: Path, errors: list[str]) -> None:
+    if manifest.get("schema_version") != 1:
+        errors.append("manifest schema_version must be 1")
+    allowed_manifest_keys = {
+        "schema_version", "base_decision_ref", "prototype_mode", "routes",
+        "areas", "owner_visual_approval", "asset_ledger",
+    }
+    if set(manifest) - allowed_manifest_keys:
+        errors.append("manifest contains unsupported top-level field(s): " + ", ".join(sorted(set(manifest) - allowed_manifest_keys)))
     if manifest.get("base_decision_ref") != "D-016":
         errors.append("manifest base_decision_ref must be D-016")
     if manifest.get("prototype_mode") != "private-local-nontransactional":
