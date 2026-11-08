@@ -435,6 +435,8 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
             errors.append(f"{route}: meta refresh navigation is not permitted")
         if parser.embedded_content:
             errors.append(f"{route}: embedded/remote media elements are not permitted: {', '.join(sorted(set(parser.embedded_content)))}")
+        for resource in parser.resource_links:
+            _safe_local_path(resource, path, root, errors, f"{route} resource link")
         for href in parser.links:
             if not href:
                 errors.append(f"{route}: anchor has an empty href")
@@ -458,6 +460,17 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
                 if asset:
                     if asset.suffix.lower() not in IMAGE_SUFFIXES:
                         errors.append(f"{route}: referenced img/srcset file is not a supported image: {raw}")
+                    else:
+                        rel = _normalise_asset_reference(asset, root)
+                        page_refs.add(rel)
+                        all_assets.add(rel)
+
+        for srcset in parser.srcsets:
+            for raw in _asset_references_from_srcset(srcset):
+                asset = _safe_local_path(raw, path, root, errors, f"{route} picture source")
+                if asset:
+                    if asset.suffix.lower() not in IMAGE_SUFFIXES:
+                        errors.append(f"{route}: picture source is not a supported image: {raw}")
                     else:
                         rel = _normalise_asset_reference(asset, root)
                         page_refs.add(rel)
