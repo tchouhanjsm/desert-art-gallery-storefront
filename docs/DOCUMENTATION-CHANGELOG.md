@@ -124,5 +124,6 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Tightened the private manifest validator to fail closed on malformed types, unknown approval/asset fields, non-normalized asset paths and invalid calendar dates; kept the JSON schema, pending template and runtime checks aligned.
 - Rejected inline event handlers, link ping beacons, form-associated submission overrides, background worker registration and cross-context messaging APIs in the non-transactional prototype scope.
 - Hardened local browser review against symlinked prototype roots and added viewport-meta, browser-console, failed-request and HTTP resource-status evidence.
-- Added eight regression tests for the new bypasses and malformed manifest conditions; CI validation is recorded only after the updated PR head workflow completes.
+- Added nine regression tests for the new bypasses and malformed manifest conditions.
 - Kept M2-A visual approval pending and made no changes to D-014 source assets, brand tokens, photography, catalogue records or private prototype files.
+- Final PR #14 continuation head `2e58fdaf7d1cceb4cedb22ee80004acdc86a128b` passed [DAG Project Quality run #136](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511656150), including **134/134 Python tests**; the local private-prototype Chromium review was correctly not run without an approved prototype.
