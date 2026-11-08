@@ -30,6 +30,18 @@ The follow-up maintenance patch is limited to the supplied kit's existing CSS an
 - [DAG Structural Kit Browser Review run #7](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004123) — PASS: **45/45** route/viewport combinations, **54** mobile keyboard-operation sequences, reduced-motion review and **18** full-page screenshots with JSON/Markdown summaries.
 - These results provide automated structural and browser evidence only; they are not screen-reader testing, WCAG certification, colour-contrast approval or owner visual sign-off.
 
+## M2 combined delivery — structural review and decision package
+
+D-015 records the owner's 8 November 2026 instruction as authorization for the exact bounded, non-production structural review. The active branch implements five customer journeys at 390, 430, 768, 1280 and 1440px, while retaining the nine-route responsive review and existing keyboard checks. The journey review does not alter the owner kit's HTML/CSS/JS files or enable disabled controls.
+
+- **M2-A — blocked on owner input:** no brand colours, type families/weights/hierarchy, wordmark/logo/descriptor or photo direction have been supplied/approved. The system-token fallback and historic proposals cannot be reused.
+- **M2-B — recommendation prepared:** first qualitative cohort proposed as home/interior shoppers with textile/craft interest, alongside craft/material enthusiasts and a small trade/gift contrast. No interviews, recruitment, incentives or external data collection are claimed.
+- **M2-C — blocked on source evidence:** no owner-supplied 10–20 product photo/fact sample is present. The private intake validator now distinguishes prototype-use permission from public publication approval and enforces rights evidence and completed photo-audit checks.
+- **M2-D — automation implemented:** five structural journeys and five viewport widths create 25 journey/viewport checks. Journey order is recommended, not represented as an owner-approved customer priority. Human usability evaluation remains separate.
+- **M2-E — authorized for bounded review:** D-015 permits only the non-production review described in the M2 pack. It does not authorize final brand styling, external participant studies, new UI scope, production application work or deployment.
+
+See docs/25-M2-DECISION-AND-REVIEW-PACK.md for segment reasoning, exact journey order, market evidence, sample acceptance and remaining owner input.
+
 ## Owner gates retained
 
 - **Brand identity:** exact colours, typography, logo/wordmark/descriptor and photography direction remain pending owner input. The system-token fallback is QA only.
@@ -37,6 +49,10 @@ The follow-up maintenance patch is limited to the supplied kit's existing CSS an
 - **Product/photo evidence:** only owner-approved genuine sample photographs with verified mapping and rights may be used; label placeholders for missing views (D-011).
 - **Responsive journey acceptance:** mobile/tablet/desktop must be tested across every selected journey (D-012).
 - **Next-phase authorization:** D-014 alone does not authorize added prototype scope or production development.
+
+### M2 implementation validation status
+
+The M2 branch's GitHub Actions checks are required before this package is considered technically green. Do not claim the new journey matrix or expanded sample validator passed until those final-head runs have completed.
 
 ## Technical and commercial work
 

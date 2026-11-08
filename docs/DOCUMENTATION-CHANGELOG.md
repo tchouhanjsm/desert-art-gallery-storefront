@@ -71,3 +71,13 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Added 54 mobile Enter/Space keyboard-operation sequences across the nine pages at 390px, 430px and 768px, checking the existing disclosure state and focus retention without changing runtime JavaScript.
 - Confirmed CI success: Project Quality run #79 passed 89 Python tests; Chromium Browser Review run #7 passed 45/45 route/viewport combinations and uploaded 18 screenshots plus JSON/Markdown summaries.
 - Recorded the result in the M2 entry pack, roadmap and structural accessibility review. D-014 and M2-A through M2-E owner gates remain unchanged.
+
+
+## 2026-11-08 — Combined M2 A–E decision and structural journey review
+- Recorded D-015 from the owner's instruction to achieve M2 A–E, narrowly authorizing the bounded non-production structural journey-review scope.
+- Added a consolidated M2 decision/review pack separating owner-controlled inputs, proposed customer research, missing source evidence, responsive journey order and the limits of D-015 authorization.
+- Proposed (not owner-validated) a first Japan qualitative cohort centred on home/interior shoppers with textile/craft interest, with craft/material enthusiasts and small trade/gift contrasts.
+- Added five Playwright journey scenarios across five responsive widths; the nine-page viewport checks, mobile keyboard operations and disabled commerce states remain in scope.
+- Extended private catalogue intake templates/validation so product facts and images require distinct prototype-use approval/evidence, and image rights clearance evidence is recorded separately from public publication approval.
+- Added an M2-specific 10–20 product/photo-audit validation mode. No private catalogue data, customer data or product photographs were added to Git.
+- M2-A and M2-C remain blocked on owner-supplied identity inputs and product/photo evidence; no recruitment, customer fieldwork, branded theme, production feature or deployment was started.

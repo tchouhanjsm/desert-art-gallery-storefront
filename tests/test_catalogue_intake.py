@@ -109,6 +109,7 @@ def etsy_image_source_row(**overrides):
         "source_image_url": "https://i.etsystatic.com/123456/photo.jpg",
         "local_asset_id": "",
         "rights_status": "unknown",
+        "rights_evidence_reference": "",
         "download_status": "not_attempted",
         "owner_review_status": "pending",
     })
@@ -218,15 +219,26 @@ class CatalogueIntakeTests(unittest.TestCase):
         products = []
         facts = []
         images = []
+        sources = []
         audit_rows = []
         for index in range(1, product_count + 1):
             product_id = f"p-{index:03d}"
             image_path = f"products/{product_id}/image-01.jpg"
+            source_hash = "b" * 64
+            source_ref = f"etsy:{source_hash}:row:{index}"
             products.append(product_row(
                 product_id=product_id,
+                source_record_ref=source_ref,
                 publication_status="draft",
                 prototype_use_approval="approved",
                 prototype_use_evidence_reference=f"owner-approval:prototype:{product_id}",
+            ))
+            sources.append(source_record_row(
+                product_id=product_id,
+                source_file_sha256=source_hash,
+                source_data_row_number=str(index),
+                source_record_ref=source_ref,
+                reconciliation_status="owner_reconciled",
             ))
             facts.append(fact_row(
                 product_id=product_id,
@@ -261,7 +273,7 @@ class CatalogueIntakeTests(unittest.TestCase):
                 audit_row.update(image_audit_overrides[index])
             audit_rows.append(audit_row)
 
-        write_package(root, products=products, facts=facts, images=images)
+        write_package(root, products=products, facts=facts, images=images, sources=sources)
         csv_path, summary_path = self.write_photo_audit(root.parent, audit_rows)
         return csv_path, summary_path, products, facts, images
 
@@ -457,6 +469,7 @@ class CatalogueIntakeTests(unittest.TestCase):
                 etsy_images=[etsy_image_source_row(
                     local_asset_id="asset-local-1",
                     rights_status="cleared",
+                    rights_evidence_reference="private-rights-record:p-001:etsy-source",
                     download_status="downloaded",
                     owner_review_status="accepted",
                 )],
@@ -464,6 +477,28 @@ class CatalogueIntakeTests(unittest.TestCase):
             messages = [str(issue) for issue in validate_catalogue_directory(root)]
             self.assertTrue(any("local_asset_id must match" in item for item in messages))
             self.assertTrue(any("accepted source image requires" in item for item in messages))
+
+    def test_etsy_cleared_rights_requires_evidence_reference(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = source_record_row()
+            write_package(
+                root,
+                products=[product_row(source_record_ref=source["source_record_ref"])],
+                sources=[source],
+                etsy_images=[etsy_image_source_row(rights_status="cleared")],
+            )
+            messages = [str(issue) for issue in validate_catalogue_directory(root)]
+            self.assertTrue(any("rights_status=cleared requires rights_evidence_reference" in item for item in messages))
+
+    def test_m2_sample_requires_owner_reconciled_source_record(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "catalogue"
+            csv_path, summary_path, products, facts, images = self.write_m2_sample(root, 10)
+            products[0]["source_record_ref"] = ""
+            write_package(root, products=products, facts=facts, images=images)
+            messages = [str(issue) for issue in validate_catalogue_directory(root, csv_path, summary_path, require_m2_sample=True)]
+            self.assertTrue(any("must map to an owner-reviewed source record" in item for item in messages))
 
     def test_etsy_downloaded_image_passes_when_linked_to_local_image_record(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -477,6 +512,7 @@ class CatalogueIntakeTests(unittest.TestCase):
                 etsy_images=[etsy_image_source_row(
                     local_asset_id="asset-local-1",
                     rights_status="cleared",
+                    rights_evidence_reference="private-rights-record:p-001:etsy-source",
                     download_status="downloaded",
                     owner_review_status="accepted",
                 )],

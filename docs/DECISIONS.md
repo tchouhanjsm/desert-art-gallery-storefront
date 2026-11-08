@@ -90,6 +90,14 @@ Boundaries: This does not approve final brand colours, typography, type hierarch
 Consequences: The active page and component inventories are `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md`. The former six-page M2 scope is superseded. Brand token inputs remain pending. Japan-first remains distinct from customer-facing language; the storefront remains English-only.
 Date: 2026-11-07
 
+### D-015 — Bounded M2 structural journey-review authorization
+Status: CONFIRMED — LIMITED NON-PRODUCTION REVIEW SCOPE
+Owner instruction (8 November 2026): "Achieve all the M2 (A-E) in one go."
+Decision recorded for execution: authorize a bounded M2 structural journey-review implementation using only the nine pages and existing components, links and disabled states in D-014, with automated Chromium route and journey checks at the five established review widths. The acceptance scope is recorded in docs/25-M2-DECISION-AND-REVIEW-PACK.md.
+Boundaries: This authorization covers repository-side review tooling, private non-production structural journey checks and evidence reporting only. It does not approve or invent brand values, logo/wordmark, final copy, product facts, catalogue taxonomy, image rights, public photo publication, public or participant research, recruitment, incentives/spending, new pages/sections/components, new interaction behaviour, commerce features, production app development, technology/hosting selection or public deployment. Search, filters/sort, product options, purchase and contact submission remain disabled.
+Consequences: M2-E is authorized for the exact bounded review scope. M2-A and M2-C remain blocked on owner-controlled inputs/evidence; M2-B and M2-D have recommendations and automation prepared but owner adoption and any external research remain outstanding. No supplied kit HTML/CSS/JS asset is changed by this authorization.
+Date: 2026-11-08
+
 ## Unresolved owner decisions
 
 ### U-001 — Seller jurisdiction and legal identity

@@ -60,6 +60,17 @@ The workflow artifact is diagnostic evidence, not owner visual sign-off. It does
 
 PR #12 added semantic and keyboard-operation checks without modifying the supplied HTML, CSS or JavaScript. On PR #12 head `d5ad89d768ef641ed865d1f4e16fae70ef101f10`, GitHub Actions [DAG Structural Kit Browser Review run #7](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004123) passed **45/45** route/viewport combinations, **54** native Enter/Space mobile navigation sequences across nine pages at 390px, 430px and 768px, and the reduced-motion check. No horizontal overflow, browser page errors or failed local document/style/script assets were reported. The run uploaded 18 full-page screenshots plus JSON and Markdown summaries in artifact `dag-kit-browser-review-7-c0381a76d2298ab2a1077c4ce754ee19bbb6a9b3`. The companion [DAG Project Quality run #79](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004185) passed the foundation, owner-gate, accessibility, documentation and link audits and the complete **89-test** Python suite.
 
+## M2 structural journey coverage added on the active M2 branch
+
+The M2 branch adds five journeys using only links and controls already present in D-014:
+1. Home → Shop → Collection (discover).
+2. Shop → Collection → Product (browse).
+3. Product information accordions and verification that variant/purchase remain disabled (evaluate).
+4. About → Makers → Journal → Article (contextualise).
+5. Product → Enquire → Contact, with supplied form controls/submission still disabled (support).
+
+Each journey is executed at 390, 430, 768, 1280 and 1440 CSS-pixel widths (25 journey/viewport combinations). The existing nine-page × five-width matrix (45 checks) and 54 mobile Enter/Space navigation sequences continue to run. Final M2 CI results must be recorded after the final PR head's browser workflow completes; this review document does not assume a pass.
+
 ## Not yet verified
 
 - Screen-reader behaviour with VoiceOver, NVDA or another assistive technology.

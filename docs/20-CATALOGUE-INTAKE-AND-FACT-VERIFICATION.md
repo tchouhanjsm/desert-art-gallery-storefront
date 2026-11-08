@@ -89,6 +89,22 @@ The checker validates structure and inventory references, not the truth of produ
 
 An Etsy Listings Download export also has a separate private source-record and remote-image mapping convention. See [21 — Etsy Source Export Mapping and Reconciliation](21-ETSY-SOURCE-EXPORT-MAPPING-AND-RECONCILIATION.md) for the historical source audit and field mapping.
 
+## Private prototype-use approval (M2 sample)
+
+The private M2 sample uses three separate approval/evidence boundaries:
+
+- Product record: prototype-use approval and evidence for the product record.
+- Product fact: owner-verified fact evidence plus separate prototype-use approval/evidence.
+- Product image: rights-clearance evidence plus separate prototype-use approval/evidence and the completed photo-audit record.
+
+A rights-cleared image is not automatically approved for a private prototype. A prototype-approved fact or image is not approved for public publication. Keep product records in draft/in-review, fact public approval at not_reviewed and image publication status pending throughout private M2 review.
+
+The intake CSV templates include these separate fields. A private 10–20 product M2 sample can be checked with the validator's --m2-sample option and both reports from one complete photo audit:
+
+    python scripts/validate_catalogue_intake.py "/path/to/private/catalogue-intake" --photo-audit-csv "/path/to/private-reports/dag-photo-audit.csv" --photo-audit-summary "/path/to/private-reports/dag-photo-audit-summary.json" --m2-sample
+
+This stricter mode requires 10–20 distinct products, explicit product/fact/image prototype-use approval, at least one owner-verified fact per product, a rights-cleared primary image with evidence, and a completed audit with readable, non-duplicate images. It rejects public publication approval states in the private-sample validation mode. This is a structural validator; it cannot prove the underlying real-world fact or right is valid. Keep the filled CSVs, source export, photos and reports private and outside Git.
+
 ## What this does not decide
 
 - Final category taxonomy or collection names.

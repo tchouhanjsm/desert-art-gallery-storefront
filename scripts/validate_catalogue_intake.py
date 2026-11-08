@@ -42,7 +42,7 @@ HEADERS = {
     ],
     "etsy-image-sources.csv": [
         "product_id", "source_record_ref", "source_image_field", "source_image_url",
-        "local_asset_id", "rights_status", "download_status", "owner_review_status",
+        "local_asset_id", "rights_status", "rights_evidence_reference", "download_status", "owner_review_status",
         "internal_notes",
     ],
 }
@@ -237,7 +237,6 @@ def validate_catalogue_directory(
     products: dict[str, dict[str, str]] = {}
     prototype_approved_products: set[str] = set()
     prototype_approved_facts: set[str] = set()
-    prototype_approved_images: set[str] = set()
     prototype_approved_primary_images: set[str] = set()
     seen_skus: dict[str, int] = {}
     for line, row in product_rows:
@@ -436,7 +435,6 @@ def validate_catalogue_directory(
             if not prototype_evidence:
                 issues.append(Issue("product-images.csv", line, "prototype-use approval requires prototype_use_evidence_reference"))
             if product_id and rights == "cleared" and rights_evidence and alt_text and prototype_evidence:
-                prototype_approved_images.add(product_id)
                 if role == "primary":
                     prototype_approved_primary_images.add(product_id)
 
@@ -465,8 +463,11 @@ def validate_catalogue_directory(
         if not _is_allowed_etsy_image_url(source_url):
             issues.append(Issue("etsy-image-sources.csv", line, "source_image_url must be HTTPS on the exact i.etsystatic.com host without credentials or a port"))
         rights = _value(row, "rights_status")
+        rights_evidence = _value(row, "rights_evidence_reference")
         if rights not in IMAGE_RIGHTS_STATES:
             issues.append(Issue("etsy-image-sources.csv", line, f"rights_status must be one of {sorted(IMAGE_RIGHTS_STATES)}"))
+        elif rights == "cleared" and not rights_evidence:
+            issues.append(Issue("etsy-image-sources.csv", line, "rights_status=cleared requires rights_evidence_reference"))
         download = _value(row, "download_status")
         if download not in ETSY_IMAGE_DOWNLOAD_STATES:
             issues.append(Issue("etsy-image-sources.csv", line, f"download_status must be one of {sorted(ETSY_IMAGE_DOWNLOAD_STATES)}"))
@@ -502,6 +503,12 @@ def validate_catalogue_directory(
         if not 10 <= len(products) <= 20:
             issues.append(Issue("products.csv", None, f"M2 sample must contain 10–20 distinct products; found {len(products)}"))
         for product_id, product in products.items():
+            product_ref = _value(product, "source_record_ref")
+            source_record = source_records.get(product_ref)
+            if not product_ref or source_record is None:
+                issues.append(Issue("product-source-records.csv", None, f"M2 sample product {product_id!r} must map to an owner-reviewed source record"))
+            elif _value(source_record, "reconciliation_status") != "owner_reconciled":
+                issues.append(Issue("product-source-records.csv", None, f"M2 sample product {product_id!r} source record must have reconciliation_status=owner_reconciled"))
             if product_id not in prototype_approved_products:
                 issues.append(Issue("products.csv", None, f"M2 sample product {product_id!r} lacks explicit prototype-use approval and evidence"))
             if product_id not in prototype_approved_facts:

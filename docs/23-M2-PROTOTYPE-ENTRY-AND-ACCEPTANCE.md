@@ -1,6 +1,6 @@
 # M2 — Structural Kit Review and Prototype Entry
 
-**Status:** The owner-supplied nine-page structural scope is recorded in D-014 and materialized at `design/owner-controlled-kit-v2/` (25 files). PR #8 verified all 14 original HTML/CSS/JS assets against the owner archive. PR #9 adds two CSS-only accessibility maintenance rules; PR #11 applies the documented mobile Product Detail grid correction. PR #12 strengthens semantic accessibility auditing and Chromium keyboard/responsive QA without changing any owner-supplied HTML, CSS or JavaScript asset. The latest PR #12 CI passed 45/45 route/viewport checks, 54 mobile keyboard-operation sequences and reduced-motion review. M2 customer validation and any later prototype work remain owner-gated.
+**Status:** D-014's nine-page structural scope remains the only active UI baseline. PR #12 has been merged and its final-head CI evidence is recorded below. This M2 branch adds five automated customer-journey scenarios and a strict private sample validator; it does not change any owner-supplied HTML, CSS or JavaScript asset. D-015 authorizes only the bounded structural, non-production review recorded in docs/25-M2-DECISION-AND-REVIEW-PACK.md. M2-A and M2-C still require owner inputs/evidence; M2-B and M2-D recommendations still need owner adoption for external research/priority; M2-E is authorized only for the bounded review scope.
 
 ## Governing baseline
 
@@ -8,13 +8,23 @@ D-014 establishes the exact nine-page structural baseline. Use only `docs/PAGE-I
 
 | Gate | Required owner input / evidence | Current status |
 |---|---|---|
-| M2-A — Brand identity | Exact owner-approved colours, typography/weights/hierarchy, logo/wordmark/descriptor and photography direction; documented in `docs/OWNER-TOKEN-INPUT.md` and `DECISIONS.md`. | Open — structural kit is not identity approval |
-| M2-B — Customer segment / journey | Confirm initial Japan-first customer segment and prioritized customer tasks before recruiting or running sessions. | Open — no fieldwork is complete |
-| M2-C — Product/photo evidence | Owner-approved representative real sample with verified product/image mapping and rights/permissions; labelled placeholders for missing views/states (D-011). | Open — sample and rights approval outstanding |
-| M2-D — Responsive journey coverage | Owner confirms journey order; evaluate mobile/tablet/desktop across every selected journey (D-012). | Open — mobile is a required dimension, not a separate journey |
-| M2-E — Next-phase authorization | Explicit owner authorization for the exact prototype/review work, acceptance criteria and non-production boundary. | Open — D-014 alone does not authorize expansion or production implementation |
+| M2-A — Brand identity | Exact owner-approved colours, type families/weights/hierarchy/type scale, logo/wordmark/descriptor and photography direction/crop rules; record in docs/OWNER-TOKEN-INPUT.md and DECISIONS.md. | **Blocked on owner input** — no brand tokens or identity assets have been supplied/approved; do not infer historic palette/type |
+| M2-B — Customer segment / journey | Confirm the initial Japan-first research cohort and prioritized customer tasks; approve recruitment route, consent handling and any spending separately. | **Recommendation prepared; owner adoption pending** — proposed primary context is home/interior buyers with textile/craft interest; no recruitment or fieldwork |
+| M2-C — Product/photo evidence | Owner-supplied 10–20 real product records and mapped original photos; verify product facts, image identity, rights and separate prototype-use permission. | **Blocked on sample/evidence** — no original product sample/export/photo set is present in the active project inputs |
+| M2-D — Responsive journey coverage | Confirm journey order; cover mobile/tablet/desktop for each journey (D-012). | **Execution matrix implemented; owner priority/human acceptance pending** — five journeys × five widths are covered by automated Chromium checks |
+| M2-E — Next-phase authorization | Exact prototype/review scope, acceptance criteria and non-production boundary. | **Authorized for bounded structural review only** under D-015; no branded prototype expansion, external research or production work is authorized |
 
-Open gates block only dependent work. They do not block safe documentation maintenance, source-kit verification, accessibility review of the supplied markup or factual catalogue preparation.
+## Bounded M2 review scope authorized by D-015
+
+The owner instruction dated 8 November 2026 authorizes the following repository-side work, only:
+
+- Exercise five existing structural journeys: Home → Shop → Collection; Shop → Collection → Product; Product information/disabled-state review; About → Makers → Journal → Article; Product → Enquire → Contact.
+- Review all nine supplied routes at 390, 430, 768, 1280 and 1440 CSS-pixel widths.
+- Exercise only interactions already present in the kit: mobile navigation, product information accordions and links. Purchase, variant, search, filter/sort and contact submission remain disabled.
+- Record machine-readable and Markdown summaries, failures and screenshots as CI artifacts.
+- Keep the prototype local/non-production and preserve the D-014 source asset boundary.
+
+This is not a branded visual prototype approval, usability study with participants, production application authorization, or public deployment permission. The exact scope, M2 disposition and owner handoff are detailed in docs/25-M2-DECISION-AND-REVIEW-PACK.md.
 
 ## Nine-page baseline
 
@@ -29,6 +39,14 @@ Open gates block only dependent work. They do not block safe documentation maint
 9. `pages/contact.html` — Contact: intro, contact-information panel and disabled enquiry-form concept.
 
 Shared shell elements are limited to the kit-only notice, utility location row, text wordmark/descriptor placeholder, six supplied navigation destinations, mobile navigation toggle, disabled Search where present, Enquire where supplied and supplied footer groups. Preserve page-specific omissions exactly.
+
+## Latest structural browser assurance
+
+PR #12 final-head evidence (already merged):
+- [DAG Project Quality run #81](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466218616) — PASS, **89/89 Python tests**.
+- [DAG Structural Kit Browser Review run #8](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466218645) — PASS, **45/45 route/viewport checks**, **54** mobile Enter/Space navigation sequences, reduced-motion check and 18 screenshots.
+
+The M2 branch extends browser review with **25 journey/viewport checks** (five bounded journeys × five viewport widths). Its final results are not claimed until the new PR's GitHub Actions runs complete.
 
 ## Closed behaviour and content boundary
 
