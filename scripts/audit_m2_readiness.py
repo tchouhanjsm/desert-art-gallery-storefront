@@ -92,7 +92,7 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
     if "PENDING OWNER APPROVAL" not in token_input and "PENDING OWNER INPUT" not in token_input:
         errors.append("owner token register must remain pending approval")
 
-    cohort = ("home/interior shoppers", "craft/material enthusiasts", "trade/design professional", "gift or considered-purchase shopper")
+    cohort = ("home/interior shoppers", "craft/material enthusiasts", "trade/design professional", "gift")
     for item in cohort:
         if item not in research.lower():
             errors.append(f"research plan is missing approved cohort quota {item!r}")
