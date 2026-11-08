@@ -8,7 +8,7 @@ This document is level 3 in the root authority hierarchy defined in `docs/DOCUME
 
 **DAG Owner-Controlled Design Kit v2 is the sole active structural HTML/CSS implementation source.** Its original HTML pages, CSS files, responsive styles, structural components, page order and component inventory must be preserved as supplied. Do not redesign, silently restyle, expand or reinterpret the kit.
 
-The kit is structurally adopted (D-014) and materialized in `design/owner-controlled-kit-v2/`. The archive SHA-256 is `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`; the 14 original implementation assets were checked at adoption and PR #9's two CSS maintenance amendments are hash-pinned by the project validator. This does **not** approve final brand identity. Final brand colours, typography, logo/wordmark/descriptor and photography art direction remain owner-controlled and pending.
+The kit is structurally adopted (D-014) and materialized in `design/owner-controlled-kit-v2/`. The archive SHA-256 is `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`; the 14 original implementation assets were checked at adoption and PR #9's two CSS maintenance amendments are hash-pinned by the project validator. This does **not** approve final brand identity. Final brand colours, typography, logo/wordmark/descriptor and photography art direction remain owner-controlled and pending. D-016 requests one reference-led proposal in docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md; proposal values are not approvals and cannot be applied until the owner explicitly approves them.
 
 ## Owner-controlled identity
 
@@ -47,6 +47,6 @@ The owner archive was re-supplied for the repository-wide reset and independentl
 
 Fix genuine defects, semantic/accessibility issues, responsive mechanics, security, maintainability and documentation consistency only where the v2 inventory, content, visual contract and behaviour are preserved. Maintenance is not permission for visible additions or redesign.
 
-Any required scope change needs a written problem statement, exact affected page/component, customer and visual/functional impact, data requirements, risks, alternatives, acceptance criteria and explicit owner approval recorded in `docs/DECISIONS.md`.
+Any scope change beyond the D-016 six-area private prototype needs a written problem statement, exact affected page/component, customer and visual/functional impact, data requirements, risks, alternatives, acceptance criteria and explicit owner approval recorded in docs/DECISIONS.md. Do not add unlisted sections, widgets, promotion or interactions within the prototype.
 
-No production application development is authorized by structural kit adoption.
+D-016 separately authorizes local/private, non-transactional prototypes for exactly six review areas after M2-A visual approval. Such files must remain outside this public repository and map to the unchanged nine-page D-014 inventory. This narrow private-prototype authorization is not production application development or permission to deploy publicly.
