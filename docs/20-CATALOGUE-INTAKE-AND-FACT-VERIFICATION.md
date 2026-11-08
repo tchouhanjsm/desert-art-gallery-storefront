@@ -124,3 +124,18 @@ This stricter mode requires 10–20 distinct products, an owner-reconciled sourc
 6. Review the proposed intake conventions with the owner before treating them as the production data contract.
 
 Do not convert this draft intake convention into an approved production schema, taxonomy or backend. The owner must review and explicitly approve any production data contract. The active D-014 page and component inventories remain the current scope.
+
+
+## M2-C — Placeholder and image-frame display rules (D-016)
+
+The owner has approved a clearly labelled placeholder approach for private prototypes:
+- Use image frames to demonstrate the proposed aspect ratio, image count and gallery sequence.
+- Label an empty product-photo frame exactly: “ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING”.
+- Label a non-product layout tile: “LAYOUT PLACEHOLDER — NOT A DAG PRODUCT”.
+- Label each absent angle/view; do not silently duplicate an image and imply multiple real photographs.
+- Never invent products, maker names, verified attributes, prices or reviews.
+- Never use generated artwork, unrelated stock or remote Etsy imagery as a real DAG catalogue image.
+
+The owner expects to provide approximately 10–20 genuine product photographs with associated verified product information when available. Until the sample is supplied and reconciled, product-image validation is PENDING. Keep all photos, raw export rows and completed intake/audit reports in the owner's private storage. The 3,000-photo library must not be bulk migrated or committed.
+
+These display rules do not waive the existing fact, rights, source-row or separate prototype-use approval checks. The D-016 private prototype must remain local/private and outside the public repository.
