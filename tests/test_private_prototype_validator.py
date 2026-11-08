@@ -244,6 +244,20 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         self.assertTrue(any("entry validation failed" in error for error in result["errors"]))
         self.assertFalse(output.exists())
 
+
+    def test_manifest_schema_and_template_remain_pending_by_default(self):
+        schema = json.loads((ROOT / "schemas/private-prototype-manifest.schema.json").read_text())
+        template = json.loads(
+            (ROOT / "templates/private-prototype-manifest.template.json").read_text()
+        )
+        self.assertEqual(schema["properties"]["base_decision_ref"]["const"], "D-016")
+        self.assertEqual(template["owner_visual_approval"]["status"], "pending")
+        self.assertEqual(template["routes"], list(ROUTES))
+        self.assertEqual(
+            template["areas"],
+            {name: list(routes) for name, routes in AREA_ROUTES.items()},
+        )
+
     def test_missing_manifest_and_nonexistent_root_are_reported(self):
         (self.proto / "prototype-manifest.json").unlink()
         result = self.validate()
