@@ -321,6 +321,8 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         manifest = json.loads((self.proto / "prototype-manifest.json").read_text())
         manifest["schema_version"] = True
         manifest["owner_visual_approval"]["status"] = []
+        (self.proto / "assets").mkdir()
+        (self.proto / "assets/missing.jpg").write_bytes(b"not-a-real-jpeg")
         manifest["asset_ledger"] = {"assets/missing.jpg": {"kind": []}}
         self.write_manifest(**manifest)
         result = self.validate()
