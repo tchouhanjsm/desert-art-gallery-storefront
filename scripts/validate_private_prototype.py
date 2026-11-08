@@ -480,9 +480,9 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
                 errors.append(f"{route}: forms must not have an action endpoint")
             if form["method"] != "get":
                 errors.append(f"{route}: forms must not use POST or another write method")
-        for form_match in re.finditer(r"<form\\b[^>]*>([\\s\\S]*?)</form\\s*>", source, re.I):
-            for control_match in re.finditer(r"<(?:button|input|select|textarea)\\b([^>]*)>", form_match.group(1), re.I):
-                if not re.search(r"(?:^|\\s)disabled(?:\\s|=|/?>)", control_match.group(1), re.I):
+        for form_match in re.finditer(r"<form\b[^>]*>([\s\S]*?)</form\s*>", source, re.I):
+            for control_match in re.finditer(r"<(?:button|input|select|textarea)\b([^>]*)>", form_match.group(1), re.I):
+                if not re.search(r"(?:^|\s)disabled(?:\s|=|/?>)", control_match.group(1), re.I):
                     errors.append(f"{route}: every control inside a prototype form must remain disabled")
                     break
 
