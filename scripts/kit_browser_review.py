@@ -135,19 +135,43 @@ def run_review(output_dir: Path) -> dict[str, object]:
                         )
 
                         dimensions = page.evaluate(
-                            """() => ({
-                              viewportWidth: window.innerWidth,
-                              documentWidth: Math.max(
+                            """() => {
+                              const viewportWidth = window.innerWidth;
+                              const documentWidth = Math.max(
                                 document.documentElement.scrollWidth,
                                 document.body.scrollWidth
-                              )
-                            })"""
+                              );
+                              const offenders = Array.from(document.body.querySelectorAll("*"))
+                                .map((element) => {
+                                  const rect = element.getBoundingClientRect();
+                                  const style = getComputedStyle(element);
+                                  return {
+                                    tag: element.tagName.toLowerCase(),
+                                    className: element.getAttribute("class") || "",
+                                    id: element.id || "",
+                                    left: Math.round(rect.left),
+                                    right: Math.round(rect.right),
+                                    width: Math.round(rect.width),
+                                    scrollWidth: element.scrollWidth,
+                                    clientWidth: element.clientWidth,
+                                    minWidth: style.minWidth,
+                                    display: style.display,
+                                    gridTemplateColumns: style.gridTemplateColumns
+                                  };
+                                })
+                                .filter((item) => item.right > viewportWidth + 1 || item.left < -1)
+                                .sort((a, b) => b.right - a.right)
+                                .slice(0, 12);
+                              return {viewportWidth, documentWidth, offenders};
+                            }"""
                         )
                         overflow = int(dimensions["documentWidth"]) - int(dimensions["viewportWidth"])
+                        layout_diagnostics = dimensions["offenders"] if overflow > 1 else []
                         _check(
                             overflow <= 1,
                             f"{route} at {width}px: horizontal overflow of {overflow}px "
-                            f"(document {dimensions['documentWidth']}px, viewport {dimensions['viewportWidth']}px)",
+                            f"(document {dimensions['documentWidth']}px, viewport {dimensions['viewportWidth']}px); "
+                            f"offending elements={layout_diagnostics}",
                             route_errors,
                         )
 
@@ -243,6 +267,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
                         "viewport_width": width,
                         "status": "PASS" if not route_errors else "FAIL",
                         "errors": route_errors,
+                        "layout_diagnostics": locals().get("layout_diagnostics", []),
                     }
                     results.append(result)
                     failures.extend(route_errors)
