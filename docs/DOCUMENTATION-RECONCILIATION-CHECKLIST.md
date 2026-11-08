@@ -101,3 +101,17 @@ A checked item records a source/repository fact already verified in this reset. 
 - [ ] Separate fieldwork authorization (recruitment route, consent/privacy, data handling and budget).
 - [ ] Private six-area prototype build after visual approval.
 - [ ] Owner-led walkthrough and any separately authorized human usability research.
+
+
+## M2 private prototype tooling reconciliation — 8 November 2026
+
+- [x] Added the manifest schema and pending template for the exact D-016 private prototype boundary.
+- [x] Added a static validator enforcing private-root, M2-A decision/proposal hash, exact route/area, asset-evidence, network and transaction checks.
+- [x] Added a local-only Chromium runner that requires static validation first and writes review artifacts outside the public repository.
+- [x] Added regression tests for both the static validation rules and the browser runner's M2-A entry gate.
+- [x] Reconciled README, AGENTS, roadmap, M2 acceptance pack, changelog and path-level matrix.
+- [ ] M2-A visual approval and recorded decision.
+- [ ] Owner supplies 10–20 genuine product photographs and verified facts.
+- [ ] Create the six private prototype areas after M2-A approval.
+- [ ] Run the local/private validator and browser review against the actual private prototype.
+- [ ] Complete owner visual walkthrough; customer usability testing remains separately authorized.
