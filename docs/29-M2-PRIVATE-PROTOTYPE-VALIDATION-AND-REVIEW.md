@@ -71,7 +71,10 @@ The root must be a real directory outside the public repository. The validator c
 - Every referenced image has a matching asset-ledger record; placeholders use the exact visible label.
 - Genuine DAG photos have cleared rights, product mapping and separate private prototype-use evidence.
 - No network APIs, browser persistence, form-submit APIs, dynamic code execution, external endpoints, transaction destinations, POST forms or active form controls.
+- Manifest values are type-checked and kept in parity with the JSON schema; asset-ledger paths must be normalized relative POSIX paths and each asset kind accepts only its declared fields.
+- Inline event handlers, link `ping`, form-associated submission overrides and background/cross-context worker APIs are rejected. Owner approval dates must be real calendar dates.
 - No symlinks or paths escaping the private prototype directory.
+- No inline event-handler attributes, `ping` beacons, form override attributes, service-worker/worker registration or cross-context messaging APIs.
 
 The command is intentionally expected to fail until M2-A is explicitly approved and a complete prototype/manifest is supplied. It does not create test products, images or example customer content.
 
@@ -94,9 +97,13 @@ python3 scripts/private_prototype_browser_review.py \
 
 The runner serves the prototype only on loopback (`127.0.0.1`) and blocks all browser requests to other hosts. It checks the nine pages at 390, 430, 768, 1280 and 1440 CSS-pixel widths, producing 45 page/viewport checks. It checks overflow, primary landmarks, image loading/alternatives, link/button names, duplicate IDs, disabled forms, native keyboard focus and the reduced-motion preference. It captures desktop/mobile screenshots for every page (18 images), plus JSON and Markdown summaries.
 
+The runner also requires a viewport meta tag and records browser console errors, failed requests and HTTP resource responses at or above 400. A missing local stylesheet, script or image therefore fails review even when the page document itself returns HTTP 200. A symlinked prototype root is rejected before path resolution.
+
 The output directory must be outside both the public repository and the prototype source directory. It is not uploaded to GitHub Actions, committed or shared by this tooling. Do not attach private screenshots, photos or source data to a public PR.
 
 ## 6. What this does not certify
+
+The source-level JavaScript checks are conservative pattern checks, not a formal proof that arbitrary scripts are harmless. Browser network isolation provides a second boundary for local review, but neither tool makes untrusted prototype code safe to execute.
 
 A passing result is static and automated engineering evidence only. It does not certify:
 - Owner visual acceptance of the private prototype.
