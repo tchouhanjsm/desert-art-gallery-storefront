@@ -69,7 +69,7 @@ The M2 branch adds five journeys using only links and controls already present i
 4. About → Makers → Journal → Article (contextualise).
 5. Product → Enquire → Contact, with supplied form controls/submission still disabled (support).
 
-Each journey is executed at 390, 430, 768, 1280 and 1440 CSS-pixel widths (25 journey/viewport combinations). The existing nine-page × five-width matrix (45 checks) and 54 mobile Enter/Space navigation sequences continue to run. Final M2 CI results must be recorded after the final PR head's browser workflow completes; this review document does not assume a pass.
+Each journey is executed at 390, 430, 768, 1280 and 1440 CSS-pixel widths (25 journey/viewport combinations). On final PR #13 head, [Chromium Browser Review run #15](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888) passed 25/25 journey/viewport combinations, the existing nine-page × five-width matrix (45 checks), 54 mobile Enter/Space focus-retention sequences and reduced-motion. It uploaded 18 full-page screenshots plus JSON/Markdown summaries in [artifact 13617964823](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888/artifacts/13617964823). Companion [Project Quality run #88](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140897) passed all audits and 101/101 Python tests. This evidence is structural automation, not human usability or owner visual acceptance.
 
 ## Not yet verified
 

@@ -48,6 +48,15 @@ PR #12 final-head evidence (already merged):
 
 The M2 branch extends browser review with **25 journey/viewport checks** (five bounded journeys × five viewport widths). Its final results are not claimed until the new PR's GitHub Actions runs complete.
 
+## PR #13 — Final M2 browser and quality acceptance evidence
+
+On final PR #13 head `1c3a992b9d061b86851620eedc4e636ef35b1e12`:
+
+- [DAG Project Quality run #88](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140897) — PASS: **101/101 Python tests**, foundation/source-integrity checks, M2 disposition audit, accessibility source audit, documentation consistency and Markdown links.
+- [DAG Structural Kit Browser Review run #15](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888) — PASS: **45/45** route/viewport checks, **25/25** journey/viewport checks, **54** mobile Enter/Space focus-retention sequences, reduced-motion check and **18** full-page screenshots. The artifact contains JSON/Markdown summaries: [CI artifact](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888/artifacts/13617964823).
+
+This automated evidence verifies the bounded structural review only. It does not replace owner visual sign-off, participant usability research, screen-reader testing, WCAG certification or acceptance of genuine product content/photos.
+
 ## Closed behaviour and content boundary
 
 Keep existing disabled controls disabled. There is no cart, checkout, account, wishlist, live search/filter/sort, variant selection, purchase action, payment, order operation, inventory reservation, shipping calculation, returns workflow or enquiry backend. Do not add banners, testimonials, badges, reviews, widgets, popups, chat, newsletter/social, extra navigation, sticky/floating UI, animation or other sections/components.

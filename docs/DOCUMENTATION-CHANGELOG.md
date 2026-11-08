@@ -87,3 +87,9 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Added rights_evidence_reference to Etsy source-image records and required it whenever source-image rights are marked cleared.
 - Added regression coverage for missing source reconciliation and missing Etsy-image rights evidence.
 - Updated the owner input queue, catalogue intake rules, M2 decision pack and roadmap.
+
+## 2026-11-08 — M2 A–E final-head validation
+- Final PR #13 Project Quality run #88 passed all source/foundation, M2 disposition, accessibility, documentation consistency and Markdown link audits; all 101 Python tests passed.
+- Final PR #13 Chromium Browser Review run #15 passed 45/45 route/viewport checks, 25/25 journey/viewport checks, 54 keyboard-operation sequences and reduced-motion; 18 screenshots plus JSON/Markdown summaries were uploaded.
+- Recorded the final CI evidence in the M2 acceptance pack, decision pack, roadmap and accessibility review.
+- Retained M2-A and M2-C as owner-evidence blockers; M2-B/M2-D human/owner approval remains separate from automation; D-015 remains limited to non-production structural review.

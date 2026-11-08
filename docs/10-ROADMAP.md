@@ -32,12 +32,12 @@ The follow-up maintenance patch is limited to the supplied kit's existing CSS an
 
 ## M2 combined delivery — structural review and decision package
 
-D-015 records the owner's 8 November 2026 instruction as authorization for the exact bounded, non-production structural review. The active branch implements five customer journeys at 390, 430, 768, 1280 and 1440px, while retaining the nine-route responsive review and existing keyboard checks. The journey review does not alter the owner kit's HTML/CSS/JS files or enable disabled controls.
+D-015 records the owner's 8 November 2026 instruction as authorization for the exact bounded, non-production structural review. The active branch implements five customer journeys at 390, 430, 768, 1280 and 1440px, while retaining the nine-route responsive review and existing keyboard checks. Final PR #13 CI passed 25/25 journey/viewport and 45/45 route/viewport checks, all 54 keyboard sequences, reduced-motion, and 101/101 Python tests. The journey review does not alter the owner kit's HTML/CSS/JS files or enable disabled controls.
 
 - **M2-A — blocked on owner input:** no brand colours, type families/weights/hierarchy, wordmark/logo/descriptor or photo direction have been supplied/approved. The system-token fallback and historic proposals cannot be reused.
 - **M2-B — recommendation prepared:** first qualitative cohort proposed as home/interior shoppers with textile/craft interest, alongside craft/material enthusiasts and a small trade/gift contrast. No interviews, recruitment, incentives or external data collection are claimed.
 - **M2-C — blocked on source evidence:** no owner-supplied 10–20 product photo/fact sample is present. The private intake validator now distinguishes prototype-use permission from public publication approval, requires owner-reconciled source rows, enforces rights evidence and checks a completed photo audit.
-- **M2-D — automation implemented:** five structural journeys and five viewport widths create 25 journey/viewport checks. Journey order is recommended, not represented as an owner-approved customer priority. Human usability evaluation remains separate.
+- **M2-D — automation passed:** five structural journeys and five viewport widths passed 25/25 checks in Chromium; 45/45 page/viewport checks and 54 keyboard-operation sequences also passed. Journey order is recommended, not represented as an owner-approved customer priority. Human usability evaluation remains separate.
 - **M2-E — authorized for bounded review:** D-015 permits only the non-production review described in the M2 pack. It does not authorize final brand styling, external participant studies, new UI scope, production application work or deployment.
 
 See docs/25-M2-DECISION-AND-REVIEW-PACK.md for segment reasoning, exact journey order, market evidence, sample acceptance and remaining owner input.
@@ -50,9 +50,12 @@ See docs/25-M2-DECISION-AND-REVIEW-PACK.md for segment reasoning, exact journey 
 - **Responsive journey acceptance:** mobile/tablet/desktop must be tested across every selected journey (D-012).
 - **Bounded review authorization:** D-014 alone did not authorize added prototype scope; D-015 now authorizes the limited structural journey review only. Branded prototype, external research and production development remain unauthorized.
 
-### M2 implementation validation status
+### M2 implementation validation status — PASS on final PR #13 head
 
-The M2 branch's GitHub Actions checks are required before this package is considered technically green. Do not claim the new journey matrix or expanded sample validator passed until those final-head runs have completed.
+- [DAG Project Quality run #88](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140897): PASS; all repository audits and **101/101 Python tests** passed.
+- [DAG Structural Kit Browser Review run #15](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888): PASS; **45/45** route/viewport, **25/25** journey/viewport, **54** keyboard-operation sequences, reduced-motion and **18** screenshots passed/uploaded. JSON/Markdown summaries are included in [artifact 13617964823](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888/artifacts/13617964823).
+
+These checks verify the bounded non-production structural review. They do not close owner-dependent M2-A/M2-C inputs or substitute for human research/visual acceptance.
 
 ## Technical and commercial work
 

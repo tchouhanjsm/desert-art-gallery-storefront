@@ -14,7 +14,7 @@ M2 can progress substantially in one coordinated engineering pass, but not every
 | M2-A — Brand identity | Audited exact required owner inputs and linked the controlled token register. | **Blocked on owner-supplied identity** |
 | M2-B — Customer segment and research | Reviewed market context; proposed an initial qualitative cohort and study focus. | **Recommendation ready; owner adoption and fieldwork authorization pending** |
 | M2-C — Product/photo evidence | Extended private intake fields and added a strict 10–20 product sample validator with rights, photo-audit and separate prototype-use checks. | **Evidence workflow ready; sample absent** |
-| M2-D — Responsive journey coverage | Defined five journeys and added 25 automated journey/viewport checks on top of the 45 route/viewport and existing 54 keyboard checks. | **Automation implemented; CI and owner priority acceptance required** |
+| M2-D — Responsive journey coverage | Defined five journeys and added 25 automated journey/viewport checks on top of the 45 route/viewport and existing 54 keyboard checks. | **Automation implemented; final-head CI passed; owner priority/human acceptance pending** |
 | M2-E — Next-phase authorization | Recorded D-015 for a precise non-production review scope. | **Authorized for bounded structural review only** |
 
 There is no claim that a branded customer prototype has been accepted, research participants recruited, product-market fit established, catalogue facts validated or any production feature launched.
@@ -103,15 +103,17 @@ This order follows increasing information depth: entry/discovery, item finding, 
 
 Every selected journey must be exercised at **390, 430, 768, 1280 and 1440 CSS pixels**. Mobile is cross-cutting, not a standalone journey (D-012).
 
-The browser workflow now reports:
-- Nine supplied routes × five widths = 45 route/viewport checks.
-- Five journeys × five widths = 25 journey/viewport checks.
-- Existing nine-page Enter/Space mobile-navigation and focus-retention checks = 54 sequences.
-- Reduced-motion, document overflow, asset loading, page errors and disabled-control checks.
+The final-head Chromium workflow [run #15](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888) passed and uploaded 18 full-page screenshots plus JSON/Markdown summaries; the artifact is available [here](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140888/artifacts/13617964823). The accompanying Project Quality [run #88](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483140897) passed all repository audits and **101/101 Python tests**.
+
+The automated matrix is:
+- Nine supplied routes × five widths = **45/45** route/viewport checks.
+- Five journeys × five widths = **25/25** journey/viewport checks.
+- Existing nine-page Enter/Space mobile-navigation and focus-retention checks = **54** sequences.
+- Reduced-motion, document overflow, asset loading, page errors and disabled-control checks all passed.
 
 The automation runs against the local static kit in CI. It does not recruit participants, conduct usability interviews, approve copy or replace human visual/accessibility review.
 
-**Disposition:** The recommended journey sequence and automation are implemented. Owner priority confirmation and real-user acceptance remain pending.
+**Disposition:** The recommended journey sequence and automation are implemented and automated CI acceptance passed. Owner priority confirmation and real-user acceptance remain pending.
 
 ## M2-E — Bounded authorization and acceptance
 
