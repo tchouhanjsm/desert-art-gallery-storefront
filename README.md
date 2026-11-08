@@ -1,7 +1,7 @@
 # Desert Art Gallery — Owner-Controlled Design Kit v2
 
 **Current structural source:** `design/owner-controlled-kit-v2/`  
-**Status:** Adopted by D-014. All 25 kit files are present. PR #8 verified all 14 original HTML/CSS/JS assets against the supplied ZIP. PR #9 updates only styles/components.css (keyboard focus visibility) and styles/layout.css (reduced-motion support); the nine HTML pages and 12 other implementation assets remain unchanged. CI verifies the current implementation hashes and exact file inventory. This remains structural-only, not brand identity approval or production application authorization.
+**Status:** Adopted by D-014. All 25 kit files are present. PR #8 verified all 14 original HTML/CSS/JS assets against the supplied ZIP. PR #9 amended styles/components.css (keyboard focus visibility) and styles/layout.css (reduced-motion support). PR #11 adds a mobile-only Product Detail thumbnail-grid sizing correction in styles/responsive.css, retaining all three supplied thumbnail slots. The nine HTML pages and supplied script remain unchanged; 11 of the 14 original implementation assets remain byte-identical. CI verifies current implementation hashes and the exact kit inventory. This remains structural-only, not brand identity approval or production application authorization.
 
 ## Authority hierarchy
 
@@ -15,7 +15,7 @@
 
 ## Preview and implementation source
 
-Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/owner-controlled-kit-v2/pages/`. Preserve the nine original HTML pages, responsive rules, script, page/section order, supplied components and disabled states. The only documented accessibility maintenance additions are the CSS focus-visible outline and reduced-motion override in docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md. CI verifies the exact kit file inventory and current implementation asset hashes. The files are a non-production structural kit, not a live store or production app.
+Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/owner-controlled-kit-v2/pages/`. Preserve the nine original HTML pages, responsive rules, script, page/section order, supplied components and disabled states. Documented maintenance is limited to keyboard focus visibility, reduced-motion support and the mobile Product Detail gallery grid correction; see docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md. A dedicated Chromium workflow reviews all nine routes at 390, 430, 768, 1280 and 1440 CSS-pixel widths and uploads screenshots plus JSON/Markdown results. CI verifies the exact kit file inventory and current implementation asset hashes. The files are a non-production structural kit, not a live store or production app.
 
 ## Exact page inventory
 

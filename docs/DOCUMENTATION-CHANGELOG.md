@@ -28,3 +28,12 @@
 - Corrected stale kit-materialization statements in the root M2 pack and handoff; documented current source integrity and static-review limits.
 - Added docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md and reconciled the roadmap, quality guide, README, authority docs and checklist.
 - Kept brand colours, typography, photography direction and all M2 owner gates unchanged.
+
+
+## 2026-11-08 — Chromium browser review and mobile gallery correction
+- Added a dedicated Playwright/Chromium workflow covering all nine owner-controlled pages at the five required responsive review widths (45 route/viewport combinations).
+- Added runtime checks for stylesheet loads, document overflow, page landmarks, mobile navigation state, keyboard focus visibility, browser page errors and reduced-motion behaviour.
+- Added mobile/desktop full-page screenshots and JSON/Markdown run summaries as CI artifacts.
+- The first browser run found a 684px Product Detail gallery caused by three 220px automatic thumbnail grid tracks at 390px and 430px viewports.
+- Corrected the existing mobile CSS grid to use shrinkable tracks and square thumbnail sizing; retained all three existing thumbnail slots and made no HTML or component changes.
+- Updated the current implementation asset hash and recorded browser/assistive-technology validation boundaries.
