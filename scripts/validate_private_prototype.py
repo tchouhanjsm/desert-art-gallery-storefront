@@ -13,7 +13,7 @@ import json
 import re
 import sys
 from html.parser import HTMLParser
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,6 +48,8 @@ NETWORK_PATTERNS = (
     ("WebSocket/EventSource", re.compile(r"\bWebSocket\s*\(|\bEventSource\s*\(", re.I)),
     ("beacon submission", re.compile(r"\bsendBeacon\s*\(", re.I)),
     ("dynamic code loading", re.compile(r"\bimport\s*\(", re.I)),
+    ("background worker registration", re.compile(r"\bnavigator\s*\.\s*serviceWorker\b|\bnew\s+(?:Shared)?Worker\s*\(|\bimportScripts\s*\(", re.I)),
+    ("cross-context messaging", re.compile(r"\bBroadcastChannel\b|\bSharedWorker\b", re.I)),
     ("browser persistence/cookie access", re.compile(r"\bdocument\.cookie\b|\blocalStorage\b|\bsessionStorage\b", re.I)),
     ("form submission API", re.compile(r"\.(?:submit|requestSubmit)\s*\(", re.I)),
     ("dynamic code execution", re.compile(r"\beval\s*\(|\bnew\s+Function\s*\(", re.I)),
@@ -83,6 +85,8 @@ class PageParser(HTMLParser):
         self.base_hrefs: list[str] = []
         self.meta_refresh: list[str] = []
         self.embedded_content: list[str] = []
+        self.inline_event_handlers: list[str] = []
+        self.forbidden_attributes: list[tuple[str, str]] = []
         self.forms: list[dict[str, object]] = []
         self.form_stack: list[dict[str, object]] = []
         self.controls: list[dict[str, object]] = []
@@ -94,7 +98,13 @@ class PageParser(HTMLParser):
         self._style_buffer: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        values = {key: value for key, value in attrs}
+        values = {key.lower(): value for key, value in attrs}
+        for attribute, value in attrs:
+            key = attribute.lower()
+            if key.startswith("on"):
+                self.inline_event_handlers.append(key)
+            if key in {"ping", "formaction", "formmethod", "formenctype", "formtarget", "form"}:
+                self.forbidden_attributes.append((key, value or ""))
         if values.get("style"):
             self.inline_styles.append(values["style"])
         if tag == "base":
@@ -117,7 +127,7 @@ class PageParser(HTMLParser):
         elif tag == "source":
             if values.get("srcset"):
                 self.srcsets.append(values["srcset"] or "")
-        elif tag == "a":
+        elif tag in {"a", "area"}:
             self.links.append(values.get("href") or "")
         elif tag == "link" and "stylesheet" in (values.get("rel") or "").lower().split():
             self.stylesheets.append(values.get("href") or "")
@@ -242,6 +252,16 @@ def _audit_owner_approval(manifest: dict[str, object], repo_root: Path, errors: 
     if not isinstance(approval, dict):
         errors.append("owner_visual_approval object is required")
         return
+    allowed_approval_keys = {"status", "decision_ref", "approved_proposal_sha256", "approved_at"}
+    extra_approval_keys = set(approval) - allowed_approval_keys
+    if extra_approval_keys:
+        errors.append(
+            "owner_visual_approval contains unsupported field(s): "
+            + ", ".join(sorted(extra_approval_keys))
+        )
+    if approval.get("status") not in {"pending", "approved"}:
+        errors.append("owner_visual_approval.status must be pending or approved")
+        return
     if approval.get("status") != "approved":
         errors.append("owner visual approval is not recorded as approved; M2-A must be explicitly approved before prototype build")
         return
@@ -313,13 +333,43 @@ def _audit_asset_ledger(
         if not isinstance(rel, str) or not isinstance(metadata, dict):
             errors.append(f"invalid asset_ledger entry: {rel!r}")
             continue
-        candidate = (root / rel).resolve()
+        relative_path = PurePosixPath(rel)
+        if (
+            not rel
+            or "\\" in rel
+            or relative_path.is_absolute()
+            or relative_path.as_posix() != rel
+            or any(part in {"", ".", ".."} for part in rel.split("/"))
+        ):
+            errors.append(f"asset_ledger path must be a normalized relative POSIX path: {rel!r}")
+            continue
+        candidate = (root / Path(*relative_path.parts)).resolve()
         if not _inside(candidate, root) or not candidate.is_file() or candidate.is_symlink():
             errors.append(f"asset_ledger path is missing, unsafe or symlinked: {rel}")
             continue
         if candidate.suffix.lower() not in IMAGE_SUFFIXES:
             errors.append(f"asset_ledger entry must reference an image file: {rel}")
         kind = metadata.get("kind")
+        allowed_metadata_keys = {
+            "illustrative_frame": {"kind", "label"},
+            "layout_placeholder": {"kind", "label"},
+            "genuine_dag_photo": {
+                "kind",
+                "rights_status",
+                "rights_evidence_ref",
+                "prototype_use_status",
+                "prototype_use_evidence_ref",
+                "product_record_ref",
+            },
+        }
+        expected_keys = allowed_metadata_keys.get(kind)
+        if expected_keys is not None:
+            extra_keys = set(metadata) - expected_keys
+            if extra_keys:
+                errors.append(
+                    f"{rel}: unsupported asset ledger field(s): "
+                    + ", ".join(sorted(extra_keys))
+                )
         if kind in {"illustrative_frame", "layout_placeholder"}:
             required_label = (
                 "ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING"
@@ -332,11 +382,11 @@ def _audit_asset_ledger(
             if not any(required_label in page_text.get(page, "") for page in associated_pages):
                 errors.append(f"{rel}: exact placeholder label must be visible on every page where it is used")
         elif kind == "genuine_dag_photo":
-            if metadata.get("rights_status") != "cleared" or not metadata.get("rights_evidence_ref"):
+            if metadata.get("rights_status") != "cleared" or not isinstance(metadata.get("rights_evidence_ref"), str) or not metadata.get("rights_evidence_ref", "").strip():
                 errors.append(f"{rel}: genuine DAG photo requires cleared rights and rights evidence")
-            if metadata.get("prototype_use_status") != "approved" or not metadata.get("prototype_use_evidence_ref"):
+            if metadata.get("prototype_use_status") != "approved" or not isinstance(metadata.get("prototype_use_evidence_ref"), str) or not metadata.get("prototype_use_evidence_ref", "").strip():
                 errors.append(f"{rel}: genuine DAG photo requires separate private prototype-use approval evidence")
-            if not metadata.get("product_record_ref"):
+            if not isinstance(metadata.get("product_record_ref"), str) or not metadata.get("product_record_ref", "").strip():
                 errors.append(f"{rel}: genuine DAG photo must map to a verified product record")
         else:
             errors.append(f"{rel}: unsupported asset kind {kind!r}")
@@ -429,6 +479,14 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
             errors.append(f"{route}: exactly one main landmark is required")
 
         page_refs: set[str] = set()
+        if parser.inline_event_handlers:
+            errors.append(
+                f"{route}: inline event-handler attributes are not allowed: "
+                + ", ".join(sorted(set(parser.inline_event_handlers)))
+            )
+        if parser.forbidden_attributes:
+            attributes = ", ".join(sorted({name for name, _value in parser.forbidden_attributes}))
+            errors.append(f"{route}: form/network override attributes are not allowed: {attributes}")
         if parser.base_hrefs:
             errors.append(f"{route}: base href is not permitted in a private prototype")
         if parser.meta_refresh:
