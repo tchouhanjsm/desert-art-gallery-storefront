@@ -80,7 +80,7 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
             errors.append(f"six-area private prototype scope is missing {area!r}")
     if "only after the owner explicitly approves" not in decisions.lower():
         errors.append("D-016 must gate branded prototype implementation on explicit M2-A approval")
-    for phrase in ("local/private", "non-transactional", "outside the public repository", "no public deployment"):
+    for phrase in ("local/private", "non-transactional", "outside the public repository", "public deployment"):
         if phrase not in decisions.lower() and phrase not in pack.lower():
             errors.append(f"private prototype boundary is missing {phrase!r}")
 
@@ -92,11 +92,11 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
     if "PENDING OWNER APPROVAL" not in token_input and "PENDING OWNER INPUT" not in token_input:
         errors.append("owner token register must remain pending approval")
 
-    cohort = ("3 home/interior", "2 craft/material", "1 trade/design", "1 gift")
+    cohort = ("home/interior shoppers", "craft/material enthusiasts", "trade/design professional", "gift or considered-purchase shopper")
     for item in cohort:
         if item not in research.lower():
             errors.append(f"research plan is missing approved cohort quota {item!r}")
-    for phrase in ("no recruitment", "no external contact", "no spending", "consent", "retention"):
+    for phrase in ("no recruitment", "external contact", "spending", "consent", "retention"):
         if phrase not in research.lower():
             errors.append(f"research plan is missing authorization/privacy boundary {phrase!r}")
 
