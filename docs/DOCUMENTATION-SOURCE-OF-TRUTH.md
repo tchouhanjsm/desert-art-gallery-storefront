@@ -39,7 +39,7 @@ Preserve the original markup, responsive rules, supplied interactions, page/sect
 
 ### Brand identity remains unapproved
 
-Final colours, typefaces, type scale/hierarchy, logo/wordmark/descriptor, photography direction/crops and visual personality remain owner-controlled. The layout-only tokens are system/browser QA fallback only. `docs/OWNER-TOKEN-INPUT.md` stays pending until exact owner values are recorded in `docs/DECISIONS.md`.
+Final colours, typefaces, type scale/hierarchy, logo/wordmark/descriptor, photography direction/crops and visual personality remain owner-controlled. D-016 requests one evidence-led proposal, but all its values remain unapproved until explicitly accepted. The layout-only tokens are system/browser QA fallback only. docs/OWNER-TOKEN-INPUT.md stays pending until exact owner values are recorded in docs/DECISIONS.md.
 
 ### Explicit exclusions
 
