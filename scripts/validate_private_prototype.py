@@ -436,6 +436,7 @@ def validate_private_prototype(prototype_root: Path, repo_root: Path = ROOT) -> 
         if parser.embedded_content:
             errors.append(f"{route}: embedded/remote media elements are not permitted: {', '.join(sorted(set(parser.embedded_content)))}")
         for resource in parser.resource_links:
+            errors.append(f"{route}: non-stylesheet link resources are not permitted")
             _safe_local_path(resource, path, root, errors, f"{route} resource link")
         for href in parser.links:
             if not href:
