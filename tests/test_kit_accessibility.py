@@ -1,7 +1,7 @@
 from pathlib import Path
 import unittest
 
-from scripts.audit_kit_accessibility import ROUTES, audit_kit_accessibility
+from scripts.audit_kit_accessibility import ROUTES, audit_html_page, audit_kit_accessibility
 
 ROOT = Path(__file__).resolve().parents[1]
 KIT = ROOT / "design" / "owner-controlled-kit-v2"
@@ -50,6 +50,43 @@ class KitAccessibilityTests(unittest.TestCase):
         self.assertIn('label for="variant"', product)
         self.assertIn("<label>Product or page reference<input disabled", contact)
         self.assertIn("<label>Your message<textarea disabled", contact)
+
+    def test_semantic_parser_accepts_a_programmatically_labelled_page(self):
+        source = """
+        <html lang="en"><head><title>Accessible page</title></head><body>
+          <header>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">
+              <span>Toggle navigation</span>
+            </button>
+            <nav id="primary-nav" aria-label="Primary navigation"><a href="index.html">Home</a></nav>
+          </header>
+          <main id="main-content">
+            <h1>Page title</h1>
+            <label for="email">Email</label><input id="email" type="email">
+          </main>
+        </body></html>
+        """
+        self.assertEqual(audit_html_page(source, "fixture.html"), [])
+
+    def test_semantic_parser_detects_duplicate_ids_missing_names_and_dangling_aria(self):
+        source = """
+        <html lang="en"><head><title>Broken page</title></head><body>
+          <button class="menu-toggle" aria-expanded="false" aria-controls="missing-nav"></button>
+          <nav id="primary-nav" aria-label="Primary navigation"></nav>
+          <main id="main-content">
+            <h1>Page title</h1>
+            <a href=""></a>
+            <input id="duplicate">
+            <p id="duplicate">Duplicate identifier</p>
+          </main>
+        </body></html>
+        """
+        findings = audit_html_page(source, "broken.html")
+        self.assertTrue(any("duplicate id" in finding for finding in findings))
+        self.assertTrue(any("button has no accessible name" in finding for finding in findings))
+        self.assertTrue(any("anchor is missing a non-empty href" in finding for finding in findings))
+        self.assertTrue(any("input control must have a programmatic label" in finding for finding in findings))
+        self.assertTrue(any("ARIA relationship references missing id" in finding for finding in findings))
 
 
 if __name__ == "__main__":
