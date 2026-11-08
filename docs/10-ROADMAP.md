@@ -70,9 +70,9 @@ The same PR extends the readiness gate without starting prototype styling:
 - The manifest validator now fails closed on non-integer schema versions, malformed approval states, non-calendar dates, unsupported approval/asset metadata fields, unnormalized asset paths and non-string genuine-photo evidence references.
 - It rejects inline event handlers, link `ping` beacons, form-associated submission overrides, service-worker/worker registration and cross-context messaging APIs in addition to the existing transaction/network restrictions.
 - The local Chromium runner rejects symlinked prototype roots, checks the viewport meta tag and records browser-console errors, failed requests and unsuccessful HTTP resource responses as review failures.
-- Regression coverage adds nine tests for malformed metadata, path normalization, inline event handlers, worker/network overrides, approval-date validation and review-root boundaries.
+- Regression coverage adds eleven tests for malformed metadata, path normalization, inline event handlers, worker/network overrides, approval-date validation, SVG references, image-type submit controls and review-root boundaries.
 
-The continuation is implemented and validated at PR #14 head `2e58fdaf7d1cceb4cedb22ee80004acdc86a128b`. [DAG Project Quality run #136](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511656150) passed source/foundation, M2 gate, accessibility, documentation consistency and Markdown link audits, with **134/134 Python tests** passing. The private Chromium review was not run because no approved private prototype exists; it remains a local-only step after M2-A approval. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
+The continuation was validated at an earlier PR #14 head; the SVG and image-submit extension is part of the current follow-up and its final-head CI evidence will be recorded after the latest workflow completes. The private Chromium review was not run because no approved private prototype exists; it remains a local-only step after M2-A approval. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
 
 ## Technical and commercial work
 
