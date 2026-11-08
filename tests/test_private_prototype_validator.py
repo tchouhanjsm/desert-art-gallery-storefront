@@ -418,5 +418,31 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         self.assertFalse(output.exists())
 
 
+    def test_inline_svg_external_image_and_symbol_references_are_rejected(self):
+        (self.proto / "pages/about.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<svg xmlns="http://www.w3.org/2000/svg">'
+            '<image href="https://cdn.example/photo.jpg"/>'
+            '<use href="https://cdn.example/symbols.svg#mark"/>'
+            '</svg></main></body></html>',
+            encoding="utf-8",
+        )
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("inline SVG image: external or non-file URL" in error for error in result["errors"]))
+        self.assertTrue(any("inline SVG symbol: external or non-file URL" in error for error in result["errors"]))
+
+    def test_image_type_submit_controls_are_rejected(self):
+        (self.proto / "pages/contact.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<input type="image" src="submit.png" alt="Submit">'
+            '</main></body></html>',
+            encoding="utf-8",
+        )
+        result = self.validate()
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("image-type submit controls are not allowed" in error for error in result["errors"]))
+
+
 if __name__ == "__main__":
     unittest.main()
