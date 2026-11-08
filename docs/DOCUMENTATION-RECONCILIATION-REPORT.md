@@ -1,8 +1,8 @@
 # Repository-Wide Reconciliation Report — DAG Design Kit v2
 
-**Review date:** 2026-11-07  
+**Original reconciliation review date:** 2026-11-07  
 **Branch:** `feat/owner-design-kit-v2-reconciliation`  
-**Status:** Source kit materialized and byte-verified; governance reconciliation completed; PR CI green (run 62).
+**PR #8 baseline status:** Source kit materialized and byte-verified; governance reconciliation merged; main-branch CI green (run #64). The 2026-11-08 CSS-only accessibility maintenance follow-up is documented in docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md and reviewed separately in PR #9.
 
 ## Source and integrity evidence
 
@@ -17,7 +17,7 @@ The archive contains exactly **25 files**:
 
 All 25 are installed under `design/owner-controlled-kit-v2/`. All 14 original HTML/CSS/JS assets have been compared against the supplied ZIP by Git blob SHA-1 and exact file size. All 14 match exactly. CI now enforces the expected blob hashes and the exact 25-file inventory in `scripts/validate_project.py`.
 
-The 11 kit-local governance/readme files are reconciled to D-014 and the repository-root authority hierarchy; they are not claimed to be byte-identical to their v1-era source text. The original HTML/CSS/JS asset bytes remain unchanged.
+The 11 kit-local governance/readme files are reconciled to D-014 and the repository-root authority hierarchy; they are not claimed to be byte-identical to their v1-era source text. The original HTML/CSS/JS asset bytes were unchanged at PR #8 adoption. PR #9 subsequently amends only styles/components.css and styles/layout.css for keyboard focus visibility and reduced-motion support; the other 12 implementation assets remain byte-identical.
 
 ## Confirmed structural baseline
 
@@ -74,7 +74,8 @@ Preserve source markup, CSS, responsive rules, prototype script, page/section or
 - The active exploration folder now contains only its empty placeholder.
 
 ### Validators and tests
-- Reworked `scripts/validate_project.py` to enforce D-014 authority, exact 25-file inventory, 14 original asset blob hashes, English page language and local page/stylesheet/script references.
+- Reworked scripts/validate_project.py to enforce D-014 authority, exact 25-file inventory, current reviewed implementation-asset blob hashes, English page language and local page/stylesheet/script references.
+- Added scripts/audit_kit_accessibility.py and tests/test_kit_accessibility.py for source-level semantic, navigation-state, focus-visible and reduced-motion checks.
 - Reworked `scripts/audit_m2_readiness.py` to audit five open owner gates against the nine-page baseline.
 - Updated project, visual identity and M2 tests to test the active v2 scope rather than old proposal boards or six-route assumptions.
 - The existing workflow `.github/workflows/project-quality.yml` still runs the project validator, owner-gate audit and complete Python unittest suite.
@@ -105,6 +106,20 @@ GitHub Actions workflow: **DAG Project Quality**, run **#62** (run ID `423970348
 - `python3 scripts/audit_documentation_links.py` — PASS across active Markdown files.
 - `python3 -m unittest discover -s tests -v` — PASS, **77 tests**.
 
-## Remaining caution
+## PR #8 final status and current follow-up
 
-The source kit is materialized and the original implementation asset bytes are verified. The documentation/link/source checks are green, and the PR is open for owner review. This does not approve brand styling, content publication, customer research recruitment, a production app, or any commerce capability. The owner gates remain intentionally open.
+The paragraph above described the state when the original reconciliation report was drafted. PR #8 was subsequently merged on 2026-11-07; its PR workflow run #63 and main-branch push run #64 both passed. PR #9 is a separate, narrowly scoped accessibility-maintenance follow-up. Its CI result is reported on the live pull request. The original 14-asset archive comparison remains the D-014 adoption baseline; PR #9 changes two CSS files and leaves the other 12 implementation assets unchanged.
+
+This does not approve brand styling, content publication, customer research recruitment, a production app, or any commerce capability. The M2-A through M2-E owner gates remain intentionally open. Browser/assistive-technology validation remains outstanding as documented in docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md.
+
+
+## 2026-11-08 accessibility maintenance addendum — PR #9
+
+The PR #8 archive-verification statements above describe the original D-014 adoption baseline. PR #9 applies two narrowly scoped changes to existing CSS only:
+
+1. Authored :focus-visible outline using currentColor.
+2. Reduced-motion override for the existing smooth-scroll behaviour.
+
+The nine HTML pages, responsive breakpoints, supplied JavaScript, token fallback and all disabled controls/labels remain unchanged. The current validator checks current blob hashes for all 14 implementation assets and still enforces the exact 25-file kit inventory. Twelve implementation assets remain byte-identical to the owner archive; the two CSS files are the documented amendments.
+
+The new source audit and tests do not claim browser, assistive-technology, viewport or WCAG conformance. Those remain open. No owner gate, brand token or production authorization changed.

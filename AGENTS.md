@@ -4,7 +4,7 @@
 
 Build Desert Art Gallery (DAG) as an original, product-led ecommerce and gallery experience rooted in the textiles, objects, material culture and craft identity of Jaisalmer, Rajasthan, with Japan-first customer focus.
 
-**Owner-approved structural source: `design/owner-controlled-kit-v2/` (D-014).** All 25 kit files are materialized in this branch. The 14 original HTML/CSS/JS assets have been verified byte-for-byte against the owner archive using Git blob hashes. Preserve the nine HTML pages, CSS files, responsive styles, structural sections, supplied JS and component inventory. Do not redesign, restyle, expand or replace the kit.
+**Owner-approved structural source: `design/owner-controlled-kit-v2/` (D-014).** All 25 kit files are materialized in this branch. At D-014 adoption (PR #8), all 14 original HTML/CSS/JS assets were verified byte-for-byte against the owner archive using Git blob hashes. PR #9 applies two narrowly scoped accessibility maintenance changes: an authored :focus-visible outline using currentColor, and a reduced-motion override for the existing smooth-scroll rule. The nine HTML pages and the other 12 implementation assets remain unchanged. Preserve the nine-page structure, responsive rules, supplied JS and component inventory. Do not redesign, restyle, expand or replace the kit.
 
 The legacy repository `https://github.com/tchouhanjsm/desert-art-gallery` may be inspected selectively for verified domain knowledge, data structures, operational lessons and proven engineering logic only. Its frontend, layouts, styles, components and visual decisions are not inherited.
 

@@ -55,3 +55,10 @@ h3 { font-size: 1.15rem; margin: .4em 0; }
 .contact-panel input, .contact-panel textarea { width: 100%; padding: 12px; border: 1px solid var(--dag-color-border); }
 .contact-panel textarea { min-height: 120px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+
+/* Keyboard focus maintenance: inherit the current text colour; add no brand token. */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

@@ -1,7 +1,7 @@
 # Desert Art Gallery — Owner-Controlled Design Kit v2
 
 **Current structural source:** `design/owner-controlled-kit-v2/`  
-**Status:** Adopted by D-014. All 25 kit files are present; the 14 original HTML/CSS/JS assets are byte-verified against the supplied ZIP. This is structural adoption only, not brand identity approval or production application authorization.
+**Status:** Adopted by D-014. All 25 kit files are present. PR #8 verified all 14 original HTML/CSS/JS assets against the supplied ZIP. PR #9 updates only styles/components.css (keyboard focus visibility) and styles/layout.css (reduced-motion support); the nine HTML pages and 12 other implementation assets remain unchanged. CI verifies the current implementation hashes and exact file inventory. This remains structural-only, not brand identity approval or production application authorization.
 
 ## Authority hierarchy
 
@@ -15,7 +15,7 @@
 
 ## Preview and implementation source
 
-Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/owner-controlled-kit-v2/pages/`. Preserve all original HTML, CSS, responsive rules, script, page/section order, supplied components and disabled states. CI verifies the exact kit file inventory and original implementation asset hashes. The files are a non-production structural kit, not a live store or production app.
+Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/owner-controlled-kit-v2/pages/`. Preserve the nine original HTML pages, responsive rules, script, page/section order, supplied components and disabled states. The only documented accessibility maintenance additions are the CSS focus-visible outline and reduced-motion override in docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md. CI verifies the exact kit file inventory and current implementation asset hashes. The files are a non-production structural kit, not a live store or production app.
 
 ## Exact page inventory
 
@@ -29,7 +29,7 @@ Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/own
 8. Journal article — `pages/article.html`
 9. Contact / support — `pages/contact.html`
 
-See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for exact sections, slot counts and components.
+See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for exact sections, slot counts and components. See docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md for the static source review and outstanding browser checks.
 
 ## Brand identity remains owner-controlled
 
