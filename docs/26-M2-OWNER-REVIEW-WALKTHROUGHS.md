@@ -98,7 +98,7 @@ For each area, record:
 - Keyboard/focus and disabled-state clarity.
 - Exact requested changes and the relevant component/page.
 
-Owner visual sign-off of a prototype is not customer usability research. Human customer usability testing requires a separate research protocol and the explicit M2-B fieldwork authorization. No user testing or customer usability validation is claimed by these walkthroughs.
+These owner-led walkthroughs are not participant usability research. Owner visual sign-off of a prototype is not customer usability research. Human customer usability testing requires a separate research protocol and the explicit M2-B fieldwork authorization. No user testing or customer usability validation is claimed by these walkthroughs.
 
 ## 6. Prototype implementation gate
 
