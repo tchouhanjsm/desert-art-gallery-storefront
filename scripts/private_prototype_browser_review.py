@@ -18,7 +18,10 @@ from pathlib import Path
 from typing import Iterator
 from urllib.parse import urlsplit
 
-from validate_private_prototype import ROOT, ROUTES, validate_private_prototype
+try:
+    from .validate_private_prototype import ROOT, ROUTES, validate_private_prototype
+except ImportError:  # direct script execution
+    from validate_private_prototype import ROOT, ROUTES, validate_private_prototype
 
 VIEWPORT_WIDTHS = (390, 430, 768, 1280, 1440)
 VIEWPORT_HEIGHT = 900
