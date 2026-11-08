@@ -53,3 +53,12 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - The first browser run found a 684px Product Detail gallery caused by three 220px automatic thumbnail grid tracks at 390px and 430px viewports.
 - Corrected the existing mobile CSS grid to use shrinkable tracks and square thumbnail sizing; retained all three existing thumbnail slots and made no HTML or component changes.
 - Updated the current implementation asset hash and recorded browser/assistive-technology validation boundaries.
+
+
+## 2026-11-08 — PR #10 rebase, validator and audit correction
+- Reconciled PR #10 onto main after PR #11 merged, preserving PR #11's responsive Product Detail fix and Chromium QA workflow.
+- Replaced the brittle checklist phrase assertion with a semantic materialization-evidence check; the exact kit inventory remains independently validated.
+- Added non-operative archival banners to the three historical visual-proposal HTML boards.
+- Prevented the tracked-file auditor from treating its own regex definitions as active repository instructions.
+- Clarified a historical audit explanation in the path matrix so it is not misclassified as a live directive.
+- GitHub Actions DAG Project Quality run #77 passed on PR #10 head `1f11b0eca7be4f34b2088cb94f94bdb041936a2a`: foundation, five owner gates, kit accessibility, repository-wide consistency, Markdown links and unit tests.

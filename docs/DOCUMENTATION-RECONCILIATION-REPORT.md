@@ -138,16 +138,20 @@ This is a documentation/governance reset only. It does not:
 
 ## 9. Validation status
 
-The final branch commit and GitHub Actions result are recorded after the PR is created. The following checks are required in CI:
+The PR #10 branch was reconciled onto the current main commit containing merged PR #11
+(`95079bbb5ccf6aaf888d4523a5adfda582ab448c`). The final audited PR #10 head is
+`1f11b0eca7be4f34b2088cb94f94bdb041936a2a`.
 
-- `python3 scripts/validate_project.py`
-- `python3 scripts/audit_m2_readiness.py`
-- `python3 scripts/audit_kit_accessibility.py`
-- `python3 scripts/audit_documentation_consistency.py`
-- `python3 scripts/audit_documentation_links.py`
-- `python3 -m unittest discover -s tests -v`
+GitHub Actions **DAG Project Quality run #77** passed on that exact head. All required checks passed:
 
-No test is marked PASS in this report until GitHub Actions actually runs on the final PR head.
+- `python3 scripts/validate_project.py` — PASS.
+- `python3 scripts/audit_m2_readiness.py` — PASS; five owner gates remain open as expected.
+- `python3 scripts/audit_kit_accessibility.py` — PASS.
+- `python3 scripts/audit_documentation_consistency.py` — PASS across 145 tracked paths, including historical banner and active-instruction checks.
+- `python3 scripts/audit_documentation_links.py` — PASS.
+- `python3 -m unittest discover -s tests -v` — PASS.
+
+The PR remains open and mergeable. The final full-diff review and merge are still pending; do not mark those checklist items complete until performed.
 
 
 ## 10. Post-baseline reconciliation — merged PR #11

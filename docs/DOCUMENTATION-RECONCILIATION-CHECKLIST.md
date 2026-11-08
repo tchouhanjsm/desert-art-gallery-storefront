@@ -48,8 +48,8 @@
 - [x] Source validator checks the eight-level order and known stale kit-materialization instructions.
 - [x] Workflow executes the repository-wide consistency audit.
 - [x] Historical mentions in decisions/audit reports are not treated as active instructions.
-- [ ] Final consistency audit passes on the committed PR head (pending CI).
-- [ ] Final Markdown internal-link audit passes on the committed PR head (pending CI).
+- [x] Final consistency audit passes on the committed PR #10 head (GitHub Actions run #77).
+- [x] Final Markdown internal-link audit passes on the committed PR #10 head (GitHub Actions run #77).
 
 ## Remaining owner/visual constraints preserved
 
@@ -75,12 +75,12 @@
 
 ## Final validation and review
 
-- [ ] `python3 scripts/validate_project.py` — pending final CI.
-- [ ] `python3 scripts/audit_m2_readiness.py` — pending final CI.
-- [ ] `python3 scripts/audit_kit_accessibility.py` — pending final CI.
-- [ ] `python3 scripts/audit_documentation_consistency.py` — pending final CI.
-- [ ] `python3 scripts/audit_documentation_links.py` — pending final CI.
-- [ ] `python3 -m unittest discover -s tests -v` — pending final CI.
+- [x] `python3 scripts/validate_project.py` — PASS (GitHub Actions run #77).
+- [x] `python3 scripts/audit_m2_readiness.py` — PASS (GitHub Actions run #77).
+- [x] `python3 scripts/audit_kit_accessibility.py` — PASS (GitHub Actions run #77).
+- [x] `python3 scripts/audit_documentation_consistency.py` — PASS (GitHub Actions run #77).
+- [x] `python3 scripts/audit_documentation_links.py` — PASS (GitHub Actions run #77).
+- [x] `python3 -m unittest discover -s tests -v` — PASS (GitHub Actions run #77).
 - [ ] Complete PR diff reviewed and no unrelated implementation changes found.
 - [ ] PR merged.
 
