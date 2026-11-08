@@ -49,7 +49,7 @@ KIT_FILES = {
     "styles/components.css", "styles/layout.css", "styles/responsive.css", "styles/tokens-layout-only.css",
 }
 # Current reviewed implementation-asset Git blob SHA-1 values. PR #8 archive hashes
-# are preserved in history; PR #9 documents two additive CSS accessibility amendments.
+# are preserved in history; PR #9 and PR #11 document three narrowly scoped CSS amendments.
 KIT_ASSET_BLOB_SHAS = {
     "index.html": "6609a91541eac36f98fe1d6f8e6a2903ad5a32ee",
     "pages/about.html": "3669d729a47d32016f9643d976179d4d63f4f6e5",
@@ -63,7 +63,7 @@ KIT_ASSET_BLOB_SHAS = {
     "scripts/prototype.js": "bd46c5de2e1f5ba0173c8338b90b93bb34f2cf76",
     "styles/components.css": "fab3c90f823f2b90061d2e1bf67f7919968ee861",
     "styles/layout.css": "0505b87576b7d843e2678aaee6e1450df98a454a",
-    "styles/responsive.css": "b59304f6034f0f961f022c4efee7809ad04106e1",
+    "styles/responsive.css": "2a79b66f9e7c97086133f37465490d6ee7b7bc5e",
     "styles/tokens-layout-only.css": "2a0a72468db3029bbac65682f2b0d993888dce71",
 }
 
@@ -227,7 +227,7 @@ def main() -> int:
     print(f"- all {len(KIT_ASSET_BLOB_SHAS)} HTML/CSS/JS implementation assets match the current reviewed blob hashes")
     print("- all nine pages use English markup and local links/styles/scripts resolve")
     print("- D-014, superseded D-013 and retired visual proposals are explicit")
-    print("- PR #8 archive verification remains in history; PR #9 CSS accessibility amendments are hash-verified")
+    print("- PR #8 archive verification remains in history; PR #9 accessibility and PR #11 responsive CSS amendments are hash-verified")
     print("- owner-only identity inputs remain pending; layout tokens are QA-only")
     print("- disabled states and closed functionality boundaries are maintained")
     return 0

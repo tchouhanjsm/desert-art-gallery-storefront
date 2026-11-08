@@ -15,7 +15,6 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Iterator
-from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 KIT = ROOT / "design" / "owner-controlled-kit-v2"
@@ -92,6 +91,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
                     route_errors: list[str] = []
                     page_errors: list[str] = []
                     failed_assets: list[str] = []
+                    layout_diagnostics: list[dict[str, object]] = []
                     page = browser.new_page(
                         viewport={"width": width, "height": VIEWPORT_HEIGHT},
                         device_scale_factor=1,
@@ -267,7 +267,7 @@ def run_review(output_dir: Path) -> dict[str, object]:
                         "viewport_width": width,
                         "status": "PASS" if not route_errors else "FAIL",
                         "errors": route_errors,
-                        "layout_diagnostics": locals().get("layout_diagnostics", []),
+                        "layout_diagnostics": layout_diagnostics,
                     }
                     results.append(result)
                     failures.extend(route_errors)

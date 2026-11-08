@@ -1,58 +1,70 @@
-# 24 — Structural Kit Accessibility Review
+# 24 — Structural Kit Accessibility and Browser Review
 
-**Review date:** 2026-11-08
-**Baseline:** D-014; design/owner-controlled-kit-v2/
-**Scope:** Static source review and narrowly scoped accessibility maintenance. This is not a visual redesign, brand approval or production acceptance.
+**Review date:** 2026-11-08  
+**Baseline:** D-014; `design/owner-controlled-kit-v2/`  
+**Scope:** Static source review, narrowly scoped accessibility maintenance, and automated Chromium responsive/interaction review. This is not a brand redesign, production acceptance or WCAG certification.
 
 ## Source baseline and change boundary
 
-PR #8 installed the 25-file owner kit and verified all 14 original HTML/CSS/JS implementation assets byte-for-byte against the supplied archive. This follow-up changes only two existing CSS files:
+PR #8 installed the 25-file owner kit and verified all 14 original HTML/CSS/JS implementation assets byte-for-byte against the supplied archive.
 
-- **styles/components.css** — adds an authored :focus-visible outline (2px solid currentColor, 3px offset). It inherits the existing text colour and introduces no palette, colour token or typography value.
-- **styles/layout.css** — adds a prefers-reduced-motion: reduce rule that changes the existing smooth-scroll behaviour to scroll-behavior: auto.
+PR #9 amended two existing CSS files:
+- **styles/components.css** — adds a `:focus-visible` outline (2px solid `currentColor`, 3px offset).
+- **styles/layout.css** — respects `prefers-reduced-motion: reduce` for the existing smooth-scroll rule.
 
-The nine HTML pages, page structure, JavaScript prototype, token fallback, responsive breakpoints, controls, form labels, placeholders and disabled states remain unchanged. Twelve of the original 14 implementation assets remain byte-identical to the owner archive; the two amended CSS files are now checked against their current reviewed Git blob hashes by scripts/validate_project.py.
+The first Chromium browser review then exposed a real mobile defect in the supplied Product Detail gallery: the three-column thumbnail grid retained 220px automatic minimum tracks, forcing the gallery and its information column to 684px wide at 390px and 430px viewport widths.
+
+PR #11 corrects that defect in **styles/responsive.css** at the existing 640px mobile breakpoint:
+- Constrains the Product Detail grid to a shrinkable single track.
+- Allows the existing gallery and information grid items to shrink.
+- Uses three `minmax(0, 1fr)` thumbnail tracks.
+- Removes the thumbnail placeholders' conflicting 220px minimum height so their existing square aspect ratio can size to the available mobile width.
+
+The three supplied thumbnail slots remain in the same order. No HTML, route, page section, control, label, component, supplied JavaScript or desktop/tablet breakpoint is changed. Three of the original 14 implementation assets now contain narrowly scoped, documented CSS maintenance; the other 11 remain byte-identical to the owner archive. The current asset hashes are enforced by `scripts/validate_project.py`.
 
 ## Static findings and treatment
 
 | Review area | Static observation | Treatment |
 |---|---|---|
-| Document language | All 9 pages declare English (lang=en). | Retained. |
-| Main landmark | All 9 pages contain exactly one main landmark with id=main-content. | Retained for landmark navigation. |
+| Document language | All 9 pages declare English (`lang=en`). | Retained. |
+| Main landmark | All 9 pages contain exactly one main landmark with `id=main-content`. | Retained. |
 | Page heading | All 9 pages contain exactly one h1. | Retained. |
-| Mobile navigation | All 9 pages have a named toggle, aria-expanded, aria-controls and a matching labelled navigation landmark. The supplied script updates the expanded state. | Retained; no menu behaviour added. |
-| Form/control labels | Shop and Collection sort selects are wrapped by Sort labels; Product variant has its existing for/id label; Contact input and textarea are nested within existing labels. | Retained; disabled states unchanged. |
-| Keyboard focus | Original CSS had no authored :focus-visible treatment. | Added an outline using currentColor; no brand colour selected. |
-| Reduced motion | Original layout CSS enabled smooth scrolling without a reduced-motion override. | Added an override for prefers-reduced-motion: reduce. |
-| Skip link | No explicit skip link is supplied. Each page has a main landmark. | No new component added because the component inventory is closed. |
-| Brand contrast | Production colour tokens are not approved; the fallback uses system/browser values. | Not assessed or claimed. |
+| Mobile navigation | All 9 pages have a named toggle, `aria-expanded`, `aria-controls` and a matching labelled navigation landmark. | Supplied JavaScript is retained and exercised in Chromium. |
+| Form/control labels | Shop and Collection sort selects are labelled; Product variant has its existing `for/id` label; Contact input and textarea remain nested within labels. | Retained; disabled states unchanged. |
+| Keyboard focus | Shared `:focus-visible` rule uses `currentColor`. | Retained; no brand token introduced. |
+| Reduced motion | Existing smooth scrolling is disabled under `prefers-reduced-motion: reduce`. | Retained and browser-checked. |
+| Product Detail mobile gallery | Original thumbnail grid expanded to 684px at narrow widths because of automatic minimum grid tracks. | Corrected at the existing mobile breakpoint without changing slot count or markup. |
+| Brand contrast | Production colour tokens are not approved; fallback uses system/browser values. | Not assessed or claimed. |
 
-## Static checks
+## Automated browser review
 
-The read-only audit script scripts/audit_kit_accessibility.py checks all nine source pages for:
-- English document language.
-- Exactly one main landmark with the expected target ID.
-- Exactly one page-level heading.
-- A mobile-navigation toggle with an accessible name, expanded state and valid navigation target.
-- An authored :focus-visible treatment that uses currentColor.
-- A reduced-motion rule that disables the existing smooth scrolling.
+The dedicated workflow `.github/workflows/kit-browser-review.yml` runs Playwright with Chromium for all nine supplied routes at **390, 430, 768, 1280 and 1440 CSS-pixel widths** (45 route/viewport combinations).
 
-tests/test_kit_accessibility.py checks these rules and verifies that the existing disabled controls and their labels remain present.
+Checks include:
+- HTTP document response and four local stylesheet loads.
+- Exactly one h1 and one `main#main-content`.
+- Horizontal document overflow.
+- Desktop versus mobile navigation visibility.
+- Mobile navigation open/close and `aria-expanded` state.
+- Keyboard focus-visible outline.
+- Browser page errors and failed local document/style/script requests.
+- Reduced-motion computed style.
+- Full-page screenshots for each route at 390px and 1440px, plus JSON and Markdown summaries.
+
+The first real run completed **43/45** route/viewport checks and correctly failed only Product Detail at 390px and 430px. It reported a document width of 700px and identified the three 220px thumbnail tracks as the cause. The responsive correction above is now included; the post-fix workflow result must be checked before this review can be marked green.
+
+The workflow artifact is diagnostic evidence, not owner visual sign-off. It does not claim screen-reader coverage, WCAG conformance, final colour contrast, or review in every browser engine.
 
 ## Not yet verified
 
-This report does not claim:
-- Browser-rendered layout acceptance at 390, 430, 768, 1280 or 1440 CSS-pixel widths.
-- Real keyboard traversal or visible-focus quality in each browser.
 - Screen-reader behaviour with VoiceOver, NVDA or another assistive technology.
-- Touch-target adequacy or zoom/reflow behaviour.
+- Touch-target adequacy and zoom/reflow behaviour.
 - WCAG conformance or final colour-contrast ratios.
-- Production visual identity, photography, copy or content approval.
+- Brand identity, photography, copy or factual catalogue approval.
+- Owner's final rendered visual acceptance.
 
-Those checks require actual browser and assistive-technology review. Final colour-contrast acceptance remains blocked until the owner supplies exact brand tokens; do not substitute the system fallback or a historic proposal.
+Final colour-contrast acceptance remains blocked until the owner supplies exact brand tokens; do not substitute system fallback values or historic proposals.
 
 ## Scope and decision boundary
 
-No pages, sections, components, navigation items, features, product claims, images, external dependencies, brand tokens or production behaviours were added. Search, filter/sort, variant, purchase and enquiry controls remain disabled. D-014 and M2-A through M2-E owner gates remain unchanged.
-
-The next technical acceptance step is browser/keyboard review of all nine pages at the specified viewport widths. Any proposed visible or structural addition, including a skip-link component, must be handled through the owner change-control process.
+No pages, sections, components, navigation items, features, product claims, images, brand tokens or production behaviours were added. Search, filter/sort, variant, purchase and enquiry controls remain disabled. D-014 and M2-A through M2-E owner gates remain unchanged.
