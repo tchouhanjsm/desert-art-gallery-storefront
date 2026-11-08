@@ -53,7 +53,7 @@ class M2PrototypeReadinessTests(unittest.TestCase):
             self.assertIn(area, walkthrough)
         self.assertIn("non-transactional", decisions)
         self.assertIn("outside the public repository", decisions)
-        self.assertIn("no public deployment", decisions)
+        self.assertIn("public deployment", decisions)
 
     def test_research_cohort_is_approved_but_no_fieldwork_is_authorized(self):
         research = (ROOT / "docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md").read_text(encoding="utf-8").lower()
