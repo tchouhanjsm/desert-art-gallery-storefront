@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from scripts.private_prototype_browser_review import run_private_review
 from scripts.validate_private_prototype import (
     AREA_ROUTES,
     PROPOSAL_PATH,
@@ -208,6 +209,40 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         result = self.validate()
         self.assertFalse(result["ok"])
         self.assertTrue(any("symlink is not allowed" in error for error in result["errors"]))
+
+
+    def test_placeholder_asset_passes_with_visible_exact_label_and_ledger(self):
+        (self.proto / "assets").mkdir()
+        (self.proto / "assets/frame.svg").write_text(
+            "<svg xmlns='http://www.w3.org/2000/svg'></svg>", encoding="utf-8"
+        )
+        (self.proto / "pages/product.html").write_text(
+            '<html lang="en"><head><title>x</title></head><body><main><h1>x</h1>'
+            '<img src="../assets/frame.svg" alt="Illustrative image placeholder">'
+            '<p>ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING</p>'
+            '</main></body></html>',
+            encoding="utf-8",
+        )
+        self.write_manifest(asset_ledger={
+            "assets/frame.svg": {
+                "kind": "illustrative_frame",
+                "label": "ILLUSTRATIVE IMAGE FRAME — DAG PHOTOGRAPH PENDING",
+            }
+        })
+        result = self.validate()
+        self.assertTrue(result["ok"], result["errors"])
+        self.assertEqual(result["images_checked"], 1)
+
+    def test_local_browser_review_stops_before_playwright_without_visual_approval(self):
+        manifest = json.loads((self.proto / "prototype-manifest.json").read_text())
+        manifest["owner_visual_approval"]["status"] = "pending"
+        (self.proto / "prototype-manifest.json").write_text(json.dumps(manifest))
+        output = self.base / "owner-review-output"
+        result = run_private_review(self.proto, output)
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["checks"], 0)
+        self.assertTrue(any("entry validation failed" in error for error in result["errors"]))
+        self.assertFalse(output.exists())
 
     def test_missing_manifest_and_nonexistent_root_are_reported(self):
         (self.proto / "prototype-manifest.json").unlink()
