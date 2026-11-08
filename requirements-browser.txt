@@ -1,0 +1,2 @@
+# Isolated browser QA dependency; the core project has no runtime dependency.
+playwright==1.65.0
