@@ -8,6 +8,7 @@ root except for the owner decision register and proposal hash in this repo.
 from __future__ import annotations
 
 import argparse
+from datetime import date
 import hashlib
 import json
 import re
@@ -235,8 +236,8 @@ def _asset_references_from_srcset(srcset: str) -> list[str]:
 
 
 def _audit_owner_approval(manifest: dict[str, object], repo_root: Path, errors: list[str]) -> None:
-    if manifest.get("schema_version") != 1:
-        errors.append("manifest schema_version must be 1")
+    if type(manifest.get("schema_version")) is not int or manifest.get("schema_version") != 1:
+        errors.append("manifest schema_version must be integer 1")
     allowed_manifest_keys = {
         "schema_version", "base_decision_ref", "prototype_mode", "routes",
         "areas", "owner_visual_approval", "asset_ledger",
@@ -259,10 +260,11 @@ def _audit_owner_approval(manifest: dict[str, object], repo_root: Path, errors: 
             "owner_visual_approval contains unsupported field(s): "
             + ", ".join(sorted(extra_approval_keys))
         )
-    if approval.get("status") not in {"pending", "approved"}:
+    approval_status = approval.get("status")
+    if not isinstance(approval_status, str) or approval_status not in {"pending", "approved"}:
         errors.append("owner_visual_approval.status must be pending or approved")
         return
-    if approval.get("status") != "approved":
+    if approval_status != "approved":
         errors.append("owner visual approval is not recorded as approved; M2-A must be explicitly approved before prototype build")
         return
 
@@ -306,8 +308,15 @@ def _audit_owner_approval(manifest: dict[str, object], repo_root: Path, errors: 
             errors.append("approved proposal SHA-256 does not match the current M2-A proposal; approval must be renewed after changes")
 
     approved_at = approval.get("approved_at")
-    if not isinstance(approved_at, str) or not DATE_RE.fullmatch(approved_at):
-        errors.append("owner approval date must use YYYY-MM-DD")
+    valid_approval_date = False
+    if isinstance(approved_at, str) and DATE_RE.fullmatch(approved_at):
+        try:
+            date.fromisoformat(approved_at)
+            valid_approval_date = True
+        except ValueError:
+            pass
+    if not valid_approval_date:
+        errors.append("owner approval date must be a valid calendar date in YYYY-MM-DD format")
 
 
 def _audit_asset_ledger(
@@ -350,6 +359,9 @@ def _audit_asset_ledger(
         if candidate.suffix.lower() not in IMAGE_SUFFIXES:
             errors.append(f"asset_ledger entry must reference an image file: {rel}")
         kind = metadata.get("kind")
+        if not isinstance(kind, str):
+            errors.append(f"{rel}: asset kind must be a string")
+            continue
         allowed_metadata_keys = {
             "illustrative_frame": {"kind", "label"},
             "layout_placeholder": {"kind", "label"},
