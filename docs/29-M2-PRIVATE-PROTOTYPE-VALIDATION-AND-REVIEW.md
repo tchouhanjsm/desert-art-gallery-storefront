@@ -1,12 +1,12 @@
 # M2 — Private Prototype Entry Gate and Local Review Pipeline
 
-**Status:** Readiness tooling implemented; actual prototype build is still gated by explicit M2-A visual approval.  
+**Status:** D-017 M2-A approval recorded; initial Revision 2 private prototype implemented and statically validated. Owner walkthrough and rendered browser acceptance remain outstanding.  
 **Authority:** D-014, D-016 and the unchanged page/component inventories.  
 **Scope:** Local/private validation and review only. This document does not approve a visual identity or start prototype styling.
 
 ## 1. Why this phase exists
 
-D-016 conditionally authorizes six local/private, non-transactional prototype areas only after the owner explicitly approves the single M2-A visual proposal. The six areas are review groupings across the unchanged nine-page D-014 kit:
+D-016 authorizes six local/private, non-transactional prototype areas after explicit M2-A approval. D-017 records that approval for Revision 2 and binds it to the proposal SHA-256. The six areas are review groupings across the unchanged nine-page D-014 kit:
 
 | D-016 review area | Exact D-014 pages |
 |---|---|
@@ -21,7 +21,7 @@ This phase builds the technical entry gate and local review pipeline in the publ
 
 ## 2. Mandatory entry conditions
 
-Before a branded private prototype can be built:
+The built prototype must continue to satisfy these entry and retention conditions:
 
 1. The owner explicitly approves the M2-A proposal or records exact revisions in `docs/DECISIONS.md`.
 2. The approval decision has a numbered decision reference and names the M2-A visual proposal.
@@ -31,7 +31,7 @@ Before a branded private prototype can be built:
 6. Every image is accounted for in the private asset ledger as either an illustrative frame, a layout placeholder, or a genuine DAG photograph with rights, product mapping and separate private prototype-use evidence.
 7. No external network resources, API calls, persistence, transaction endpoints or active form submission are included.
 
-The validator does not create or imply owner approval. A manifest set to `pending` must fail. The current manifest template is deliberately pending.
+The validator does not create or imply owner approval. A manifest set to `pending` must fail. The repository's reusable manifest template remains deliberately pending; the private prototype's own manifest records D-017 and its proposal SHA-256.
 
 ## 3. Local prototype manifest
 
@@ -117,14 +117,25 @@ The owner walkthrough in `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md` remains the v
 
 ## 7. Current gate status
 
-- M2-A: proposal prepared; explicit owner visual approval pending.
+- M2-A: approved under D-017 for the private prototype only; logo artwork, descriptor and production theme remain pending.
 - M2-B: seven-person cohort approved as a plan; fieldwork/recruitment/privacy/cost authorization pending.
 - M2-C: placeholder approach approved; genuine 10–20 product/photo sample and verified facts pending.
 - M2-D: journey priority approved; automation passed; owner walkthrough and human usability acceptance pending.
 - M2-E: six-area local/private prototype scope conditionally authorized; branded implementation must wait for M2-A approval.
 
-Until these gates are satisfied, the validator and browser runner are readiness tooling only. The D-014 kit, page inventory, component inventory and QA-only token file remain unchanged.
+The private prototype is outside the public repository. D-014 source assets, page inventory, component inventory and QA-only token file remain unchanged. No production styling, deployment, transactions, real imagery, product facts or fieldwork is authorized by D-017.
 
 ## 8. PR #14 assurance-hardening validation
 
-The expanded continuation hardening, including inline SVG resource and image-submit control checks, passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) at head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`: repository foundation/source integrity, M2 owner-gate consistency, kit accessibility, documentation consistency, active Markdown links and **136/136 Python tests** passed. The local private Chromium review was not executed because no M2-A-approved private prototype exists. This is an intentional privacy/approval boundary, not a skipped public-site browser check.
+The expanded continuation hardening, including inline SVG resource and image-submit control checks, passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) at head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`: repository foundation/source integrity, M2 owner-gate consistency, kit accessibility, documentation consistency, active Markdown links and **136/136 Python tests** passed. The private prototype's static review passed locally. Chromium navigation was attempted, but all navigation was blocked by the current execution environment (`net::ERR_BLOCKED_BY_ADMINISTRATOR`), including loopback and file URLs. No screenshot or browser-pass claim is made. Run the repository's local Chromium runner on the owner's machine after copying the private prototype folder.
+
+
+## 9. Revision 2 private prototype implementation record
+
+- Owner M2-A approval: D-017, 9 November 2026.
+- Approved proposal SHA-256: `3608510164d5b56e46483f54f661737f7da37c41a7db8b0f665aa9d43ff8acaf`.
+- Private prototype location at delivery: `/mnt/data/dag-private-prototype` (outside the public repository); distributable archive supplied separately to the owner.
+- Nine HTML routes and six D-016 review groupings are implemented. Existing page/section counts are preserved: Home 5 sections; Shop 2; Collection 2; Product 1; About 3; Makers 2; Journal 2; Article 1; Contact 2.
+- Static checks passed: exact route count, section/slot counts, internal links, local styles/scripts, English language, title/H1/main landmarks, disabled form controls, placeholder labels, no remote resources, no external navigation, no persistence/transaction/network APIs, CSS parse and JavaScript syntax.
+- No photograph binary is included; the asset ledger is empty and all visual image areas are explicit placeholders. The owner-provided 10–20 product/photo sample remains pending.
+- Rendered browser checks at 390, 430, 768, 1280 and 1440 pixels remain outstanding because Chromium navigation was blocked by the execution environment. This is not recorded as a passing browser test.
