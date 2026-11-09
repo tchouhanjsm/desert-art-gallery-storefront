@@ -8,12 +8,12 @@ class M2ReadinessAuditTests(unittest.TestCase):
         self.assertEqual(result["errors"], [])
         self.assertEqual(
             result["overall"],
-            "OWNER_M2_DECISIONS_RECORDED_PRIVATE_PROTOTYPE_CONDITIONAL_ON_VISUAL_APPROVAL",
+            "M2_A_VISUAL_APPROVAL_RECORDED_PRIVATE_PROTOTYPE_IN_PROGRESS",
         )
         self.assertEqual(
             result["states"],
             {
-                "M2-A": "PROPOSAL_READY_OWNER_VISUAL_APPROVAL_PENDING",
+                "M2-A": "REVISION2_OWNER_APPROVED_PRIVATE_PROTOTYPE_ONLY",
                 "M2-B": "COHORT_PLAN_APPROVED_FIELDWORK_AUTHORIZATION_PENDING",
                 "M2-C": "PLACEHOLDER_APPROACH_APPROVED_GENUINE_SAMPLE_PENDING",
                 "M2-D": "OWNER_PRIORITY_APPROVED_AUTOMATION_PASSED_HUMAN_ACCEPTANCE_PENDING",
@@ -21,7 +21,7 @@ class M2ReadinessAuditTests(unittest.TestCase):
             },
         )
         self.assertIn("M2-B_SEVEN_PERSON_JAPAN_COHORT", result["approved_plans"])
-        self.assertIn("M2-E_PRIVATE_IMPLEMENTATION_WAITING_FOR_M2A_APPROVAL", result["pending_actions"])
+        self.assertIn("M2-E_OWNER_WALKTHROUGH_AND_RENDERED_BROWSER_ACCEPTANCE", result["pending_actions"])
 
     def test_d016_and_prior_d015_are_recorded(self):
         from pathlib import Path
