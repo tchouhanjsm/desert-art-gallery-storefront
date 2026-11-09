@@ -32,8 +32,7 @@ def _overlaps(left: Path, right: Path) -> bool:
 
 
 def _rows(root: Path, filename: str) -> list[dict[str, str]]:
-    parsed, _issues = _read_rows(root, filename, [])
-    return [row for _line, row in parsed]
+    return [row for _line, row in _read_rows(root, filename, [])]
 
 
 def _is_approved_fact(row: dict[str, str]) -> bool:
