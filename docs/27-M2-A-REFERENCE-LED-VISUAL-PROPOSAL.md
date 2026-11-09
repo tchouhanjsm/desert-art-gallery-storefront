@@ -1,10 +1,10 @@
 # M2-A — Reference-Led Visual Proposal for Desert Art Gallery
 
-**Status: OWNER REVIEW REQUIRED — NOT APPROVED FOR IMPLEMENTATION**  
+**Status: OWNER APPROVED FOR PRIVATE PROTOTYPE IMPLEMENTATION — D-017 (9 NOVEMBER 2026)**  
 **Prepared:** 8 November 2026  
 **Reference hierarchy:** POJ Studio leads; Macaroni Shoten informs; Jaisalmer gives DAG its identity.
 
-This is one coherent proposal, not a palette competition. It deliberately does not revive P-015/P-016 or copy a reference site's brand assets, proprietary code, exact branded artwork, logo, photography or typeface files. Every DAG HEX value, typeface, size and component treatment below is a design recommendation only. The owner retains final authority over colours, typography, logo/wordmark, descriptor and photography direction.
+This is one coherent proposal, not a palette competition. D-017 records the owner's approval of the Revision 2 direction for the six-area local/private prototype. It deliberately does not revive P-015/P-016 or copy reference-site brand assets, proprietary code, exact branded artwork, photography or typeface files. The approved colour, type and composition values below apply to this private prototype only; production use remains subject to separate architecture, licensing, asset, legal and launch gates.
 
 ## 1. What the live references actually show
 
@@ -61,7 +61,7 @@ This proposal intentionally avoids beige, grey, ivory, greige and muted terracot
 
 ## 3. Proposed colour system — exact values, roles and limits
 
-All entries in this table are **proposed DAG adaptations**, not measured values from POJ/Macaroni and not owner-approved tokens.
+The values in this table are the **owner-approved DAG palette under D-017**. They are original DAG adaptations, not measured values from POJ or Macaroni.
 
 | Token / role | Proposed HEX | Intended use |
 |---|---|---|
@@ -88,7 +88,7 @@ These calculations are design checks for the proposal, not a WCAG conformance cl
 
 POJ's exact font files/family names were not resolved in the live inspection. Macaroni's page exposed a Yu Mincho editorial serif and sans-serif navigation. DAG should not copy either reference's actual typeface files.
 
-**Proposed pairing (not approved):**
+**Approved typography pairing under D-017:**
 - Display/editorial: Source Serif 4, weights 500 and 600; 700 only for short hero emphasis if needed. Use for the hero headline, editorial page titles and story/article headings.
 - Body and interface: Inter, weights 400, 500 and 600; 700 only for high-priority short labels. Use for paragraphs, product facts, navigation, controls, prices, captions and footer text.
 - Fallbacks: Source Serif 4, Georgia, serif for display; Inter, Arial, sans-serif for interface/body. Prefer self-hosted licensed font files if this pairing is approved. Confirm font licence and final file provenance before use.
@@ -176,7 +176,7 @@ Keep the Contact structure factual and direct: verified contact details only, a 
 
 ## 8. Photography and image-frame proposal
 
-**Not an approved final photography direction.** The proposed visual treatment is:
+**Approved photography direction for the private prototype and future asset review:**
 - Prefer original DAG photography with accurate colour, natural surface detail, a clear focal object and usable context/scale.
 - Use a purposeful mix of full-object, detail/material and contextual views only where genuine images exist.
 - Preserve natural colour and texture; avoid excessive saturation, artificial blur, heavy filters or dramatic stock-like grading.
@@ -187,7 +187,7 @@ Keep the Contact structure factual and direct: verified contact details only, a 
 
 ## 9. Proposed CSS tokens and component specifications
 
-These are a proposal specification only. Do not put them in the active D-014 token file or any production stylesheet before approval.
+These token values are approved for the local/private M2-E prototype only. Do not add them to the D-014 structural kit or interpret this as production styling/deployment approval.
 
 | Token | Proposed value |
 |---|---|
@@ -218,10 +218,12 @@ Component rules:
 
 ## 10. Desktop and mobile visual examples
 
-A separate, self-contained review board accompanies this proposal. It uses labelled image frames only; it is not a prototype, production theme or real catalogue. It demonstrates a desktop homepage/shop/PDP composition and corresponding narrow-screen stacking. The board is stored outside the public repository so the owner can review it without publishing a branded prototype.
+Revision 2 is the owner-approved visual review board (visual-review-v2.html, SHA-256 097ec2fd8fda3c64c8b478e846b3311caec95dc0cb20a22cf8a6c532f81bdeeb). It contains nine page compositions with desktop/mobile views and labelled image frames only. It is a visual approval artifact, not a production theme, real catalogue or substitute for the private prototype.
 
-## 11. Approval gate and change control
+## 11. Approval record and change control
 
-Review the proposal as one direction. The owner may approve it, reject it or request exact changes to individual values and rules. Silence, a CI pass or the existence of this document does not count as approval.
+The owner approved Revision 2 on 9 November 2026. The approval is recorded as D-017 in docs/DECISIONS.md and applies to the exact colours, typography, hierarchy, photography principles, component specifications and nine-page desktop/mobile composition direction in this document and the Revision 2 review board.
 
-Before implementation, record the owner's exact accepted/rejected changes in docs/DECISIONS.md and update docs/OWNER-TOKEN-INPUT.md. Only then may a private, local, non-transactional prototype be styled for the six authorized M2-E areas. The D-014 structural kit remains unchanged; the prototype must stay outside the public repository and use only approved genuine sample content or clearly labelled placeholders.
+M2-E private implementation may now proceed for exactly the six areas in D-016, mapped to the unchanged nine D-014 pages. The prototype must remain local/private and outside the public repository. Use only clearly labelled placeholders until genuine sample photos and verified facts/rights are supplied. Do not add pages, sections, components, navigation or functionality beyond the active inventories. Keep all controls non-transactional and disabled where required.
+
+This approval does not select final logo artwork, a monogram, descriptor wording or final customer-facing copy. It does not authorize production styling, application development, technology selection, a public deployment or any unresolved commercial/legal decision. Any change to the approved visual system requires a new explicit owner decision and a renewed proposal-hash approval.
