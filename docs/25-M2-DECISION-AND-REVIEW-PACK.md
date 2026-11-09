@@ -19,7 +19,7 @@ The owner has now supplied the M2-A through M2-E instructions. This pack records
 
 No participant has been recruited or interviewed. No customer usability validation is claimed. No genuine sample has been supplied or verified. No production or commercial commitment is made.
 
-## M2-A — Visual identity proposal (owner approval pending)
+## M2-A — Visual identity proposal (D-017 approved for private prototype only)
 
 The owner confirms POJ Studio as the primary reference for overall ecommerce/page composition, navigation, grids and product detail; Macaroni Shoten informs curation, category grouping and editorial retail character. Jaisalmer gives DAG its identity. The four P-015 visual territories remain rejected.
 
@@ -97,7 +97,7 @@ Not authorized: production application development; live payments/orders; real s
 
 D-015 remains the basis of the completed structural review and its automation. D-016 supersedes its former authorization ceiling for this next, explicitly bounded private prototype phase.
 
-**Disposition:** Six-area private prototype scope is authorized conditionally on M2-A approval. Production and public deployment remain excluded.
+**Disposition:** The initial six-area private prototype is implemented outside the public repository. Owner walkthrough and rendered responsive browser acceptance remain outstanding. Production and public deployment remain excluded.
 
 The engineering entry and local review pipeline is now documented in [29 — M2 Private Prototype Validation and Review](29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md). The validator and browser runner remain the repository-side entry/QA tools. The private prototype has been created locally; static review passed. Browser navigation is blocked by this execution environment's Chromium policy, so the 45 route/viewport rendered review and screenshots must be run on the owner's local machine with the repository runner.
 
