@@ -135,3 +135,13 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Updated the M2-A proposal and owner token register with the approved private-prototype baseline; final logo artwork, descriptor wording, verified copy, sample photography and rights evidence remain separately pending.
 - Confirmed that D-017 satisfies D-016's M2-A gate and authorizes only the six-area local/private, non-transactional prototype across the unchanged nine-page D-014 inventory.
 - Reconciled the agent instructions, README, design authority, M2 roadmap, decision pack, walkthrough and prototype validation runbook. D-014 source HTML/CSS/JS and page/component inventories remain unchanged.
+
+
+## 2026-11-09 — M2-E private prototype build and M2-D five-journey review
+- Built the Revision 2 “Material in Focus” prototype outside the public repository, preserving the exact nine D-014 routes and six D-016 review areas.
+- Kept the prototype non-transactional; product image frames and unverified product, maker, contact and editorial facts remain visibly pending.
+- Completed the local responsive review: 45/45 route/viewport checks across 390, 430, 768, 1280 and 1440 CSS-pixel widths; 18 mobile/desktop screenshots retained in the private review package.
+- Added scripts/private_prototype_journey_review.py for the five owner-prioritized M2-D customer journeys, with Playwright checks at all five viewport widths (25/25 passed).
+- Journey checks cover the homepage-to-shop/product path; shop-to-collection/product path; product gallery, accordions and disabled purchase/options; About-to-Makers-to-Journal-to-Article; and product enquiry-to-Contact with disabled fields and no write endpoint.
+- Added privacy-boundary and route/viewport regression tests. Review output remains outside the public repository and private prototype source.
+- Updated the owner walkthrough, private-prototype runbook and roadmap. Owner visual acceptance and human customer usability acceptance remain outstanding.
