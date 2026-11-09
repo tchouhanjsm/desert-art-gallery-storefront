@@ -2,6 +2,7 @@
 """Read-only audit of current owner M2 decisions and conditional prototype scope."""
 from __future__ import annotations
 
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -14,7 +15,7 @@ ROUTES = (
     "pages/journal.html", "pages/article.html", "pages/contact.html",
 )
 EXPECTED_DISPOSITIONS = {
-    "M2-A": ("proposal prepared; owner visual approval pending",),
+    "M2-A": ("revision 2 approved under d-017 for private prototype only",),
     "M2-B": ("cohort approved as a plan; fieldwork authorization pending",),
     "M2-C": ("placeholder approach approved; sample pending",),
     "M2-D": ("priority approved; automation passed; human review pending",),
@@ -64,12 +65,19 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
         if route not in pack or route not in inventory:
             errors.append(f"current D-014 route missing from M2 pack or inventory: {route}")
 
-    for phrase in ("D-014", "D-015", "D-016", "proposal prepared", "human review pending"):
+    for phrase in ("D-014", "D-015", "D-016", "D-017", "human review pending"):
         if phrase.lower() not in pack.lower():
             errors.append(f"M2 acceptance pack is missing required current decision/evidence: {phrase!r}")
 
     if "D-016 — Owner authorization for M2 visual proposal" not in decisions:
         errors.append("decision register must include D-016 owner authorization")
+    d017_match = re.search(r"^### D-017 — Revision 2 visual direction approved for the private prototype\n([\s\S]*?)(?=^### |\Z)", decisions, re.MULTILINE)
+    if not d017_match or "status: confirmed" not in d017_match.group(1).lower() or "m2-a" not in d017_match.group(1).lower() or "approved" not in d017_match.group(1).lower():
+        errors.append("decision register must contain confirmed D-017 M2-A visual approval")
+    approved_hash = re.search(r"SHA-256 `([a-f0-9]{64})`", d017_match.group(1)) if d017_match else None
+    actual_hash = hashlib.sha256(proposal_path.read_bytes()).hexdigest()
+    if not approved_hash or approved_hash.group(1) != actual_hash:
+        errors.append("D-017 proposal SHA-256 does not match the exact current M2-A proposal revision")
     if "POJ Studio is the primary reference" not in decisions or "Macaroni Shoten is secondary" not in decisions:
         errors.append("D-016 must preserve the POJ-primary/Macaroni-secondary hierarchy")
     for area in (
@@ -87,10 +95,10 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
     for colour in ("#FFFFFF", "#132A3A", "#174F6B", "#E5AD26", "#F3F7F8", "#D4E0E5"):
         if colour not in proposal:
             errors.append(f"visual proposal is missing exact proposed colour {colour}")
-    if "NOT APPROVED" not in proposal or "owner visual approval pending" not in pack.lower():
-        errors.append("visual proposal must remain explicitly unapproved")
-    if "PENDING OWNER APPROVAL" not in token_input and "PENDING OWNER INPUT" not in token_input:
-        errors.append("owner token register must remain pending approval")
+    if "APPROVED BY OWNER FOR PRIVATE PROTOTYPE" not in proposal or "D-017" not in proposal:
+        errors.append("M2-A proposal must record D-017 approval for private-prototype use")
+    if "approved for the private" not in token_input.lower() or "D-017" not in token_input:
+        errors.append("owner token register must record private-prototype-only D-017 approval")
 
     cohort = ("home/interior shoppers", "craft/material enthusiasts", "trade/design professional", "gift")
     for item in cohort:
@@ -101,7 +109,7 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
             errors.append(f"research plan is missing authorization/privacy boundary {phrase!r}")
 
     states = {
-        "M2-A": "PROPOSAL_READY_OWNER_VISUAL_APPROVAL_PENDING",
+        "M2-A": "REVISION2_OWNER_APPROVED_PRIVATE_PROTOTYPE_ONLY",
         "M2-B": "COHORT_PLAN_APPROVED_FIELDWORK_AUTHORIZATION_PENDING",
         "M2-C": "PLACEHOLDER_APPROACH_APPROVED_GENUINE_SAMPLE_PENDING",
         "M2-D": "OWNER_PRIORITY_APPROVED_AUTOMATION_PASSED_HUMAN_ACCEPTANCE_PENDING",
@@ -111,17 +119,18 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
         "errors": errors,
         "states": states if not errors else {},
         "overall": (
-            "OWNER_M2_DECISIONS_RECORDED_PRIVATE_PROTOTYPE_CONDITIONAL_ON_VISUAL_APPROVAL"
+            "M2_A_VISUAL_APPROVAL_RECORDED_PRIVATE_PROTOTYPE_IN_PROGRESS"
             if not errors else "INCONSISTENT"
         ),
         "pending_actions": [
-            "M2-A_OWNER_VISUAL_APPROVAL",
+            "M2-A_FINAL_LOGO_DESCRIPTOR_PHOTO_DIRECTION_AND_PRODUCTION_THEME_OWNER_INPUT",
             "M2-B_SEPARATE_FIELDWORK_AUTHORIZATION",
             "M2-C_GENUINE_PRODUCT_PHOTO_AND_FACT_SAMPLE",
             "M2-D_OWNER_WALKTHROUGH_AND_HUMAN_USABILITY_ACCEPTANCE",
-            "M2-E_PRIVATE_IMPLEMENTATION_WAITING_FOR_M2A_APPROVAL",
+            "M2-E_OWNER_WALKTHROUGH_AND_RENDERED_BROWSER_ACCEPTANCE",
         ] if not errors else [],
         "approved_plans": [
+            "M2-A_REVISION2_APPROVED_FOR_PRIVATE_PROTOTYPE",
             "M2-B_SEVEN_PERSON_JAPAN_COHORT",
             "M2-C_LABELLED_PLACEHOLDERS_AND_IMAGE_FRAMES",
             "M2-D_FIVE_JOURNEY_PRIORITY",
@@ -138,10 +147,10 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("DAG v2 M2 decision audit: PASS — D-016, visual approval gate and six-area private prototype boundaries are consistent")
+    print("DAG v2 M2 decision audit: PASS — D-016/D-017 approval, proposal SHA-256 and six-area private prototype boundaries are consistent")
     print("Owner-approved plans: " + ", ".join(result["approved_plans"]))
     print("Pending actions: " + ", ".join(result["pending_actions"]))
-    print("No visual token is applied; no fieldwork or production work is authorized.")
+    print("Visual values are applied only in the private prototype; no fieldwork, production theme or public deployment is authorized.")
     return 0
 
 
