@@ -152,6 +152,28 @@ Consequences:
 - M2-E private prototypes are authorized only after M2-A visual approval, with the exact six-area and non-production boundaries above.
 Date: 2026-11-08
 
+### D-017 — Revision 2 visual direction approved for the private prototype
+Status: CONFIRMED — M2-A VISUAL APPROVAL FOR PRIVATE PROTOTYPE ONLY
+Owner instruction (9 November 2026): "Yes.. lets achieve the revision 2" in response to the explicit request to approve Revision 2 including its proposed colours and typography.
+
+Decision: Approve the exact Revision 2 visual direction and the exact revision of `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md` identified by SHA-256 `3608510164d5b56e46483f54f661737f7da37c41a7db8b0f665aa9d43ff8acaf` for D-016's private/local, non-transactional prototype only.
+
+Approved visual specification:
+- Palette roles and HEX values: canvas `#FFFFFF`; ink `#132A3A`; primary brand/action `#174F6B`; accent `#E5AD26`; cool surface `#F3F7F8`; border/divider `#D4E0E5`.
+- Typography: Source Serif 4 for display/editorial (weights 500 and 600; 700 only for short hero emphasis); Inter for body/interface (weights 400, 500 and 600; 700 only for short high-priority labels), using Georgia and Arial/system fallbacks where approved font files are not locally available. No remote font requests or unlicensed font files.
+- Responsive type hierarchy, spacing scale, content width, gutters, section gaps and square-edged card treatment as specified in the approved proposal.
+- Page-composition direction for the exact nine D-014 pages, grouped into the six D-016 review areas; exact supplied navigation destinations and shared-shell scope remain unchanged.
+- Image-frame ratios: hero 16:9; product/category cards 4:5; product main image 4:5; thumbnails 1:1; journal lead 16:9. Use the exact visible approved placeholder labels where genuine imagery is unavailable.
+
+Not approved / remains owner-controlled:
+- Final logo/wordmark artwork, monogram and brand descriptor/tagline.
+- Public or production theme/tokens, production application, public deployment, live transactions, commerce and technical-stack decisions.
+- Genuine product photographs, individual photo crops, product facts, maker identities, catalogue content and any public photo-use permission. The image-frame presentation and placeholder approach are approved only.
+- Recruitment, external customer contact, participant-data collection, recording, incentives or research spending.
+
+Consequences: M2-A is complete for the bounded private prototype entry gate. D-016's six-area private prototype may now be implemented outside the public repository, preserving the exact nine-page route/section/component inventory and non-transactional restrictions. The manifest must cite D-017 and the proposal SHA-256 above. M2-C sample/photo verification, M2-B fieldwork authorization and future commercial/legal decisions remain separate gates. D-014 source HTML/CSS/JS remains unchanged.
+Date: 2026-11-09
+
 ## Unresolved owner decisions
 
 ### U-001 — Seller jurisdiction and legal identity
