@@ -1,6 +1,6 @@
 # M2 — Owner Review Walkthroughs for the Six Private Prototype Areas
 
-**Status: WALKTHROUGH PLAN READY — VISUAL PROPOSAL APPROVAL REQUIRED BEFORE BRANDED PROTOTYPES**  
+**Status: REVISION 2 PRIVATE PROTOTYPE IMPLEMENTED — OWNER WALKTHROUGH READY**  
 **Decision:** D-016 (8 November 2026)
 
 This document turns the owner's six authorized prototype areas into a review sequence. It is not a claim that a branded prototype exists. The six areas are groupings of the existing nine D-014 pages and do not change the page, section or component inventory.
@@ -100,14 +100,14 @@ For each area, record:
 
 These owner-led walkthroughs are not participant usability research. Human usability acceptance remains pending. Owner visual sign-off of a prototype is not customer usability research. Human customer usability testing requires a separate research protocol and the explicit M2-B fieldwork authorization. No user testing or customer usability validation is claimed by these walkthroughs.
 
-## 6. Prototype implementation gate
+## 6. Prototype implementation and owner acceptance
 
-Only after the owner explicitly approves the M2-A reference-led visual proposal:
-- Create a private/local prototype outside the public repository.
-- Implement exactly the six areas mapped above using the D-014 route/section inventory and the approved visual tokens.
-- Include shared shell only as already represented in the source pages.
-- Use labelled placeholders until real sample assets are accepted.
-- Keep all controls non-transactional. No payment/order, shipping/tax or live enquiry processing.
-- Perform responsive, keyboard and reduced-motion checks; present screenshots and a reproducible owner walkthrough.
-- Record changes and outstanding decisions; do not deploy publicly or choose a production stack.
+D-017 records approval of the exact Revision 2 proposal for private-prototype use only. An integrated prototype now exists outside the public repository:
+- All nine D-014 route files are implemented and grouped into the six areas mapped above.
+- The approved Revision 2 palette, typography stacks/hierarchy, spacing and image-frame ratios are applied only to this private prototype.
+- The exact shared-shell destinations and mobile navigation disclosure are present; search, filter/sort, options, purchase and contact submission remain disabled.
+- All product, maker, editorial, price, image and contact placeholders remain explicit; no genuine DAG product photography has been supplied or introduced.
+- Static route/section/link/resource/security checks passed. Chromium browser navigation was attempted in the current execution environment but blocked by its policy; local rendered responsive screenshots remain outstanding.
+
+Owner acceptance remains separate: conduct the desktop/mobile walkthrough for all six areas, record visual hierarchy/density and any requested revisions, and rerun the local browser review. Do not deploy publicly, create production behaviour or choose a production stack.
 
