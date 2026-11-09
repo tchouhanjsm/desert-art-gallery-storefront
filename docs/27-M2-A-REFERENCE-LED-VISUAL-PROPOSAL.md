@@ -1,6 +1,6 @@
 # M2-A — Reference-Led Visual Proposal for Desert Art Gallery
 
-**Status: OWNER REVIEW REQUIRED — NOT APPROVED FOR IMPLEMENTATION**  
+**Status: APPROVED BY OWNER FOR PRIVATE PROTOTYPE — D-017 (9 November 2026)**  
 **Prepared:** 8 November 2026  
 **Reference hierarchy:** POJ Studio leads; Macaroni Shoten informs; Jaisalmer gives DAG its identity.
 
@@ -61,7 +61,7 @@ This proposal intentionally avoids beige, grey, ivory, greige and muted terracot
 
 ## 3. Proposed colour system — exact values, roles and limits
 
-All entries in this table are **proposed DAG adaptations**, not measured values from POJ/Macaroni and not owner-approved tokens.
+All entries in this table are DAG adaptations approved by the owner in D-017 for the private, non-transactional prototype only. They are not production-theme approval.
 
 | Token / role | Proposed HEX | Intended use |
 |---|---|---|
@@ -88,7 +88,7 @@ These calculations are design checks for the proposal, not a WCAG conformance cl
 
 POJ's exact font files/family names were not resolved in the live inspection. Macaroni's page exposed a Yu Mincho editorial serif and sans-serif navigation. DAG should not copy either reference's actual typeface files.
 
-**Proposed pairing (not approved):**
+**Owner-approved pairing for the private prototype (D-017):**
 - Display/editorial: Source Serif 4, weights 500 and 600; 700 only for short hero emphasis if needed. Use for the hero headline, editorial page titles and story/article headings.
 - Body and interface: Inter, weights 400, 500 and 600; 700 only for high-priority short labels. Use for paragraphs, product facts, navigation, controls, prices, captions and footer text.
 - Fallbacks: Source Serif 4, Georgia, serif for display; Inter, Arial, sans-serif for interface/body. Prefer self-hosted licensed font files if this pairing is approved. Confirm font licence and final file provenance before use.
@@ -176,7 +176,7 @@ Keep the Contact structure factual and direct: verified contact details only, a 
 
 ## 8. Photography and image-frame proposal
 
-**Not an approved final photography direction.** The proposed visual treatment is:
+**Limited approval:** D-017 approves the image-frame treatment, placeholder labels and listed frame ratios for the private prototype. It does not approve the final photography art direction, individual crops or public use of any photograph. The proposed visual treatment is:
 - Prefer original DAG photography with accurate colour, natural surface detail, a clear focal object and usable context/scale.
 - Use a purposeful mix of full-object, detail/material and contextual views only where genuine images exist.
 - Preserve natural colour and texture; avoid excessive saturation, artificial blur, heavy filters or dramatic stock-like grading.
@@ -187,7 +187,7 @@ Keep the Contact structure factual and direct: verified contact details only, a 
 
 ## 9. Proposed CSS tokens and component specifications
 
-These are a proposal specification only. Do not put them in the active D-014 token file or any production stylesheet before approval.
+These values are approved for the private prototype only under D-017. Do not apply them to the D-014 structural kit or treat them as production-theme approval.
 
 | Token | Proposed value |
 |---|---|
@@ -222,6 +222,9 @@ A separate, self-contained review board accompanies this proposal. It uses label
 
 ## 11. Approval gate and change control
 
-Review the proposal as one direction. The owner may approve it, reject it or request exact changes to individual values and rules. Silence, a CI pass or the existence of this document does not count as approval.
+Owner approval was explicitly granted on 9 November 2026 for this exact proposal revision and the Revision 2 rendered page-composition board. D-017 records the approved palette, Source Serif 4 / Inter pairing, type hierarchy, spacing, page-composition rules, image-frame ratios and labelled-placeholder treatment. The approval is limited to D-016's local/private, non-transactional prototype across the six review areas and unchanged nine-page inventory. It does not approve final logo artwork, a descriptor, genuine photo assets, product facts, production application styling, public deployment or commerce behaviour. Any change to this proposal's approved values requires a new owner decision and renewed SHA-256 binding.
 
-Before implementation, record the owner's exact accepted/rejected changes in docs/DECISIONS.md and update docs/OWNER-TOKEN-INPUT.md. Only then may a private, local, non-transactional prototype be styled for the six authorized M2-E areas. The D-014 structural kit remains unchanged; the prototype must stay outside the public repository and use only approved genuine sample content or clearly labelled placeholders.
+
+## 12. Owner approval record — D-017
+
+The owner approved this exact proposal revision and the Revision 2 rendered review board on 9 November 2026. The exact SHA-256 of this approved proposal revision is recorded in `docs/DECISIONS.md` under D-017 and is required by the private-prototype manifest. The approval authorizes implementation only in the private/local non-transactional prototype described by D-016. The original D-014 structural kit remains unchanged.
