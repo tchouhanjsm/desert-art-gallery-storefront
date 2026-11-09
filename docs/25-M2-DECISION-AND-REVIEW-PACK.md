@@ -1,6 +1,7 @@
 # M2 — Combined Owner Decision and Structural Review Pack
 
-**Review date:** 8 November 2026  
+**Review date:** 9 November 2026
+**Additional visual approval:** D-017 (Revision 2, 9 November 2026)  
 **Governing decision:** D-014 (structural kit only)  
 **Owner authorization:** D-016 (D-015 remains the record for the already completed structural QA)  
 **Purpose:** Bring M2-A through M2-E into one coordinated decision, evidence and acceptance package without inventing owner choices or source assets.
@@ -11,7 +12,7 @@ The owner has now supplied the M2-A through M2-E instructions. This pack records
 
 | Gate | Owner decision / current delivery | Current disposition |
 |---|---|---|
-| M2-A — Visual identity | One live-reference-led proposal is prepared in [27 — M2-A Reference-Led Visual Proposal](27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md), with exact proposed HEX roles, type pairing, hierarchy, logo brief, page compositions, image treatment, tokens and desktop/mobile examples. | **Proposal ready; owner visual approval pending. Nothing is approved or applied.** |
+| M2-A — Visual identity | One live-reference-led proposal is prepared in [27 — M2-A Reference-Led Visual Proposal](27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md), with exact proposed HEX roles, type pairing, hierarchy, logo brief, page compositions, image treatment, tokens and desktop/mobile examples. | **Revision 2 approved under D-017 for local/private M2-E implementation; production use remains separately gated.** |
 | M2-B — Research cohort | Owner-approved seven-person Japan-based qualitative plan: 3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase. | **Cohort approved as a plan; recruitment/consent/recording/cost authorization pending.** |
 | M2-C — Product/photo evidence | Owner-approved labelled image-frame/layout-placeholder approach; private sample intake and fact-verification workflow prepared. | **Approach approved; 10–20 genuine product/photo sample and verified facts pending. No image validation or library migration.** |
 | M2-D — Journey priority | Owner-approved five-journey order; existing five-journey × five-width automation already passes. | **Priority approved; automated evidence passed; owner walkthrough and human usability acceptance pending.** |
@@ -103,9 +104,9 @@ The engineering entry and local review pipeline is now documented in [29 — M2 
 
 ## Remaining owner handoff
 
-1. **M2-A:** Review and explicitly approve, reject or request exact revisions to the single proposal in docs/27. No visual value is approved by default.
+1. **M2-A:** Complete — Revision 2 visual direction approved under D-017; the exact palette, typography and layout values are recorded in docs/OWNER-TOKEN-INPUT.md.
 2. **M2-C:** Supply the 10–20 genuine product/photo sample and associated verified information privately when available. Product-image validation remains pending.
 3. **M2-B fieldwork:** Separately authorize recruitment route, moderator, consent/privacy workflow, participant data handling and incentive/recruitment budget before any outreach or collection.
 4. **M2-D:** Conduct the owner-led six-area visual walkthrough after a private prototype exists. Human customer usability sessions require separate fieldwork authorization.
-5. **M2-E:** After visual approval, build only the six authorized local/private non-transactional areas; keep them out of the public repository and do not deploy.
+5. **M2-E:** Build only the six authorized local/private non-transactional areas under D-017; keep them out of the public repository and do not deploy.
 
