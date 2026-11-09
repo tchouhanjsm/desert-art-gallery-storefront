@@ -14,11 +14,11 @@ ROUTES = (
     "pages/journal.html", "pages/article.html", "pages/contact.html",
 )
 EXPECTED_DISPOSITIONS = {
-    "M2-A": ("proposal prepared; owner visual approval pending",),
+    "M2-A": ("revision 2 visual direction approved under d-017",),
     "M2-B": ("cohort approved as a plan; fieldwork authorization pending",),
     "M2-C": ("placeholder approach approved; sample pending",),
     "M2-D": ("priority approved; automation passed; human review pending",),
-    "M2-E": ("conditionally authorized after visual approval",),
+    "M2-E": ("private prototype implementation authorized",),
 }
 
 
@@ -64,7 +64,7 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
         if route not in pack or route not in inventory:
             errors.append(f"current D-014 route missing from M2 pack or inventory: {route}")
 
-    for phrase in ("D-014", "D-015", "D-016", "proposal prepared", "human review pending"):
+    for phrase in ("D-014", "D-015", "D-016", "D-017", "revision 2", "human review pending"):
         if phrase.lower() not in pack.lower():
             errors.append(f"M2 acceptance pack is missing required current decision/evidence: {phrase!r}")
 
@@ -87,10 +87,13 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
     for colour in ("#FFFFFF", "#132A3A", "#174F6B", "#E5AD26", "#F3F7F8", "#D4E0E5"):
         if colour not in proposal:
             errors.append(f"visual proposal is missing exact proposed colour {colour}")
-    if "NOT APPROVED" not in proposal or "owner visual approval pending" not in pack.lower():
-        errors.append("visual proposal must remain explicitly unapproved")
-    if "PENDING OWNER APPROVAL" not in token_input and "PENDING OWNER INPUT" not in token_input:
-        errors.append("owner token register must remain pending approval")
+    if "OWNER APPROVED FOR PRIVATE PROTOTYPE IMPLEMENTATION" not in proposal or "D-017" not in proposal:
+        errors.append("visual proposal must reflect the recorded D-017 approval")
+    d017 = decisions.split("### D-017", 1)[1].split("\n### ", 1)[0] if "### D-017" in decisions else ""
+    if "M2-A VISUAL DIRECTION APPROVED" not in d017:
+        errors.append("D-017 must explicitly approve the M2-A visual direction")
+    if "APPROVED FOR PRIVATE PROTOTYPE" not in token_input.upper() or "PENDING OWNER INPUT" not in token_input:
+        errors.append("owner token register must distinguish approved prototype values from remaining pending inputs")
 
     cohort = ("home/interior shoppers", "craft/material enthusiasts", "trade/design professional", "gift")
     for item in cohort:
@@ -101,25 +104,24 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
             errors.append(f"research plan is missing authorization/privacy boundary {phrase!r}")
 
     states = {
-        "M2-A": "PROPOSAL_READY_OWNER_VISUAL_APPROVAL_PENDING",
+        "M2-A": "REVISION_2_VISUAL_DIRECTION_APPROVED_PRIVATE_PROTOTYPE_ONLY",
         "M2-B": "COHORT_PLAN_APPROVED_FIELDWORK_AUTHORIZATION_PENDING",
         "M2-C": "PLACEHOLDER_APPROACH_APPROVED_GENUINE_SAMPLE_PENDING",
         "M2-D": "OWNER_PRIORITY_APPROVED_AUTOMATION_PASSED_HUMAN_ACCEPTANCE_PENDING",
-        "M2-E": "SIX_AREA_PRIVATE_PROTOTYPE_AUTHORIZED_AFTER_M2A_APPROVAL",
+        "M2-E": "SIX_AREA_PRIVATE_PROTOTYPE_IMPLEMENTATION_AUTHORIZED",
     }
     return {
         "errors": errors,
         "states": states if not errors else {},
         "overall": (
-            "OWNER_M2_DECISIONS_RECORDED_PRIVATE_PROTOTYPE_CONDITIONAL_ON_VISUAL_APPROVAL"
+            "M2A_APPROVED_PRIVATE_PROTOTYPE_AUTHORIZED_NO_PRODUCTION"
             if not errors else "INCONSISTENT"
         ),
         "pending_actions": [
-            "M2-A_OWNER_VISUAL_APPROVAL",
             "M2-B_SEPARATE_FIELDWORK_AUTHORIZATION",
             "M2-C_GENUINE_PRODUCT_PHOTO_AND_FACT_SAMPLE",
             "M2-D_OWNER_WALKTHROUGH_AND_HUMAN_USABILITY_ACCEPTANCE",
-            "M2-E_PRIVATE_IMPLEMENTATION_WAITING_FOR_M2A_APPROVAL",
+            "M2-E_BUILD_VALIDATE_AND_OWNER_REVIEW_PRIVATE_PROTOTYPE",
         ] if not errors else [],
         "approved_plans": [
             "M2-B_SEVEN_PERSON_JAPAN_COHORT",
@@ -138,10 +140,10 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("DAG v2 M2 decision audit: PASS — D-016, visual approval gate and six-area private prototype boundaries are consistent")
+    print("DAG v2 M2 decision audit: PASS — D-016/D-017 approvals, private prototype scope and remaining M2 gates are consistent")
     print("Owner-approved plans: " + ", ".join(result["approved_plans"]))
     print("Pending actions: " + ", ".join(result["pending_actions"]))
-    print("No visual token is applied; no fieldwork or production work is authorized.")
+    print("Revision 2 tokens are approved for the local/private prototype only; fieldwork, production work and public deployment remain unauthorized.")
     return 0
 
 
