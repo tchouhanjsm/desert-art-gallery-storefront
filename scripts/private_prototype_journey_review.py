@@ -73,7 +73,7 @@ def audit_d017_visual_css(css_text: str) -> dict[str, Any]:
         (r"box-shadow\s*:", "drop shadows"),
         (r"border-radius\s*:\s*(?!0(?:px)?\s*;)", "rounded card corners"),
         (r"@import\b", "remote or imported stylesheets"),
-        (r"url\(\s*https?://", "remote CSS assets"),
+        (r"url\(\s*[\"']?https?://", "remote CSS assets"),
     ):
         if re.search(forbidden, css_text, flags=re.I):
             errors.append(f"unapproved visual treatment or external resource found: {label}")

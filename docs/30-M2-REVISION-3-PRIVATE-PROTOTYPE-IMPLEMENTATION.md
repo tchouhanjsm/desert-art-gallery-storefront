@@ -28,7 +28,7 @@
 | Captured screenshots | 18 — mobile (390px) and desktop (1440px) for all nine routes |
 | Five-priority journey review | 25/25 — 5 journeys × 5 widths |
 | Existing navigation interaction checks | 125 — mobile open, Escape focus restoration, link-close, breakpoint resize and desktop visibility |
-| Python regression tests | 9/9 passed |
+| Python regression tests | 10/10 passed |
 
 The browser review renders local files in memory and writes evidence outside both the public repository and private prototype root. These are automated engineering checks, not screen-reader certification, full WCAG compliance, owner visual sign-off or participant usability research.
 

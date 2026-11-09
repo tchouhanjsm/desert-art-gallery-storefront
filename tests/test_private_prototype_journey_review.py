@@ -77,6 +77,12 @@ class PrivatePrototypeJourneyReviewTests(unittest.TestCase):
         self.assertTrue(any("gradients" in error for error in result["errors"]))
         self.assertTrue(any("drop shadows" in error for error in result["errors"]))
 
+    def test_d017_visual_css_rejects_quoted_remote_assets(self):
+        css = self._approved_css() + ' .frame { background-image: url("https://example.invalid/image.svg"); }'
+        result = audit_d017_visual_css(css)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("remote CSS assets" in error for error in result["errors"]))
+
     @staticmethod
     def _approved_css():
         return """
