@@ -38,11 +38,11 @@ The owner has now confirmed the M2-A through M2-E decisions. The previous PR #13
 - **M2-B — cohort accepted:** Seven Japan-based qualitative participants are approved as a research plan (3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase). The full operations plan is docs/28. Recruitment, external contact, consent/data handling, recording, incentives and spend remain separately unauthorized.
 - **M2-C — placeholder approach accepted, evidence pending:** Use clearly labelled layout placeholders and image-frame compositions. Product-image validation remains pending until approximately 10–20 genuine photos and verified product information are supplied. No full photography-library migration.
 - **M2-D — journey order accepted:** Discover identity → browse products/categories/collections → evaluate product/images/verified specifications → explore makers/materials/editorial → contact/support. Mobile is cross-cutting across every journey. Automated testing passed; owner visual walkthrough and human usability acceptance remain separate.
-- **M2-E — private prototypes conditionally authorized:** Exactly six local/private non-transactional areas: Homepage; Shop and Collections; Product Detail; About and Makers; Journal and Stories; Contact and Support. This is a six-area grouping across the unchanged nine-page D-014 kit. The shared shell appears only as already supplied. Begin branded implementation only after explicit M2-A visual approval. Keep prototype files out of the public repository.
+- **M2-E — initial private prototype implemented:** Exactly six local/private non-transactional areas are implemented across the unchanged nine-page D-014 kit. The Revision 2 palette/type/layout direction is applied only in the private prototype; the shared shell and page/section counts are preserved. Owner walkthrough and rendered Chromium acceptance remain outstanding. Keep prototype files out of the public repository.
 
 ### Owner review sequence
 1. Review the single proposal in docs/27 and record exact accept/revise/reject decisions.
-2. After M2-A approval, build the six private prototype areas using the approved visual tokens and D-014's exact page/section inventory.
+2. Complete: D-017 approval is recorded and the initial six-area/nine-route private prototype is implemented using the approved Revision 2 direction.
 3. Use labelled placeholders until the genuine product sample and verified facts are available.
 4. Run responsive and accessibility automation; prepare the owner walkthrough in docs/26.
 5. Record owner visual feedback separately from any future participant usability evidence.
@@ -72,7 +72,18 @@ The same PR extends the readiness gate without starting prototype styling:
 - The local Chromium runner rejects symlinked prototype roots, checks the viewport meta tag and records browser-console errors, failed requests and unsuccessful HTTP resource responses as review failures.
 - Regression coverage adds eleven tests for malformed metadata, path normalization, inline event handlers, worker/network overrides, approval-date validation, SVG references, image-type submit controls and review-root boundaries.
 
-The continuation is implemented and validated at PR #14 head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`. [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) passed source/foundation, M2 gate, accessibility, documentation consistency and Markdown link audits, with **136/136 Python tests** passing. The private Chromium review was not run because no approved private prototype exists; it remains a local-only step after M2-A approval. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
+The continuation is implemented and validated at PR #14 head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`. [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) passed source/foundation, M2 gate, accessibility, documentation consistency and Markdown link audits, with **136/136 Python tests** passing. The private prototype now exists, but Chromium navigation in the current execution environment was blocked by ERR_BLOCKED_BY_ADMINISTRATOR for loopback and file URLs. The rendered responsive review remains outstanding and must be run on the owner's machine. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
+
+## M2-E Revision 2 private prototype implementation record
+
+D-017 unlocked M2-E for local/private implementation. The initial prototype is delivered outside the public repository and is not committed to Git.
+
+- Implemented all nine D-014 routes across the six D-016 review areas.
+- Applied the approved Revision 2 palette, Source Serif 4 / Inter font stacks (Georgia/Arial system fallback), typography hierarchy, spacing, responsive page compositions and placeholder-frame ratios only in the private prototype.
+- Preserved the existing section/slot counts: Home 5 sections (3 category cards, 4 product cards, 2 story cards); Shop 2 sections (3 category links, 6 product cards); Collection 2 sections (3 product cards); Product 1 section (3 thumbnails, 4 accordions); About 3 sections (2 editorial splits); Makers 2 sections (1 profile); Journal 2 sections (6 cards); Article 1 section; Contact 2 sections (information panel and disabled form concept).
+- Kept all imagery as labelled placeholders; no product photos, catalogue exports or product facts were introduced. The asset ledger is empty.
+- Static prototype validation passed for all nine routes, six area groupings, section/slot inventory, internal links, local resources, English/title/main/H1 semantics, disabled form controls, placeholder labels, CSS parsing and JavaScript syntax. No remote resources or transaction/network/persistence APIs were detected.
+- Chromium navigation was attempted against loopback and file URLs but blocked by the execution environment (ERR_BLOCKED_BY_ADMINISTRATOR). No rendered screenshot or browser-pass claim is made. Owner-local Chromium review remains outstanding.
 
 ## Technical and commercial work
 
