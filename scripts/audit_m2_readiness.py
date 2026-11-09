@@ -19,7 +19,7 @@ EXPECTED_DISPOSITIONS = {
     "M2-B": ("cohort approved as a plan; fieldwork authorization pending",),
     "M2-C": ("placeholder approach approved; sample pending",),
     "M2-D": ("priority approved; automation passed; human review pending",),
-    "M2-E": ("conditionally authorized after visual approval",),
+    "M2-E": ("implemented privately under d-016/d-017 across all nine d-014 routes",),
 }
 
 
