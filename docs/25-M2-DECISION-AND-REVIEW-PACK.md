@@ -16,7 +16,7 @@ The owner has now supplied the M2-A through M2-E instructions. This pack records
 | M2-B — Research cohort | Owner-approved seven-person Japan-based qualitative plan: 3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase. | **Cohort approved as a plan; recruitment/consent/recording/cost authorization pending.** |
 | M2-C — Product/photo evidence | Owner-approved labelled image-frame/layout-placeholder approach; private sample intake and fact-verification workflow prepared. | **Approach approved; 10–20 genuine product/photo sample and verified facts pending. No image validation or library migration.** |
 | M2-D — Journey priority | Owner-approved five-journey order; existing five-journey × five-width automation already passes. | **Priority approved; automated evidence passed; owner walkthrough and human usability acceptance pending.** |
-| M2-E — Prototype scope | D-016 authorizes exactly six local/private non-transactional areas after explicit M2-A visual approval. | **Conditionally authorized; no branded prototype starts until visual approval. Production/public deployment remain excluded.** |
+| M2-E — Prototype scope | D-016 authorizes exactly six local/private non-transactional areas; D-017 records explicit M2-A visual approval. | **Private prototype implementation authorized. Production/public deployment remain excluded.** |
 
 No participant has been recruited or interviewed. No customer usability validation is claimed. No genuine sample has been supplied or verified. No production or commercial commitment is made.
 
