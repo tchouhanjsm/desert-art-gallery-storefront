@@ -15,7 +15,7 @@ ROUTES = (
     "pages/journal.html", "pages/article.html", "pages/contact.html",
 )
 EXPECTED_DISPOSITIONS = {
-    "M2-A": ("revision 2 approved under d-017 for private prototype only",),
+    "M2-A": ("revision 2 visual direction approved by d-017 for the private prototype only",),
     "M2-B": ("cohort approved as a plan; fieldwork authorization pending",),
     "M2-C": ("placeholder approach approved; sample pending",),
     "M2-D": ("priority approved; automation passed; human review pending",),
@@ -113,7 +113,7 @@ def audit_m2_readiness(root: Path = ROOT) -> dict:
         "M2-B": "COHORT_PLAN_APPROVED_FIELDWORK_AUTHORIZATION_PENDING",
         "M2-C": "PLACEHOLDER_APPROACH_APPROVED_GENUINE_SAMPLE_PENDING",
         "M2-D": "OWNER_PRIORITY_APPROVED_AUTOMATION_PASSED_HUMAN_ACCEPTANCE_PENDING",
-        "M2-E": "SIX_AREA_PRIVATE_PROTOTYPE_AUTHORIZED_AFTER_M2A_APPROVAL",
+        "M2-E": "SIX_AREA_PRIVATE_PROTOTYPE_IMPLEMENTED_OWNER_REVIEW_PENDING",
     }
     return {
         "errors": errors,
