@@ -145,3 +145,13 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Journey checks cover the homepage-to-shop/product path; shop-to-collection/product path; product gallery, accordions and disabled purchase/options; About-to-Makers-to-Journal-to-Article; and product enquiry-to-Contact with disabled fields and no write endpoint.
 - Added privacy-boundary and route/viewport regression tests. Review output remains outside the public repository and private prototype source.
 - Updated the owner walkthrough, private-prototype runbook and roadmap. Owner visual acceptance and human customer usability acceptance remain outstanding.
+
+
+## 2026-11-09 — M2 private prototype implementation revision 3
+- Aligned the private prototype CSS with the exact D-017 palette, type hierarchy, spacing, content width, gutters and image-frame ratios; removed off-palette placeholder treatments, gradients and shadows.
+- Added current-page/current-section semantics to the existing six navigation destinations without changing the route inventory.
+- Refined the existing mobile navigation disclosure: Escape closes and restores focus to the toggle, destination selection closes the menu, and resizing to desktop clears the expanded state.
+- Balanced the third existing homepage category card within the two-column mobile grid; no category, page, section or component was added.
+- Extended the local/private journey runner with a D-017 CSS gate, explicit current-navigation mapping and responsive navigation interaction checks.
+- Latest local/private evidence: 45/45 route/viewport checks, 18 screenshots, 25/25 journey/viewport checks and 125 responsive navigation disclosure checks. Nine Python regression tests pass.
+- The actual prototype, its screenshots and review reports remain outside GitHub. No real product photography or verified catalogue facts were supplied; owner visual acceptance and human usability acceptance remain pending.

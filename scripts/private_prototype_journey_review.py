@@ -24,6 +24,68 @@ except ImportError:  # direct script execution
 VIEWPORT_WIDTHS = (390, 430, 768, 1280, 1440)
 VIEWPORT_HEIGHT = 900
 
+APPROVED_D017_COLORS = frozenset({
+    "#FFFFFF", "#132A3A", "#174F6B", "#E5AD26", "#F3F7F8", "#D4E0E5"
+})
+D017_REQUIRED_TOKENS = {
+    "--dag-canvas": "#FFFFFF",
+    "--dag-ink": "#132A3A",
+    "--dag-brand": "#174F6B",
+    "--dag-accent": "#E5AD26",
+    "--dag-surface": "#F3F7F8",
+    "--dag-border": "#D4E0E5",
+}
+D017_REQUIRED_MARKERS = (
+    '--font-display: "Source Serif 4"',
+    "--font-body: Inter",
+    "--content-max: 1440px",
+    "--gutter: clamp(20px, 4vw, 56px)",
+    "--section-gap: 80px",
+    "font-size: 44px;",
+    "font-size: 32px; line-height: 1.18;",
+    "22px/1.25 var(--font-body)",
+    "font-size: clamp(34px, 3.9vw, 56px);",
+    "aspect-ratio: 16 / 9;",
+    "aspect-ratio: 4 / 5;",
+    "aspect-ratio: 1;",
+    ".primary-nav a[aria-current]",
+    "text-decoration-thickness: 2px;",
+)
+
+
+def audit_d017_visual_css(css_text: str) -> dict[str, Any]:
+    """Check private prototype CSS against the owner's approved D-017 system."""
+    colors = sorted(set(re.findall(r"#[0-9A-Fa-f]{3,8}\b", css_text)))
+    normalized = {color.upper() for color in colors}
+    errors: list[str] = []
+    unexpected = sorted(normalized - APPROVED_D017_COLORS)
+    if unexpected:
+        errors.append("unapproved colour values: " + ", ".join(unexpected))
+    for token, expected in D017_REQUIRED_TOKENS.items():
+        pattern = rf"{re.escape(token)}\s*:\s*{re.escape(expected)}\s*;"
+        if not re.search(pattern, css_text, flags=re.I):
+            errors.append(f"D-017 token {token} must be {expected}")
+    for marker in D017_REQUIRED_MARKERS:
+        if marker not in css_text:
+            errors.append(f"required D-017 layout/type value is missing: {marker}")
+    for forbidden, label in (
+        (r"gradient\s*\(", "gradients"),
+        (r"box-shadow\s*:", "drop shadows"),
+        (r"border-radius\s*:\s*(?!0(?:px)?\s*;)", "rounded card corners"),
+        (r"@import\b", "remote or imported stylesheets"),
+        (r"url\(\s*https?://", "remote CSS assets"),
+    ):
+        if re.search(forbidden, css_text, flags=re.I):
+            errors.append(f"unapproved visual treatment or external resource found: {label}")
+    return {
+        "ok": not errors,
+        "approved_colors": colors,
+        "palette_token_count": len(D017_REQUIRED_TOKENS),
+        "required_value_count": len(D017_REQUIRED_MARKERS),
+        "errors": errors,
+    }
+
+
 # The route paths and transitions are deliberately explicit. A changed page
 # inventory or link destination must be reviewed rather than guessed by a test.
 JOURNEY_ROUTE_PATHS = {
@@ -34,6 +96,18 @@ JOURNEY_ROUTE_PATHS = {
         "pages/about.html", "pages/makers.html", "pages/journal.html", "pages/article.html"
     ),
     "contact": ("pages/product.html", "pages/contact.html"),
+}
+
+NAV_CURRENT_BY_ROUTE = {
+    "index.html": None,
+    "pages/shop.html": ("../pages/shop.html", "page"),
+    "pages/collection.html": ("../pages/collection.html", "page"),
+    "pages/product.html": ("../pages/shop.html", "location"),
+    "pages/about.html": ("../pages/about.html", "page"),
+    "pages/makers.html": ("../pages/makers.html", "page"),
+    "pages/journal.html": ("../pages/journal.html", "page"),
+    "pages/article.html": ("../pages/journal.html", "location"),
+    "pages/contact.html": ("../pages/contact.html", "page"),
 }
 JOURNEY_LABELS = {
     "discover": "Discover DAG and understand its identity",
@@ -121,6 +195,101 @@ def _render_page(page: Any, root: Path, route_path: str, asset_errors: list[str]
     page.set_content(html, wait_until="load")
 
 
+
+def _check_current_navigation(page: Any, route_path: str, errors: list[str]) -> None:
+    """Assert that the approved six-link nav identifies the current page/section."""
+    expected = NAV_CURRENT_BY_ROUTE.get(route_path)
+    current = page.locator(".primary-nav a[aria-current]")
+    if expected is None:
+        if current.count() != 0:
+            errors.append(f"Navigation: {route_path} must not mark a non-destination as current")
+        return
+    if current.count() != 1:
+        errors.append(f"Navigation: {route_path} must expose exactly one current destination")
+        return
+    href, state = expected
+    item = current.first
+    if item.get_attribute("href") != href:
+        errors.append(f"Navigation: {route_path} current link must target {href}")
+    if item.get_attribute("aria-current") != state:
+        errors.append(f"Navigation: {route_path} current link must use aria-current={state}")
+
+
+def _check_navigation_disclosure(
+    page: Any, root: Path, route_path: str, errors: list[str], asset_errors: list[str]
+) -> dict[str, Any]:
+    """Exercise the existing responsive navigation without adding destinations."""
+    toggle = page.locator("[data-menu-toggle]")
+    nav = page.locator("#primary-nav")
+    width = (page.viewport_size or {}).get("width", 0)
+    result = {"mode": "mobile" if width <= 700 else "desktop", "checks": 0}
+    if toggle.count() != 1 or nav.count() != 1:
+        errors.append(f"Navigation: {route_path} must retain one existing menu toggle and primary nav")
+        return result
+    if width > 700:
+        if toggle.is_visible():
+            errors.append(f"Navigation: desktop toggle must remain hidden at {width}px")
+        if not nav.is_visible():
+            errors.append(f"Navigation: desktop links must remain visible at {width}px")
+        if toggle.get_attribute("aria-expanded") != "false":
+            errors.append("Navigation: desktop menu toggle must not retain an expanded state")
+        result["checks"] = 3
+        return result
+    if toggle.get_attribute("aria-expanded") != "false" or nav.is_visible():
+        errors.append(f"Navigation: mobile menu must start collapsed on {route_path}")
+    result["checks"] += 1
+    try:
+        toggle.click(timeout=5000)
+        if toggle.get_attribute("aria-expanded") != "true" or not nav.is_visible():
+            errors.append(f"Navigation: mobile menu did not open on {route_path}")
+        result["checks"] += 1
+        page.set_viewport_size({"width": width + 400, "height": VIEWPORT_HEIGHT})
+        try:
+            page.wait_for_function(
+                "document.querySelector('[data-menu-toggle]').getAttribute('aria-expanded') === 'false'",
+                timeout=1500,
+            )
+        except Exception:
+            errors.append(f"Navigation: resizing to desktop must close the disclosure on {route_path}")
+        if not nav.is_visible():
+            errors.append(f"Navigation: desktop links must remain visible after resize on {route_path}")
+        result["checks"] += 1
+        page.set_viewport_size({"width": width, "height": VIEWPORT_HEIGHT})
+        if toggle.get_attribute("aria-expanded") != "false" or nav.is_visible():
+            errors.append(f"Navigation: returning to mobile must keep the disclosure collapsed on {route_path}")
+        result["checks"] += 1
+        toggle.click(timeout=5000)
+        first_link = nav.locator("a[href]").first
+        if first_link.count() != 1:
+            errors.append(f"Navigation: mobile menu has no destination link on {route_path}")
+            return result
+        first_link.focus()
+        page.keyboard.press("Escape")
+        if toggle.get_attribute("aria-expanded") != "false" or nav.is_visible():
+            errors.append(f"Navigation: Escape did not close the mobile menu on {route_path}")
+        if not toggle.evaluate("element => document.activeElement === element"):
+            errors.append(f"Navigation: Escape must restore focus to the menu toggle on {route_path}")
+        result["checks"] += 2
+        toggle.click(timeout=5000)
+        expected_target = first_link.evaluate(
+            "element => new URL(element.getAttribute('href'), 'https://dag.invalid/' + document.body.dataset.dagRoute).pathname.slice(1)"
+        )
+        first_link.click(timeout=5000)
+        actual_target = page.locator("body").get_attribute("data-dag-target")
+        if actual_target != expected_target:
+            errors.append(
+                f"Navigation: mobile link from {route_path} resolved to {actual_target!r}, expected {expected_target!r}"
+            )
+        if toggle.get_attribute("aria-expanded") != "false" or nav.is_visible():
+            errors.append(f"Navigation: selecting a destination must close the mobile menu on {route_path}")
+        result["checks"] += 2
+        _render_page(page, root, route_path, asset_errors)
+        _check_current_navigation(page, route_path, errors)
+    except Exception as exc:
+        errors.append(f"Navigation: responsive disclosure check failed on {route_path} ({type(exc).__name__})")
+    return result
+
+
 def _expect_route(
     page: Any, root: Path, selector: str, target: str,
     description: str, errors: list[str], asset_errors: list[str]
@@ -137,6 +306,8 @@ def _expect_route(
             errors.append(f"{description}: link resolved to {actual!r}, expected {target!r}")
             return False
         _render_page(page, root, target, asset_errors)
+        _check_current_navigation(page, target, errors)
+        _check_navigation_disclosure(page, root, target, errors, asset_errors)
         if page.locator("main h1").count() != 1:
             errors.append(f"{description}: destination {target} does not expose one main h1")
             return False
@@ -225,10 +396,12 @@ def _run_one_journey(browser: Any, root: Path, journey_id: str, width: int) -> d
     try:
         start = JOURNEY_ROUTE_PATHS[journey_id][0]
         _render_page(page, root, start, asset_errors)
+        _check_current_navigation(page, start, errors)
+        navigation_details = _check_navigation_disclosure(page, root, start, errors, asset_errors)
         if page.locator("main h1").count() != 1:
             errors.append(f"Journey start {start} does not expose one main h1")
 
-        details: dict[str, Any] = {}
+        details: dict[str, Any] = {"navigation_disclosure": navigation_details}
         if journey_id == "discover":
             identity = page.locator(".hero-copy .eyebrow").inner_text()
             if "JAISALMER" not in identity.upper():
@@ -321,6 +494,23 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
             "journeys_checked": 0,
         }
 
+
+    css_path = root / "styles" / "site.css"
+    if not css_path.is_file():
+        return {
+            "ok": False,
+            "errors": ["D-017 visual audit failed: styles/site.css is missing"],
+            "journeys_checked": 0,
+        }
+    visual_audit = audit_d017_visual_css(css_path.read_text(encoding="utf-8"))
+    if not visual_audit["ok"]:
+        return {
+            "ok": False,
+            "errors": ["D-017 visual audit failed before journey review", *visual_audit["errors"]],
+            "journeys_checked": 0,
+            "visual_system_audit": visual_audit,
+        }
+
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
@@ -361,6 +551,11 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
         "journeys_expected": journey_total,
         "passed": passed,
         "failed": len(results) - passed,
+        "visual_system_audit": visual_audit,
+        "navigation_disclosure_checks": sum(
+            item.get("details", {}).get("navigation_disclosure", {}).get("checks", 0)
+            for item in results
+        ),
         "errors": fatal,
         "results": results,
     }
@@ -374,6 +569,8 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
         f"- Journey types: {summary['journey_types']}",
         f"- Viewports: {', '.join(str(width) for width in widths)} CSS px",
         f"- Journey/viewport checks: {passed}/{journey_total}",
+        f"- D-017 visual-system audit: {'PASS' if visual_audit['ok'] else 'FAIL'} ({len(visual_audit['approved_colors'])} approved colours; {visual_audit['palette_token_count']} required palette tokens)",
+        f"- Responsive navigation disclosure checks: {summary['navigation_disclosure_checks']} (mobile open/Escape focus restoration/link close/resize; desktop nav visibility)",
         "- This is local/private automated journey evidence; it is not owner visual acceptance or participant usability research.",
         "",
         "| Journey | Width | Result | Transitions |",
