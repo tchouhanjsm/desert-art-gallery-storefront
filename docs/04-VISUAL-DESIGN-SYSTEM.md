@@ -14,7 +14,7 @@ The intended source directory is `design/owner-controlled-kit-v2/`. Its original
 
 ## One proposal prepared — owner approval pending
 
-D-016 authorizes one reference-led DAG visual proposal, documented in [27 — M2-A Reference-Led Visual Proposal](27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md). All proposed HEX values, font recommendations, hierarchy, component rules and photography direction remain unapproved. They are not active design tokens. Do not copy them into the D-014 kit or a private prototype until the owner explicitly approves the proposal.
+D-017 approves the Revision 2 HEX values, Source Serif 4 / Inter pairing, hierarchy, layout spacing, page compositions and image-frame/placeholder rules for the D-016 private prototype only. They are not production tokens. Do not copy them into the D-014 kit or a production theme. Final logo/wordmark artwork, descriptor and genuine-photo direction/crops remain pending.
 
 ## Owner-only identity inputs
 
