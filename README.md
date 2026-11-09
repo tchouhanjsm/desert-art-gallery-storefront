@@ -32,9 +32,9 @@ Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/own
 
 See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for exact sections, slot counts and components. See `docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md` for browser assurance, `docs/25-M2-DECISION-AND-REVIEW-PACK.md` for owner decisions, `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md` for prototype review, `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md` for the pending visual proposal, `docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md` for the approved cohort plan, and `docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md` for private sample evidence validation. `docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md` documents the local/private prototype entry validator and Chromium review runner; neither can proceed until the explicit M2-A visual approval is recorded.
 
-## Brand identity remains owner-controlled
+## M2-A visual direction — approved for private prototype only
 
-A single live-reference-led M2-A visual proposal is ready in `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md`. Every proposed HEX value, typeface, hierarchy and photo treatment remains unapproved until the owner explicitly accepts it. The owner token register remains pending. `styles/tokens-layout-only.css` is system-colour/system-font QA fallback only, not a DAG palette or production theme.
+The owner approved Revision 2 under D-017 on 9 November 2026. The approved proposal and exact SHA-256 are recorded in `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md`, `docs/DECISIONS.md` and `docs/OWNER-TOKEN-INPUT.md`. The palette, typography, hierarchy and page compositions may be implemented only in the local/private D-016 non-transactional prototype. Final logo/wordmark artwork, descriptor, genuine photo art direction/crops and production theme remain pending. `styles/tokens-layout-only.css` remains system-colour/system-font QA fallback only and must not be promoted or changed.
 
 The owner has accepted a seven-person research cohort (see `docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md`) and the five-journey priority. No fieldwork is authorized. The six private prototype areas and owner walkthrough sequence are in `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md`; branded implementation starts only after M2-A approval and stays outside this public repository.
 
