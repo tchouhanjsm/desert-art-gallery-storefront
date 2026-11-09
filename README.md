@@ -34,7 +34,7 @@ See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for exact section
 
 ## Approved visual direction and private prototype boundary
 
-The owner approved Revision 2 (“Material in Focus”) under D-017 on 9 November 2026. Exact colour, typography, hierarchy and layout values are recorded in `docs/OWNER-TOKEN-INPUT.md` and `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md`. This approval authorizes those values for the six-area local/private prototype only; `styles/tokens-layout-only.css` remains system-colour/system-font QA fallback, and the D-014 kit remains unchanged.
+The owner approved Revision 2 (“Material in Focus”) under D-017 on 9 November 2026. Exact colour, typography, hierarchy and layout values are recorded in `docs/OWNER-TOKEN-INPUT.md` and `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md`. This approval authorizes those values for the six-area local/private prototype only; `styles/tokens-layout-only.css` remains system-colour/system-font QA fallback only, and the D-014 kit remains unchanged.
 
 The owner has accepted a seven-person research cohort (see `docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md`) and the five-journey priority. No fieldwork is authorized. The six private prototype areas and owner walkthrough sequence are in `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md`; M2-E implementation may now proceed outside this public repository, subject to the exact scope and non-transactional restrictions.
 
