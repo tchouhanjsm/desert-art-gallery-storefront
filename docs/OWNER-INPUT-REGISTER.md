@@ -14,7 +14,7 @@ This is a concise queue of decisions that require owner input. Update it as deci
 | U-008 | Direct, enquiry-led or hybrid | Core shopping journey | Before M2/M3 | Open |
 | U-009 | Brand positioning/promise | Brand identity and content | During M1 | Owner input pending |
 | U-010 | Technology and hosting | Engineering cost and capability | M3 | Open |
-| M1-A | Final DAG brand identity inputs | Final palette, typography, logo/wordmark/descriptor and photography direction remain owner-controlled | Before branded styling | One reference-led proposal is prepared in docs/27; owner visual approval pending. No proposed value is approved. |
+| M1-A | Final DAG brand identity inputs | Final palette, typography, logo/wordmark/descriptor and photography direction remain owner-controlled | Before branded styling | Revision 2 is approved under D-017 for the private prototype only; final logo/descriptor and production-theme inputs remain pending. |
 | M1-REF | Reference fidelity and hierarchy | Sets which reference informs ecommerce structure vs curation | M1 | Confirmed D-010 and D-016: POJ primary, Macaroni secondary; Jaisalmer gives DAG its identity |
 | M1-B | Japan-first customer-validation cohort | Defines the initial qualitative research contexts | Before fieldwork | Cohort approved by D-016 (3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase); recruitment, consent, contact and spending authorization still pending |
 | M1-C | Mixed product/photo evidence | Uses genuine owner-approved sample photos alongside labelled placeholders/image frames | Before prototype content review | Placeholder and image-frame approach approved; owner sample of approximately 10–20 genuine products/photos and verified facts pending; no bulk migration |
