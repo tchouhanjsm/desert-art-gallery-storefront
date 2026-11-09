@@ -1,6 +1,7 @@
 # Repository-Wide Documentation Reset — Completion Checklist
 
 **Audit baseline:** main at `a4b665f81433e98cd78469e0a1bc1bb81a3528df`  
+**Decision update:** D-017 recorded 9 November 2026; M2-A Revision 2 approved for private prototype.
 **Owner archive SHA-256:** `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`  
 **Baseline tracked paths audited:** 140
 
@@ -10,12 +11,12 @@
 - [x] Root `AGENTS.md` separated owner-approved specs (level 5) and inventories (level 6).
 - [x] Root README and handoff follow the same order.
 - [x] Design authority explicitly governs every nested prompt, README, code comment, source file, workflow and issue template.
-- [x] D-014 remains structural-only; no owner identity values or new owner decisions invented.
+- [x] D-014 remains structural-only; D-017 records the owner's explicit M2-A Revision 2 approval for private-prototype use.
 - [x] D-010 remains only the POJ-primary/Macaroni-secondary reference hierarchy; it does not import reference-site functionality.
 - [x] D-007's old four-option AI selection procedure remains superseded.
 - [x] P-015 remains rejected; P-016 remains superseded/historical.
 - [x] D-013 six-route model remains superseded by D-014.
-- [x] M2-A to M2-E and U-001 to U-010 retain their recorded open/pending statuses.
+- [x] M2-A Revision 2 approval recorded under D-017; M2-B fieldwork, M2-C genuine sample evidence and U-001 to U-010 retain their separate open/pending statuses.
 
 ## Owner archive and implementation
 
@@ -110,8 +111,8 @@ A checked item records a source/repository fact already verified in this reset. 
 - [x] Added a local-only Chromium runner that requires static validation first and writes review artifacts outside the public repository.
 - [x] Added regression tests for both the static validation rules and the browser runner's M2-A entry gate.
 - [x] Reconciled README, AGENTS, roadmap, M2 acceptance pack, changelog and path-level matrix.
-- [ ] M2-A visual approval and recorded decision.
+- [x] M2-A visual approval and D-017 decision recorded.
 - [ ] Owner supplies 10–20 genuine product photographs and verified facts.
-- [ ] Create the six private prototype areas after M2-A approval.
+- [ ] Create the six private prototype areas under D-017; keep all assets/reports outside the public repository.
 - [ ] Run the local/private validator and browser review against the actual private prototype.
 - [ ] Complete owner visual walkthrough; customer usability testing remains separately authorized.
