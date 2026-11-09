@@ -253,10 +253,7 @@ def main() -> int:
     print("- all nine pages use English markup and local links/styles/scripts resolve")
     print("- D-014, superseded D-013 and retired visual proposals are explicit")
     print("- PR #8 archive verification remains in history; PR #9 accessibility and PR #11 responsive CSS amendments are hash-verified")
-    if "### D-017 — M2-A Revision 2 visual direction approved" in decisions:
-        print("- D-017 visual tokens are approved for the local/private prototype only; production theme and remaining identity inputs retain separate gates")
-    else:
-        print("- owner-only identity inputs remain pending; layout tokens are QA-only")
+    print("- D-017 visual tokens are approved for the local/private prototype only; production theme and remaining identity inputs retain separate gates")
     print("- disabled states and closed functionality boundaries are maintained")
     return 0
 
