@@ -34,17 +34,17 @@ The follow-up maintenance patch is limited to the supplied kit's existing CSS an
 
 The owner has now confirmed the M2-A through M2-E decisions. The previous PR #13 structural-review automation remains complete; D-016 defines the current owner-approved plan and conditional private-prototype scope.
 
-- **M2-A — proposal ready, visual approval pending:** One reference-led visual proposal is prepared in docs/27. POJ Studio is primary, Macaroni Shoten secondary; no proposed colours/type/logo/photo direction is approved or applied. The owner retains final authority.
+- **M2-A — approved under D-017:** Revision 2 “Material in Focus” is approved for private prototype implementation: palette, Source Serif 4 / Inter pairing, hierarchy, layout values, photography principles and all nine page compositions. Final logo artwork, descriptor wording, copy and genuine product-image evidence remain separate.
 - **M2-B — cohort accepted:** Seven Japan-based qualitative participants are approved as a research plan (3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase). The full operations plan is docs/28. Recruitment, external contact, consent/data handling, recording, incentives and spend remain separately unauthorized.
 - **M2-C — placeholder approach accepted, evidence pending:** Use clearly labelled layout placeholders and image-frame compositions. Product-image validation remains pending until approximately 10–20 genuine photos and verified product information are supplied. No full photography-library migration.
 - **M2-D — journey order accepted:** Discover identity → browse products/categories/collections → evaluate product/images/verified specifications → explore makers/materials/editorial → contact/support. Mobile is cross-cutting across every journey. Automated testing passed; owner visual walkthrough and human usability acceptance remain separate.
-- **M2-E — private prototypes conditionally authorized:** Exactly six local/private non-transactional areas: Homepage; Shop and Collections; Product Detail; About and Makers; Journal and Stories; Contact and Support. This is a six-area grouping across the unchanged nine-page D-014 kit. The shared shell appears only as already supplied. Begin branded implementation only after explicit M2-A visual approval. Keep prototype files out of the public repository.
+- **M2-E — private prototype implementation authorized:** D-017 satisfies the visual approval condition. Build exactly six local/private non-transactional areas: Homepage; Shop and Collections; Product Detail; About and Makers; Journal and Stories; Contact and Support. This is a six-area grouping across the unchanged nine-page D-014 kit. Keep prototype files out of the public repository.
 
 ### Owner review sequence
-1. Review the single proposal in docs/27 and record exact accept/revise/reject decisions.
-2. After M2-A approval, build the six private prototype areas using the approved visual tokens and D-014's exact page/section inventory.
+1. D-017 records approval of the Revision 2 proposal and the exact approved visual baseline.
+2. Build the six private prototype areas using the approved values and D-014's exact page/section inventory.
 3. Use labelled placeholders until the genuine product sample and verified facts are available.
-4. Run responsive and accessibility automation; prepare the owner walkthrough in docs/26.
+4. Run local static validation and responsive/accessibility automation; prepare the owner walkthrough in docs/26.
 5. Record owner visual feedback separately from any future participant usability evidence.
 
 ### Completed automated structural evidence
@@ -54,7 +54,7 @@ The owner has now confirmed the M2-A through M2-E decisions. The previous PR #13
 
 These checks assess structural automation only. They do not validate customer demand, conduct human usability testing or constitute owner visual acceptance.
 
-## Next engineering phase — private prototype entry and review readiness
+## Next engineering phase — M2-E private prototype implementation
 
 Following PR #13's merge, the next bulk engineering slice adds the private-prototype validation pipeline without bypassing the M2-A approval gate:
 - `scripts/validate_private_prototype.py` validates an external private prototype root, exact D-014 routes and D-016 six-area map, M2-A owner-decision reference and proposal SHA-256, image asset ledger, placeholder labels, rights/prototype-use references, semantic page structure and prohibited network/transaction behaviour.
@@ -62,7 +62,7 @@ Following PR #13's merge, the next bulk engineering slice adds the private-proto
 - `scripts/private_prototype_browser_review.py` performs local-only Chromium review at 390, 430, 768, 1280 and 1440px, including screenshots and JSON/Markdown summaries outside the public repository. It blocks external browser requests and will not run until the static gate passes.
 - Regression tests cover owner approval/hash matching, routes/groupings, placeholders, genuine-photo evidence, private path boundaries, disabled forms, network APIs and transaction paths.
 
-**This is readiness tooling, not the private prototype itself.** M2-A remains awaiting your explicit approval; no DAG brand tokens or styling have been applied, no photo sample has been supplied and no private prototype has been created. The next actual design implementation must wait for the M2-A decision and remain local/private.
+**The readiness tooling is complete; D-017 now satisfies its M2-A entry gate.** The next delivery is the actual six-area private prototype, using the approved tokens and labelled image frames. No genuine photo sample has been supplied, and the prototype must remain local/private.
 
 ### PR #14 continuation — private review assurance hardening
 
@@ -72,7 +72,7 @@ The same PR extends the readiness gate without starting prototype styling:
 - The local Chromium runner rejects symlinked prototype roots, checks the viewport meta tag and records browser-console errors, failed requests and unsuccessful HTTP resource responses as review failures.
 - Regression coverage adds eleven tests for malformed metadata, path normalization, inline event handlers, worker/network overrides, approval-date validation, SVG references, image-type submit controls and review-root boundaries.
 
-The continuation is implemented and validated at PR #14 head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`. [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) passed source/foundation, M2 gate, accessibility, documentation consistency and Markdown link audits, with **136/136 Python tests** passing. The private Chromium review was not run because no approved private prototype exists; it remains a local-only step after M2-A approval. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
+The continuation was implemented and validated at PR #14 head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`. [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) passed source/foundation, M2 gate, accessibility, documentation consistency and Markdown link audits, with **136/136 Python tests** passing. The private Chromium review was not run because no approved private prototype exists; it remains a local-only step after M2-A approval. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
 
 ## Technical and commercial work
 
