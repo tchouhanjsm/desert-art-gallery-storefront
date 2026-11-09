@@ -155,3 +155,14 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Extended the local/private journey runner with a D-017 CSS gate, explicit current-navigation mapping and responsive navigation interaction checks.
 - Latest local/private evidence: 45/45 route/viewport checks, 18 screenshots, 25/25 journey/viewport checks and 125 responsive navigation disclosure checks. Ten Python regression tests pass.
 - The actual prototype, its screenshots and review reports remain outside GitHub. No real product photography or verified catalogue facts were supplied; owner visual acceptance and human usability acceptance remain pending.
+
+
+## 2026-11-09 — M2 private prototype implementation revision 4
+- Differentiated the 34 existing image-frame slots by content evidence role across the nine routes; every visible and accessible label states that owner-approved source/photo/product mapping is pending.
+- Converted the four Product Detail fact rows to semantic description-list pairs without adding or fabricating product details; price/currency remain pending.
+- Upgraded the existing Collection, Product Detail and Article breadcrumbs to labelled navigation landmarks with the current page identified.
+- Clarified Article introduction, publication date, authorship and source credits as pending owner verification.
+- Improved narrow-screen wrapping for product-fact label/value pairs.
+- Local private QA passed 45/45 route/viewport checks at 390/430/768/1280/1440px, 18 screenshots, zero horizontal overflow, 34/34 image slots, three breadcrumb landmarks and unchanged disabled controls.
+- Extended the public journey runner to validate route-specific image evidence labels, fixed slot counts, breadcrumb semantics, semantic product facts and pending editorial metadata on every rendered page in the owner journeys.
+- Private prototype content, images and captures remain outside GitHub. Owner visual acceptance and human customer usability acceptance remain pending.

@@ -111,7 +111,7 @@ D-017's approval has been applied to a local/private prototype outside the publi
 
 ## 7. Automated review evidence
 
-The local/private Revision 2 prototype has passed:
+The local/private Revision 4 prototype has passed:
 
 | Review | Result | Coverage |
 |---|---:|---|
@@ -119,8 +119,10 @@ The local/private Revision 2 prototype has passed:
 | Captured review screenshots | 18 | 9 routes × mobile/desktop (390, 1440) |
 | Five-journey review | 25/25 | 5 owner-approved journeys × 5 widths |
 | Journey interaction checks | Passed | 10 route transitions, 4 product accordions per width, disabled Filter/Sort, disabled purchase/options and enquiry controls |
+| Content evidence checks | 65 rendered page checks | Route-specific image labels, fixed slot counts, breadcrumb semantics, semantic product facts and pending editorial metadata |
+| Responsive overflow check | 0 failures | 9 pages × 5 viewport widths |
 
-Journey runner: `scripts/private_prototype_journey_review.py`. It first runs the D-017 private-prototype validator, then renders the exact local HTML/CSS/JS in memory to avoid local URL restrictions. Clicked links are resolved with the browser URL algorithm and the target page is rendered from the same private root. It does not publish, upload or commit prototype content, and the review output directory must remain outside both the public repository and the prototype directory.
+Journey runner: `scripts/private_prototype_journey_review.py`. It first runs the D-017 private-prototype validator, then renders the exact local HTML/CSS/JS in memory to avoid local URL restrictions. Clicked links are resolved with the browser URL algorithm and the target page is rendered from the same private root. It does not publish, upload or commit prototype content, and the review output directory must remain outside both the public repository and the prototype directory. Revision 4 also checks the exact image-slot inventory and role-specific pending labels, three existing breadcrumb landmarks, the four semantic Product Detail fact pairs and pending article metadata. The frame counts remain fixed at Homepage 11, Shop 6, Collection 3, Product Detail 4, About 2, Makers 1, Journal 6, Article 1 and Contact 0.
 
 These results are automated engineering evidence, not owner visual acceptance, participant usability research, screen-reader testing, or full WCAG/legal compliance.
 

@@ -1,6 +1,6 @@
 # M2 — Private Prototype Entry Gate and Local Review Pipeline
 
-**Status:** Revision 2 private prototype built outside the public repository; static, responsive and five-journey automated reviews passed. Owner visual acceptance remains pending.  
+**Status:** Revision 4 private prototype built outside the public repository; D-017, responsive, journey, content-evidence and semantic checks passed. Owner visual acceptance remains pending.  
 **Authority:** D-014, D-016 and the unchanged page/component inventories.  
 **Scope:** Local/private prototype validation and owner-review preparation only. D-017 approves the Revision 2 visual values for this private prototype; production styling and public deployment remain unauthorized.
 
@@ -150,3 +150,16 @@ The validator and browser runners are mandatory acceptance gates for the private
 ## 9. PR #14 assurance-hardening validation
 
 The expanded continuation hardening, including inline SVG resource and image-submit control checks, passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) at head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`: repository foundation/source integrity, M2 owner-gate consistency, kit accessibility, documentation consistency, active Markdown links and **136/136 Python tests** passed. At the time of PR #14, the private Chromium review was not executed because no M2-A-approved private prototype existed. That historical gate is now satisfied under D-017; the subsequent private review evidence is recorded in docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md.
+
+
+## 10. Revision 4 content-evidence and semantic checks
+
+The local private prototype has been refined without adding/removing any D-014 route or component:
+- Every existing image frame has a visible label and matching accessible name describing the evidence role expected in that slot; each remains explicitly illustrative and pending.
+- Exact image slot counts are checked for all nine pages (11, 6, 3, 4, 2, 1, 6, 1, 0).
+- The four Product Detail facts use semantic dl/dt/dd markup and retain pending owner-verification values.
+- The existing breadcrumbs on Collection, Product Detail and Article use a named navigation landmark and one current-page item.
+- Article introduction, publication date, authorship and source credits remain explicitly pending.
+- Mobile product-fact label/value rows are checked at all five review widths.
+
+The journey runner validates these conditions at every rendered start/destination page in addition to the D-017 visual and navigation gates. The browser review also confirms zero horizontal overflow across 45 route/viewport combinations. Revision 4's actual private HTML/CSS/JS, screenshots and reports remain outside GitHub.

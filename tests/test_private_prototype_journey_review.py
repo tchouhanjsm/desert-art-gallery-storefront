@@ -6,6 +6,8 @@ from pathlib import Path
 
 from scripts.private_prototype_journey_review import (
     JOURNEY_LABELS,
+    BREADCRUMB_ROUTES,
+    CONTENT_SLOT_COUNTS,
     JOURNEY_ROUTE_PATHS,
     NAV_CURRENT_BY_ROUTE,
     VIEWPORT_WIDTHS,
@@ -53,6 +55,31 @@ class PrivatePrototypeJourneyReviewTests(unittest.TestCase):
         self.assertEqual(NAV_CURRENT_BY_ROUTE["pages/shop.html"][1], "page")
         self.assertEqual(NAV_CURRENT_BY_ROUTE["pages/product.html"][1], "location")
         self.assertEqual(NAV_CURRENT_BY_ROUTE["pages/article.html"][1], "location")
+
+
+    def test_image_slot_counts_match_the_closed_nine_page_inventory(self):
+        self.assertEqual(
+            CONTENT_SLOT_COUNTS,
+            {
+                "index.html": 11,
+                "pages/shop.html": 6,
+                "pages/collection.html": 3,
+                "pages/product.html": 4,
+                "pages/about.html": 2,
+                "pages/makers.html": 1,
+                "pages/journal.html": 6,
+                "pages/article.html": 1,
+                "pages/contact.html": 0,
+            },
+        )
+        self.assertEqual(len(CONTENT_SLOT_COUNTS), 9)
+
+    def test_breadcrumb_landmarks_are_limited_to_existing_breadcrumb_pages(self):
+        self.assertEqual(
+            BREADCRUMB_ROUTES,
+            frozenset({"pages/collection.html", "pages/product.html", "pages/article.html"}),
+        )
+        self.assertTrue(BREADCRUMB_ROUTES.issubset(CONTENT_SLOT_COUNTS))
 
     def test_every_journey_uses_the_five_owner_review_widths(self):
         self.assertEqual(VIEWPORT_WIDTHS, (390, 430, 768, 1280, 1440))

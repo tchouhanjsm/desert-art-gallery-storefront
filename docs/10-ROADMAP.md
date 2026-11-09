@@ -86,3 +86,12 @@ No additional routes, sections, components, banners, testimonials, badges, revie
 ## Roadmap update rule
 
 Update this roadmap only when an actual owner decision, evidence-backed milestone, implementation or validation result changes. State what is complete, incomplete and blocked without anticipating future results.
+
+
+## Completed local implementation — Revision 4 content evidence and semantics
+
+The private prototype now differentiates all existing image slots by their intended evidence role (homepage, category, catalogue product, product gallery view, place/material, maker portrait, Journal story and Article lead). Every frame remains explicitly illustrative and pending; no image is presented as genuine DAG photography. The exact slot counts remain unchanged across all nine D-014 routes.
+
+Product Detail retains the same four facts but exposes them as a semantic description list; each value and price/currency remains pending owner verification. Existing breadcrumbs on Collection, Product Detail and Article are labelled navigation landmarks with a current item. Article introduction, publication date, authorship and source credits remain pending. Mobile fact rows wrap without horizontal overflow.
+
+Local Revision 4 evidence: 45/45 route/viewport render checks across 390, 430, 768, 1280 and 1440px; 18 screenshots; zero horizontal overflow; 34/34 image slots with visible/accessibility labels; 3/3 breadcrumb routes; four semantic product fact pairs; all product accordions/disabled controls retained. The journey runner is extended to re-check content-evidence slots and semantic page states on every rendered journey page. These remain automated checks, not owner sign-off or participant usability acceptance.

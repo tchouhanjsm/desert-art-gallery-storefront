@@ -109,6 +109,21 @@ NAV_CURRENT_BY_ROUTE = {
     "pages/article.html": ("../pages/journal.html", "location"),
     "pages/contact.html": ("../pages/contact.html", "page"),
 }
+
+CONTENT_SLOT_COUNTS = {
+    "index.html": 11,
+    "pages/shop.html": 6,
+    "pages/collection.html": 3,
+    "pages/product.html": 4,
+    "pages/about.html": 2,
+    "pages/makers.html": 1,
+    "pages/journal.html": 6,
+    "pages/article.html": 1,
+    "pages/contact.html": 0,
+}
+BREADCRUMB_ROUTES = frozenset({
+    "pages/collection.html", "pages/product.html", "pages/article.html"
+})
 JOURNEY_LABELS = {
     "discover": "Discover DAG and understand its identity",
     "browse": "Browse products, categories and collections",
@@ -290,9 +305,86 @@ def _check_navigation_disclosure(
     return result
 
 
+
+def _check_content_evidence(page: Any, route_path: str, errors: list[str]) -> dict[str, Any]:
+    """Verify that every existing content slot is labelled and evidence-safe."""
+    checks = 0
+    frames = page.locator('.image-frame[role="img"]')
+    expected_frames = CONTENT_SLOT_COUNTS.get(route_path)
+    actual_frames = frames.count()
+    checks += 1
+    if expected_frames is None:
+        errors.append(f"Content evidence: route is not in the closed nine-page inventory: {route_path}")
+    elif actual_frames != expected_frames:
+        errors.append(
+            f"Content evidence: {route_path} expected {expected_frames} existing image slots, found {actual_frames}"
+        )
+    for index in range(actual_frames):
+        frame = frames.nth(index)
+        accessible = (frame.get_attribute("aria-label") or "").strip().lower()
+        visible = " ".join(frame.locator(":scope > span").inner_text().split()).lower()
+        checks += 1
+        if not accessible or not visible:
+            errors.append(f"Content evidence: {route_path} image slot {index + 1} needs visible and accessible labels")
+            continue
+        if "illustrative" not in accessible or "pending" not in accessible:
+            errors.append(f"Content evidence: {route_path} image slot {index + 1} is not marked illustrative/pending")
+        if accessible != visible:
+            errors.append(f"Content evidence: {route_path} image slot {index + 1} visible and accessible labels differ")
+        if "illustrative image frame — dag photograph pending" in visible:
+            errors.append(f"Content evidence: {route_path} image slot {index + 1} still uses the generic placeholder label")
+
+    breadcrumb = page.locator('nav[aria-label="Breadcrumb"]')
+    checks += 1
+    if route_path in BREADCRUMB_ROUTES:
+        if breadcrumb.count() != 1:
+            errors.append(f"Content semantics: {route_path} needs exactly one Breadcrumb navigation landmark")
+        elif breadcrumb.locator('li[aria-current="page"]').count() != 1:
+            errors.append(f"Content semantics: {route_path} breadcrumb needs one current-page item")
+    elif breadcrumb.count():
+        errors.append(f"Content semantics: unexpected breadcrumb landmark on {route_path}")
+
+    if route_path == "pages/product.html":
+        facts = page.locator("dl.facts")
+        rows = facts.locator(":scope > .fact-row")
+        labels = facts.locator("dt")
+        values = facts.locator("dd")
+        checks += 3
+        if facts.count() != 1 or rows.count() != 4 or labels.count() != 4 or values.count() != 4:
+            errors.append("Product Detail: the four existing product facts must be a semantic dl with four dt/dd pairs")
+        for index in range(values.count()):
+            checks += 1
+            if "pending owner verification" not in values.nth(index).inner_text().lower():
+                errors.append(f"Product Detail: fact value {index + 1} must remain visibly pending")
+        price = page.locator(".price-line")
+        checks += 1
+        if price.count() != 1 or "pending owner confirmation" not in price.inner_text().lower():
+            errors.append("Product Detail: price and currency must remain pending owner confirmation")
+        if page.locator(".accordions details").count() != 4:
+            errors.append("Product Detail: four existing information accordions must be preserved")
+
+    if route_path == "pages/article.html":
+        deck = page.locator(".article-deck")
+        checks += 1
+        if deck.count() != 1:
+            errors.append("Article: existing introductory deck is missing")
+        else:
+            content = deck.inner_text().lower()
+            for required in ("publication date", "authorship", "source credits", "pending"):
+                if required not in content:
+                    errors.append(f"Article: editorial metadata must explicitly identify {required} as pending")
+    return {
+        "route": route_path,
+        "image_slots": actual_frames,
+        "expected_image_slots": expected_frames,
+        "breadcrumb_landmark": route_path in BREADCRUMB_ROUTES,
+        "checks": checks,
+    }
+
+
 def _expect_route(
     page: Any, root: Path, selector: str, target: str,
-    description: str, errors: list[str], asset_errors: list[str]
+    description: str, errors: list[str], asset_errors: list[str], content_pages: list[dict[str, Any]]
 ) -> bool:
     locator = page.locator(selector).first
     if locator.count() == 0:
@@ -306,6 +398,7 @@ def _expect_route(
             errors.append(f"{description}: link resolved to {actual!r}, expected {target!r}")
             return False
         _render_page(page, root, target, asset_errors)
+        content_pages.append(_check_content_evidence(page, target, errors))
         _check_current_navigation(page, target, errors)
         _check_navigation_disclosure(page, root, target, errors, asset_errors)
         if page.locator("main h1").count() != 1:
@@ -383,25 +476,27 @@ def _run_one_journey(browser: Any, root: Path, journey_id: str, width: int) -> d
     )
     page = context.new_page()
     page_errors: list[str] = []
+    content_pages: list[dict[str, Any]] = []
     console_errors: list[str] = []
     page.on("pageerror", lambda error: page_errors.append(str(error)))
     page.on("console", lambda message: console_errors.append(message.text) if message.type == "error" else None)
 
     def step(selector: str, target: str, description: str) -> None:
         before = page.locator("body").get_attribute("data-dag-route")
-        passed = _expect_route(page, root, selector, target, description, errors, asset_errors)
+        passed = _expect_route(page, root, selector, target, description, errors, asset_errors, content_pages)
         after = page.locator("body").get_attribute("data-dag-route")
         steps.append({"action": description, "from": before, "to": after, "passed": passed})
 
     try:
         start = JOURNEY_ROUTE_PATHS[journey_id][0]
         _render_page(page, root, start, asset_errors)
+        content_pages.append(_check_content_evidence(page, start, errors))
         _check_current_navigation(page, start, errors)
         navigation_details = _check_navigation_disclosure(page, root, start, errors, asset_errors)
         if page.locator("main h1").count() != 1:
             errors.append(f"Journey start {start} does not expose one main h1")
 
-        details: dict[str, Any] = {"navigation_disclosure": navigation_details}
+        details: dict[str, Any] = {"navigation_disclosure": navigation_details, "content_evidence_pages": content_pages}
         if journey_id == "discover":
             identity = page.locator(".hero-copy .eyebrow").inner_text()
             if "JAISALMER" not in identity.upper():
@@ -556,6 +651,9 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
             item.get("details", {}).get("navigation_disclosure", {}).get("checks", 0)
             for item in results
         ),
+        "content_evidence_page_checks": sum(
+            len(item.get("details", {}).get("content_evidence_pages", [])) for item in results
+        ),
         "errors": fatal,
         "results": results,
     }
@@ -571,6 +669,7 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
         f"- Journey/viewport checks: {passed}/{journey_total}",
         f"- D-017 visual-system audit: {'PASS' if visual_audit['ok'] else 'FAIL'} ({len(visual_audit['approved_colors'])} approved colours; {visual_audit['palette_token_count']} required palette tokens)",
         f"- Responsive navigation disclosure checks: {summary['navigation_disclosure_checks']} (mobile open/Escape focus restoration/link close/resize; desktop nav visibility)",
+        f"- Evidence-labelled content page checks: {summary['content_evidence_page_checks']} (route-specific image slots, breadcrumb semantics, product fact evidence and article metadata)",
         "- This is local/private automated journey evidence; it is not owner visual acceptance or participant usability research.",
         "",
         "| Journey | Width | Result | Transitions |",
