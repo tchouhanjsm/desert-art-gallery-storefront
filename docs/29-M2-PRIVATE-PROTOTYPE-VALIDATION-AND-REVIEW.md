@@ -1,6 +1,6 @@
 # M2 — Private Prototype Entry Gate and Local Review Pipeline
 
-**Status:** Readiness tooling implemented; actual prototype build is still gated by explicit M2-A visual approval.  
+**Status:** M2-A approval recorded under D-017; actual six-area private prototype implementation is authorized. Validation tooling remains mandatory before browser review.  
 **Authority:** D-014, D-016 and the unchanged page/component inventories.  
 **Scope:** Local/private validation and review only. This document does not approve a visual identity or start prototype styling.
 
@@ -77,7 +77,7 @@ The root must be a real directory outside the public repository. The validator c
 - No inline event-handler attributes, `ping` beacons, form override attributes, service-worker/worker registration or cross-context messaging APIs.
 - Inline SVG image/symbol references are checked for local-only paths; image-type submit controls are rejected.
 
-The command is intentionally expected to fail until M2-A is explicitly approved and a complete prototype/manifest is supplied. It does not create test products, images or example customer content.
+The command passes its owner-approval gate under D-017 when the manifest carries the exact approved proposal SHA-256 and the completed private prototype/asset ledger satisfies all other checks. It does not create test products, images or example customer content.
 
 ## 5. Local Chromium review command
 
@@ -117,13 +117,13 @@ The owner walkthrough in `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md` remains the v
 
 ## 7. Current gate status
 
-- M2-A: proposal prepared; explicit owner visual approval pending.
+- M2-A: Revision 2 visual direction approved under D-017; private prototype implementation authorized.
 - M2-B: seven-person cohort approved as a plan; fieldwork/recruitment/privacy/cost authorization pending.
 - M2-C: placeholder approach approved; genuine 10–20 product/photo sample and verified facts pending.
 - M2-D: journey priority approved; automation passed; owner walkthrough and human usability acceptance pending.
-- M2-E: six-area local/private prototype scope conditionally authorized; branded implementation must wait for M2-A approval.
+- M2-E: six-area local/private prototype implementation authorized; actual prototype and browser-review evidence remain to be delivered.
 
-Until these gates are satisfied, the validator and browser runner are readiness tooling only. The D-014 kit, page inventory, component inventory and QA-only token file remain unchanged.
+The validator and browser runner are readiness and acceptance gates for the actual private prototype. The D-014 kit, page inventory, component inventory and QA-only token file remain unchanged.
 
 ## 8. PR #14 assurance-hardening validation
 
