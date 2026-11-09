@@ -1,6 +1,7 @@
 # Repository-Wide Documentation Reconciliation Matrix
 
-**Review date:** 2026-11-08  
+**Review date:** 2026-11-09
+**Decision update:** D-017 — M2-A Revision 2 visual direction approved for private prototype  
 **Audited baseline:** `main` at `a4b665f81433e98cd78469e0a1bc1bb81a3528df` (PR #9 merge)  
 **Owner archive:** `DAG-owner-controlled-design-kit-v2.zip`  
 **Owner archive SHA-256:** `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`  
@@ -228,4 +229,4 @@ The D-014 owner kit assets, active PAGE-INVENTORY and COMPONENT-INVENTORY are RE
 | docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md | ADD | Local operating guide and limitations for the private prototype validation/review pipeline. |
 | AGENTS.md; README.md; docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md | UPDATE | Document current readiness tooling and retain explicit M2-A implementation gate. |
 
-The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories, visual proposal and QA-only token fallback are retained unchanged. The private prototype itself and its assets/reports are not part of the PR.
+The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories and QA-only token fallback are retained unchanged. The M2-A visual proposal is updated to record D-017 approval for private prototype use. The private prototype itself and its assets/reports remain outside the public repository.

@@ -8,11 +8,11 @@ This document is level 3 in the root authority hierarchy defined in `docs/DOCUME
 
 **DAG Owner-Controlled Design Kit v2 is the sole active structural HTML/CSS implementation source.** Its original HTML pages, CSS files, responsive styles, structural components, page order and component inventory must be preserved as supplied. Do not redesign, silently restyle, expand or reinterpret the kit.
 
-The kit is structurally adopted (D-014) and materialized in `design/owner-controlled-kit-v2/`. The archive SHA-256 is `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`; the 14 original implementation assets were checked at adoption and PR #9's two CSS maintenance amendments are hash-pinned by the project validator. This does **not** approve final brand identity. Final brand colours, typography, logo/wordmark/descriptor and photography art direction remain owner-controlled and pending. D-016 requests one reference-led proposal in docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md; proposal values are not approvals and cannot be applied until the owner explicitly approves them.
+The kit is structurally adopted (D-014) and materialized in `design/owner-controlled-kit-v2/`. The archive SHA-256 is `64ad72784abf7fdd24b01f48f6ea832bf40424a518793eb80c7cfa23effaa8cd`; the 14 original implementation assets were checked at adoption and PR #9's two CSS maintenance amendments are hash-pinned by the project validator. D-017 records the owner's approval of the Revision 2 M2-A colour palette, Source Serif 4 / Inter typography direction, hierarchy, layout values, photography principles and page compositions for the local/private M2-E prototype only. Exact values are in docs/OWNER-TOKEN-INPUT.md and docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md. Production identity/use remains subject to licensing, asset, legal and launch gates.
 
 ## Owner-controlled identity
 
-The owner alone approves exact brand colours, typefaces/weights/hierarchy/type scale, logo/wordmark/descriptor, photography direction/crop and customer-facing copy or factual claims. Do not select or infer missing values.
+D-017 has approved the specified colour, type and visual direction for the private prototype. Final logo artwork, monogram, descriptor wording, customer-facing copy, product facts and actual image evidence remain owner-controlled. Do not select or infer missing values.
 
 `styles/tokens-layout-only.css` uses system canvas colours and system fonts only for layout QA. It is not a DAG palette, neutral brand identity or production theme.
 

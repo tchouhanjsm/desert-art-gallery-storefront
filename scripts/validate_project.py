@@ -179,7 +179,22 @@ def validate_project(root: Path = ROOT) -> list[str]:
         if field not in token_input:
             errors.append(f"owner token input missing field {field!r}")
     if "PENDING OWNER INPUT" not in token_input:
-        errors.append("owner-controlled identity inputs must remain pending")
+        errors.append("remaining owner-controlled identity inputs must be explicitly marked pending")
+
+    if "### D-017 — M2-A Revision 2 visual direction approved" in decisions:
+        d017 = decisions.split("### D-017 — M2-A Revision 2 visual direction approved", 1)[1].split("\n### ", 1)[0]
+        if "Status: CONFIRMED" not in d017 or "M2-A VISUAL DIRECTION APPROVED" not in d017:
+            errors.append("D-017 must record confirmed approval of the M2-A visual direction")
+        for approved_value in ("#FFFFFF", "#132A3A", "#174F6B", "#E5AD26", "#F3F7F8", "#D4E0E5", "Source Serif 4", "Inter"):
+            if approved_value not in d017 or approved_value not in token_input:
+                errors.append(f"D-017 owner-approved private prototype value missing from decision/token register: {approved_value}")
+        if "PENDING" not in token_input or "logo artwork" not in token_input.lower() or "descriptor" not in token_input.lower():
+            errors.append("logo artwork and descriptor must remain explicitly pending")
+        if "private prototype" not in token_input.lower():
+            errors.append("approved tokens must be scoped to the private prototype only")
+    else:
+        if "PENDING OWNER INPUT" not in token_input:
+            errors.append("owner identity inputs must remain pending until an approval decision is recorded")
 
     report = (root / "docs/DOCUMENTATION-RECONCILIATION-REPORT.md").read_text(encoding="utf-8").lower()
     checklist = (root / "docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md").read_text(encoding="utf-8")
@@ -238,7 +253,7 @@ def main() -> int:
     print("- all nine pages use English markup and local links/styles/scripts resolve")
     print("- D-014, superseded D-013 and retired visual proposals are explicit")
     print("- PR #8 archive verification remains in history; PR #9 accessibility and PR #11 responsive CSS amendments are hash-verified")
-    print("- owner-only identity inputs remain pending; layout tokens are QA-only")
+    print("- D-017 visual tokens are approved for the local/private prototype only; production theme and remaining identity inputs retain separate gates")
     print("- disabled states and closed functionality boundaries are maintained")
     return 0
 

@@ -1,6 +1,6 @@
 # M2 — Structural Kit Review and Prototype Entry
 
-**Status:** D-014's nine-page structural kit remains unchanged. D-016 records the owner's new M2-A–E decisions: the single visual proposal is awaiting explicit approval; the seven-person Japan research cohort and five-journey priority are approved as plans; the placeholder/image-frame approach is approved while genuine product evidence remains pending; and exactly six local/private non-transactional prototype areas are authorized only after M2-A visual approval. No production or public deployment is authorized.
+**Status:** D-014's nine-page structural kit remains unchanged. D-016 records the owner's M2-A–E scope and D-017 records approval of the Revision 2 visual direction for the six-area local/private prototype. The seven-person Japan research cohort and five-journey priority remain approved as plans; genuine product evidence remains pending. No production or public deployment is authorized.
 
 ## Governing baseline
 
@@ -8,11 +8,11 @@ D-014 establishes the exact nine-page structural baseline. Use only `docs/PAGE-I
 
 | Gate | Required owner input / evidence | Current status |
 |---|---|---|
-| M2-A — Visual identity | Review the single reference-led proposal and explicitly approve/revise colours, typography, logo/wordmark/descriptor and photo direction. | **Proposal prepared; owner visual approval pending** — no token or identity value is approved/applied |
+| M2-A — Visual identity | Review the single reference-led proposal and explicitly approve/revise colours, typography, logo/wordmark/descriptor and photo direction. | **Revision 2 visual direction approved under D-017 for the local/private prototype** — production use and remaining identity/content inputs retain separate gates |
 | M2-B — Customer research | Approved seven-person Japan-based cohort; separately approve route, consent, data handling, moderator, recording and any costs before fieldwork. | **Cohort approved as a plan; fieldwork authorization pending** — no recruitment, contact or collection |
 | M2-C — Product/photo evidence | Use labelled placeholders and image frames until owner supplies 10–20 genuine product photos and verified information; keep intake/fact checks ready. | **Placeholder approach approved; sample pending** — no image validation or full-library migration |
 | M2-D — Responsive journeys | Five owner-prioritized journeys; evaluate each on mobile, tablet and desktop; retain human owner and usability acceptance. | **Priority approved; automation passed; human review pending** — automation is not usability validation |
-| M2-E — Private prototype authorization | Exactly six local/private non-transactional areas under D-016; start branded implementation only after M2-A approval. | **Conditionally authorized after visual approval** — no production, public deployment or new UI scope |
+| M2-E — Private prototype authorization | Exactly six local/private non-transactional areas under D-016; D-017 records M2-A approval and permits branded private implementation. | **Private prototype implementation authorized** — no production, public deployment or new UI scope |
 
 ## Private prototype authorization under D-016
 
@@ -102,7 +102,7 @@ PR #12 adds a structural HTML parser audit for document titles, accessible names
 1. Complete: the 25 source-kit files are materialized; the 14 original implementation assets were byte-verified at D-014 adoption. Current source hashes are enforced by scripts/validate_project.py.
 2. Complete at source level: validate all page links, relative stylesheet/script paths, English language, main landmarks, heading count, menu state, focus CSS and reduced-motion support.
 3. Complete for the current structural baseline: PR #12 Chromium run [#42466004123](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42466004123) passed 45/45 route/viewport combinations at 390, 430, 768, 1280 and 1440 CSS-pixel widths; 54 mobile keyboard-operation sequences and reduced-motion review also passed. The run uploaded 18 full-page screenshots and JSON/Markdown summaries.
-4. Obtain explicit M2-A visual approval before implementing the six authorized private prototype areas.
+4. M2-A visual approval is recorded under D-017; implement the six authorized private prototype areas outside the public repository.
 5. Until the 10–20 genuine sample is supplied, use labelled image frames and layout placeholders; do not claim image validation.
 6. Keep M2-B fieldwork separately blocked until recruitment, consent/privacy, data handling and cost are authorized.
 7. Conduct the owner-led six-area visual walkthrough and record requested changes; do not equate automation with human usability acceptance.

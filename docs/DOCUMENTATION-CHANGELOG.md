@@ -127,3 +127,11 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Added eleven regression tests for new bypasses and malformed manifest conditions, including inline SVG resource references and image-type submit controls.
 - Kept M2-A visual approval pending and made no changes to D-014 source assets, brand tokens, photography, catalogue records or private prototype files.
 - Expanded final PR #14 continuation head `ac0d7474401c77c1eb8a805f65f8fac1e344624f` passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719), including **136/136 Python tests**; the local private-prototype Chromium review was correctly not run without an approved prototype.
+
+
+## 2026-11-09 — M2-A Revision 2 approval and private prototype authorization
+- Recorded owner approval of Revision 2 “Material in Focus” as D-017, including the six exact colour roles, Source Serif 4 / Inter typography direction, type hierarchy, layout values, image-frame ratios and nine-page desktop/mobile compositions.
+- Pinned the approved review-board artifact by SHA-256: 097ec2fd8fda3c64c8b478e846b3311caec95dc0cb20a22cf8a6c532f81bdeeb.
+- Updated the M2-A proposal and owner token register with the approved private-prototype baseline; final logo artwork, descriptor wording, verified copy, sample photography and rights evidence remain separately pending.
+- Confirmed that D-017 satisfies D-016's M2-A gate and authorizes only the six-area local/private, non-transactional prototype across the unchanged nine-page D-014 inventory.
+- Reconciled the agent instructions, README, design authority, M2 roadmap, decision pack, walkthrough and prototype validation runbook. D-014 source HTML/CSS/JS and page/component inventories remain unchanged.

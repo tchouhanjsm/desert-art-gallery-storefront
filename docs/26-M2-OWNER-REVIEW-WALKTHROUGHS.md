@@ -1,6 +1,6 @@
 # M2 — Owner Review Walkthroughs for the Six Private Prototype Areas
 
-**Status: WALKTHROUGH PLAN READY — VISUAL PROPOSAL APPROVAL REQUIRED BEFORE BRANDED PROTOTYPES**  
+**Status: WALKTHROUGH PLAN READY — D-017 VISUAL APPROVAL RECORDED; PRIVATE PROTOTYPE IMPLEMENTATION AUTHORIZED**  
 **Decision:** D-016 (8 November 2026)
 
 This document turns the owner's six authorized prototype areas into a review sequence. It is not a claim that a branded prototype exists. The six areas are groupings of the existing nine D-014 pages and do not change the page, section or component inventory.
@@ -102,8 +102,8 @@ These owner-led walkthroughs are not participant usability research. Human usabi
 
 ## 6. Prototype implementation gate
 
-Only after the owner explicitly approves the M2-A reference-led visual proposal:
-- Create a private/local prototype outside the public repository.
+With the owner’s M2-A Revision 2 approval recorded as D-017:
+- Create the private/local prototype outside the public repository using the D-017 approved visual tokens.
 - Implement exactly the six areas mapped above using the D-014 route/section inventory and the approved visual tokens.
 - Include shared shell only as already represented in the source pages.
 - Use labelled placeholders until real sample assets are accepted.

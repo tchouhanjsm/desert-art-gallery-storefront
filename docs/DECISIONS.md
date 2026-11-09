@@ -152,6 +152,43 @@ Consequences:
 - M2-E private prototypes are authorized only after M2-A visual approval, with the exact six-area and non-production boundaries above.
 Date: 2026-11-08
 
+
+### D-017 — M2-A Revision 2 visual direction approved
+Status: CONFIRMED — M2-A VISUAL DIRECTION APPROVED
+Owner instruction (9 November 2026): “Yes.. lets achieve the revision 2,” in response to the explicit request to approve the Revision 2 visual direction, including its proposed colours and typography.
+
+Decision: Approve the single M2-A “Material in Focus” visual direction as presented in the Revision 2 owner review board. The approved review-board artifact is visual-review-v2.html with SHA-256 097ec2fd8fda3c64c8b478e846b3311caec95dc0cb20a22cf8a6c532f81bdeeb.
+
+Approved colour roles:
+- Canvas: #FFFFFF.
+- Primary ink: #132A3A.
+- Primary brand/action: #174F6B.
+- Accent: #E5AD26.
+- Cool surface: #F3F7F8.
+- Border/divider: #D4E0E5.
+
+Approved typography direction:
+- Display/editorial: Source Serif 4, weights 500 and 600; weight 700 only for short hero emphasis where required.
+- Body/interface: Inter, weights 400, 500 and 600; weight 700 only for short high-priority labels.
+- Approved hierarchy: hero 56/34px; page H1 44/34px; section H2 32/28px; card/subsection H3 22/20px; body 16/16px; secondary body 14/14px; eyebrow/navigation 11/11px; caption/metadata 12/12px (desktop/mobile where paired).
+
+Approved composition and visual rules:
+- “Material in Focus” as a clear, image-led, editorial gallery direction; avoid empty whitespace and make each existing section carry useful product, material, maker or story context.
+- The Revision 2 desktop/mobile compositions for all nine existing D-014 pages, grouped into the six D-016 review areas.
+- Existing six navigation destinations, existing shared shell and footer, restrained blue/white/yellow use, proposed image-frame ratios, square-edged cards and approved spacing/content-width/gutter/section-gap values in the M2-A proposal.
+- Proposed photography principles: natural material colour/texture, clear object detail and useful context; do not infer provenance, maker identity, age or technique from appearance.
+
+Identity and content limits:
+- The approved wordmark direction is a custom typographic “Desert Art Gallery” wordmark brief. No final logo artwork, monogram or descriptor wording is selected by this decision.
+- The typography families are approved as the design direction. Font-file provenance/licensing and local availability must be verified before any production use; local/private prototype CSS may declare the approved stacks with local system fallbacks and must not fetch remote fonts.
+- The photography treatment is approved as a direction, not as evidence that any product images exist or are cleared. Genuine product photos, product facts, maker identities, provenance, and all publication/use rights remain separately verified. Continue using clearly labelled placeholders until approved sample evidence is supplied.
+- Final customer-facing copy, product claims and commercial/legal policies remain subject to their existing owner/evidence gates.
+
+Authorization and boundaries: This decision satisfies the M2-A visual-approval condition in D-016 and authorizes implementation of the exact six local/private, non-transactional prototype areas across the unchanged nine-page D-014 inventory. The prototype must remain outside the public repository. D-014 HTML/CSS/JS source assets and the page/component inventories remain unchanged. No production application, public deployment, real orders/payments, shipping/tax calculation, external recruitment, research data collection, paid service or full photography-library migration is authorized.
+
+Consequences: Update docs/OWNER-TOKEN-INPUT.md with the approved private-prototype values; bind the private prototype manifest to D-017 and the exact SHA-256 of the M2-A proposal file. The owner walkthrough and automated private browser review remain required before M2-E acceptance.
+Date: 2026-11-09
+
 ## Unresolved owner decisions
 
 ### U-001 — Seller jurisdiction and legal identity
