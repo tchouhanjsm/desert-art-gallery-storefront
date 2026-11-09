@@ -12,7 +12,7 @@ D-014 establishes the exact nine-page structural baseline. Use only `docs/PAGE-I
 | M2-B — Customer research | Approved seven-person Japan-based cohort; separately approve route, consent, data handling, moderator, recording and any costs before fieldwork. | **Cohort approved as a plan; fieldwork authorization pending** — no recruitment, contact or collection |
 | M2-C — Product/photo evidence | Use labelled placeholders and image frames until owner supplies 10–20 genuine product photos and verified information; keep intake/fact checks ready. | **Placeholder approach approved; sample pending** — no image validation or full-library migration |
 | M2-D — Responsive journeys | Five owner-prioritized journeys; evaluate each on mobile, tablet and desktop; retain human owner and usability acceptance. | **Priority approved; automation passed; human review pending** — automation is not usability validation |
-| M2-E — Private prototype authorization | Exactly six local/private non-transactional areas under D-016; start branded implementation only after M2-A approval. | **Conditionally authorized after visual approval** — no production, public deployment or new UI scope |
+| M2-E — Private prototype authorization | Exactly six local/private non-transactional areas under D-016; D-017 records M2-A approval and permits branded private implementation. | **Private prototype implementation authorized** — no production, public deployment or new UI scope |
 
 ## Private prototype authorization under D-016
 
