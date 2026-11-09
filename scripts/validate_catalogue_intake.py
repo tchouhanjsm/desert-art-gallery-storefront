@@ -125,19 +125,23 @@ def _validate_relative_path(value: str) -> bool:
 
 
 PHOTO_AUDIT_HEADERS = {"relative_path", "detected_format", "status", "sha256", "duplicate_group"}
+PHOTO_AUDIT_FORMATS = {"JPEG", "PNG", "GIF", "WEBP", "BMP", "TIFF", "HEIC/AVIF", "SVG"}
+PHOTO_AUDIT_SHA256 = re.compile(r"^[0-9a-f]{64}$")
 
 
 def _load_photo_audit(csv_path: Path, summary_path: Path) -> tuple[dict[str, dict[str, str]], list[Issue]]:
     issues: list[Issue] = []
-    csv_file = csv_path.expanduser().resolve()
-    summary_file = summary_path.expanduser().resolve()
+    csv_input = csv_path.expanduser()
+    summary_input = summary_path.expanduser()
 
-    for label, path in (("photo-audit.csv", csv_file), ("photo-audit-summary.json", summary_file)):
+    for label, path in (("photo-audit.csv", csv_input), ("photo-audit-summary.json", summary_input)):
         if path.is_symlink() or not path.is_file():
             issues.append(Issue(label, None, "required photo-audit report is missing, unreadable or a symbolic link"))
     if issues:
         return {}, issues
 
+    csv_file = csv_input.resolve()
+    summary_file = summary_input.resolve()
     try:
         summary = json.loads(summary_file.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
@@ -151,8 +155,14 @@ def _load_photo_audit(csv_path: Path, summary_path: Path) -> tuple[dict[str, dic
         issues.append(Issue("photo-audit-summary.json", None, "summary is not marked read_only=true"))
     if summary.get("scan_complete") is not True:
         issues.append(Issue("photo-audit-summary.json", None, "photo audit is incomplete; run a complete read-only scan before cross-checking"))
-    if not isinstance(summary.get("image_candidates"), int) or summary.get("image_candidates") < 0:
+    candidate_count = summary.get("image_candidates")
+    if type(candidate_count) is not int or candidate_count < 0:
         issues.append(Issue("photo-audit-summary.json", None, "image_candidates must be a non-negative integer"))
+    traversal_errors = summary.get("directory_traversal_errors")
+    if type(traversal_errors) is not int or traversal_errors < 0:
+        issues.append(Issue("photo-audit-summary.json", None, "directory_traversal_errors must be a non-negative integer"))
+    elif traversal_errors != 0:
+        issues.append(Issue("photo-audit-summary.json", None, "photo audit has directory traversal errors and cannot be used for M2 sample acceptance"))
 
     inventory: dict[str, dict[str, str]] = {}
     try:
@@ -173,10 +183,16 @@ def _load_photo_audit(csv_path: Path, summary_path: Path) -> tuple[dict[str, dic
                 if status not in {"ok", "review", "unreadable"}:
                     issues.append(Issue("photo-audit.csv", row_number, f"unsupported audit status {status!r}"))
                     continue
+                detected_format = (row.get("detected_format") or "").strip()
+                sha256 = (row.get("sha256") or "").strip()
+                if status == "ok" and detected_format not in PHOTO_AUDIT_FORMATS:
+                    issues.append(Issue("photo-audit.csv", row_number, "status=ok requires a recognized detected_format"))
+                if status == "ok" and not PHOTO_AUDIT_SHA256.fullmatch(sha256):
+                    issues.append(Issue("photo-audit.csv", row_number, "status=ok requires a lowercase 64-character SHA-256 digest"))
                 inventory[relative_path] = {
-                    "detected_format": (row.get("detected_format") or "").strip(),
+                    "detected_format": detected_format,
                     "status": status,
-                    "sha256": (row.get("sha256") or "").strip(),
+                    "sha256": sha256,
                     "duplicate_group": (row.get("duplicate_group") or "").strip(),
                 }
     except (OSError, UnicodeError, csv.Error) as exc:
@@ -215,7 +231,10 @@ def validate_catalogue_directory(
     photo_audit_summary: Path | None = None,
     require_m2_sample: bool = False,
 ) -> list[Issue]:
-    root = directory.expanduser().resolve()
+    input_path = directory.expanduser()
+    if input_path.is_symlink():
+        return [Issue(".", None, "input directory must not be a symbolic link")]
+    root = input_path.resolve()
     if not root.exists() or not root.is_dir():
         return [Issue(".", None, "input path does not exist or is not a directory")]
 

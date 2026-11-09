@@ -166,3 +166,11 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Local private QA passed 45/45 route/viewport checks at 390/430/768/1280/1440px, 18 screenshots, zero horizontal overflow, 34/34 image slots, three breadcrumb landmarks and unchanged disabled controls.
 - Extended the public journey runner to validate route-specific image evidence labels, fixed slot counts, breadcrumb semantics, semantic product facts and pending editorial metadata on every rendered page in the owner journeys.
 - Private prototype content, images and captures remain outside GitHub. Owner visual acceptance and human customer usability acceptance remain pending.
+
+
+## 2026-11-09 — M2-C private catalogue intake readiness report
+- Hardened catalogue/photo-audit input boundaries: reject symlinked source directories and audit report files; require photo-audit traversal error count zero; reject Boolean-as-integer candidate counts; require recognized image formats and valid lowercase SHA-256 digests on audit rows marked ok.
+- Added scripts/build_catalogue_readiness_report.py. It reuses the existing CSV and completed photo-audit validators and creates local/private JSON and Markdown readiness reports with aggregate coverage and per-product blockers.
+- The report identifies separate product, fact, source reconciliation, image rights and private prototype-use gates, and confirms products remain draft/in_review. It excludes source titles, descriptions, prices, raw export values and image binaries.
+- Added regression tests for audit integrity weaknesses, symlink handling, successful M2 readiness reporting, underfilled samples, per-product approval blockers, private output paths and no-overwrite behaviour.
+- The report is a private operational aid only. No genuine 10–20 product/photo sample or real catalogue facts/rights evidence were provided; M2-C sample acceptance remains blocked on owner inputs.

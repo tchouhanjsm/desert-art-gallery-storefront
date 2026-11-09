@@ -95,3 +95,12 @@ The private prototype now differentiates all existing image slots by their inten
 Product Detail retains the same four facts but exposes them as a semantic description list; each value and price/currency remains pending owner verification. Existing breadcrumbs on Collection, Product Detail and Article are labelled navigation landmarks with a current item. Article introduction, publication date, authorship and source credits remain pending. Mobile fact rows wrap without horizontal overflow.
 
 Local Revision 4 evidence: 45/45 route/viewport render checks across 390, 430, 768, 1280 and 1440px; 18 screenshots; zero horizontal overflow; 34/34 image slots with visible/accessibility labels; 3/3 breadcrumb routes; four semantic product fact pairs; all product accordions/disabled controls retained. The journey runner is extended to re-check content-evidence slots and semantic page states on every rendered journey page. These remain automated checks, not owner sign-off or participant usability acceptance.
+
+
+## M2-C implementation — private catalogue intake readiness reporting
+
+The source-neutral intake validator was hardened to reject symlinked catalogue/audit inputs, photo-audit summaries with traversal errors or Boolean candidate counts, and status=ok image-audit rows without a recognized format and lowercase 64-character SHA-256 digest.
+
+Added scripts/build_catalogue_readiness_report.py. It reuses the existing five-CSV validator and completed photo-audit inventory, then writes private JSON/Markdown reports with aggregate intake coverage and per-product blockers for owner-reconciled source rows, product-level private-use approval, verified/prototype-approved fact evidence, rights-cleared/prototype-approved primary image evidence, and draft/in-review publication state. The report excludes product copy, prices, source-export values and image binaries; output paths cannot overlap the public repository or catalogue source directory and existing reports are not overwritten.
+
+This completes the readiness-reporting tooling only. The real 10–20 product/photo sample, verified facts, source reconciliation and image-rights/prototype-use evidence remain owner-supplied inputs and have not been fabricated or staged in Git.

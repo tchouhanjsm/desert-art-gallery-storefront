@@ -105,6 +105,16 @@ The intake CSV templates include these separate fields. A private 10–20 produc
 
 This stricter mode requires 10–20 distinct products, an owner-reconciled source-export row per product, explicit product/fact/image prototype-use approval, at least one owner-verified fact per product, a rights-cleared primary image with evidence, and a completed audit with readable, non-duplicate images. It rejects public publication approval states in the private-sample validation mode. This is a structural validator; it cannot prove the underlying real-world fact or right is valid. Keep the filled CSVs, source export, photos and reports private and outside Git.
 
+For an owner-facing blocker breakdown, run the private readiness report:
+
+    python scripts/build_catalogue_readiness_report.py "/path/to/private/catalogue-intake" \
+      --output-dir "/path/to/private-reports/catalogue-readiness" \
+      --photo-audit-csv "/path/to/private-reports/dag-photo-audit.csv" \
+      --photo-audit-summary "/path/to/private-reports/dag-photo-audit-summary.json" \
+      --m2-sample
+
+The report writes JSON and Markdown summaries with aggregate coverage and per-product blockers for source reconciliation, product-level prototype-use approval, at least one owner-verified/prototype-approved fact, a rights-cleared/prototype-approved primary image matched to a clean photo-audit row, and the requirement that private sample products remain draft/in-review. A blocked sample still produces the report and returns a non-zero exit status. Reports contain internal product IDs and blocker descriptions, not product titles, descriptions, prices, source-export values or image files. Keep the output directory private and outside both the Git repository and the catalogue source folder. Existing report files are never overwritten.
+
 ## What this does not decide
 
 - Final category taxonomy or collection names.
