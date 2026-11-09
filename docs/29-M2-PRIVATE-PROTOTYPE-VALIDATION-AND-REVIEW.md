@@ -2,7 +2,7 @@
 
 **Status:** D-017 M2-A approval recorded; initial Revision 2 private prototype implemented and statically validated. Owner walkthrough and rendered browser acceptance remain outstanding.  
 **Authority:** D-014, D-016 and the unchanged page/component inventories.  
-**Scope:** Local/private validation and review only. This document does not approve a visual identity or start prototype styling.
+**Scope:** Local/private validation and review only. D-017 approves Revision 2 for the bounded private prototype; production theme, public deployment and commerce remain outside scope.
 
 ## 1. Why this phase exists
 
@@ -77,7 +77,7 @@ The root must be a real directory outside the public repository. The validator c
 - No inline event-handler attributes, `ping` beacons, form override attributes, service-worker/worker registration or cross-context messaging APIs.
 - Inline SVG image/symbol references are checked for local-only paths; image-type submit controls are rejected.
 
-The command is intentionally expected to fail until M2-A is explicitly approved and a complete prototype/manifest is supplied. It does not create test products, images or example customer content.
+The repository's reusable validator template must remain pending and fail closed. The private prototype's own manifest records D-017, the approved proposal SHA-256 and the complete six-area/nine-route map. The validator does not create test products, images or example customer content.
 
 ## 5. Local Chromium review command
 
@@ -121,7 +121,7 @@ The owner walkthrough in `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md` remains the v
 - M2-B: seven-person cohort approved as a plan; fieldwork/recruitment/privacy/cost authorization pending.
 - M2-C: placeholder approach approved; genuine 10–20 product/photo sample and verified facts pending.
 - M2-D: journey priority approved; automation passed; owner walkthrough and human usability acceptance pending.
-- M2-E: six-area local/private prototype scope conditionally authorized; branded implementation must wait for M2-A approval.
+- M2-E: initial six-area/nine-route local/private prototype implemented; owner walkthrough and rendered browser acceptance remain outstanding.
 
 The private prototype is outside the public repository. D-014 source assets, page inventory, component inventory and QA-only token file remain unchanged. No production styling, deployment, transactions, real imagery, product facts or fieldwork is authorized by D-017.
 
@@ -137,5 +137,16 @@ The expanded continuation hardening, including inline SVG resource and image-sub
 - Private prototype location at delivery: `/mnt/data/dag-private-prototype` (outside the public repository); distributable archive supplied separately to the owner.
 - Nine HTML routes and six D-016 review groupings are implemented. Existing page/section counts are preserved: Home 5 sections; Shop 2; Collection 2; Product 1; About 3; Makers 2; Journal 2; Article 1; Contact 2.
 - Static checks passed: exact route count, section/slot counts, internal links, local styles/scripts, English language, title/H1/main landmarks, disabled form controls, placeholder labels, no remote resources, no external navigation, no persistence/transaction/network APIs, CSS parse and JavaScript syntax.
+- No photograph binary is included; the asset ledger is empty and all visual image areas are explicit placeholders. The owner-provided 10–20 product/photo sample remains pending.
+- Rendered browser checks at 390, 430, 768, 1280 and 1440 pixels remain outstanding because Chromium navigation was blocked by the execution environment. This is not recorded as a passing browser test.
+
+
+## 9. Revision 2 private prototype implementation record
+
+- Owner M2-A approval: D-017, 9 November 2026.
+- Approved proposal SHA-256: `3608510164d5b56e46483f54f661737f7da37c41a7db8b0f665aa9d43ff8acaf`.
+- Private prototype location at delivery: `/mnt/data/dag-private-prototype` (outside the public repository); distributable archive supplied separately.
+- Nine HTML routes and six D-016 review groupings are implemented. Existing page/section counts are preserved: Home 5 sections; Shop 2; Collection 2; Product 1; About 3; Makers 2; Journal 2; Article 1; Contact 2.
+- Static checks passed: exact route count, section/slot counts, internal links, local styles/scripts, English language, title/H1/main semantics, disabled form controls, placeholder labels, no remote resources, no external navigation, no persistence/transaction/network APIs, CSS parsing and JavaScript syntax.
 - No photograph binary is included; the asset ledger is empty and all visual image areas are explicit placeholders. The owner-provided 10–20 product/photo sample remains pending.
 - Rendered browser checks at 390, 430, 768, 1280 and 1440 pixels remain outstanding because Chromium navigation was blocked by the execution environment. This is not recorded as a passing browser test.
