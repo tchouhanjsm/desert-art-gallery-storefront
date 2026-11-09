@@ -47,7 +47,7 @@ Any scope change requires a written change request, explicit owner approval reco
 
 ## Owner-controlled brand identity
 
-The owner alone approves exact brand colours, typography families/weights/hierarchy/type scale, logo/wordmark/descriptor, photography direction/crop and foundational visual changes. These values are pending.
+The owner approves the D-017 Revision 2 palette, Source Serif 4 / Inter pairing, hierarchy, spacing and image-frame/placeholder rules for the D-016 private prototype only. Final logo/wordmark artwork, descriptor, genuine photography art direction/crops and production theme remain owner-controlled and pending. The D-014 kit must not be restyled.
 
 `design/owner-controlled-kit-v2/styles/tokens-layout-only.css` uses browser/system colours and fonts solely for layout QA. It is not a DAG palette, neutral brand theme or production theme. Never promote those values to production tokens or populate `docs/OWNER-TOKEN-INPUT.md` with AI-selected values.
 
