@@ -8,11 +8,11 @@ ROUTES = (
     "pages/journal.html", "pages/article.html", "pages/contact.html",
 )
 EXPECTED_DISPOSITIONS = {
-    "M2-A": "revision 2 approved under D-017 for private prototype only",
+    "M2-A": "revision 2 visual direction approved by D-017 for the private prototype only",
     "M2-B": "cohort approved as a plan; fieldwork authorization pending",
     "M2-C": "placeholder approach approved; sample pending",
     "M2-D": "priority approved; automation passed; human review pending",
-    "M2-E": "conditionally authorized after visual approval",
+    "M2-E": "implemented privately under D-016/D-017 across all nine D-014 routes",
 }
 
 
