@@ -34,7 +34,7 @@ The follow-up maintenance patch is limited to the supplied kit's existing CSS an
 
 The owner has now confirmed the M2-A through M2-E decisions. The previous PR #13 structural-review automation remains complete; D-016 defines the current owner-approved plan and conditional private-prototype scope.
 
-- **M2-A — proposal ready, visual approval pending:** One reference-led visual proposal is prepared in docs/27. POJ Studio is primary, Macaroni Shoten secondary; no proposed colours/type/logo/photo direction is approved or applied. The owner retains final authority.
+- **M2-A — approved for private prototype:** D-017 records owner approval of Revision 2's exact proposal SHA-256, palette, Source Serif 4 / Inter pairing, hierarchy, spacing, page compositions and placeholder/image-frame ratios. Approval is restricted to the local/private non-transactional prototype. Logo artwork, descriptor, genuine photo art direction/crops and production theme remain pending.
 - **M2-B — cohort accepted:** Seven Japan-based qualitative participants are approved as a research plan (3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase). The full operations plan is docs/28. Recruitment, external contact, consent/data handling, recording, incentives and spend remain separately unauthorized.
 - **M2-C — placeholder approach accepted, evidence pending:** Use clearly labelled layout placeholders and image-frame compositions. Product-image validation remains pending until approximately 10–20 genuine photos and verified product information are supplied. No full photography-library migration.
 - **M2-D — journey order accepted:** Discover identity → browse products/categories/collections → evaluate product/images/verified specifications → explore makers/materials/editorial → contact/support. Mobile is cross-cutting across every journey. Automated testing passed; owner visual walkthrough and human usability acceptance remain separate.
@@ -62,7 +62,7 @@ Following PR #13's merge, the next bulk engineering slice adds the private-proto
 - `scripts/private_prototype_browser_review.py` performs local-only Chromium review at 390, 430, 768, 1280 and 1440px, including screenshots and JSON/Markdown summaries outside the public repository. It blocks external browser requests and will not run until the static gate passes.
 - Regression tests cover owner approval/hash matching, routes/groupings, placeholders, genuine-photo evidence, private path boundaries, disabled forms, network APIs and transaction paths.
 
-**This is readiness tooling, not the private prototype itself.** M2-A remains awaiting your explicit approval; no DAG brand tokens or styling have been applied, no photo sample has been supplied and no private prototype has been created. The next actual design implementation must wait for the M2-A decision and remain local/private.
+**This is readiness tooling, not the private prototype itself.** M2-A approval is now recorded as D-017. The next implementation is the actual local/private, non-transactional nine-page prototype. D-014 source assets remain untouched; genuine photo sample and product facts are still pending.
 
 ### PR #14 continuation — private review assurance hardening
 
