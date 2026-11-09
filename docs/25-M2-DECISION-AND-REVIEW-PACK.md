@@ -11,11 +11,11 @@ The owner has now supplied the M2-A through M2-E instructions. This pack records
 
 | Gate | Owner decision / current delivery | Current disposition |
 |---|---|---|
-| M2-A — Visual identity | One live-reference-led proposal is prepared in [27 — M2-A Reference-Led Visual Proposal](27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md), with exact proposed HEX roles, type pairing, hierarchy, logo brief, page compositions, image treatment, tokens and desktop/mobile examples. | **Proposal ready; owner visual approval pending. Nothing is approved or applied.** |
+| M2-A — Visual identity | One live-reference-led proposal is prepared in [27 — M2-A Reference-Led Visual Proposal](27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md), with exact proposed HEX roles, type pairing, hierarchy, logo brief, page compositions, image treatment, tokens and desktop/mobile examples. | **Revision 2 visual direction approved by D-017 for the private prototype only.** Logo/wordmark artwork, descriptor and production styling remain pending. |
 | M2-B — Research cohort | Owner-approved seven-person Japan-based qualitative plan: 3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase. | **Cohort approved as a plan; recruitment/consent/recording/cost authorization pending.** |
 | M2-C — Product/photo evidence | Owner-approved labelled image-frame/layout-placeholder approach; private sample intake and fact-verification workflow prepared. | **Approach approved; 10–20 genuine product/photo sample and verified facts pending. No image validation or library migration.** |
 | M2-D — Journey priority | Owner-approved five-journey order; existing five-journey × five-width automation already passes. | **Priority approved; automated evidence passed; owner walkthrough and human usability acceptance pending.** |
-| M2-E — Prototype scope | D-016 authorizes exactly six local/private non-transactional areas after explicit M2-A visual approval. | **Conditionally authorized; no branded prototype starts until visual approval. Production/public deployment remain excluded.** |
+| M2-E — Prototype scope | D-016 authorizes exactly six local/private non-transactional areas after explicit M2-A visual approval. | **Implemented privately under D-016/D-017 across all nine D-014 routes. Owner visual walkthrough and responsive browser acceptance remain outstanding. Production/public deployment remain excluded.** |
 
 No participant has been recruited or interviewed. No customer usability validation is claimed. No genuine sample has been supplied or verified. No production or commercial commitment is made.
 
@@ -34,7 +34,7 @@ The single proposal is [27 — M2-A Reference-Led Visual Proposal](27-M2-A-REFER
 
 The values are proposals, not decisions. POJ's resolved HEX colours and exact loaded font family were not exposed by the browser inspection. Macaroni's measured colours/type observations remain Macaroni values only; no assets, fonts, branded artwork or code are copied.
 
-**Disposition:** Proposal prepared for owner review. M2-A is not visually approved. No proposed tokens have been applied to D-014 or a private prototype.
+**Disposition:** M2-A is complete for the bounded private-prototype gate. D-017 approves the exact Revision 2 proposal SHA-256 for private prototype implementation only. The approved palette and type system are applied only in the local/private prototype; D-014 source assets and QA-only tokens remain unchanged. Logo artwork, descriptor, genuine photography and production theme remain pending.
 
 ## M2-B — Approved Japan-first qualitative research plan
 
@@ -89,7 +89,7 @@ D-016 authorizes private/local, non-transactional HTML/CSS prototypes for exactl
 
 The global header, existing navigation, search presentation, shared components and footer are included wherever relevant. These are six review groupings mapped to the unchanged nine D-014 HTML pages; they do not add pages, sections, widgets, promotional content or interactions.
 
-**Implementation gate:** Do not begin branded prototype styling until the owner explicitly approves the M2-A visual proposal. After approval, the prototype must be local/private and outside the public repository. Use genuine sample content only after its facts, rights and prototype-use permissions are verified; until then use visible placeholders.
+**Implementation gate satisfied:** D-017 records explicit approval of Revision 2, the approved proposal SHA-256 and the exact private-only boundary. The nine-page HTML/CSS prototype has been built outside the public repository. It uses labelled image frames and no genuine product photography. Genuine sample content may be introduced only after facts, rights and prototype-use permissions are verified.
 
 Authorized: responsive layout implementation, shared component demonstration and non-transactional interaction demonstrations within the six areas. Cart/checkout concepts may appear only if needed to explain the journey; they must not process real purchases or imply approved commercial commitments.
 
@@ -99,13 +99,13 @@ D-015 remains the basis of the completed structural review and its automation. D
 
 **Disposition:** Six-area private prototype scope is authorized conditionally on M2-A approval. Production and public deployment remain excluded.
 
-The engineering entry and local review pipeline is now documented in [29 — M2 Private Prototype Validation and Review](29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md). The validator and browser runner are readiness tools only; no actual private prototype has been created or run.
+The engineering entry and local review pipeline is now documented in [29 — M2 Private Prototype Validation and Review](29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md). The validator and browser runner remain the repository-side entry/QA tools. The private prototype has been created locally; static review passed. Browser navigation is blocked by this execution environment's Chromium policy, so the 45 route/viewport rendered review and screenshots must be run on the owner's local machine with the repository runner.
 
 ## Remaining owner handoff
 
-1. **M2-A:** Review and explicitly approve, reject or request exact revisions to the single proposal in docs/27. No visual value is approved by default.
+1. **M2-A:** Complete. D-017 records the owner's Revision 2 approval, restricted to the private prototype.
 2. **M2-C:** Supply the 10–20 genuine product/photo sample and associated verified information privately when available. Product-image validation remains pending.
 3. **M2-B fieldwork:** Separately authorize recruitment route, moderator, consent/privacy workflow, participant data handling and incentive/recruitment budget before any outreach or collection.
 4. **M2-D:** Conduct the owner-led six-area visual walkthrough after a private prototype exists. Human customer usability sessions require separate fieldwork authorization.
-5. **M2-E:** After visual approval, build only the six authorized local/private non-transactional areas; keep them out of the public repository and do not deploy.
+5. **M2-E:** Initial integrated nine-page private prototype is implemented and statically validated. Review the owner walkthrough, run the local Chromium review, and request revisions against the approved visual system. Keep the prototype out of the public repository and do not deploy.
 
