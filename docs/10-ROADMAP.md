@@ -37,15 +37,15 @@ The owner has now confirmed the M2-A through M2-E decisions. The previous PR #13
 - **M2-A — approved under D-017:** Revision 2 “Material in Focus” is approved for private prototype implementation: palette, Source Serif 4 / Inter pairing, hierarchy, layout values, photography principles and all nine page compositions. Final logo artwork, descriptor wording, copy and genuine product-image evidence remain separate.
 - **M2-B — cohort accepted:** Seven Japan-based qualitative participants are approved as a research plan (3 home/interior, 2 craft/material, 1 trade/design, 1 gift/considered-purchase). The full operations plan is docs/28. Recruitment, external contact, consent/data handling, recording, incentives and spend remain separately unauthorized.
 - **M2-C — placeholder approach accepted, evidence pending:** Use clearly labelled layout placeholders and image-frame compositions. Product-image validation remains pending until approximately 10–20 genuine photos and verified product information are supplied. No full photography-library migration.
-- **M2-D — journey order accepted:** Discover identity → browse products/categories/collections → evaluate product/images/verified specifications → explore makers/materials/editorial → contact/support. Mobile is cross-cutting across every journey. Automated testing passed; owner visual walkthrough and human usability acceptance remain separate.
+- **M2-D — journey order accepted and automated review implemented:** Discover identity → browse products/categories/collections → evaluate product/images/verified specifications → explore makers/materials/editorial → contact/support. Mobile is cross-cutting across every journey. The new private journey runner passes 25/25 combinations across all five review widths. Owner visual walkthrough and human usability acceptance remain separate.
 - **M2-E — private prototype implementation authorized:** D-017 satisfies the visual approval condition. Build exactly six local/private non-transactional areas: Homepage; Shop and Collections; Product Detail; About and Makers; Journal and Stories; Contact and Support. This is a six-area grouping across the unchanged nine-page D-014 kit. Keep prototype files out of the public repository.
 
 ### Owner review sequence
 1. D-017 records approval of the Revision 2 proposal and the exact approved visual baseline.
-2. Build the six private prototype areas using the approved values and D-014's exact page/section inventory.
+2. **Complete:** Build the six private prototype areas using the approved values and D-014's exact nine-page/section inventory; keep all prototype files outside the public repository.
 3. Use labelled placeholders until the genuine product sample and verified facts are available.
-4. Run local static validation and responsive/accessibility automation; prepare the owner walkthrough in docs/26.
-5. Record owner visual feedback separately from any future participant usability evidence.
+4. **Complete:** Run local static validation, responsive/accessibility review (45/45), and the five-journey review (25/25); prepare the owner walkthrough in docs/26.
+5. **Pending:** Record owner visual feedback separately from any future participant usability evidence.
 
 ### Completed automated structural evidence
 - [DAG Project Quality run #90](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42483703448): PASS, 101/101 Python tests and repository audits.
@@ -54,15 +54,16 @@ The owner has now confirmed the M2-A through M2-E decisions. The previous PR #13
 
 These checks assess structural automation only. They do not validate customer demand, conduct human usability testing or constitute owner visual acceptance.
 
-## Next engineering phase — M2-E private prototype implementation
+## Completed delivery — M2-E private prototype and M2-D five-journey automation
 
 Following PR #13's merge, the next bulk engineering slice adds the private-prototype validation pipeline without bypassing the M2-A approval gate:
 - `scripts/validate_private_prototype.py` validates an external private prototype root, exact D-014 routes and D-016 six-area map, M2-A owner-decision reference and proposal SHA-256, image asset ledger, placeholder labels, rights/prototype-use references, semantic page structure and prohibited network/transaction behaviour.
 - `schemas/private-prototype-manifest.schema.json` and `templates/private-prototype-manifest.template.json` provide a machine-readable manifest contract. The template is deliberately pending until the owner supplies a visual approval decision.
 - `scripts/private_prototype_browser_review.py` performs local-only Chromium review at 390, 430, 768, 1280 and 1440px, including screenshots and JSON/Markdown summaries outside the public repository. It blocks external browser requests and will not run until the static gate passes.
+- `scripts/private_prototype_journey_review.py` runs the five owner-approved customer journeys at all five widths (25 combinations), covering page transitions, product accordions, disabled commerce controls, and the disabled non-submitting enquiry concept. It renders the exact local HTML/CSS/JS in-memory, resolves clicked relative links with the browser URL algorithm, and writes JSON/Markdown summaries outside the repository.
 - Regression tests cover owner approval/hash matching, routes/groupings, placeholders, genuine-photo evidence, private path boundaries, disabled forms, network APIs and transaction paths.
 
-**The readiness tooling is complete; D-017 now satisfies its M2-A entry gate.** The next delivery is the actual six-area private prototype, using the approved tokens and labelled image frames. No genuine photo sample has been supplied, and the prototype must remain local/private.
+**M2-E private prototype implementation is complete as a local review artifact; M2-D automated journey coverage is complete.** The actual nine-page Revision 2 prototype remains outside the public repository. Current automated evidence: 45/45 route/viewport checks, 18 screenshots, and 25/25 five-journey/viewport checks. No genuine product/photo sample has been supplied; owner visual acceptance and human usability acceptance remain pending.
 
 ### PR #14 continuation — private review assurance hardening
 
