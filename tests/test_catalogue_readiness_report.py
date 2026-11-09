@@ -12,7 +12,7 @@ if str(TESTS_DIR) not in sys.path:
     sys.path.insert(0, str(TESTS_DIR))
 
 from test_catalogue_intake import CatalogueIntakeTests, write_package
-from scripts.validate_catalogue_intake import ROOT
+ROOT = Path(__file__).resolve().parents[1]
 from scripts.build_catalogue_readiness_report import build_catalogue_readiness_report
 
 

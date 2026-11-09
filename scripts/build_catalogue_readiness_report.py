@@ -14,10 +14,11 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from .validate_catalogue_intake import ROOT, _load_photo_audit, _read_rows, _value, validate_catalogue_directory
+    from .validate_catalogue_intake import _load_photo_audit, _read_rows, _value, validate_catalogue_directory
 except ImportError:
-    from validate_catalogue_intake import ROOT, _load_photo_audit, _read_rows, _value, validate_catalogue_directory  # type: ignore
+    from validate_catalogue_intake import _load_photo_audit, _read_rows, _value, validate_catalogue_directory  # type: ignore
 
+ROOT = Path(__file__).resolve().parents[1]
 REPORT_JSON = "catalogue-readiness.json"
 REPORT_MARKDOWN = "catalogue-readiness.md"
 
