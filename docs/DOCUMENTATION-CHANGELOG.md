@@ -127,3 +127,11 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Added eleven regression tests for new bypasses and malformed manifest conditions, including inline SVG resource references and image-type submit controls.
 - Kept M2-A visual approval pending and made no changes to D-014 source assets, brand tokens, photography, catalogue records or private prototype files.
 - Expanded final PR #14 continuation head `ac0d7474401c77c1eb8a805f65f8fac1e344624f` passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719), including **136/136 Python tests**; the local private-prototype Chromium review was correctly not run without an approved prototype.
+
+
+## 2026-11-09 — D-017 M2-A Revision 2 visual approval
+- Recorded the owner's explicit approval of the Revision 2 visual direction for D-016's private/local, non-transactional prototype only.
+- Bound the approval to the exact M2-A proposal revision SHA-256: `3608510164d5b56e46483f54f661737f7da37c41a7db8b0f665aa9d43ff8acaf`.
+- Approved the six colour roles, Source Serif 4 / Inter pairing and hierarchy, spacing/layout rules, nine-page compositions, image-frame ratios and labelled placeholder treatment.
+- Kept final logo/wordmark artwork, descriptor, genuine photo art direction/crops, product facts, production styling, commerce, public deployment and research fieldwork outside this approval.
+- Updated the authority-facing owner token register, README, AGENTS, design authority, visual-system guide and roadmap. The D-014 structural kit remains unchanged.
