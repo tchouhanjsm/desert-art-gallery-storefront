@@ -394,7 +394,11 @@ def main() -> int:
     parser.add_argument("--prototype-root", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
     args = parser.parse_args()
-    result = run_journey_review(args.prototype_root, args.output_dir)
+    try:
+        result = run_journey_review(args.prototype_root, args.output_dir)
+    except (OSError, RuntimeError, ValueError) as exc:
+        print(f"DAG private prototype five-journey review: FAIL — {type(exc).__name__}")
+        return 1
     print("DAG private prototype five-journey review: " + ("PASS" if result["ok"] else "FAIL"))
     print(f"- Journey/viewport checks: {result.get('passed', 0)}/{result.get('journeys_expected', result.get('journeys_checked', 0))}")
     for error in result.get("errors", []):
