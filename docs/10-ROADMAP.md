@@ -54,6 +54,26 @@ The owner has now confirmed the M2-A through M2-E decisions. The previous PR #13
 
 These checks assess structural automation only. They do not validate customer demand, conduct human usability testing or constitute owner visual acceptance.
 
+## Next engineering phase — private prototype entry and review readiness
+
+Following PR #13's merge, the next bulk engineering slice adds the private-prototype validation pipeline without bypassing the M2-A approval gate:
+- `scripts/validate_private_prototype.py` validates an external private prototype root, exact D-014 routes and D-016 six-area map, M2-A owner-decision reference and proposal SHA-256, image asset ledger, placeholder labels, rights/prototype-use references, semantic page structure and prohibited network/transaction behaviour.
+- `schemas/private-prototype-manifest.schema.json` and `templates/private-prototype-manifest.template.json` provide a machine-readable manifest contract. The template is deliberately pending until the owner supplies a visual approval decision.
+- `scripts/private_prototype_browser_review.py` performs local-only Chromium review at 390, 430, 768, 1280 and 1440px, including screenshots and JSON/Markdown summaries outside the public repository. It blocks external browser requests and will not run until the static gate passes.
+- Regression tests cover owner approval/hash matching, routes/groupings, placeholders, genuine-photo evidence, private path boundaries, disabled forms, network APIs and transaction paths.
+
+**This is readiness tooling, not the private prototype itself.** M2-A remains awaiting your explicit approval; no DAG brand tokens or styling have been applied, no photo sample has been supplied and no private prototype has been created. The next actual design implementation must wait for the M2-A decision and remain local/private.
+
+### PR #14 continuation — private review assurance hardening
+
+The same PR extends the readiness gate without starting prototype styling:
+- The manifest validator now fails closed on non-integer schema versions, malformed approval states, non-calendar dates, unsupported approval/asset metadata fields, unnormalized asset paths and non-string genuine-photo evidence references.
+- It rejects inline event handlers, link `ping` beacons, form-associated submission overrides, service-worker/worker registration and cross-context messaging APIs in addition to the existing transaction/network restrictions.
+- The local Chromium runner rejects symlinked prototype roots, checks the viewport meta tag and records browser-console errors, failed requests and unsuccessful HTTP resource responses as review failures.
+- Regression coverage adds eleven tests for malformed metadata, path normalization, inline event handlers, worker/network overrides, approval-date validation, SVG references, image-type submit controls and review-root boundaries.
+
+The continuation is implemented and validated at PR #14 head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`. [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) passed source/foundation, M2 gate, accessibility, documentation consistency and Markdown link audits, with **136/136 Python tests** passing. The private Chromium review was not run because no approved private prototype exists; it remains a local-only step after M2-A approval. These controls still do not certify arbitrary script safety, owner approval, customer usability or production readiness.
+
 ## Technical and commercial work
 
 Preserve existing catalogue intake, photo audit, Etsy mapping, research and merchant documentation where valid. Do not select a production framework, database, CMS, hosting provider, payment provider, currency, sales territory, tax treatment, shipping terms, return policy or commercial model by inference.

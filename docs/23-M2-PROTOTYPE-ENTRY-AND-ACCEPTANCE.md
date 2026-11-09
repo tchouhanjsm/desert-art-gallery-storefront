@@ -34,6 +34,18 @@ Excluded: production application, live payment/orders, shipping/tax calculations
 
 D-015 remains the decision record for the completed repository-side structural review and its automated checks. D-016 extends the authorized scope only to the six private prototype areas after M2-A visual approval.
 
+## Private prototype entry and automated review gate
+
+The next implementation-readiness phase is governed by [29 — M2 Private Prototype Validation and Review](29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md). The repository now contains a manifest schema/template, a private-root validator and a local-only Chromium runner. The tools require:
+- A private prototype directory outside this public repository.
+- An explicit owner decision approving M2-A, cross-referenced by the manifest.
+- A SHA-256 match to the exact approved visual-proposal revision.
+- The unchanged nine-page D-014 map and exact six D-016 groupings.
+- A complete local image ledger with exact visible placeholder labels or genuine-photo rights, product-mapping and separate prototype-use evidence.
+- Local-only assets and code; no external network calls, persistence, transaction endpoints, active form controls or POST operations.
+
+The local browser runner checks all nine routes at five viewport widths, reduced-motion, landmarks, image loading, accessible names, keyboard focus and disabled forms. It writes 18 screenshots and review summaries to a local output directory outside the repository. No private prototype or screenshot is uploaded to CI/GitHub. Current M2-A approval is still pending, so no actual prototype run is claimed and the existing template remains `pending`.
+
 ## Nine-page baseline
 
 1. `index.html` — Home: hero; three category slots; four curated product slots; brand/material feature split; two journal/story slots.

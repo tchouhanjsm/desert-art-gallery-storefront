@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "base_decision_ref": "D-016",
+  "prototype_mode": "private-local-nontransactional",
+  "routes": [
+    "index.html",
+    "pages/shop.html",
+    "pages/collection.html",
+    "pages/product.html",
+    "pages/about.html",
+    "pages/makers.html",
+    "pages/journal.html",
+    "pages/article.html",
+    "pages/contact.html"
+  ],
+  "areas": {
+    "Homepage": [
+      "index.html"
+    ],
+    "Shop and Collections": [
+      "pages/shop.html",
+      "pages/collection.html"
+    ],
+    "Product Detail": [
+      "pages/product.html"
+    ],
+    "About and Makers": [
+      "pages/about.html",
+      "pages/makers.html"
+    ],
+    "Journal and Stories": [
+      "pages/journal.html",
+      "pages/article.html"
+    ],
+    "Contact and Support": [
+      "pages/contact.html"
+    ]
+  },
+  "owner_visual_approval": {
+    "status": "pending",
+    "decision_ref": null,
+    "approved_proposal_sha256": null,
+    "approved_at": null
+  },
+  "asset_ledger": {}
+}

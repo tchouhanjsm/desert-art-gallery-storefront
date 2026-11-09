@@ -95,4 +95,8 @@ Whenever a design decision, kit, inventory or structural source changes:
 
 D-014 adopts a structural kit only. It does not authorize production application development, visual token selection, framework/database/CMS/hosting selection, public deployment, new visible UI/functionality, commercial/legal decisions, paid services or research spending.
 
+## Private prototype entry and review
+
+Before an owner-approved D-016 private prototype is accepted for review, run `scripts/validate_private_prototype.py` against its manifest and local assets. The root must be outside this public repository. The manifest must cite a numbered owner decision explicitly approving M2-A and the SHA-256 of the exact approved proposal revision. Keep genuine DAG image-rights and separate private prototype-use evidence in the private asset ledger. Run `scripts/private_prototype_browser_review.py` only against a passing private prototype; keep screenshots and summaries outside the repository. Never upload private photographs, catalogue facts, source exports, research data or review captures to GitHub. A successful automated report is not owner visual acceptance or customer usability validation.
+
 **THE OWNER DEFINES THE KIT AND BRAND. THE AGENT PRESERVES AND IMPLEMENTS THE APPROVED SCOPE — NEVER EXPANDS IT.**

@@ -110,3 +110,20 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - M2-E authorizes exactly six local/private non-transactional prototype areas only after M2-A visual approval. Prototype implementation must stay outside the public repository; no production app, public deployment, live transactions, recruitment or spending is authorized.
 - Reconciled README, AGENTS, design authority, source-of-truth, owner registers, M2 pack, roadmap, catalogue intake, accessibility review and brand/visual system guidance.
 - Updated M2 readiness audit and regression tests to enforce D-016, the visual-approval gate, seven-person cohort, placeholder boundaries and six-area private prototype scope. D-014 HTML/CSS/JS assets and the current token fallback remain unchanged.
+
+
+## 2026-11-08 — M2 private prototype entry gate and local browser review
+- Added a private prototype manifest schema and pending template for D-016's unchanged nine-page/six-area scope.
+- Added a local validator that refuses prototype roots inside the public repository; cross-checks a numbered M2-A owner decision and the exact approved proposal SHA-256; enforces page/area inventory, visible placeholder labels, genuine-photo rights, verified product mapping and separate private prototype-use evidence.
+- The static validator rejects remote resources, external embed/base/meta-refresh navigation, unsafe paths/symlinks, network APIs, browser persistence, active form controls, POST methods, form endpoints and transactional destinations.
+- Added a local-only Playwright/Chromium review runner. It runs only after the static gate passes, blocks non-loopback requests, checks nine routes at five viewport widths and writes screenshots plus JSON/Markdown summaries outside both the public repository and prototype source.
+- Added regression coverage for approval state/hash, exact routes/areas, placeholder and genuine-photo evidence, remote/network/transaction rejection, private-root constraints and browser-entry gating.
+- No private prototype, product sample, genuine photographs, customer data or screenshots are committed. M2-A visual approval remains pending; D-014 kit assets and QA token fallback remain unchanged.
+
+## 2026-11-09 — PR #14 private prototype review hardening
+- Tightened the private manifest validator to fail closed on malformed types, unknown approval/asset fields, non-normalized asset paths and invalid calendar dates; kept the JSON schema, pending template and runtime checks aligned.
+- Rejected inline event handlers, link ping beacons, form-associated submission overrides, background worker registration and cross-context messaging APIs in the non-transactional prototype scope. Added local-only checks for inline SVG image/symbol references and prohibited image-type submit controls.
+- Hardened local browser review against symlinked prototype roots and added viewport-meta, browser-console, failed-request and HTTP resource-status evidence.
+- Added eleven regression tests for new bypasses and malformed manifest conditions, including inline SVG resource references and image-type submit controls.
+- Kept M2-A visual approval pending and made no changes to D-014 source assets, brand tokens, photography, catalogue records or private prototype files.
+- Expanded final PR #14 continuation head `ac0d7474401c77c1eb8a805f65f8fac1e344624f` passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719), including **136/136 Python tests**; the local private-prototype Chromium review was correctly not run without an approved prototype.

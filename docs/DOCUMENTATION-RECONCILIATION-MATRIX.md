@@ -214,3 +214,18 @@ The following paths were reconciled to the owner's new M2-A–E decisions. This 
 | docs/DOCUMENTATION-CHANGELOG.md | UPDATE | Record all D-016, proposal, research and prototype walkthrough changes. |
 
 The D-014 owner kit assets, active PAGE-INVENTORY and COMPONENT-INVENTORY are RETAINED unchanged. The owner token input remains pending; no production tokens are written.
+
+
+## M2 private prototype review-readiness overlay — 8 November 2026
+
+| Path | Disposition | Reconciliation |
+|---|---|---|
+| scripts/validate_private_prototype.py | ADD | Local-only validator enforces private root, D-016 scope, M2-A decision/proposal hash, image evidence and non-transactional boundaries. |
+| scripts/private_prototype_browser_review.py | ADD | Local-only Playwright runner, blocks external hosts, reviews nine pages × five widths and stores screenshots/reports outside repository. |
+| schemas/private-prototype-manifest.schema.json | ADD | Machine-readable contract for the pending/approved visual decision reference and private asset ledger. |
+| templates/private-prototype-manifest.template.json | ADD | Deliberately pending private manifest; cannot pass until M2-A approval and supporting assets/evidence are supplied. |
+| tests/test_private_prototype_validator.py | ADD | Regression tests for private-root policy, approval hash, scope, placeholders, genuine-photo evidence, transaction/network rejection and browser-entry gate. |
+| docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md | ADD | Local operating guide and limitations for the private prototype validation/review pipeline. |
+| AGENTS.md; README.md; docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md | UPDATE | Document current readiness tooling and retain explicit M2-A implementation gate. |
+
+The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories, visual proposal and QA-only token fallback are retained unchanged. The private prototype itself and its assets/reports are not part of the PR.
