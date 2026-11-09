@@ -8,11 +8,11 @@ ROUTES = (
     "pages/journal.html", "pages/article.html", "pages/contact.html",
 )
 EXPECTED_DISPOSITIONS = {
-    "M2-A": "proposal prepared; owner visual approval pending",
+    "M2-A": "revision 2 visual direction approved under d-017",
     "M2-B": "cohort approved as a plan; fieldwork authorization pending",
     "M2-C": "placeholder approach approved; sample pending",
     "M2-D": "priority approved; automation passed; human review pending",
-    "M2-E": "conditionally authorized after visual approval",
+    "M2-E": "private prototype implementation authorized",
 }
 
 
@@ -34,14 +34,16 @@ class M2PrototypeReadinessTests(unittest.TestCase):
                 self.assertTrue(row, f"missing owner gate row {gate}")
                 self.assertIn(disposition, row.lower())
         self.assertIn("D-016", pack)
-        self.assertIn("only after the owner explicitly approves", pack.lower())
+        self.assertIn("D-017", pack)
 
-    def test_visual_proposal_is_not_an_approval_or_applied_theme(self):
+    def test_revision_2_visual_proposal_is_approved_for_private_prototype_only(self):
         proposal = (ROOT / "docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md").read_text(encoding="utf-8")
         tokens = (ROOT / "docs/OWNER-TOKEN-INPUT.md").read_text(encoding="utf-8")
-        self.assertIn("NOT APPROVED", proposal)
+        self.assertIn("OWNER APPROVED FOR PRIVATE PROTOTYPE IMPLEMENTATION", proposal)
+        self.assertIn("D-017", proposal)
         self.assertIn("#174F6B", proposal)
-        self.assertIn("PENDING OWNER APPROVAL", tokens)
+        self.assertIn("APPROVED FOR PRIVATE PROTOTYPE", tokens.upper())
+        self.assertIn("PENDING OWNER INPUT", tokens)
         kit_tokens = (ROOT / "design/owner-controlled-kit-v2/styles/tokens-layout-only.css").read_text(encoding="utf-8")
         self.assertNotIn("#174F6B", kit_tokens)
 
