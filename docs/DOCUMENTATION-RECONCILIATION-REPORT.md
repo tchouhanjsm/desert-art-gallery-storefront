@@ -203,3 +203,8 @@ One coherent live-reference-led proposal is documented in docs/27-M2-A-REFERENCE
 New companion documents are docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md and docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md. Recruitment, external contact, personal-data collection, recordings, incentives/spend, public deployment and production application work remain unauthorized. The six prototype areas are a review grouping across the unchanged nine D-014 pages and must remain outside this public repository.
 
 The D-014 HTML/CSS/JS files, page inventory, component inventory and QA-only token fallback are retained. No actual product photographs, catalogue rows or personal research data were added.
+
+
+## 2026-11-09 — D-017 visual approval update
+
+The owner approved the Revision 2 “Material in Focus” direction on 9 November 2026. D-017 records the exact palette, typography pairing/hierarchy, layout specifications and nine-page desktop/mobile visual direction. The review board SHA-256 is 097ec2fd8fda3c64c8b478e846b3311caec95dc0cb20a22cf8a6c532f81bdeeb. The owner token register and active M2-A/M2-E documentation now reflect approval for the local/private prototype only. Final logo artwork, descriptor wording, production theme, customer-facing copy, genuine product photography and commercial/legal inputs remain separately controlled. D-014 source assets and page/component inventories are unchanged; prototype assets remain outside the public repository.
