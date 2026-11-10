@@ -141,3 +141,17 @@ The checklist items above distinguish preparation tooling from owner action. The
 - [ ] Owner-led factual/source/rights review and prototype-use evidence remain pending.
 
 The automated digest proves report-file pairing only. It does not prove image rights, product identity, content truth or owner approval.
+
+
+## PR #16 M2-B fieldwork authorization preflight overlay — 10 November 2026
+
+- [x] Added the private eight-item D-016 fieldwork authorization schema and pending template.
+- [x] Added fail-closed validation of the fixed seven-person cohort and all eight approval states.
+- [x] Added required checks for moderator/language, participant information/consent, recording mode, data retention/deletion, vendor/transfer, research spend cap and scheduling.
+- [x] Added private blocker reports that omit evidence references and enforce private-path, symlink and no-overwrite controls.
+- [x] Added regression tests for pending/complete/rejected states and malformed/unsafe authorization records.
+- [ ] Owner genuinely approves all eight fieldwork items in writing and confirms the complete scope.
+- [ ] Obtain separate informed consent from each participant; obtain separate consent before any optional recording.
+- [ ] Only after those gates, separately determine and authorize actual recruitment, contact, interviews, data handling, recording and spend.
+
+The preflight checks the record only; it does not authenticate the owner, verify evidence artifacts, initiate fieldwork or establish legal/privacy/ethics compliance. M2-B fieldwork remains unauthorized.

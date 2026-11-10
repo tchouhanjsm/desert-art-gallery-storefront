@@ -190,3 +190,11 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Updated catalogue intake cross-validation to reject missing, malformed or mismatched CSV/JSON pairs before using photo records.
 - Added regression tests for same-row-count cross-run pairing, missing digests and scanner digest emission.
 - Updated the photo-audit, catalogue-intake, readiness and roadmap guidance. Existing image files and private catalogue/report data remain untouched.
+
+
+## 2026-11-10 — M2-B private fieldwork authorization preflight
+- Added a closed schema and deliberately pending private authorization template for the eight separate D-016 fieldwork approvals.
+- Added a fail-closed validator that preserves the approved seven-person cohort and checks approval dates/evidence references plus moderator/language, consent/recording, data-handling, vendor/transfer, research-budget and scheduling details.
+- Added private JSON/Markdown blocker reports that omit evidence references and setup details; enforce repository/record-folder boundaries, symlink rejection and no-overwrite behavior.
+- Added regression coverage for every approval gate, cohort integrity, consent/recording, retention/deletion, transfers/vendors, budget, schedule, malformed records and private output boundaries.
+- Documented the helper in the research plan, roadmap, README and reconciliation records. The template remains pending; no recruitment, participant contact/data, recording, vendor engagement or spend was authorized or performed.

@@ -253,3 +253,16 @@ The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories and QA
 | tests/test_photo_library_audit.py; tests/test_catalogue_intake.py | UPDATE | Cover digest emission, missing digest and same-count cross-run report substitution. |
 | docs/19-PHOTO-LIBRARY-AUDIT.md; docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md; docs/32-M2-C-PRIVATE-CATALOGUE-READINESS-REPORT.md | UPDATE | Document exact-pair integrity and regeneration rules. |
 | README.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record this implementation and preserve the owner-supplied sample and approval gates. |
+
+
+## M2-B fieldwork authorization-preflight overlay — 10 November 2026
+
+| Path | Disposition | Reconciliation |
+|---|---|---|
+| scripts/validate_m2b_fieldwork_authorization.py | ADD | Fail-closed preflight for the eight written D-016 fieldwork approvals, fixed cohort, supporting details and owner confirmation. It does not initiate research. |
+| schemas/m2b-fieldwork-authorization.schema.json | ADD | Closed schema for the private owner-authored authorization record. |
+| templates/m2b-fieldwork-authorization.template.json | ADD | Deliberately pending record with the fixed approved seven-person cohort and eight pending approvals. |
+| tests/test_m2b_fieldwork_authorization.py | ADD | Regression coverage for all approval gates, data/consent/spend/schedule blockers, invalid records and private-output protections. |
+| docs/35-M2-B-FIELDWORK-AUTHORIZATION-GATE.md | ADD | Private preflight operating guide, status meanings and authorization limitations. |
+| docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md | UPDATE | Link the preflight and keep all eight owner approvals and participant-level consent requirements pending. |
+| README.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record implementation and separate tooling readiness from actual fieldwork authorization. |

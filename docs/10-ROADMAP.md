@@ -121,3 +121,26 @@ The pending D-016 owner visual walkthrough now has a private record-validation h
 ## M2-C evidence integrity continuation — photo-audit pair binding
 
 The photo-audit workflow now cryptographically binds its JSON summary to the exact CSV inventory bytes with inventory_csv_sha256. Catalogue intake and readiness reporting reject a missing, malformed or mismatched digest before using the inventory. Regression coverage verifies that two different one-image scans cannot be mixed even though their row counts match. This strengthens private sample evidence integrity without adding a data model, importing records or changing any product/photo files.
+
+
+## M2-B — Fieldwork authorization preflight added (PR #16 continuation)
+
+The research plan remains approved only as a plan; **fieldwork remains unauthorized**. The plan's eight written-approval requirements now have a local/private record schema, pending template, fail-closed validator and blocker report.
+
+- The helper preserves the exact seven-person D-016 cohort and checks all eight separate approval states.
+- It requires explicit moderator/language, consent/recording, storage/access/retention/deletion, vendor/transfer, research-only budget and schedule details before a record can be reported complete.
+- It excludes evidence references from its summary and keeps both the owner record and generated reports outside the public repository.
+- The template is pending. No owner approval, recruitment, participant contact, data collection, recording, vendor engagement or spend is represented as complete.
+
+### Remaining owner-controlled milestones and dependencies
+
+| Milestone | Engineering status | Remaining dependency / acceptance evidence |
+|---|---|---|
+| M2-A — visual direction | Revision 2 approved by D-017 for private prototype only | Final logo artwork and descriptor remain owner decisions; verify font-file provenance/licensing before production use. |
+| M2-B — qualitative research | Cohort/plan and private authorization preflight are prepared | Owner must approve all eight items in writing and confirm the complete scope. Participant-specific informed consent and separate recording consent remain mandatory. No fieldwork is authorized now. |
+| M2-C — product/photo sample | Intake validation, readiness report and exact photo-audit pair integrity implemented | Owner supplies 10–20 genuine product photographs, corresponding source-export rows, verified facts, image-rights evidence and separate product/fact/image private-prototype-use approvals. Then run a fresh paired photo audit and private readiness report. |
+| M2-D/E — journeys and private prototype | Five journeys pass automated review; private prototype automation and walkthrough-record tooling are prepared | Owner must inspect all six areas at all five widths (30 area/viewport reviews), record actual feedback and confirm visual acceptance. Automated coverage is not human usability acceptance. |
+| Human customer usability | Not performed | Depends on separately authorized M2-B fieldwork, approved participant information/consent and privacy/data-handling arrangements, and participant-level consent. |
+| Production and commercial architecture | Not authorized / unresolved | Resolve U-001 to U-010: seller jurisdiction, territories, currency/pricing, fulfilment, payments, returns, customer segments, commercial model, positioning and production technology/hosting. No architecture or launch work is inferred. |
+
+The M2-B preflight is preparation tooling only. It does not complete the fieldwork dependency or supersede D-016. No product data, photographs, participant records, owner feedback, commercial terms or production decisions have been fabricated.

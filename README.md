@@ -75,3 +75,14 @@ The helper writes only a private coverage/decision summary and excludes free-tex
 ## Photo-audit evidence integrity
 
 The photo audit's JSON summary is bound to the exact CSV inventory with inventory_csv_sha256. The catalogue validator and readiness report reject mismatched CSV/JSON pairs, including pairs whose candidate counts happen to match. Keep both outputs from the same run; see docs/19-PHOTO-LIBRARY-AUDIT.md and docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md.
+
+
+## M2-B private fieldwork authorization preflight
+
+D-016 accepts the seven-person qualitative cohort as a plan only. Fieldwork, outreach, participant data collection, recording, incentives and spending remain unauthorized until all eight written approvals are obtained. To prepare a private owner-authored record, copy templates/m2b-fieldwork-authorization.template.json outside the checkout and follow docs/35-M2-B-FIELDWORK-AUTHORIZATION-GATE.md.
+
+    python3 scripts/validate_m2b_fieldwork_authorization.py \
+      --record "$HOME/Documents/DAG-fieldwork-authorization/authorization.json" \
+      --output-dir "$HOME/Documents/DAG-fieldwork-authorization-report"
+
+The helper reports missing approvals and details without exposing private evidence references. It does not contact participants, collect data, start recording, engage vendors, spend money, authenticate the author or provide legal/privacy/ethics approval. A complete record is not an instruction to start fieldwork.

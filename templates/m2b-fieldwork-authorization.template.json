@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "decision_reference": "D-016",
+  "cohort": {
+    "home_interior": 3,
+    "craft_material": 2,
+    "trade_design": 1,
+    "gift_considered_purchase": 1,
+    "total": 7
+  },
+  "approvals": {
+    "recruitment_route": {
+      "status": "pending",
+      "approved_on": null,
+      "evidence_reference": null
+    },
+    "invitation_and_screener": {
+      "status": "pending",
+      "approved_on": null,
+      "evidence_reference": null
+    },
+    "moderator_and_language": {
+      "status": "pending",
+      "approved_on": null,
+      "evidence_reference": null
+    },
+    "participant_information_and_consent": {
+      "status": "pending",
+      "approved_on": null,
+      "evidence_reference": null
+    },
+    "private_data_handling": {
+      "status": "pending",
+      "approved_on": null,
+      "evidence_reference": null
+    },
+    "research_budget": {
+      "status": "pending",
+      "approved_on": null,
+      "evidence_reference": null
+    },
+    "vendor_processing_and_transfer": {
+      "status": "pending",
+      "approved_on": null,
+      "evidence_reference": null
+    },
+    "date_range_and_schedule": {
+      "status": "pending",
+      "approved_on": null,
+      "evidence_reference": null
+    }
+  },
+  "fieldwork_details": {
+    "moderator_reference": null,
+    "session_languages": [],
+    "participant_information_reference": null,
+    "consent_wording_reference": null,
+    "recording_mode": "not_authorized",
+    "recording_consent_reference": null,
+    "storage_reference": null,
+    "access_control_reference": null,
+    "retention_days": null,
+    "deletion_reference": null,
+    "transfer_mode": "unreviewed",
+    "transfer_review_reference": null,
+    "vendor_mode": "unreviewed",
+    "vendor_terms_reference": null,
+    "spend_currency": null,
+    "spend_ceiling": null,
+    "budget_breakdown_reference": null,
+    "schedule_timezone": null,
+    "start_date": null,
+    "end_date": null,
+    "schedule_reference": null
+  },
+  "owner_confirmation": {
+    "status": "pending",
+    "confirmed_on": null,
+    "scope_reference": null
+  }
+}
