@@ -107,7 +107,7 @@ def _validate_record(record: Any) -> list[str]:
         errors.append("review_date must be null or a real YYYY-MM-DD calendar date")
 
     confirmation = record.get("owner_confirmation")
-    if confirmation not in {"pending", "confirmed"}:
+    if not isinstance(confirmation, str) or confirmation not in {"pending", "confirmed"}:
         errors.append("owner_confirmation must be pending or confirmed")
     confirmation_date = record.get("confirmation_date")
     if confirmation_date is not None and not _valid_date(confirmation_date):
@@ -148,7 +148,7 @@ def _validate_record(record: Any) -> list[str]:
             valid_area_count += 1
 
         decision = area.get("decision")
-        if decision not in DECISIONS:
+        if not isinstance(decision, str) or decision not in DECISIONS:
             errors.append(f"{label}.decision must be one of: {', '.join(sorted(DECISIONS))}")
             decision = "pending"
             all_area_acceptances = False
@@ -170,16 +170,16 @@ def _validate_record(record: Any) -> list[str]:
                 continue
             state = review.get("status")
             notes = review.get("notes")
-            if state not in REVIEW_STATES:
+            if not isinstance(state, str) or state not in REVIEW_STATES:
                 errors.append(f"{review_label}.status must be pending, reviewed or blocked")
                 all_reviewed = False
             elif state != "reviewed":
                 all_reviewed = False
             if not isinstance(notes, str) or len(notes) > 1000:
                 errors.append(f"{review_label}.notes must be text (max 1000 characters)")
-            elif state in {"reviewed", "blocked"} and not notes.strip():
+            elif isinstance(state, str) and state in {"reviewed", "blocked"} and not notes.strip():
                 errors.append(f"{review_label}.notes is required for a reviewed or blocked viewport")
-            if state in {"reviewed", "blocked"}:
+            if isinstance(state, str) and state in {"reviewed", "blocked"}:
                 any_review_started = True
 
         observations = area.get("observations")
@@ -202,7 +202,7 @@ def _validate_record(record: Any) -> list[str]:
             change_label = f"{label}.requested_changes[{change_index}]"
             if not _check_keys(change, {"route", "component", "request"}, change_label, errors):
                 continue
-            if change.get("route") not in ROUTES:
+            if not isinstance(change.get("route"), str) or change.get("route") not in ROUTES:
                 errors.append(f"{change_label}.route must be one of the nine D-014 routes")
             if not _is_text(change.get("component"), limit=120):
                 errors.append(f"{change_label}.component must be non-empty text (max 120 characters)")
@@ -224,7 +224,7 @@ def _validate_record(record: Any) -> list[str]:
         errors.append(f"record is missing D-016 review area: {area_id}")
 
     decided = any(
-        isinstance(area, dict) and area.get("decision") in {"accept", "request_revision", "reject"}
+        isinstance(area, dict) and isinstance(area.get("decision"), str) and area.get("decision") in {"accept", "request_revision", "reject"}
         for area in areas
     )
     if (decided or any_review_started) and not _valid_date(review_date):

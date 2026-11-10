@@ -163,6 +163,7 @@ class OwnerWalkthroughTests(unittest.TestCase):
         self.assertFalse(self.output_dir.exists())
 
     def test_output_inside_public_repository_is_rejected(self):
+        self.write_record(self.load_template())
         result = build_owner_walkthrough_report(self.record_path, ROOT / "owner-walkthrough-must-not-exist")
         self.assertEqual(result["status"], "INVALID_INPUT")
         self.assertTrue(any("outside the public Git repository" in item for item in result["errors"]))
@@ -188,6 +189,20 @@ class OwnerWalkthroughTests(unittest.TestCase):
         result = build_owner_walkthrough_report(alias, self.output_dir)
         self.assertEqual(result["status"], "INVALID_INPUT")
         self.assertTrue(any("must not be a symbolic link" in item for item in result["errors"]))
+
+    def test_malformed_nested_types_fail_closed_without_traceback(self):
+        record = self.load_template()
+        record["owner_confirmation"] = {"state": "pending"}
+        record["areas"][0]["decision"] = ["accept"]
+        record["areas"][0]["viewport_reviews"]["390"]["status"] = {"state": "reviewed"}
+        record["areas"][0]["requested_changes"] = [{
+            "route": ["index.html"], "component": "Hero", "request": "Review."
+        }]
+        self.write_record(record)
+        result = build_owner_walkthrough_report(self.record_path, self.output_dir)
+        self.assertEqual(result["status"], "INVALID_INPUT")
+        self.assertGreaterEqual(len(result["errors"]), 3)
+        self.assertFalse(self.output_dir.exists())
 
     def test_invalid_decision_state_is_rejected(self):
         record = self.load_template()
