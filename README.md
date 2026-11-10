@@ -70,3 +70,8 @@ See docs/33-M2-OWNER-WALKTHROUGH-RECORD-VALIDATION.md for the private six-area o
       --output-dir "$HOME/Documents/DAG-owner-walkthrough/report"
 
 The helper writes only a private coverage/decision summary and excludes free-text review feedback. It does not perform or authenticate owner acceptance; the actual walkthrough remains pending until the owner completes it.
+
+
+## Photo-audit evidence integrity
+
+The photo audit's JSON summary is bound to the exact CSV inventory with inventory_csv_sha256. The catalogue validator and readiness report reject mismatched CSV/JSON pairs, including pairs whose candidate counts happen to match. Keep both outputs from the same run; see docs/19-PHOTO-LIBRARY-AUDIT.md and docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md.

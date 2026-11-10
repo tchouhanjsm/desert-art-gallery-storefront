@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import re
 from dataclasses import dataclass
@@ -153,6 +154,25 @@ def _load_photo_audit(csv_path: Path, summary_path: Path) -> tuple[dict[str, dic
         return {}, issues
     if summary.get("read_only") is not True:
         issues.append(Issue("photo-audit-summary.json", None, "summary is not marked read_only=true"))
+    inventory_digest = summary.get("inventory_csv_sha256")
+    if not isinstance(inventory_digest, str) or not PHOTO_AUDIT_SHA256.fullmatch(inventory_digest):
+        issues.append(Issue(
+            "photo-audit-summary.json", None,
+            "inventory_csv_sha256 must be a lowercase 64-character SHA-256 digest for the paired inventory CSV",
+        ))
+    else:
+        digest = hashlib.sha256()
+        try:
+            with csv_file.open("rb") as handle:
+                for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+                    digest.update(chunk)
+            if digest.hexdigest() != inventory_digest:
+                issues.append(Issue(
+                    "photo-audit-summary.json", None,
+                    "inventory_csv_sha256 does not match the supplied photo-audit CSV; use the CSV and summary from the same run",
+                ))
+        except OSError as exc:
+            issues.append(Issue("photo-audit.csv", None, f"could not hash inventory CSV ({type(exc).__name__})"))
     if summary.get("scan_complete") is not True:
         issues.append(Issue("photo-audit-summary.json", None, "photo audit is incomplete; run a complete read-only scan before cross-checking"))
     candidate_count = summary.get("image_candidates")

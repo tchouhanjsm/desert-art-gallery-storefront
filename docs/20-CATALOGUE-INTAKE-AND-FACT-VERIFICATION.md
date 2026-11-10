@@ -149,3 +149,8 @@ The owner has approved a clearly labelled placeholder approach for private proto
 The owner expects to provide approximately 10–20 genuine product photographs with associated verified product information when available. Until the sample is supplied and reconciled, product-image validation is PENDING. Keep all photos, raw export rows and completed intake/audit reports in the owner's private storage. The 3,000-photo library must not be bulk migrated or committed.
 
 These display rules do not waive the existing fact, rights, source-row or separate prototype-use approval checks. The D-016 private prototype must remain local/private and outside the public repository.
+
+
+### Photo-audit pair integrity
+
+The photo-audit JSON summary contains inventory_csv_sha256, which binds it to the exact bytes of its CSV inventory. validate_catalogue_intake.py and build_catalogue_readiness_report.py verify that digest before trusting the photo inventory. A summary from a different run is rejected even when its candidate count happens to match. Always generate, retain and supply the CSV and JSON outputs from one run; rerun both together rather than editing or recombining reports.

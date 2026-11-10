@@ -116,3 +116,8 @@ The pending D-016 owner visual walkthrough now has a private record-validation h
 - Owner visual acceptance is reported only after all six areas are accepted, all 30 area/viewport checks are marked reviewed and owner confirmation/date are present.
 
 **Current state:** preparation tooling is complete; the real owner walkthrough and visual acceptance are still pending. No owner record is fabricated. M2-C's genuine 10–20 product/photo sample and verified evidence are still owner-supplied dependencies. M2-B external fieldwork remains separately unauthorized.
+
+
+## M2-C evidence integrity continuation — photo-audit pair binding
+
+The photo-audit workflow now cryptographically binds its JSON summary to the exact CSV inventory bytes with inventory_csv_sha256. Catalogue intake and readiness reporting reject a missing, malformed or mismatched digest before using the inventory. Regression coverage verifies that two different one-image scans cannot be mixed even though their row counts match. This strengthens private sample evidence integrity without adding a data model, importing records or changing any product/photo files.

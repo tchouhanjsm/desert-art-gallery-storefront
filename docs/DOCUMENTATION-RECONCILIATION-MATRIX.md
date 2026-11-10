@@ -242,3 +242,14 @@ The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories and QA
 | tests/test_owner_walkthrough.py | ADD | Regression coverage for incomplete/accepted/revision/rejected states, decision gates, malformed records, route scope, symlinks and output privacy. |
 | docs/33-M2-OWNER-WALKTHROUGH-RECORD-VALIDATION.md | ADD | Local operating guide and acceptance limitations for the owner walkthrough record helper. |
 | README.md; docs/10-ROADMAP.md; docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md; docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record the private walkthrough helper and keep owner visual acceptance, M2-C evidence and M2-B fieldwork gates explicitly pending. |
+
+
+## M2-C photo-audit integrity overlay — 10 November 2026
+
+| Path | Disposition | Reconciliation |
+|---|---|---|
+| scripts/audit_photo_library.py | UPDATE | Bind the optional JSON summary to the exact CSV inventory bytes with SHA-256. |
+| scripts/validate_catalogue_intake.py | UPDATE | Verify the inventory digest and reject cross-run or malformed report pairs. |
+| tests/test_photo_library_audit.py; tests/test_catalogue_intake.py | UPDATE | Cover digest emission, missing digest and same-count cross-run report substitution. |
+| docs/19-PHOTO-LIBRARY-AUDIT.md; docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md; docs/32-M2-C-PRIVATE-CATALOGUE-READINESS-REPORT.md | UPDATE | Document exact-pair integrity and regeneration rules. |
+| README.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record this implementation and preserve the owner-supplied sample and approval gates. |

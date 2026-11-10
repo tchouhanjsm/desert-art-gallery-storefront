@@ -349,6 +349,9 @@ def main(argv: list[str] | None = None) -> int:
         records, summary = audit_directory(source_root, args.min_megapixels)
         write_csv(records, csv_destination)
         if json_destination:
+            # Bind the JSON summary to these exact CSV bytes so different runs
+            # cannot be accidentally paired when their candidate counts match.
+            summary["inventory_csv_sha256"] = sha256_file(csv_destination)
             write_json(summary, json_destination)
     except (OSError, ValueError) as exc:
         print(f"Photo audit failed: {exc}", file=sys.stderr)

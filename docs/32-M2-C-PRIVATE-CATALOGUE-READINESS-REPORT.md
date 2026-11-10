@@ -34,3 +34,8 @@ The command writes catalogue-readiness.json and catalogue-readiness.md. A struct
 ## Current owner evidence gate
 
 The code and reporting workflow are ready. No real owner-supplied 10–20 product/photo sample, verified facts, reconciled source records, per-product prototype-use approvals or image-rights evidence were supplied in this milestone. M2-C sample acceptance remains pending. All populated CSVs, source exports, photographs and generated readiness reports must remain private and outside Git.
+
+
+## Photo-audit report pairing hardening
+
+The photo-audit scanner now writes inventory_csv_sha256 into its optional JSON summary after the CSV is complete. The catalogue intake loader verifies that the supplied CSV bytes match this digest before using the inventory. This closes the same-candidate-count cross-run pairing gap: a CSV and summary from different scans cannot be combined merely because both contain the same number of image records. Missing, malformed or mismatched digests fail closed. Regenerate and keep each CSV/JSON pair together.

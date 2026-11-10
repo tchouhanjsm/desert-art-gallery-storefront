@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import struct
 import sys
@@ -103,6 +104,10 @@ class PhotoLibraryAuditTests(unittest.TestCase):
             self.assertEqual(len(rows), 1)
             self.assertEqual(rows[0]["width_px"], "1200")
             self.assertTrue(summary["read_only"])
+            self.assertEqual(
+                summary["inventory_csv_sha256"],
+                hashlib.sha256(csv_out.read_bytes()).hexdigest(),
+            )
 
     def test_skips_symlinked_files_and_directories(self):
         with tempfile.TemporaryDirectory() as tmp:

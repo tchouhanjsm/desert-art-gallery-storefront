@@ -130,3 +130,14 @@ A checked item records a source/repository fact already verified in this reset. 
 - [ ] Obtain separate authorization before any M2-B participant recruitment or fieldwork.
 
 The checklist items above distinguish preparation tooling from owner action. They do not mark the owner visual-acceptance gate as complete.
+
+
+## PR #16 M2-C photo-audit pair-integrity overlay — 10 November 2026
+
+- [x] The photo-audit JSON summary records the SHA-256 digest of its exact CSV inventory.
+- [x] Catalogue intake rejects missing, malformed or cross-run photo-audit pairs even when candidate counts match.
+- [x] Regression tests cover digest emission, missing digest and same-count report substitution.
+- [ ] Owner supplies the genuine 10–20 product/photo sample and corresponding complete photo-audit outputs.
+- [ ] Owner-led factual/source/rights review and prototype-use evidence remain pending.
+
+The automated digest proves report-file pairing only. It does not prove image rights, product identity, content truth or owner approval.

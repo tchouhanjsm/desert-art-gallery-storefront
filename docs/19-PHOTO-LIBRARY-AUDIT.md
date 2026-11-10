@@ -58,3 +58,8 @@ Once the owner supplies 10–20 representative original image files, review the 
 5. Whether any exact duplicates or corrupted files require manual action.
 
 The tool does not make those editorial, product or commercial decisions.
+
+
+## CSV/JSON pair integrity
+
+When the JSON summary is requested, the scanner records inventory_csv_sha256: the SHA-256 digest of the exact CSV bytes written by that same run. The catalogue validator checks this digest before using the inventory. This prevents a CSV from one scan being paired with a different summary merely because both scans contain the same number of files. Keep the pair together and regenerate both outputs together after any audit rerun; do not hand-edit either file.

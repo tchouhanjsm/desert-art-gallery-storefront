@@ -183,3 +183,10 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Enforced private repository boundaries, symlink rejection, no-overwrite behaviour and owner-only report-file permissions where supported.
 - Added regression coverage for accepted, incomplete, revision, rejection, malformed, wrong-route, symlink and private-output cases.
 - This makes the existing owner review easier to capture and audit; it does not perform the review or claim owner approval. The actual walkthrough, M2-C product/photo evidence and separately authorized research fieldwork remain pending.
+
+
+## 2026-11-10 — M2-C photo-audit pair integrity
+- Bound each photo-audit JSON summary to the exact CSV inventory bytes with inventory_csv_sha256.
+- Updated catalogue intake cross-validation to reject missing, malformed or mismatched CSV/JSON pairs before using photo records.
+- Added regression tests for same-row-count cross-run pairing, missing digests and scanner digest emission.
+- Updated the photo-audit, catalogue-intake, readiness and roadmap guidance. Existing image files and private catalogue/report data remain untouched.
