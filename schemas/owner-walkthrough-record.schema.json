@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DAG Private Owner Walkthrough Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "decision_reference",
+    "prototype_revision",
+    "review_date",
+    "owner_confirmation",
+    "confirmation_date",
+    "areas"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "decision_reference": {
+      "type": "string",
+      "const": "D-017"
+    },
+    "prototype_revision": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "review_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "owner_confirmation": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed"
+      ]
+    },
+    "confirmation_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "areas": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/$defs/area"
+      }
+    }
+  },
+  "$defs": {
+    "viewportReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "reviewed",
+            "blocked"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      }
+    },
+    "viewportReviews": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "390",
+        "430",
+        "768",
+        "1280",
+        "1440"
+      ],
+      "properties": {
+        "390": {
+          "$ref": "#/$defs/viewportReview"
+        },
+        "430": {
+          "$ref": "#/$defs/viewportReview"
+        },
+        "768": {
+          "$ref": "#/$defs/viewportReview"
+        },
+        "1280": {
+          "$ref": "#/$defs/viewportReview"
+        },
+        "1440": {
+          "$ref": "#/$defs/viewportReview"
+        }
+      }
+    },
+    "observations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visual_hierarchy_and_density",
+        "image_ratio_crop_placeholder_clarity",
+        "content_and_factual_evidence_gaps",
+        "navigation_and_shared_shell",
+        "keyboard_focus_and_disabled_state_clarity"
+      ],
+      "properties": {
+        "visual_hierarchy_and_density": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "image_ratio_crop_placeholder_clarity": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "content_and_factual_evidence_gaps": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "navigation_and_shared_shell": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "keyboard_focus_and_disabled_state_clarity": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      }
+    },
+    "requestedChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "route",
+        "component",
+        "request"
+      ],
+      "properties": {
+        "route": {
+          "type": "string",
+          "enum": [
+            "index.html",
+            "pages/shop.html",
+            "pages/collection.html",
+            "pages/product.html",
+            "pages/about.html",
+            "pages/makers.html",
+            "pages/journal.html",
+            "pages/article.html",
+            "pages/contact.html"
+          ]
+        },
+        "component": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "request": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      }
+    },
+    "area": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "area_id",
+        "decision",
+        "viewport_reviews",
+        "observations",
+        "requested_changes"
+      ],
+      "properties": {
+        "area_id": {
+          "type": "string",
+          "enum": [
+            "homepage",
+            "shop_and_collections",
+            "product_detail",
+            "about_and_makers",
+            "journal_and_stories",
+            "contact_and_support"
+          ]
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "accept",
+            "request_revision",
+            "reject"
+          ]
+        },
+        "viewport_reviews": {
+          "$ref": "#/$defs/viewportReviews"
+        },
+        "observations": {
+          "$ref": "#/$defs/observations"
+        },
+        "requested_changes": {
+          "type": "array",
+          "maxItems": 25,
+          "items": {
+            "$ref": "#/$defs/requestedChange"
+          }
+        }
+      }
+    }
+  }
+}

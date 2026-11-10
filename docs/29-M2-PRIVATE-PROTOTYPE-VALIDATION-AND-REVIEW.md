@@ -163,3 +163,12 @@ The local private prototype has been refined without adding/removing any D-014 r
 - Mobile product-fact label/value rows are checked at all five review widths.
 
 The journey runner validates these conditions at every rendered start/destination page in addition to the D-017 visual and navigation gates. The browser review also confirms zero horizontal overflow across 45 route/viewport combinations. Revision 4's actual private HTML/CSS/JS, screenshots and reports remain outside GitHub.
+
+
+## 11. Owner walkthrough record readiness
+
+PR #16 adds scripts/validate_owner_walkthrough.py, schemas/owner-walkthrough-record.schema.json and a deliberately pending templates/owner-walkthrough-record.template.json.
+
+The validator checks the existing D-016 six-area owner walkthrough—not a new customer-facing interaction. A decided area must include observations for the five existing review dimensions and all five established viewport widths (390, 430, 768, 1280 and 1440). request_revision and reject require a route/component-scoped request against one of the nine D-014 routes. Owner confirmation is accepted only with all six area decisions set to accept and 30/30 reviewed area/viewport checks.
+
+The report stays local/private, omits free-text observations and request descriptions, refuses symlinked input/output directories and repository-contained input/output paths, and never overwrites existing report files. It does not authenticate the reviewer, inspect screenshots, validate factual truth or grant approval. Owner visual acceptance remains pending until the owner completes the actual local walkthrough and confirms the record.

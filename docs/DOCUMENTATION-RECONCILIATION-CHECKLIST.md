@@ -116,3 +116,17 @@ A checked item records a source/repository fact already verified in this reset. 
 - [ ] Create the six private prototype areas under D-017; keep all assets/reports outside the public repository.
 - [ ] Run the local/private validator and browser review against the actual private prototype.
 - [ ] Complete owner visual walkthrough; customer usability testing remains separately authorized.
+
+
+## PR #16 owner walkthrough record-support overlay — 10 November 2026
+
+- [x] Added a deliberately pending template for the six D-016 review areas and five established viewport widths.
+- [x] Added a local validator for area decisions, five observation dimensions, viewport coverage and route/component-scoped requests.
+- [x] Designed the private readiness summary to exclude free-text observations and requested-change descriptions.
+- [x] Added repository-boundary, symlink, no-overwrite and output-permission protections.
+- [x] Added regression tests for incomplete, accepted, revision, rejected and invalid record states.
+- [ ] Complete the actual owner-led walkthrough and record owner confirmation outside Git.
+- [ ] Supply and validate the genuine 10–20 product/photo evidence sample for M2-C.
+- [ ] Obtain separate authorization before any M2-B participant recruitment or fieldwork.
+
+The checklist items above distinguish preparation tooling from owner action. They do not mark the owner visual-acceptance gate as complete.

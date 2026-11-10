@@ -130,3 +130,15 @@ These results are automated engineering evidence, not owner visual acceptance, p
 
 Complete the six-area walkthrough in sections 1–5. Record accept / request revision / reject, exact page/component, desktop/mobile observations and any requested changes. Product/photo facts remain pending until genuine sample evidence is supplied. Human customer usability testing remains separately blocked on explicit M2-B fieldwork authorization.
 
+
+
+## Owner walkthrough record helper — PR #16 continuation
+
+The documented owner-led review is now supported by a local/private record validator:
+
+- Copy the pending template at templates/owner-walkthrough-record.template.json to a private folder outside the checkout.
+- Complete the six D-016 areas and record every existing review width (390, 430, 768, 1280 and 1440 CSS px).
+- Capture the five owner-observation dimensions already required in this walkthrough. Revision/rejection decisions must identify an existing D-014 route and component.
+- Run scripts/validate_owner_walkthrough.py to produce a private readiness summary. The summary intentionally excludes free-text owner notes and requested-change descriptions.
+
+The helper does not conduct the review or authenticate the author. OWNER_VISUAL_ACCEPTED is reported only when the private record states that all six areas were accepted, all 30 area/viewport checks were reviewed and owner confirmation/date were entered. Until the owner completes that local record, visual acceptance remains pending. This helper does not confer research, publication, commerce or production authorization.

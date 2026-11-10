@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "decision_reference": "D-017",
+  "prototype_revision": "Revision 4 — local/private prototype",
+  "review_date": null,
+  "owner_confirmation": "pending",
+  "confirmation_date": null,
+  "areas": [
+    {
+      "area_id": "homepage",
+      "decision": "pending",
+      "viewport_reviews": {
+        "390": {
+          "status": "pending",
+          "notes": ""
+        },
+        "430": {
+          "status": "pending",
+          "notes": ""
+        },
+        "768": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1280": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1440": {
+          "status": "pending",
+          "notes": ""
+        }
+      },
+      "observations": {
+        "visual_hierarchy_and_density": "",
+        "image_ratio_crop_placeholder_clarity": "",
+        "content_and_factual_evidence_gaps": "",
+        "navigation_and_shared_shell": "",
+        "keyboard_focus_and_disabled_state_clarity": ""
+      },
+      "requested_changes": []
+    },
+    {
+      "area_id": "shop_and_collections",
+      "decision": "pending",
+      "viewport_reviews": {
+        "390": {
+          "status": "pending",
+          "notes": ""
+        },
+        "430": {
+          "status": "pending",
+          "notes": ""
+        },
+        "768": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1280": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1440": {
+          "status": "pending",
+          "notes": ""
+        }
+      },
+      "observations": {
+        "visual_hierarchy_and_density": "",
+        "image_ratio_crop_placeholder_clarity": "",
+        "content_and_factual_evidence_gaps": "",
+        "navigation_and_shared_shell": "",
+        "keyboard_focus_and_disabled_state_clarity": ""
+      },
+      "requested_changes": []
+    },
+    {
+      "area_id": "product_detail",
+      "decision": "pending",
+      "viewport_reviews": {
+        "390": {
+          "status": "pending",
+          "notes": ""
+        },
+        "430": {
+          "status": "pending",
+          "notes": ""
+        },
+        "768": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1280": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1440": {
+          "status": "pending",
+          "notes": ""
+        }
+      },
+      "observations": {
+        "visual_hierarchy_and_density": "",
+        "image_ratio_crop_placeholder_clarity": "",
+        "content_and_factual_evidence_gaps": "",
+        "navigation_and_shared_shell": "",
+        "keyboard_focus_and_disabled_state_clarity": ""
+      },
+      "requested_changes": []
+    },
+    {
+      "area_id": "about_and_makers",
+      "decision": "pending",
+      "viewport_reviews": {
+        "390": {
+          "status": "pending",
+          "notes": ""
+        },
+        "430": {
+          "status": "pending",
+          "notes": ""
+        },
+        "768": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1280": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1440": {
+          "status": "pending",
+          "notes": ""
+        }
+      },
+      "observations": {
+        "visual_hierarchy_and_density": "",
+        "image_ratio_crop_placeholder_clarity": "",
+        "content_and_factual_evidence_gaps": "",
+        "navigation_and_shared_shell": "",
+        "keyboard_focus_and_disabled_state_clarity": ""
+      },
+      "requested_changes": []
+    },
+    {
+      "area_id": "journal_and_stories",
+      "decision": "pending",
+      "viewport_reviews": {
+        "390": {
+          "status": "pending",
+          "notes": ""
+        },
+        "430": {
+          "status": "pending",
+          "notes": ""
+        },
+        "768": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1280": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1440": {
+          "status": "pending",
+          "notes": ""
+        }
+      },
+      "observations": {
+        "visual_hierarchy_and_density": "",
+        "image_ratio_crop_placeholder_clarity": "",
+        "content_and_factual_evidence_gaps": "",
+        "navigation_and_shared_shell": "",
+        "keyboard_focus_and_disabled_state_clarity": ""
+      },
+      "requested_changes": []
+    },
+    {
+      "area_id": "contact_and_support",
+      "decision": "pending",
+      "viewport_reviews": {
+        "390": {
+          "status": "pending",
+          "notes": ""
+        },
+        "430": {
+          "status": "pending",
+          "notes": ""
+        },
+        "768": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1280": {
+          "status": "pending",
+          "notes": ""
+        },
+        "1440": {
+          "status": "pending",
+          "notes": ""
+        }
+      },
+      "observations": {
+        "visual_hierarchy_and_density": "",
+        "image_ratio_crop_placeholder_clarity": "",
+        "content_and_factual_evidence_gaps": "",
+        "navigation_and_shared_shell": "",
+        "keyboard_focus_and_disabled_state_clarity": ""
+      },
+      "requested_changes": []
+    }
+  ]
+}

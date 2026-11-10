@@ -59,3 +59,14 @@ POJ Studio is primary for ecommerce/page structure; Macaroni Shoten is secondary
 - `docs/OWNER-TOKEN-INPUT.md` — pending owner values.
 
 Whenever a decision or source changes, reconcile all relevant tracked documents, prompts, code comments, HTML/CSS/JS, workflows and issue templates. Do not claim completion until validation evidence exists.
+
+
+## Private owner walkthrough record
+
+See docs/33-M2-OWNER-WALKTHROUGH-RECORD-VALIDATION.md for the private six-area owner walkthrough record helper. Copy templates/owner-walkthrough-record.template.json outside the repository, complete the owner review, then run the command below:
+
+    python3 scripts/validate_owner_walkthrough.py \
+      --record "$HOME/Documents/DAG-owner-walkthrough/owner-walkthrough.json" \
+      --output-dir "$HOME/Documents/DAG-owner-walkthrough/report"
+
+The helper writes only a private coverage/decision summary and excludes free-text review feedback. It does not perform or authenticate owner acceptance; the actual walkthrough remains pending until the owner completes it.

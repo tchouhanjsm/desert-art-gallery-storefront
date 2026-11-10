@@ -230,3 +230,15 @@ The D-014 owner kit assets, active PAGE-INVENTORY and COMPONENT-INVENTORY are RE
 | AGENTS.md; README.md; docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md | UPDATE | Document current readiness tooling and retain explicit M2-A implementation gate. |
 
 The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories and QA-only token fallback are retained unchanged. The M2-A visual proposal is updated to record D-017 approval for private prototype use. The private prototype itself and its assets/reports remain outside the public repository.
+
+
+## M2 owner walkthrough record-support overlay — 10 November 2026
+
+| Path | Disposition | Reconciliation |
+|---|---|---|
+| scripts/validate_owner_walkthrough.py | ADD | Validates a private owner-authored D-016 walkthrough record, six area decisions, five viewport reviews and route/component-scoped revision requests; summary excludes free text. |
+| schemas/owner-walkthrough-record.schema.json | ADD | Documents the exact record shape and closed D-016 area, D-014 route and viewport inventories. |
+| templates/owner-walkthrough-record.template.json | ADD | Blank/pending private template; contains no owner feedback, product information, imagery or local paths. |
+| tests/test_owner_walkthrough.py | ADD | Regression coverage for incomplete/accepted/revision/rejected states, decision gates, malformed records, route scope, symlinks and output privacy. |
+| docs/33-M2-OWNER-WALKTHROUGH-RECORD-VALIDATION.md | ADD | Local operating guide and acceptance limitations for the owner walkthrough record helper. |
+| README.md; docs/10-ROADMAP.md; docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md; docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record the private walkthrough helper and keep owner visual acceptance, M2-C evidence and M2-B fieldwork gates explicitly pending. |

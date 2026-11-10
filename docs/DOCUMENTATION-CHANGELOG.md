@@ -174,3 +174,12 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - The report identifies separate product, fact, source reconciliation, image rights and private prototype-use gates, and confirms products remain draft/in_review. It excludes source titles, descriptions, prices, raw export values and image binaries.
 - Added regression tests for audit integrity weaknesses, symlink handling, successful M2 readiness reporting, underfilled samples, per-product approval blockers, private output paths and no-overwrite behaviour.
 - The report is a private operational aid only. No genuine 10–20 product/photo sample or real catalogue facts/rights evidence were provided; M2-C sample acceptance remains blocked on owner inputs.
+
+
+## 2026-11-10 — M2 owner walkthrough record validation support
+- Added a deliberately pending private JSON template and schema for the six D-016 owner-review areas and five established viewport widths.
+- Added scripts/validate_owner_walkthrough.py to validate the owner-authored record, enforce the existing five observation dimensions, and require route/component-scoped requests for revision/rejection.
+- Added private JSON/Markdown readiness summaries that contain decision and viewport counts only; free-text owner feedback is excluded.
+- Enforced private repository boundaries, symlink rejection, no-overwrite behaviour and owner-only report-file permissions where supported.
+- Added regression coverage for accepted, incomplete, revision, rejection, malformed, wrong-route, symlink and private-output cases.
+- This makes the existing owner review easier to capture and audit; it does not perform the review or claim owner approval. The actual walkthrough, M2-C product/photo evidence and separately authorized research fieldwork remain pending.

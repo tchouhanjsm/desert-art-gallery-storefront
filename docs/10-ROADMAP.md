@@ -104,3 +104,15 @@ The source-neutral intake validator was hardened to reject symlinked catalogue/a
 Added scripts/build_catalogue_readiness_report.py. It reuses the existing five-CSV validator and completed photo-audit inventory, then writes private JSON/Markdown reports with aggregate intake coverage and per-product blockers for owner-reconciled source rows, product-level private-use approval, verified/prototype-approved fact evidence, rights-cleared/prototype-approved primary image evidence, and draft/in-review publication state. The report excludes product copy, prices, source-export values and image binaries; output paths cannot overlap the public repository or catalogue source directory and existing reports are not overwritten.
 
 This completes the readiness-reporting tooling only. The real 10–20 product/photo sample, verified facts, source reconciliation and image-rights/prototype-use evidence remain owner-supplied inputs and have not been fabricated or staged in Git.
+
+
+## Owner walkthrough evidence support — PR #16 continuation
+
+The pending D-016 owner visual walkthrough now has a private record-validation helper. This is tooling support for the existing six-area walkthrough, not a new milestone authorization or a substitute for owner review.
+
+- The pending template mirrors the six approved areas and five existing review dimensions.
+- The validator requires all five existing widths for every decided area and route/component-scoped requests for revision/rejection.
+- The private summary reports area/viewport coverage and decision counts while excluding owner free-text notes and requested-change descriptions.
+- Owner visual acceptance is reported only after all six areas are accepted, all 30 area/viewport checks are marked reviewed and owner confirmation/date are present.
+
+**Current state:** preparation tooling is complete; the real owner walkthrough and visual acceptance are still pending. No owner record is fabricated. M2-C's genuine 10–20 product/photo sample and verified evidence are still owner-supplied dependencies. M2-B external fieldwork remains separately unauthorized.
