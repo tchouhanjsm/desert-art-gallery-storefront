@@ -21,13 +21,14 @@ class M2BFieldworkAuthorizationTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory(prefix="dag-m2b-auth-")
         self.addCleanup(self.temp.cleanup)
         self.base = Path(self.temp.name)
-        self.record_path = self.base / "owner-authorization.json"
+        self.record_path = self.base / "private-record" / "owner-authorization.json"
         self.output_dir = self.base / "private-report"
 
     def template_record(self):
         return json.loads(TEMPLATE.read_text(encoding="utf-8"))
 
     def write_record(self, record):
+        self.record_path.parent.mkdir(parents=True, exist_ok=True)
         self.record_path.write_text(json.dumps(record, ensure_ascii=False), encoding="utf-8")
 
     @staticmethod
@@ -284,7 +285,7 @@ class M2BFieldworkAuthorizationTests(unittest.TestCase):
 
     def test_output_overlapping_record_directory_is_rejected(self):
         self.write_record(self.template_record())
-        result = build_fieldwork_authorization_report(self.record_path, self.base / "nested-report")
+        result = build_fieldwork_authorization_report(self.record_path, self.record_path.parent / "nested-report")
         self.assertEqual(result["status"], "INVALID_INPUT")
         self.assertTrue(any("separate from the private record directory" in item for item in result["errors"]))
 
