@@ -91,7 +91,58 @@
               ],
               "maxLength": 240
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
         },
         "invitation_and_screener": {
           "type": "object",
@@ -123,7 +174,58 @@
               ],
               "maxLength": 240
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
         },
         "moderator_and_language": {
           "type": "object",
@@ -155,7 +257,58 @@
               ],
               "maxLength": 240
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
         },
         "participant_information_and_consent": {
           "type": "object",
@@ -187,7 +340,58 @@
               ],
               "maxLength": 240
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
         },
         "private_data_handling": {
           "type": "object",
@@ -219,7 +423,58 @@
               ],
               "maxLength": 240
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
         },
         "research_budget": {
           "type": "object",
@@ -251,7 +506,58 @@
               ],
               "maxLength": 240
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
         },
         "vendor_processing_and_transfer": {
           "type": "object",
@@ -283,7 +589,58 @@
               ],
               "maxLength": 240
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
         },
         "date_range_and_schedule": {
           "type": "object",
@@ -315,7 +672,58 @@
               ],
               "maxLength": 240
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     },

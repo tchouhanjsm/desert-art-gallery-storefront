@@ -127,7 +127,8 @@ def _validate_approvals(value: Any, errors: list[str]) -> dict[str, str]:
         if status == "approved":
             if not _valid_date(approved_on):
                 errors.append(f"{label}.approved_on must be a real YYYY-MM-DD date when approved")
-            _optional_reference(evidence, f"{label}.evidence_reference", errors)
+            if not _nonempty_text(evidence):
+                errors.append(f"{label}.evidence_reference must be a non-empty private reference when approved")
         else:
             if approved_on is not None:
                 errors.append(f"{label}.approved_on must be null unless the item is approved")

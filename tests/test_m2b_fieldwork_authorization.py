@@ -193,7 +193,7 @@ class M2BFieldworkAuthorizationTests(unittest.TestCase):
         self.write_record(record)
         result = build_fieldwork_authorization_report(self.record_path, self.output_dir)
         self.assertEqual(result["status"], "FIELDWORK_NOT_AUTHORIZED")
-        self.assertTrue(any("recording approach is undecided" in item for item in result["blockers"]))
+        self.assertTrue(any("recording approach is undecided" in item.lower() for item in result["blockers"]))
 
     def test_optional_recording_requires_separate_consent_wording(self):
         record = self.leave_owner_confirmation_pending(self.complete_record())
