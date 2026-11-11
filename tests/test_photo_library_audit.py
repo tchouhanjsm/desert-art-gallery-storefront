@@ -178,6 +178,25 @@ class PhotoLibraryAuditTests(unittest.TestCase):
             self.assertEqual(main([str(root), "--csv", str(output)]), 2)
             self.assertFalse(output.exists())
 
+    def test_existing_report_directory_is_tightened_to_owner_only(self):
+        import os
+        import stat
+
+        if os.name != "posix":
+            self.skipTest("POSIX directory permission bits are not available")
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            root = base / "photos"
+            root.mkdir()
+            (root / "one.png").write_bytes(png_bytes(1200, 800))
+            reports = base / "reports"
+            reports.mkdir(mode=0o755)
+            reports.chmod(0o755)
+            csv_out = reports / "audit.csv"
+            self.assertEqual(main([str(root), "--csv", str(csv_out)]), 0)
+            self.assertEqual(stat.S_IMODE(reports.stat().st_mode) & 0o077, 0)
+            self.assertEqual(stat.S_IMODE(csv_out.stat().st_mode) & 0o077, 0)
+
     def test_report_files_are_created_with_owner_only_permissions(self):
         import os
         import stat

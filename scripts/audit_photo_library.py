@@ -18,6 +18,11 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Callable, Iterable, TextIO
 
+try:
+    from .private_review_output import ensure_private_directory
+except ImportError:
+    from private_review_output import ensure_private_directory
+
 IMAGE_EXTENSIONS = {
     ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp", ".tif", ".tiff",
     ".heic", ".heif", ".avif", ".svg",
@@ -355,7 +360,7 @@ def _write_exclusive_text(
     write_content: Callable[[TextIO], None],
 ) -> None:
     """Create one owner-readable report file without following links or overwriting."""
-    destination.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+    ensure_private_directory(destination.parent)
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
