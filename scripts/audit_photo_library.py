@@ -16,12 +16,14 @@ import sys
 from collections import Counter
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Iterable
+from typing import Callable, Iterable, TextIO
 
 IMAGE_EXTENSIONS = {
     ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp", ".tif", ".tiff",
     ".heic", ".heif", ".avif", ".svg",
 }
+ROOT = Path(__file__).resolve().parents[1]
+
 EXTENSION_FORMATS = {
     ".jpg": "JPEG", ".jpeg": "JPEG", ".png": "PNG", ".gif": "GIF",
     ".webp": "WEBP", ".bmp": "BMP", ".tif": "TIFF", ".tiff": "TIFF",
@@ -304,20 +306,92 @@ def audit_directory(root: Path, min_megapixels: float | None = None) -> tuple[li
     return records, summary
 
 
+def _inside(path: Path, parent: Path) -> bool:
+    return path == parent or parent in path.parents
+
+
+def _has_symlink_component(path: Path) -> bool:
+    """Reject output paths that traverse a symlink, including a dangling leaf."""
+    absolute = path.expanduser().absolute()
+    current = Path(absolute.anchor)
+    for part in absolute.parts[1:]:
+        current = current / part
+        try:
+            if current.is_symlink():
+                return True
+        except OSError:
+            return True
+    return False
+
+
+def _resolve_report_destination(
+    path: Path,
+    *,
+    label: str,
+    source_root: Path,
+    repository_root: Path = ROOT,
+) -> Path:
+    raw = path.expanduser().absolute()
+    if _has_symlink_component(raw):
+        raise ValueError(f"{label} report path must not contain symbolic links")
+    try:
+        destination = raw.resolve(strict=False)
+    except (OSError, RuntimeError) as exc:
+        raise ValueError(f"{label} report path cannot be resolved") from exc
+    if _inside(destination, source_root):
+        raise ValueError(f"{label} report must be outside the source directory")
+    if _inside(destination, repository_root.resolve()):
+        raise ValueError(f"{label} report must be outside the public Git repository")
+    if destination.exists() or destination.is_symlink():
+        raise ValueError(f"{label} report already exists; choose a new path (reports are never overwritten): {destination}")
+    return destination
+
+
+def _write_exclusive_text(
+    destination: Path,
+    *,
+    encoding: str,
+    newline: str | None,
+    write_content: Callable[[TextIO], None],
+) -> None:
+    """Create one owner-readable report file without following links or overwriting."""
+    destination.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    descriptor = os.open(destination, flags, 0o600)
+    try:
+        with os.fdopen(descriptor, "w", encoding=encoding, newline=newline) as handle:
+            write_content(handle)
+            handle.flush()
+            os.fsync(handle.fileno())
+    except Exception:
+        try:
+            destination.unlink()
+        except OSError:
+            pass
+        raise
+
+
 def write_csv(records: Iterable[PhotoRecord], destination: Path) -> None:
-    destination.parent.mkdir(parents=True, exist_ok=True)
     fields = list(PhotoRecord.__dataclass_fields__.keys())
-    with destination.open("x", encoding="utf-8-sig", newline="") as handle:
+
+    def write(handle: TextIO) -> None:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for record in records:
             writer.writerow(record.csv_dict())
 
+    _write_exclusive_text(destination, encoding="utf-8-sig", newline="", write_content=write)
+
 
 def write_json(summary: dict[str, object], destination: Path) -> None:
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    with destination.open("x", encoding="utf-8") as handle:
-        handle.write(json.dumps(summary, indent=2, ensure_ascii=False) + "\n")
+    _write_exclusive_text(
+        destination,
+        encoding="utf-8",
+        newline="\n",
+        write_content=lambda handle: handle.write(json.dumps(summary, indent=2, ensure_ascii=False) + "\n"),
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -333,26 +407,46 @@ def main(argv: list[str] | None = None) -> int:
     if args.min_megapixels is not None and (not math.isfinite(args.min_megapixels) or args.min_megapixels < 0):
         parser.error("--min-megapixels must be finite and zero or greater")
     try:
-        source_root = args.source_dir.expanduser().resolve()
-        csv_destination = args.csv_path.expanduser().resolve()
-        json_destination = args.json_path.expanduser().resolve() if args.json_path else None
-        if csv_destination.is_relative_to(source_root):
-            parser.error("--csv report must be outside the source directory")
-        if json_destination and json_destination.is_relative_to(source_root):
-            parser.error("--json report must be outside the source directory")
+        source_root = args.source_dir.expanduser().resolve(strict=True)
+        if not source_root.is_dir():
+            raise ValueError(f"Source directory does not exist or is not a directory: {source_root}")
+        csv_destination = _resolve_report_destination(
+            args.csv_path,
+            label="CSV",
+            source_root=source_root,
+        )
+        json_destination = (
+            _resolve_report_destination(
+                args.json_path,
+                label="JSON",
+                source_root=source_root,
+            )
+            if args.json_path else None
+        )
+        if json_destination and json_destination == csv_destination:
+            raise ValueError("--csv and --json must use different output paths")
         if json_destination and str(json_destination).casefold() == str(csv_destination).casefold():
-            parser.error("--csv and --json must use different output paths")
-        if csv_destination.exists():
-            raise ValueError(f"CSV report already exists; choose a new path (reports are never overwritten): {csv_destination}")
-        if json_destination and json_destination.exists():
-            raise ValueError(f"JSON report already exists; choose a new path (reports are never overwritten): {json_destination}")
+            raise ValueError("--csv and --json must use different output paths")
+
         records, summary = audit_directory(source_root, args.min_megapixels)
-        write_csv(records, csv_destination)
-        if json_destination:
-            # Bind the JSON summary to these exact CSV bytes so different runs
-            # cannot be accidentally paired when their candidate counts match.
-            summary["inventory_csv_sha256"] = sha256_file(csv_destination)
-            write_json(summary, json_destination)
+        created_reports: list[Path] = []
+        try:
+            write_csv(records, csv_destination)
+            created_reports.append(csv_destination)
+            if json_destination:
+                # Bind the JSON summary to these exact CSV bytes so different runs
+                # cannot be accidentally paired when their candidate counts match.
+                summary["inventory_csv_sha256"] = sha256_file(csv_destination)
+                write_json(summary, json_destination)
+                created_reports.append(json_destination)
+        except Exception:
+            # A CSV without its requested paired summary is not valid M2-C evidence.
+            for report_path in created_reports:
+                try:
+                    report_path.unlink()
+                except OSError:
+                    pass
+            raise
     except (OSError, ValueError) as exc:
         print(f"Photo audit failed: {exc}", file=sys.stderr)
         return 2
