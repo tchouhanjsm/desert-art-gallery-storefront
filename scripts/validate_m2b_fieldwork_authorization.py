@@ -18,6 +18,11 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
+try:
+    from .private_review_output import ensure_private_directory
+except ImportError:
+    from private_review_output import ensure_private_directory
+
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_JSON = "m2b-fieldwork-authorization.json"
 REPORT_MARKDOWN = "m2b-fieldwork-authorization.md"
@@ -478,7 +483,7 @@ def build_fieldwork_authorization_report(record_path: Path, output_dir: Path) ->
         return {"ok": False, "status": "INVALID_INPUT", "errors": errors, "blockers": blockers}
 
     try:
-        output.mkdir(parents=True, exist_ok=True)
+        output = ensure_private_directory(output)
         json_path = output / REPORT_JSON
         markdown_path = output / REPORT_MARKDOWN
         if json_path.exists() or markdown_path.exists():

@@ -289,6 +289,19 @@ class M2BFieldworkAuthorizationTests(unittest.TestCase):
         self.assertEqual(result["status"], "INVALID_INPUT")
         self.assertTrue(any("separate from the private record directory" in item for item in result["errors"]))
 
+    def test_existing_report_directory_is_tightened_to_owner_only(self):
+        import os
+        import stat
+
+        if os.name != "posix":
+            self.skipTest("POSIX directory permission bits are not available")
+        self.write_record(self.template_record())
+        self.output_dir.mkdir(mode=0o755)
+        self.output_dir.chmod(0o755)
+        result = build_fieldwork_authorization_report(self.record_path, self.output_dir)
+        self.assertEqual(result["status"], "FIELDWORK_NOT_AUTHORIZED")
+        self.assertEqual(stat.S_IMODE(self.output_dir.stat().st_mode) & 0o077, 0)
+
     def test_existing_reports_are_never_overwritten(self):
         self.write_record(self.template_record())
         self.output_dir.mkdir()

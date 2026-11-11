@@ -168,6 +168,33 @@ class OwnerWalkthroughTests(unittest.TestCase):
         self.assertEqual(result["status"], "INVALID_INPUT")
         self.assertTrue(any("outside the public Git repository" in item for item in result["errors"]))
 
+    def test_existing_report_directory_is_tightened_to_owner_only(self):
+        import os
+        import stat
+
+        if os.name != "posix":
+            self.skipTest("POSIX directory permission bits are not available")
+        self.write_record(self.load_template())
+        self.output_dir.mkdir(mode=0o755)
+        self.output_dir.chmod(0o755)
+        result = build_owner_walkthrough_report(self.record_path, self.output_dir)
+        self.assertEqual(result["status"], "REVIEW_INCOMPLETE")
+        self.assertEqual(stat.S_IMODE(self.output_dir.stat().st_mode) & 0o077, 0)
+
+    def test_symlinked_parent_output_path_is_rejected(self):
+        self.write_record(self.load_template())
+        target = self.base / "external-report-parent"
+        target.mkdir()
+        alias = self.base / "report-parent-link"
+        try:
+            alias.symlink_to(target, target_is_directory=True)
+        except (OSError, NotImplementedError):
+            self.skipTest("directory symlinks are unavailable on this runner")
+        result = build_owner_walkthrough_report(self.record_path, alias / "report")
+        self.assertEqual(result["status"], "INVALID_INPUT")
+        self.assertTrue(any("symbolic links" in item for item in result["errors"]))
+        self.assertEqual(list(target.iterdir()), [])
+
     def test_existing_reports_are_never_overwritten(self):
         self.write_record(self.load_template())
         self.output_dir.mkdir()

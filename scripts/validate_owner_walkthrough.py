@@ -14,6 +14,11 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+try:
+    from .private_review_output import ensure_private_directory, has_symlink_component
+except ImportError:
+    from private_review_output import ensure_private_directory, has_symlink_component
+
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_JSON = "owner-walkthrough-readiness.json"
 REPORT_MARKDOWN = "owner-walkthrough-readiness.md"
@@ -356,10 +361,10 @@ def build_owner_walkthrough_report(record_path: Path, output_dir: Path) -> dict[
     raw_output = Path(output_dir).expanduser()
     errors: list[str] = []
 
-    if raw_record.is_symlink():
-        errors.append("owner walkthrough record must not be a symbolic link")
-    if raw_output.is_symlink():
-        errors.append("report output directory must not be a symbolic link")
+    if has_symlink_component(raw_record):
+        errors.append("owner walkthrough record path must not contain symbolic links")
+    if has_symlink_component(raw_output):
+        errors.append("report output path must not contain symbolic links")
     if errors:
         return {"ok": False, "status": "INVALID_INPUT", "errors": errors}
 
@@ -408,7 +413,7 @@ def build_owner_walkthrough_report(record_path: Path, output_dir: Path) -> dict[
 
     created: list[Path] = []
     try:
-        output.mkdir(parents=True, exist_ok=True, mode=0o700)
+        output = ensure_private_directory(output)
         for path, content in (
             (json_path, json.dumps(report, indent=2, ensure_ascii=False) + "\n"),
             (markdown_path, _markdown(report)),
