@@ -24,7 +24,7 @@ class PrivateReviewOutputTests(unittest.TestCase):
                 label="private review",
             )
         self.assertIsNone(output)
-        self.assertTrue(any("separate from" in error for error in errors))
+        self.assertTrue(any("outside the prototype source directory" in error for error in errors))
 
     def test_reserved_symlink_is_rejected_even_when_it_is_dangling(self):
         with tempfile.TemporaryDirectory() as tmp:
