@@ -1,9 +1,9 @@
 # M2 — Owner Review Walkthroughs for the Six Private Prototype Areas
 
-**Status: WALKTHROUGH PLAN READY — D-017 VISUAL APPROVAL RECORDED; PRIVATE PROTOTYPE IMPLEMENTATION AUTHORIZED**  
+**Status: PRIVATE PROTOTYPE BUILT — AUTOMATED REVIEW PASSED — OWNER VISUAL ACCEPTANCE PENDING**  
 **Decision:** D-016 (8 November 2026)
 
-This document turns the owner's six authorized prototype areas into a review sequence. It is not a claim that a branded prototype exists. The six areas are groupings of the existing nine D-014 pages and do not change the page, section or component inventory.
+This document is the owner review sequence for the local/private Revision 2 prototype. The six areas are groupings of the existing nine D-014 pages and do not change the page, section or component inventory. The prototype and its screenshots remain outside the public repository.
 
 ## 1. Area-to-page map
 
@@ -71,7 +71,7 @@ Every journey and every area must be reviewed at all five existing QA widths:
 - 1280 CSS px — laptop/desktop.
 - 1440 CSS px — wide desktop.
 
-These are review widths, not new breakpoint requirements. Check layout order, overflow, card columns, image-frame stability, readable line lengths, nav disclosure and focus visibility. Automated Chromium coverage already exercises the five existing structural journeys at these widths; a human owner walkthrough remains separate.
+These are review widths, not new breakpoint requirements. Check layout order, overflow, card columns, image-frame stability, readable line lengths, nav disclosure and focus visibility. The local/private responsive review passed 45/45 route/viewport combinations at these widths. The separate five-journey runner passed 25/25 journey/viewport combinations. A human owner walkthrough remains separate.
 
 ## 4. Product/image evidence display rules
 
@@ -100,14 +100,53 @@ For each area, record:
 
 These owner-led walkthroughs are not participant usability research. Human usability acceptance remains pending. Owner visual sign-off of a prototype is not customer usability research. Human customer usability testing requires a separate research protocol and the explicit M2-B fieldwork authorization. No user testing or customer usability validation is claimed by these walkthroughs.
 
-## 6. Prototype implementation gate
+## 6. Implemented prototype boundary
 
-With the owner’s M2-A Revision 2 approval recorded as D-017:
-- Create the private/local prototype outside the public repository using the D-017 approved visual tokens.
-- Implement exactly the six areas mapped above using the D-014 route/section inventory and the approved visual tokens.
-- Include shared shell only as already represented in the source pages.
-- Use labelled placeholders until real sample assets are accepted.
-- Keep all controls non-transactional. No payment/order, shipping/tax or live enquiry processing.
-- Perform responsive, keyboard and reduced-motion checks; present screenshots and a reproducible owner walkthrough.
-- Record changes and outstanding decisions; do not deploy publicly or choose a production stack.
+D-017's approval has been applied to a local/private prototype outside the public repository. The prototype contains exactly the six areas above, mapped to the nine D-014 routes and section inventory. The shared shell is represented only where present in the approved kit.
 
+- Labelled image frames remain in place until genuine sample assets, verified facts, rights and separate prototype-use evidence are supplied.
+- Search, Filter, Sort, product options, purchase and enquiry submission remain disabled or non-transactional.
+- No payment/order, shipping/tax or live enquiry processing is present.
+- The prototype is not deployed publicly and does not select a production stack.
+
+## 7. Automated review evidence
+
+The local/private Revision 4 prototype has passed:
+
+| Review | Result | Coverage |
+|---|---:|---|
+| Responsive page review | 45/45 | 9 routes × 5 widths (390, 430, 768, 1280, 1440) |
+| Captured review screenshots | 18 | 9 routes × mobile/desktop (390, 1440) |
+| Five-journey review | 25/25 | 5 owner-approved journeys × 5 widths |
+| Journey interaction checks | Passed | 10 route transitions, 4 product accordions per width, disabled Filter/Sort, disabled purchase/options and enquiry controls |
+| Content evidence checks | 65 rendered page checks | Route-specific image labels, fixed slot counts, breadcrumb semantics, semantic product facts and pending editorial metadata |
+| Responsive overflow check | 0 failures | 9 pages × 5 viewport widths |
+
+Journey runner: `scripts/private_prototype_journey_review.py`. It first runs the D-017 private-prototype validator, then renders the exact local HTML/CSS/JS in memory to avoid local URL restrictions. Clicked links are resolved with the browser URL algorithm and the target page is rendered from the same private root. It does not publish, upload or commit prototype content, and the review output directory must remain outside both the public repository and the prototype directory. Revision 4 also checks the exact image-slot inventory and role-specific pending labels, three existing breadcrumb landmarks, the four semantic Product Detail fact pairs and pending article metadata. The frame counts remain fixed at Homepage 11, Shop 6, Collection 3, Product Detail 4, About 2, Makers 1, Journal 6, Article 1 and Contact 0.
+
+These results are automated engineering evidence, not owner visual acceptance, participant usability research, screen-reader testing, or full WCAG/legal compliance.
+
+## 8. Owner visual acceptance remains pending
+
+Complete the six-area walkthrough in sections 1–5. Record accept / request revision / reject, exact page/component, desktop/mobile observations and any requested changes. Product/photo facts remain pending until genuine sample evidence is supplied. Human customer usability testing remains separately blocked on explicit M2-B fieldwork authorization.
+
+
+
+## Owner walkthrough record helper — PR #16 continuation
+
+The documented owner-led review is now supported by a local/private record validator:
+
+- Copy the pending template at templates/owner-walkthrough-record.template.json to a private folder outside the checkout.
+- Complete the six D-016 areas and record every existing review width (390, 430, 768, 1280 and 1440 CSS px).
+- Capture the five owner-observation dimensions already required in this walkthrough. Revision/rejection decisions must identify an existing D-014 route and component.
+- Run scripts/validate_owner_walkthrough.py to produce a private readiness summary. The summary intentionally excludes free-text owner notes and requested-change descriptions.
+
+Copy `templates/owner-walkthrough-record.template.json` to a private folder outside the checkout, complete the actual owner review, and run:
+
+```bash
+python3 scripts/validate_owner_walkthrough.py \
+  --record "$HOME/Documents/DAG-owner-walkthrough/owner-walkthrough.json" \
+  --output-dir "$HOME/Documents/DAG-owner-walkthrough/report"
+```
+
+The helper writes a private coverage summary and excludes free-text observations and requested-change descriptions. It refuses unsafe paths and existing report files. The helper does not conduct the review or authenticate the author. OWNER_VISUAL_ACCEPTED is reported only when the private record states that all six areas were accepted, all 30 area/viewport checks were reviewed and owner confirmation/date were entered. Until the owner completes that local record, visual acceptance remains pending. This helper does not confer research, publication, commerce or production authorization.

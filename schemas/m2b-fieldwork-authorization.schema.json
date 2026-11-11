@@ -1,0 +1,941 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DAG M2-B Fieldwork Authorization Record",
+  "description": "Private owner-authored preflight record for the eight D-016 fieldwork approvals. A valid record is not independently authenticated or legal approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "decision_reference",
+    "cohort",
+    "approvals",
+    "fieldwork_details",
+    "owner_confirmation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "decision_reference": {
+      "const": "D-016"
+    },
+    "cohort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "home_interior",
+        "craft_material",
+        "trade_design",
+        "gift_considered_purchase",
+        "total"
+      ],
+      "properties": {
+        "home_interior": {
+          "const": 3
+        },
+        "craft_material": {
+          "const": 2
+        },
+        "trade_design": {
+          "const": 1
+        },
+        "gift_considered_purchase": {
+          "const": 1
+        },
+        "total": {
+          "const": 7
+        }
+      }
+    },
+    "approvals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recruitment_route",
+        "invitation_and_screener",
+        "moderator_and_language",
+        "participant_information_and_consent",
+        "private_data_handling",
+        "research_budget",
+        "vendor_processing_and_transfer",
+        "date_range_and_schedule"
+      ],
+      "properties": {
+        "recruitment_route": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "approved_on",
+            "evidence_reference"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            "approved_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "evidence_reference": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 240
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "invitation_and_screener": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "approved_on",
+            "evidence_reference"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            "approved_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "evidence_reference": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 240
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "moderator_and_language": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "approved_on",
+            "evidence_reference"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            "approved_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "evidence_reference": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 240
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "participant_information_and_consent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "approved_on",
+            "evidence_reference"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            "approved_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "evidence_reference": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 240
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "private_data_handling": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "approved_on",
+            "evidence_reference"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            "approved_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "evidence_reference": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 240
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "research_budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "approved_on",
+            "evidence_reference"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            "approved_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "evidence_reference": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 240
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "vendor_processing_and_transfer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "approved_on",
+            "evidence_reference"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            "approved_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "evidence_reference": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 240
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "date_range_and_schedule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "approved_on",
+            "evidence_reference"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            "approved_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "evidence_reference": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 240
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "approved"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "evidence_reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "rejected"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "approved_on": {
+                    "type": "null"
+                  },
+                  "evidence_reference": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "fieldwork_details": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "moderator_reference",
+        "session_languages",
+        "participant_information_reference",
+        "consent_wording_reference",
+        "recording_mode",
+        "recording_consent_reference",
+        "storage_reference",
+        "access_control_reference",
+        "retention_days",
+        "deletion_reference",
+        "transfer_mode",
+        "transfer_review_reference",
+        "vendor_mode",
+        "vendor_terms_reference",
+        "spend_currency",
+        "spend_ceiling",
+        "budget_breakdown_reference",
+        "schedule_timezone",
+        "start_date",
+        "end_date",
+        "schedule_reference"
+      ],
+      "properties": {
+        "moderator_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "session_languages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "uniqueItems": true
+        },
+        "participant_information_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "consent_wording_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "recording_mode": {
+          "enum": [
+            "not_authorized",
+            "no_recording",
+            "optional_separate_participant_consent"
+          ]
+        },
+        "recording_consent_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "storage_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "access_control_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "retention_days": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 36500
+        },
+        "deletion_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "transfer_mode": {
+          "enum": [
+            "unreviewed",
+            "none",
+            "reviewed_and_approved"
+          ]
+        },
+        "transfer_review_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "vendor_mode": {
+          "enum": [
+            "unreviewed",
+            "no_vendor",
+            "vendor_involved"
+          ]
+        },
+        "vendor_terms_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "spend_currency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z]{3}$"
+        },
+        "spend_ceiling": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]{1,2})?$"
+        },
+        "budget_breakdown_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        },
+        "schedule_timezone": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "start_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "end_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "schedule_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        }
+      }
+    },
+    "owner_confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "confirmed_on",
+        "scope_reference"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "confirmed"
+          ]
+        },
+        "confirmed_on": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "scope_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 240
+        }
+      }
+    }
+  }
+}

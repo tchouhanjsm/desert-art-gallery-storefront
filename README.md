@@ -30,13 +30,13 @@ Open `design/owner-controlled-kit-v2/index.html` and the pages under `design/own
 8. Journal article — `pages/article.html`
 9. Contact / support — `pages/contact.html`
 
-See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for exact sections, slot counts and components. See `docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md` for browser assurance, `docs/25-M2-DECISION-AND-REVIEW-PACK.md` for owner decisions, `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md` for prototype review, `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md` for the owner-approved Revision 2 visual direction (D-017), `docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md` for the approved cohort plan, and `docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md` for private sample evidence validation. `docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md` documents the local/private prototype entry validator and Chromium review runner; M2-A approval is recorded as D-017; private implementation and review may proceed within the local/private boundary.
+See `docs/PAGE-INVENTORY.md` and `docs/COMPONENT-INVENTORY.md` for exact sections, slot counts and components. See `docs/24-STRUCTURAL-KIT-ACCESSIBILITY-REVIEW.md` for browser assurance, `docs/25-M2-DECISION-AND-REVIEW-PACK.md` for owner decisions, `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md` for the owner review sequence and private walkthrough record, `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md` for the owner-approved Revision 2 visual direction (D-017), `docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md` for the approved cohort and fieldwork preflight, and `docs/19-PHOTO-LIBRARY-AUDIT.md` plus `docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md` for private photo/catalogue evidence and readiness reporting. `docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md` is the single local/private prototype runbook for the static validator, responsive browser and five-journey runners; it records the Revision 3 visual/navigation and Revision 4 content-evidence implementation as well. The prototype and review outputs remain outside the public repository. Automated review passed 45/45 route/viewport checks and 25/25 journey/viewport checks; owner visual acceptance remains pending.
 
 ## Approved visual direction and private prototype boundary
 
 The owner approved Revision 2 (“Material in Focus”) under D-017 on 9 November 2026. Exact colour, typography, hierarchy and layout values are recorded in `docs/OWNER-TOKEN-INPUT.md` and `docs/27-M2-A-REFERENCE-LED-VISUAL-PROPOSAL.md`. This approval authorizes those values for the six-area local/private prototype only; `styles/tokens-layout-only.css` remains system-colour/system-font QA fallback only, not a DAG palette or production theme; the D-014 kit remains unchanged.
 
-The owner has accepted a seven-person research cohort (see `docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md`) and the five-journey priority. No fieldwork is authorized. The six private prototype areas and owner walkthrough sequence are in `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md`; M2-E implementation may now proceed outside this public repository, subject to the exact scope and non-transactional restrictions.
+The owner has accepted a seven-person research cohort (see `docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md`) and the five-journey priority. No fieldwork is authorized. The six private prototype areas and owner walkthrough sequence are in `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md`. The Revision 2 prototype is built outside this public repository; its local reports and screenshots must remain private. Owner visual acceptance and human usability acceptance remain pending.
 
 ## Language, content and commerce
 
@@ -59,3 +59,19 @@ POJ Studio is primary for ecommerce/page structure; Macaroni Shoten is secondary
 - `docs/OWNER-TOKEN-INPUT.md` — pending owner values.
 
 Whenever a decision or source changes, reconcile all relevant tracked documents, prompts, code comments, HTML/CSS/JS, workflows and issue templates. Do not claim completion until validation evidence exists.
+
+
+## Photo-audit evidence integrity
+
+The photo audit's JSON summary is bound to the exact CSV inventory with inventory_csv_sha256. The catalogue validator and readiness report reject mismatched CSV/JSON pairs, including pairs whose candidate counts happen to match. Keep both outputs from the same run; see docs/19-PHOTO-LIBRARY-AUDIT.md and docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md.
+
+
+## M2-B private fieldwork authorization preflight
+
+D-016 accepts the seven-person qualitative cohort as a plan only. Fieldwork, outreach, participant data collection, recording, incentives and spending remain unauthorized until all eight written approvals are obtained. To prepare a private owner-authored record, copy templates/m2b-fieldwork-authorization.template.json outside the checkout and follow the existing preflight instructions in docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md.
+
+    python3 scripts/validate_m2b_fieldwork_authorization.py \
+      --record "$HOME/Documents/DAG-fieldwork-authorization/authorization.json" \
+      --output-dir "$HOME/Documents/DAG-fieldwork-authorization-report"
+
+The helper reports missing approvals and details without exposing private evidence references. It does not contact participants, collect data, start recording, engage vendors, spend money, authenticate the author or provide legal/privacy/ethics approval. A complete record is not an instruction to start fieldwork.

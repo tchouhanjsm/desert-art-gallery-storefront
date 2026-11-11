@@ -116,3 +116,42 @@ A checked item records a source/repository fact already verified in this reset. 
 - [ ] Create the six private prototype areas under D-017; keep all assets/reports outside the public repository.
 - [ ] Run the local/private validator and browser review against the actual private prototype.
 - [ ] Complete owner visual walkthrough; customer usability testing remains separately authorized.
+
+
+## PR #16 owner walkthrough record-support overlay — 10 November 2026
+
+- [x] Added a deliberately pending template for the six D-016 review areas and five established viewport widths.
+- [x] Added a local validator for area decisions, five observation dimensions, viewport coverage and route/component-scoped requests.
+- [x] Designed the private readiness summary to exclude free-text observations and requested-change descriptions.
+- [x] Added repository-boundary, symlink, no-overwrite and output-permission protections.
+- [x] Added regression tests for incomplete, accepted, revision, rejected and invalid record states.
+- [ ] Complete the actual owner-led walkthrough and record owner confirmation outside Git.
+- [ ] Supply and validate the genuine 10–20 product/photo evidence sample for M2-C.
+- [ ] Obtain separate authorization before any M2-B participant recruitment or fieldwork.
+
+The checklist items above distinguish preparation tooling from owner action. They do not mark the owner visual-acceptance gate as complete.
+
+
+## PR #16 M2-C photo-audit pair-integrity overlay — 10 November 2026
+
+- [x] The photo-audit JSON summary records the SHA-256 digest of its exact CSV inventory.
+- [x] Catalogue intake rejects missing, malformed or cross-run photo-audit pairs even when candidate counts match.
+- [x] Regression tests cover digest emission, missing digest and same-count report substitution.
+- [ ] Owner supplies the genuine 10–20 product/photo sample and corresponding complete photo-audit outputs.
+- [ ] Owner-led factual/source/rights review and prototype-use evidence remain pending.
+
+The automated digest proves report-file pairing only. It does not prove image rights, product identity, content truth or owner approval.
+
+
+## PR #16 M2-B fieldwork authorization preflight overlay — 10 November 2026
+
+- [x] Added the private eight-item D-016 fieldwork authorization schema and pending template.
+- [x] Added fail-closed validation of the fixed seven-person cohort and all eight approval states.
+- [x] Added required checks for moderator/language, participant information/consent, recording mode, data retention/deletion, vendor/transfer, research spend cap and scheduling.
+- [x] Added private blocker reports that omit evidence references and enforce private-path, symlink and no-overwrite controls.
+- [x] Added regression tests for pending/complete/rejected states and malformed/unsafe authorization records.
+- [ ] Owner genuinely approves all eight fieldwork items in writing and confirms the complete scope.
+- [ ] Obtain separate informed consent from each participant; obtain separate consent before any optional recording.
+- [ ] Only after those gates, separately determine and authorize actual recruitment, contact, interviews, data handling, recording and spend.
+
+The preflight checks the record only; it does not authenticate the owner, verify evidence artifacts, initiate fieldwork or establish legal/privacy/ethics compliance. M2-B fieldwork remains unauthorized.

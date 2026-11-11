@@ -230,3 +230,39 @@ The D-014 owner kit assets, active PAGE-INVENTORY and COMPONENT-INVENTORY are RE
 | AGENTS.md; README.md; docs/23-M2-PROTOTYPE-ENTRY-AND-ACCEPTANCE.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md | UPDATE | Document current readiness tooling and retain explicit M2-A implementation gate. |
 
 The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories and QA-only token fallback are retained unchanged. The M2-A visual proposal is updated to record D-017 approval for private prototype use. The private prototype itself and its assets/reports remain outside the public repository.
+
+
+## M2 owner walkthrough record-support overlay — 10 November 2026
+
+| Path | Disposition | Reconciliation |
+|---|---|---|
+| scripts/validate_owner_walkthrough.py | ADD | Validates a private owner-authored D-016 walkthrough record, six area decisions, five viewport reviews and route/component-scoped revision requests; summary excludes free text. |
+| schemas/owner-walkthrough-record.schema.json | ADD | Documents the exact record shape and closed D-016 area, D-014 route and viewport inventories. |
+| templates/owner-walkthrough-record.template.json | ADD | Blank/pending private template; contains no owner feedback, product information, imagery or local paths. |
+| tests/test_owner_walkthrough.py | ADD | Regression coverage for incomplete/accepted/revision/rejected states, decision gates, malformed records, route scope, symlinks and output privacy. |
+| docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md | UPDATE | Contains the existing six-area walkthrough and the private owner-record command, validation gates and acceptance limitations. |
+| README.md; docs/10-ROADMAP.md; docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md; docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record the private walkthrough helper and keep owner visual acceptance, M2-C evidence and M2-B fieldwork gates explicitly pending. |
+
+
+## M2-C photo-audit integrity overlay — 10 November 2026
+
+| Path | Disposition | Reconciliation |
+|---|---|---|
+| scripts/audit_photo_library.py | UPDATE | Bind the optional JSON summary to the exact CSV inventory bytes with SHA-256. |
+| scripts/validate_catalogue_intake.py | UPDATE | Verify the inventory digest and reject cross-run or malformed report pairs. |
+| tests/test_photo_library_audit.py; tests/test_catalogue_intake.py | UPDATE | Cover digest emission, missing digest and same-count cross-run report substitution. |
+| docs/19-PHOTO-LIBRARY-AUDIT.md; docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md | UPDATE | Document exact-pair integrity, private readiness reporting and report privacy/regeneration rules. |
+| README.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record this implementation and preserve the owner-supplied sample and approval gates. |
+
+
+## M2-B fieldwork authorization-preflight overlay — 10 November 2026
+
+| Path | Disposition | Reconciliation |
+|---|---|---|
+| scripts/validate_m2b_fieldwork_authorization.py | ADD | Fail-closed preflight for the eight written D-016 fieldwork approvals, fixed cohort, supporting details and owner confirmation. It does not initiate research. |
+| schemas/m2b-fieldwork-authorization.schema.json | ADD | Closed schema for the private owner-authored authorization record. |
+| templates/m2b-fieldwork-authorization.template.json | ADD | Deliberately pending record with the fixed approved seven-person cohort and eight pending approvals. |
+| tests/test_m2b_fieldwork_authorization.py | ADD | Regression coverage for all approval gates, data/consent/spend/schedule blockers, invalid records and private-output protections. |
+| docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md | UPDATE | Contains the eight-item private authorization preflight, command, status meanings and fieldwork boundary. |
+| docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md | UPDATE | Link the preflight and keep all eight owner approvals and participant-level consent requirements pending. |
+| README.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record implementation and separate tooling readiness from actual fieldwork authorization. |

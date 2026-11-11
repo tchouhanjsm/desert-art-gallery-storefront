@@ -135,3 +135,66 @@ Validation outcome for this reset is recorded only after the final PR head's Git
 - Updated the M2-A proposal and owner token register with the approved private-prototype baseline; final logo artwork, descriptor wording, verified copy, sample photography and rights evidence remain separately pending.
 - Confirmed that D-017 satisfies D-016's M2-A gate and authorizes only the six-area local/private, non-transactional prototype across the unchanged nine-page D-014 inventory.
 - Reconciled the agent instructions, README, design authority, M2 roadmap, decision pack, walkthrough and prototype validation runbook. D-014 source HTML/CSS/JS and page/component inventories remain unchanged.
+
+
+## 2026-11-09 — M2-E private prototype build and M2-D five-journey review
+- Built the Revision 2 “Material in Focus” prototype outside the public repository, preserving the exact nine D-014 routes and six D-016 review areas.
+- Kept the prototype non-transactional; product image frames and unverified product, maker, contact and editorial facts remain visibly pending.
+- Completed the local responsive review: 45/45 route/viewport checks across 390, 430, 768, 1280 and 1440 CSS-pixel widths; 18 mobile/desktop screenshots retained in the private review package.
+- Added scripts/private_prototype_journey_review.py for the five owner-prioritized M2-D customer journeys, with Playwright checks at all five viewport widths (25/25 passed).
+- Journey checks cover the homepage-to-shop/product path; shop-to-collection/product path; product gallery, accordions and disabled purchase/options; About-to-Makers-to-Journal-to-Article; and product enquiry-to-Contact with disabled fields and no write endpoint.
+- Added privacy-boundary and route/viewport regression tests. Review output remains outside the public repository and private prototype source.
+- Updated the owner walkthrough, private-prototype runbook and roadmap. Owner visual acceptance and human customer usability acceptance remain outstanding.
+
+
+## 2026-11-09 — M2 private prototype implementation revision 3
+- Aligned the private prototype CSS with the exact D-017 palette, type hierarchy, spacing, content width, gutters and image-frame ratios; removed off-palette placeholder treatments, gradients and shadows.
+- Added current-page/current-section semantics to the existing six navigation destinations without changing the route inventory.
+- Refined the existing mobile navigation disclosure: Escape closes and restores focus to the toggle, destination selection closes the menu, and resizing to desktop clears the expanded state.
+- Balanced the third existing homepage category card within the two-column mobile grid; no category, page, section or component was added.
+- Extended the local/private journey runner with a D-017 CSS gate, explicit current-navigation mapping and responsive navigation interaction checks.
+- Latest local/private evidence: 45/45 route/viewport checks, 18 screenshots, 25/25 journey/viewport checks and 125 responsive navigation disclosure checks. Ten Python regression tests pass.
+- The actual prototype, its screenshots and review reports remain outside GitHub. No real product photography or verified catalogue facts were supplied; owner visual acceptance and human usability acceptance remain pending.
+
+
+## 2026-11-09 — M2 private prototype implementation revision 4
+- Differentiated the 34 existing image-frame slots by content evidence role across the nine routes; every visible and accessible label states that owner-approved source/photo/product mapping is pending.
+- Converted the four Product Detail fact rows to semantic description-list pairs without adding or fabricating product details; price/currency remain pending.
+- Upgraded the existing Collection, Product Detail and Article breadcrumbs to labelled navigation landmarks with the current page identified.
+- Clarified Article introduction, publication date, authorship and source credits as pending owner verification.
+- Improved narrow-screen wrapping for product-fact label/value pairs.
+- Local private QA passed 45/45 route/viewport checks at 390/430/768/1280/1440px, 18 screenshots, zero horizontal overflow, 34/34 image slots, three breadcrumb landmarks and unchanged disabled controls.
+- Extended the public journey runner to validate route-specific image evidence labels, fixed slot counts, breadcrumb semantics, semantic product facts and pending editorial metadata on every rendered page in the owner journeys.
+- Private prototype content, images and captures remain outside GitHub. Owner visual acceptance and human customer usability acceptance remain pending.
+
+
+## 2026-11-09 — M2-C private catalogue intake readiness report
+- Hardened catalogue/photo-audit input boundaries: reject symlinked source directories and audit report files; require photo-audit traversal error count zero; reject Boolean-as-integer candidate counts; require recognized image formats and valid lowercase SHA-256 digests on audit rows marked ok.
+- Added scripts/build_catalogue_readiness_report.py. It reuses the existing CSV and completed photo-audit validators and creates local/private JSON and Markdown readiness reports with aggregate coverage and per-product blockers.
+- The report identifies separate product, fact, source reconciliation, image rights and private prototype-use gates, and confirms products remain draft/in_review. It excludes source titles, descriptions, prices, raw export values and image binaries.
+- Added regression tests for audit integrity weaknesses, symlink handling, successful M2 readiness reporting, underfilled samples, per-product approval blockers, private output paths and no-overwrite behaviour.
+- The report is a private operational aid only. No genuine 10–20 product/photo sample or real catalogue facts/rights evidence were provided; M2-C sample acceptance remains blocked on owner inputs.
+
+
+## 2026-11-10 — M2 owner walkthrough record validation support
+- Added a deliberately pending private JSON template and schema for the six D-016 owner-review areas and five established viewport widths.
+- Added scripts/validate_owner_walkthrough.py to validate the owner-authored record, enforce the existing five observation dimensions, and require route/component-scoped requests for revision/rejection.
+- Added private JSON/Markdown readiness summaries that contain decision and viewport counts only; free-text owner feedback is excluded.
+- Enforced private repository boundaries, symlink rejection, no-overwrite behaviour and owner-only report-file permissions where supported.
+- Added regression coverage for accepted, incomplete, revision, rejection, malformed, wrong-route, symlink and private-output cases.
+- This makes the existing owner review easier to capture and audit; it does not perform the review or claim owner approval. The actual walkthrough, M2-C product/photo evidence and separately authorized research fieldwork remain pending.
+
+
+## 2026-11-10 — M2-C photo-audit pair integrity
+- Bound each photo-audit JSON summary to the exact CSV inventory bytes with inventory_csv_sha256.
+- Updated catalogue intake cross-validation to reject missing, malformed or mismatched CSV/JSON pairs before using photo records.
+- Added regression tests for same-row-count cross-run pairing, missing digests and scanner digest emission.
+- Updated the photo-audit, catalogue-intake, readiness and roadmap guidance. Existing image files and private catalogue/report data remain untouched.
+
+
+## 2026-11-10 — M2-B private fieldwork authorization preflight
+- Added a closed schema and deliberately pending private authorization template for the eight separate D-016 fieldwork approvals.
+- Added a fail-closed validator that preserves the approved seven-person cohort and checks approval dates/evidence references plus moderator/language, consent/recording, data-handling, vendor/transfer, research-budget and scheduling details.
+- Added private JSON/Markdown blocker reports that omit evidence references and setup details; enforce repository/record-folder boundaries, symlink rejection and no-overwrite behavior.
+- Added regression coverage for every approval gate, cohort integrity, consent/recording, retention/deletion, transfers/vendors, budget, schedule, malformed records and private output boundaries.
+- Documented the helper in the research plan, roadmap, README and reconciliation records. The template remains pending; no recruitment, participant contact/data, recording, vendor engagement or spend was authorized or performed.

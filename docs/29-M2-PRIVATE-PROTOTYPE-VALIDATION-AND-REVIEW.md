@@ -1,8 +1,8 @@
 # M2 — Private Prototype Entry Gate and Local Review Pipeline
 
-**Status:** M2-A approval recorded under D-017; actual six-area private prototype implementation is authorized. Validation tooling remains mandatory before browser review.  
+**Status:** Revision 4 private prototype built outside the public repository; D-017, responsive, journey, content-evidence and semantic checks passed. Owner visual acceptance remains pending.  
 **Authority:** D-014, D-016 and the unchanged page/component inventories.  
-**Scope:** Local/private validation and review only. This document does not approve a visual identity or start prototype styling.
+**Scope:** Local/private prototype validation and owner-review preparation only. D-017 approves the Revision 2 visual values for this private prototype; production styling and public deployment remain unauthorized.
 
 ## 1. Why this phase exists
 
@@ -21,7 +21,7 @@ This phase builds the technical entry gate and local review pipeline in the publ
 
 ## 2. Mandatory entry conditions
 
-Before a branded private prototype can be built:
+Before accepting the private prototype for owner review:
 
 1. The owner explicitly approves the M2-A proposal or records exact revisions in `docs/DECISIONS.md`.
 2. The approval decision has a numbered decision reference and names the M2-A visual proposal.
@@ -77,7 +77,7 @@ The root must be a real directory outside the public repository. The validator c
 - No inline event-handler attributes, `ping` beacons, form override attributes, service-worker/worker registration or cross-context messaging APIs.
 - Inline SVG image/symbol references are checked for local-only paths; image-type submit controls are rejected.
 
-The command passes its owner-approval gate under D-017 when the manifest carries the exact approved proposal SHA-256 and the completed private prototype/asset ledger satisfies all other checks. It does not create test products, images or example customer content.
+The private prototype manifest binds to D-017 and the approved proposal SHA-256. The validator must pass before responsive or journey browser reviews. It does not create test products, images or example customer content.
 
 ## 5. Local Chromium review command
 
@@ -102,7 +102,29 @@ The runner also requires a viewport meta tag and records browser console errors,
 
 The output directory must be outside both the public repository and the prototype source directory. It is not uploaded to GitHub Actions, committed or shared by this tooling. Do not attach private screenshots, photos or source data to a public PR.
 
-## 6. What this does not certify
+## 6. Five-journey browser review
+
+Run the five owner-approved journeys after the static manifest validator passes:
+
+```bash
+python3 scripts/private_prototype_journey_review.py \\
+  --prototype-root "$HOME/Documents/DAG-private-prototype" \\
+  --output-dir "$HOME/Documents/DAG-private-prototype-journey-review"
+```
+
+The runner checks these five journeys at 390, 430, 768, 1280 and 1440 CSS-pixel widths (25 journey/viewport combinations):
+
+1. Discover DAG: Homepage → Shop → Product Detail. Checks the Jaisalmer identity cue, three existing category slots and four curated product slots.
+2. Browse: Shop → Collection → Product Detail. Checks that Filter and Sort remain disabled on both catalogue routes.
+3. Evaluate: Product Detail. Checks the three existing thumbnail frames, four native information accordions, and disabled Options/Purchase controls.
+4. Makers and stories: About → Makers → Journal → Article. Checks the two About editorial splits, maker profile layout, six Journal story slots and article body.
+5. Contact: Product Detail → Contact. Checks the gallery information panel, four still-pending contact facts and disabled enquiry fields/submit control with no write endpoint.
+
+The runner uses Playwright and in-memory rendering of the exact local HTML/CSS/JS. It intercepts anchor clicks, resolves relative destinations with the browser URL algorithm, and renders the selected route from the private root. This avoids browser policies that block local HTTP/file navigation; it does not claim to test a hosted server. External assets are not loaded; the static validator rejects external resources before the journey run. JSON and Markdown summaries are written outside both the public repository and the prototype source directory.
+
+The 9-page responsive review and the five-journey review are separate: the first produces 45 route/viewport checks and 18 screenshots; the second produces 25 journey/viewport checks. Both are local/private. Do not upload private prototype files, screenshots or review outputs to GitHub.
+
+## 7. What this does not certify
 
 The source-level JavaScript checks are conservative pattern checks, not a formal proof that arbitrary scripts are harmless. Browser network isolation provides a second boundary for local review, but neither tool makes untrusted prototype code safe to execute.
 
@@ -115,16 +137,40 @@ A passing result is static and automated engineering evidence only. It does not 
 
 The owner walkthrough in `docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md` remains the visual acceptance path. Participant research requires its own separate fieldwork authorization as recorded in D-016 and `docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md`.
 
-## 7. Current gate status
+## 8. Current gate status
 
 - M2-A: Revision 2 visual direction approved under D-017; private prototype implementation authorized.
 - M2-B: seven-person cohort approved as a plan; fieldwork/recruitment/privacy/cost authorization pending.
 - M2-C: placeholder approach approved; genuine 10–20 product/photo sample and verified facts pending.
-- M2-D: journey priority approved; automation passed; owner walkthrough and human usability acceptance pending.
-- M2-E: six-area local/private prototype implementation authorized; actual prototype and browser-review evidence remain to be delivered.
+- M2-D: five journeys automated at five widths; 25/25 checks passed; owner walkthrough and human usability acceptance pending.
+- M2-E: six-area local/private prototype built; 45/45 responsive checks and 25/25 journey checks passed; owner visual acceptance pending.
 
-The validator and browser runner are readiness and acceptance gates for the actual private prototype. The D-014 kit, page inventory, component inventory and QA-only token file remain unchanged.
+The validator and browser runners are mandatory acceptance gates for the private prototype; the owner walkthrough remains the visual acceptance step. The D-014 kit, page inventory, component inventory and QA-only token file remain unchanged.
 
-## 8. PR #14 assurance-hardening validation
+## 9. PR #14 assurance-hardening validation
 
-The expanded continuation hardening, including inline SVG resource and image-submit control checks, passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) at head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`: repository foundation/source integrity, M2 owner-gate consistency, kit accessibility, documentation consistency, active Markdown links and **136/136 Python tests** passed. The local private Chromium review was not executed because no M2-A-approved private prototype exists. This is an intentional privacy/approval boundary, not a skipped public-site browser check.
+The expanded continuation hardening, including inline SVG resource and image-submit control checks, passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) at head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`: repository foundation/source integrity, M2 owner-gate consistency, kit accessibility, documentation consistency, active Markdown links and **136/136 Python tests** passed. At the time of PR #14, the private Chromium review was not executed because no M2-A-approved private prototype existed. That historical gate is now satisfied under D-017; the subsequent private review evidence is recorded in docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md.
+
+
+## 10. Private prototype refinements — Revisions 3 and 4
+
+### Revision 3 — D-017 visual system and navigation
+
+The private prototype was aligned to the approved D-017 baseline without changing the D-014 routes, sections or components:
+- Applied the six approved colour roles, Source Serif 4 / Inter stacks, approved type hierarchy, spacing scale, 1440px content width, desktop/mobile gutters, square-edged cards and 16:9 / 4:5 / 1:1 image frames. Removed off-palette treatments, gradients and shadows.
+- Added current-page/current-section semantics to the six existing navigation destinations across all nine routes.
+- Improved the existing mobile disclosure: Escape closes and restores focus to the toggle, selecting a link closes it, and resizing to desktop clears the expanded state.
+- Balanced the third existing homepage category card within the existing two-column mobile grid.
+
+### Revision 4 — Content evidence and semantics
+
+The local private prototype has been refined without adding/removing any D-014 route or component:
+- Every existing image frame has a visible label and matching accessible name describing the evidence role expected in that slot; each remains explicitly illustrative and pending.
+- Exact image slot counts are checked for all nine pages (11, 6, 3, 4, 2, 1, 6, 1, 0).
+- The four Product Detail facts use semantic dl/dt/dd markup and retain pending owner-verification values.
+- The existing breadcrumbs on Collection, Product Detail and Article use a named navigation landmark and one current-page item.
+- Article introduction, publication date, authorship and source credits remain explicitly pending.
+- Mobile product-fact label/value rows are checked at all five review widths.
+
+The journey runner validates these conditions at every rendered start/destination page in addition to the D-017 visual and navigation gates. The browser review also confirms zero horizontal overflow across 45 route/viewport combinations. Revision 4's actual private HTML/CSS/JS, screenshots and reports remain outside GitHub.
+

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import struct
 import sys
@@ -103,6 +104,10 @@ class PhotoLibraryAuditTests(unittest.TestCase):
             self.assertEqual(len(rows), 1)
             self.assertEqual(rows[0]["width_px"], "1200")
             self.assertTrue(summary["read_only"])
+            self.assertEqual(
+                summary["inventory_csv_sha256"],
+                hashlib.sha256(csv_out.read_bytes()).hexdigest(),
+            )
 
     def test_skips_symlinked_files_and_directories(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -140,6 +145,96 @@ class PhotoLibraryAuditTests(unittest.TestCase):
             self.assertEqual(main([str(root), "--csv", str(new_csv), "--json", str(existing_json)]), 2)
             self.assertFalse(new_csv.exists())
             self.assertEqual(existing_json.read_text(encoding="utf-8"), "preserve this report")
+
+    def test_rejects_symlinked_report_file_and_parent_paths(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            root = base / "photos"
+            root.mkdir()
+            (root / "one.png").write_bytes(png_bytes(1200, 800))
+            reports = base / "reports"
+            reports.mkdir()
+            external = base / "external"
+            external.mkdir()
+
+            leaf_link = reports / "linked.csv"
+            try:
+                leaf_link.symlink_to(external / "not-created.csv")
+            except (OSError, NotImplementedError):
+                self.skipTest("file symlinks are unavailable on this runner")
+            self.assertEqual(main([str(root), "--csv", str(leaf_link)]), 2)
+            self.assertFalse((external / "not-created.csv").exists())
+
+            parent_link = base / "reports-link"
+            parent_link.symlink_to(external, target_is_directory=True)
+            self.assertEqual(main([str(root), "--csv", str(parent_link / "audit.csv")]), 2)
+            self.assertFalse((external / "audit.csv").exists())
+
+    def test_report_paths_inside_repository_are_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "photos"
+            root.mkdir()
+            output = ROOT / "photo-audit-private-report-must-not-exist.csv"
+            self.assertEqual(main([str(root), "--csv", str(output)]), 2)
+            self.assertFalse(output.exists())
+
+    def test_existing_report_directory_is_tightened_to_owner_only(self):
+        import os
+        import stat
+
+        if os.name != "posix":
+            self.skipTest("POSIX directory permission bits are not available")
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            root = base / "photos"
+            root.mkdir()
+            (root / "one.png").write_bytes(png_bytes(1200, 800))
+            reports = base / "reports"
+            reports.mkdir(mode=0o755)
+            reports.chmod(0o755)
+            csv_out = reports / "audit.csv"
+            self.assertEqual(main([str(root), "--csv", str(csv_out)]), 0)
+            self.assertEqual(stat.S_IMODE(reports.stat().st_mode) & 0o077, 0)
+            self.assertEqual(stat.S_IMODE(csv_out.stat().st_mode) & 0o077, 0)
+
+    def test_report_files_are_created_with_owner_only_permissions(self):
+        import os
+        import stat
+
+        if os.name != "posix":
+            self.skipTest("POSIX file permission bits are not available")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "photos"
+            root.mkdir()
+            (root / "one.png").write_bytes(png_bytes(1200, 800))
+            csv_out = Path(tmp) / "private-reports" / "audit.csv"
+            json_out = Path(tmp) / "private-reports" / "summary.json"
+            self.assertEqual(main([str(root), "--csv", str(csv_out), "--json", str(json_out)]), 0)
+            self.assertEqual(stat.S_IMODE(csv_out.stat().st_mode) & 0o077, 0)
+            self.assertEqual(stat.S_IMODE(json_out.stat().st_mode) & 0o077, 0)
+
+    def test_failed_json_write_removes_the_unpaired_csv(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "photos"
+            root.mkdir()
+            (root / "one.png").write_bytes(png_bytes(1200, 800))
+            csv_out = Path(tmp) / "reports" / "audit.csv"
+            json_out = Path(tmp) / "reports" / "summary.json"
+            with patch("audit_photo_library.write_json", side_effect=OSError("simulated disk failure")):
+                self.assertEqual(main([str(root), "--csv", str(csv_out), "--json", str(json_out)]), 2)
+            self.assertFalse(csv_out.exists())
+            self.assertFalse(json_out.exists())
+
+    def test_failed_csv_serialization_removes_partial_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "photos"
+            root.mkdir()
+            (root / "one.png").write_bytes(png_bytes(1200, 800))
+            csv_out = Path(tmp) / "reports" / "audit.csv"
+            with patch("audit_photo_library.csv.DictWriter") as writer:
+                writer.return_value.writeheader.side_effect = OSError("simulated write failure")
+                self.assertEqual(main([str(root), "--csv", str(csv_out)]), 2)
+            self.assertFalse(csv_out.exists())
 
     def test_rejects_non_finite_megapixel_thresholds(self):
         with tempfile.TemporaryDirectory() as tmp:
