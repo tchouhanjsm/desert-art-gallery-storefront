@@ -59,7 +59,7 @@ class CatalogueReadinessReportTests(unittest.TestCase):
             output = source / "reports"
             result = build_catalogue_readiness_report(source, output)
             self.assertFalse(result["ok"])
-            self.assertTrue(any("separate from the catalogue source" in item for item in result["errors"]))
+            self.assertTrue(any("outside the catalogue source directory" in item for item in result["errors"]))
             self.assertFalse(output.exists())
 
     def test_report_output_inside_public_repository_is_rejected(self):
@@ -85,6 +85,24 @@ class CatalogueReadinessReportTests(unittest.TestCase):
             self.assertFalse(result["ok"])
             self.assertEqual(json.loads(existing.read_text(encoding="utf-8")), {"owner": "keep"})
             self.assertFalse((output / "catalogue-readiness.md").exists())
+
+    def test_private_readiness_report_files_are_owner_only(self):
+        import os
+        import stat
+
+        if os.name != "posix":
+            self.skipTest("POSIX file permission bits are not available")
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            source = base / "catalogue"
+            output = base / "private-readiness"
+            fixture = CatalogueIntakeTests()
+            fixture.write_m2_sample(source, 10)
+            result = build_catalogue_readiness_report(source, output)
+            self.assertTrue(result["ok"])
+            for filename in ("catalogue-readiness.json", "catalogue-readiness.md"):
+                permissions = stat.S_IMODE((output / filename).stat().st_mode)
+                self.assertEqual(permissions & 0o077, 0, filename)
 
     def test_product_blockers_are_separated_by_approval_boundary(self):
         with tempfile.TemporaryDirectory() as tmp:

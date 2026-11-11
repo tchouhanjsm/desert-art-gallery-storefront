@@ -14,6 +14,11 @@ from pathlib import Path
 from typing import Any
 
 try:
+    from .private_review_output import prepare_private_output_directory, write_private_artifacts
+except ImportError:
+    from private_review_output import prepare_private_output_directory, write_private_artifacts
+
+try:
     from .validate_catalogue_intake import _load_photo_audit, _read_rows, _value, validate_catalogue_directory
 except ImportError:
     from validate_catalogue_intake import _load_photo_audit, _read_rows, _value, validate_catalogue_directory  # type: ignore
@@ -69,8 +74,6 @@ def _safe_paths(directory: Path, output_dir: Path, photo_audit_csv: Path | None,
     output_input = output_dir.expanduser()
     if source_input.is_symlink():
         errors.append("catalogue input directory must not be a symbolic link")
-    if output_input.is_symlink():
-        errors.append("report output directory must not be a symbolic link")
     if errors:
         return source_input, output_input, errors
     try:
@@ -80,16 +83,19 @@ def _safe_paths(directory: Path, output_dir: Path, photo_audit_csv: Path | None,
         source = source_input
     if not errors and not source.is_dir():
         errors.append("catalogue input path is not a directory")
-    try:
-        output = output_input.resolve(strict=False)
-    except (OSError, RuntimeError):
-        errors.append("report output path cannot be resolved")
+
+    output, output_errors = prepare_private_output_directory(
+        output_input,
+        protected_roots=(
+            ("public Git repository", ROOT),
+            ("catalogue source directory", source),
+        ),
+        reserved_paths=(REPORT_JSON, REPORT_MARKDOWN),
+        label="catalogue readiness report",
+    )
+    errors.extend(output_errors)
+    if output is None:
         output = output_input
-    repository = ROOT.resolve()
-    if _overlaps(output, repository):
-        errors.append("readiness reports must remain outside the public Git repository")
-    if _overlaps(output, source):
-        errors.append("readiness reports must remain separate from the catalogue source directory")
     for label, raw_path in (
         ("photo-audit CSV", photo_audit_csv),
         ("photo-audit summary", photo_audit_summary),
@@ -285,23 +291,13 @@ def build_catalogue_readiness_report(
     report["ok"] = not validation_issues
     report["output_files"] = [REPORT_JSON, REPORT_MARKDOWN]
 
-    output.mkdir(parents=True, exist_ok=True)
-    json_path = output / REPORT_JSON
-    markdown_path = output / REPORT_MARKDOWN
-    if json_path.exists() or markdown_path.exists() or json_path.is_symlink() or markdown_path.is_symlink():
-        return {"ok": False, "status": "BLOCKED", "errors": ["readiness report files already exist; choose an empty output directory"]}
+    output.mkdir(parents=True, exist_ok=True, mode=0o700)
     try:
-        with json_path.open("x", encoding="utf-8") as handle:
-            json.dump(report, handle, ensure_ascii=False, indent=2)
-            handle.write("\n")
-        with markdown_path.open("x", encoding="utf-8") as handle:
-            handle.write(_markdown(report))
-    except (OSError, UnicodeError) as exc:
-        for path in (json_path, markdown_path):
-            try:
-                path.unlink(missing_ok=True)
-            except OSError:
-                pass
+        write_private_artifacts(output, {
+            REPORT_JSON: json.dumps(report, ensure_ascii=False, indent=2) + "\n",
+            REPORT_MARKDOWN: _markdown(report),
+        })
+    except (OSError, UnicodeError, ValueError) as exc:
         return {"ok": False, "status": "BLOCKED", "errors": [f"could not write private readiness report ({type(exc).__name__})"]}
     return report
 
