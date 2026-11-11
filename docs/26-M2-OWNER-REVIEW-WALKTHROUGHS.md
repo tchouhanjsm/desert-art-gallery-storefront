@@ -141,4 +141,12 @@ The documented owner-led review is now supported by a local/private record valid
 - Capture the five owner-observation dimensions already required in this walkthrough. Revision/rejection decisions must identify an existing D-014 route and component.
 - Run scripts/validate_owner_walkthrough.py to produce a private readiness summary. The summary intentionally excludes free-text owner notes and requested-change descriptions.
 
-The helper does not conduct the review or authenticate the author. OWNER_VISUAL_ACCEPTED is reported only when the private record states that all six areas were accepted, all 30 area/viewport checks were reviewed and owner confirmation/date were entered. Until the owner completes that local record, visual acceptance remains pending. This helper does not confer research, publication, commerce or production authorization.
+Copy `templates/owner-walkthrough-record.template.json` to a private folder outside the checkout, complete the actual owner review, and run:
+
+```bash
+python3 scripts/validate_owner_walkthrough.py \
+  --record "$HOME/Documents/DAG-owner-walkthrough/owner-walkthrough.json" \
+  --output-dir "$HOME/Documents/DAG-owner-walkthrough/report"
+```
+
+The helper writes a private coverage summary and excludes free-text observations and requested-change descriptions. It refuses unsafe paths and existing report files. The helper does not conduct the review or authenticate the author. OWNER_VISUAL_ACCEPTED is reported only when the private record states that all six areas were accepted, all 30 area/viewport checks were reviewed and owner confirmation/date were entered. Until the owner completes that local record, visual acceptance remains pending. This helper does not confer research, publication, commerce or production authorization.

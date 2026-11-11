@@ -240,7 +240,7 @@ The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories and QA
 | schemas/owner-walkthrough-record.schema.json | ADD | Documents the exact record shape and closed D-016 area, D-014 route and viewport inventories. |
 | templates/owner-walkthrough-record.template.json | ADD | Blank/pending private template; contains no owner feedback, product information, imagery or local paths. |
 | tests/test_owner_walkthrough.py | ADD | Regression coverage for incomplete/accepted/revision/rejected states, decision gates, malformed records, route scope, symlinks and output privacy. |
-| docs/33-M2-OWNER-WALKTHROUGH-RECORD-VALIDATION.md | ADD | Local operating guide and acceptance limitations for the owner walkthrough record helper. |
+| docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md | UPDATE | Contains the existing six-area walkthrough and the private owner-record command, validation gates and acceptance limitations. |
 | README.md; docs/10-ROADMAP.md; docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md; docs/29-M2-PRIVATE-PROTOTYPE-VALIDATION-AND-REVIEW.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record the private walkthrough helper and keep owner visual acceptance, M2-C evidence and M2-B fieldwork gates explicitly pending. |
 
 
@@ -251,7 +251,7 @@ The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories and QA
 | scripts/audit_photo_library.py | UPDATE | Bind the optional JSON summary to the exact CSV inventory bytes with SHA-256. |
 | scripts/validate_catalogue_intake.py | UPDATE | Verify the inventory digest and reject cross-run or malformed report pairs. |
 | tests/test_photo_library_audit.py; tests/test_catalogue_intake.py | UPDATE | Cover digest emission, missing digest and same-count cross-run report substitution. |
-| docs/19-PHOTO-LIBRARY-AUDIT.md; docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md; docs/32-M2-C-PRIVATE-CATALOGUE-READINESS-REPORT.md | UPDATE | Document exact-pair integrity and regeneration rules. |
+| docs/19-PHOTO-LIBRARY-AUDIT.md; docs/20-CATALOGUE-INTAKE-AND-FACT-VERIFICATION.md | UPDATE | Document exact-pair integrity, private readiness reporting and report privacy/regeneration rules. |
 | README.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record this implementation and preserve the owner-supplied sample and approval gates. |
 
 
@@ -263,6 +263,6 @@ The owner-controlled D-014 HTML/CSS/JS assets, page/component inventories and QA
 | schemas/m2b-fieldwork-authorization.schema.json | ADD | Closed schema for the private owner-authored authorization record. |
 | templates/m2b-fieldwork-authorization.template.json | ADD | Deliberately pending record with the fixed approved seven-person cohort and eight pending approvals. |
 | tests/test_m2b_fieldwork_authorization.py | ADD | Regression coverage for all approval gates, data/consent/spend/schedule blockers, invalid records and private-output protections. |
-| docs/35-M2-B-FIELDWORK-AUTHORIZATION-GATE.md | ADD | Private preflight operating guide, status meanings and authorization limitations. |
+| docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md | UPDATE | Contains the eight-item private authorization preflight, command, status meanings and fieldwork boundary. |
 | docs/28-M2-B-RESEARCH-OPERATIONS-PLAN.md | UPDATE | Link the preflight and keep all eight owner approvals and participant-level consent requirements pending. |
 | README.md; docs/10-ROADMAP.md; docs/DOCUMENTATION-CHANGELOG.md; docs/DOCUMENTATION-RECONCILIATION-CHECKLIST.md | UPDATE | Record implementation and separate tooling readiness from actual fieldwork authorization. |

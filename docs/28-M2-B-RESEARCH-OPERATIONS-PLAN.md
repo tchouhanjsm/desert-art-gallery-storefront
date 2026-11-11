@@ -143,8 +143,14 @@ Fieldwork remains blocked until the owner separately approves all of the followi
 
 ## 10. Private authorization-record preflight — PR #16 continuation
 
-The eight-item checklist above now has a private record schema/template and local validator. See docs/35-M2-B-FIELDWORK-AUTHORIZATION-GATE.md.
+The eight-item checklist above now has a private JSON schema/template and local validator. Copy the deliberately pending template outside the checkout and complete it only after the owner has genuinely approved each item:
 
-The validator preserves the approved seven-person cohort, requires each separate owner approval with a date and private evidence reference, and checks the related moderator, language, consent/recording, data-handling, vendor/transfer, research-budget and schedule details. Its generated summary excludes private evidence references. It does not authenticate the author or verify the referenced material.
+    cp templates/m2b-fieldwork-authorization.template.json \
+      "$HOME/Documents/DAG-fieldwork-authorization/authorization.json"
+    python3 scripts/validate_m2b_fieldwork_authorization.py \
+      --record "$HOME/Documents/DAG-fieldwork-authorization/authorization.json" \
+      --output-dir "$HOME/Documents/DAG-fieldwork-authorization-report"
 
-**Current state is unchanged:** the template is pending; there is no fieldwork authorization. Do not recruit, contact, screen, interview, collect or process participant information, record, engage vendors or spend until the owner has genuinely approved all eight items and confirmed the complete scope. Participant-specific consent remains mandatory, with separate explicit consent before optional recording. This tool does not start any activity.
+The validator preserves the approved seven-person cohort, requires each separate owner approval with an actual date and private evidence reference, and checks moderator/language, consent/recording, data-handling, vendor/transfer, research-only budget and schedule details. Its generated summary excludes private evidence references. It does not authenticate the author or verify the referenced material. The template remains pending; a complete record status is not an instruction to begin fieldwork.
+
+**Current state is unchanged:** there is no fieldwork authorization. Do not recruit, contact, screen, interview, collect or process participant information, record, engage vendors or spend until the owner has genuinely approved all eight items and confirmed the complete scope. Participant-specific consent remains mandatory, with separate explicit consent before optional recording. This tool does not start any activity.

@@ -152,7 +152,17 @@ The validator and browser runners are mandatory acceptance gates for the private
 The expanded continuation hardening, including inline SVG resource and image-submit control checks, passed [DAG Project Quality run #143](https://github.com/tchouhanjsm/desert-art-gallery-storefront/actions/runs/42511940719) at head `ac0d7474401c77c1eb8a805f65f8fac1e344624f`: repository foundation/source integrity, M2 owner-gate consistency, kit accessibility, documentation consistency, active Markdown links and **136/136 Python tests** passed. At the time of PR #14, the private Chromium review was not executed because no M2-A-approved private prototype existed. That historical gate is now satisfied under D-017; the subsequent private review evidence is recorded in docs/26-M2-OWNER-REVIEW-WALKTHROUGHS.md.
 
 
-## 10. Revision 4 content-evidence and semantic checks
+## 10. Private prototype refinements — Revisions 3 and 4
+
+### Revision 3 — D-017 visual system and navigation
+
+The private prototype was aligned to the approved D-017 baseline without changing the D-014 routes, sections or components:
+- Applied the six approved colour roles, Source Serif 4 / Inter stacks, approved type hierarchy, spacing scale, 1440px content width, desktop/mobile gutters, square-edged cards and 16:9 / 4:5 / 1:1 image frames. Removed off-palette treatments, gradients and shadows.
+- Added current-page/current-section semantics to the six existing navigation destinations across all nine routes.
+- Improved the existing mobile disclosure: Escape closes and restores focus to the toggle, selecting a link closes it, and resizing to desktop clears the expanded state.
+- Balanced the third existing homepage category card within the existing two-column mobile grid.
+
+### Revision 4 — Content evidence and semantics
 
 The local private prototype has been refined without adding/removing any D-014 route or component:
 - Every existing image frame has a visible label and matching accessible name describing the evidence role expected in that slot; each remains explicitly illustrative and pending.
@@ -164,11 +174,3 @@ The local private prototype has been refined without adding/removing any D-014 r
 
 The journey runner validates these conditions at every rendered start/destination page in addition to the D-017 visual and navigation gates. The browser review also confirms zero horizontal overflow across 45 route/viewport combinations. Revision 4's actual private HTML/CSS/JS, screenshots and reports remain outside GitHub.
 
-
-## 11. Owner walkthrough record readiness
-
-PR #16 adds scripts/validate_owner_walkthrough.py, schemas/owner-walkthrough-record.schema.json and a deliberately pending templates/owner-walkthrough-record.template.json.
-
-The validator checks the existing D-016 six-area owner walkthrough—not a new customer-facing interaction. A decided area must include observations for the five existing review dimensions and all five established viewport widths (390, 430, 768, 1280 and 1440). request_revision and reject require a route/component-scoped request against one of the nine D-014 routes. Owner confirmation is accepted only with all six area decisions set to accept and 30/30 reviewed area/viewport checks.
-
-The report stays local/private, omits free-text observations and request descriptions, refuses symlinked input/output directories and repository-contained input/output paths, and never overwrites existing report files. It does not authenticate the reviewer, inspect screenshots, validate factual truth or grant approval. Owner visual acceptance remains pending until the owner completes the actual local walkthrough and confirms the record.

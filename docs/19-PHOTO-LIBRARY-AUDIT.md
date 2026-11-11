@@ -8,7 +8,7 @@ The owner has approximately 3,000 original photographs for roughly 300 products.
 
 ## Safety contract
 
-The scanner is read-only with respect to source media. It does not rename, edit, rotate, re-encode, compress, move, upload or delete images. It writes only the CSV/JSON reports at the destination paths provided. Existing report files are never overwritten; choose fresh output paths for each run. Keep reports outside the source photo folder and outside Git unless explicitly sanitized and approved; file names and relative folder names may disclose internal information.
+The scanner is read-only with respect to source media. It does not rename, edit, rotate, re-encode, compress, move, upload or delete images. It writes only the CSV/JSON reports at the destination paths provided. Existing report files are never overwritten; choose fresh output paths for each run. Report destinations reject symbolic-link path components and locations inside the public repository or source folder. Reports are created exclusively with owner-only file permissions; if a requested CSV/JSON pair cannot be completed, any partial member of that pair is removed. Keep reports outside the source photo folder and outside Git unless explicitly sanitized and approved; file names and relative folder names may disclose internal information.
 
 It does not extract EXIF/GPS metadata, infer product identities, match filenames to SKUs, assess image aesthetics, detect near-duplicates, decide which image is best or publish anything. Exact duplicates mean byte-identical SHA-256 matches only.
 
