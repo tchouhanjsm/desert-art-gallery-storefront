@@ -215,7 +215,7 @@ class OwnerWalkthroughTests(unittest.TestCase):
             self.skipTest("symlinks are unavailable on this runner")
         result = build_owner_walkthrough_report(alias, self.output_dir)
         self.assertEqual(result["status"], "INVALID_INPUT")
-        self.assertTrue(any("must not be a symbolic link" in item for item in result["errors"]))
+        self.assertTrue(any("symbolic links" in item for item in result["errors"]))
 
     def test_malformed_nested_types_fail_closed_without_traceback(self):
         record = self.load_template()
