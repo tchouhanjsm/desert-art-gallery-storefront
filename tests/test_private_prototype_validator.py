@@ -417,6 +417,31 @@ class PrivatePrototypeValidatorTests(unittest.TestCase):
         self.assertTrue(any("does not exist or cannot be resolved" in error for error in result["errors"]))
         self.assertFalse(output.exists())
 
+    def test_browser_runner_refuses_to_overwrite_existing_review_reports(self):
+        output = self.base / "owner-review-output"
+        output.mkdir()
+        existing = output / "private-prototype-review.json"
+        existing.write_text('{"owner":"keep"}', encoding="utf-8")
+        result = run_private_review(self.proto, output)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("refusing to overwrite" in error for error in result["errors"]))
+        self.assertEqual(existing.read_text(encoding="utf-8"), '{"owner":"keep"}')
+        self.assertFalse((output / "screenshots").exists())
+
+    def test_browser_runner_rejects_a_symlinked_screenshot_directory(self):
+        output = self.base / "owner-review-output"
+        output.mkdir()
+        target = self.base / "existing-screenshots"
+        target.mkdir()
+        try:
+            (output / "screenshots").symlink_to(target, target_is_directory=True)
+        except (OSError, NotImplementedError):
+            self.skipTest("directory symlinks are unavailable on this runner")
+        result = run_private_review(self.proto, output)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any("screenshots" in error and "refusing to overwrite" in error for error in result["errors"]))
+        self.assertEqual(list(target.iterdir()), [])
+
 
     def test_inline_svg_external_image_and_symbol_references_are_rejected(self):
         (self.proto / "pages/about.html").write_text(

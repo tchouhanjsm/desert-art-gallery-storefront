@@ -19,8 +19,10 @@ from typing import Iterator
 from urllib.parse import urlsplit
 
 try:
+    from .private_review_output import prepare_private_output_directory, write_private_artifacts, write_private_bytes
     from .validate_private_prototype import ROOT, ROUTES, validate_private_prototype
 except ImportError:  # direct script execution
+    from private_review_output import prepare_private_output_directory, write_private_artifacts, write_private_bytes
     from validate_private_prototype import ROOT, ROUTES, validate_private_prototype
 
 VIEWPORT_WIDTHS = (390, 430, 768, 1280, 1440)
@@ -49,14 +51,6 @@ def serve_private_root(root: Path) -> Iterator[str]:
         thread.join(timeout=3)
 
 
-def _within(path: Path, parent: Path) -> bool:
-    try:
-        path.relative_to(parent)
-        return True
-    except ValueError:
-        return False
-
-
 def _check(condition: bool, message: str, errors: list[str]) -> None:
     if not condition:
         errors.append(message)
@@ -70,12 +64,14 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
         root = prototype_path.resolve(strict=True)
     except (OSError, RuntimeError):
         return {"ok": False, "errors": ["prototype root does not exist or cannot be resolved"], "checks": 0}
-    output = output_dir.expanduser().resolve()
-    repo = ROOT.resolve()
-    if _within(output, repo):
-        return {"ok": False, "errors": ["review output directory must be outside the public repository"], "checks": 0}
-    if _within(output, root):
-        return {"ok": False, "errors": ["review output directory must be outside the prototype source directory"], "checks": 0}
+    output, output_errors = prepare_private_output_directory(
+        output_dir,
+        protected_roots=(ROOT, root),
+        reserved_paths=("private-prototype-review.json", "private-prototype-review.md", "screenshots"),
+        label="private browser review",
+    )
+    if output_errors or output is None:
+        return {"ok": False, "errors": output_errors or ["private browser review output path is invalid"], "checks": 0}
 
     validation = validate_private_prototype(prototype_path, ROOT)
     if not validation["ok"]:
@@ -90,9 +86,9 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
     except ImportError:
         return {"ok": False, "errors": ["Playwright is not installed; install requirements-browser.txt"], "checks": 0}
 
-    output.mkdir(parents=True, exist_ok=True)
+    output.mkdir(parents=True, exist_ok=True, mode=0o700)
     screenshots = output / "screenshots"
-    screenshots.mkdir(parents=True, exist_ok=True)
+    screenshots.mkdir(mode=0o700, exist_ok=False)
     checks: list[dict[str, object]] = []
     failures: list[str] = []
     blocked_external: set[str] = set()
@@ -216,7 +212,7 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
                         if width in SCREENSHOT_WIDTHS:
                             screenshot = screenshots / f"{route.replace('/', '-')}-{width}.png"
                             screenshot.parent.mkdir(parents=True, exist_ok=True)
-                            page.screenshot(path=str(screenshot), full_page=True)
+                            write_private_bytes(screenshot, page.screenshot(full_page=True))
                         check = {
                             "route": route,
                             "viewport_width": width,
@@ -258,9 +254,6 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
         "errors": failures,
         "results": checks,
     }
-    (output / "private-prototype-review.json").write_text(
-        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
     rows = [
         "# DAG Private Prototype Browser Review",
         "",
@@ -280,7 +273,10 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
     ]
     if failures:
         rows.extend(["", "## Findings", *[f"- {error}" for error in failures]])
-    (output / "private-prototype-review.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
+    write_private_artifacts(output, {
+        "private-prototype-review.json": json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+        "private-prototype-review.md": "\n".join(rows) + "\n",
+    })
     return result
 
 

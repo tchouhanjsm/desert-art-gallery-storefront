@@ -156,6 +156,39 @@ class PrivatePrototypeJourneyReviewTests(unittest.TestCase):
         self.assertEqual(result["journeys_checked"], 0)
         self.assertIn("widths >= 320px", result["errors"][0])
 
+    def test_journey_review_refuses_to_overwrite_existing_private_reports(self):
+        with tempfile.TemporaryDirectory(prefix="dag-journey-output-") as tmp:
+            base = Path(tmp)
+            prototype = base / "prototype"
+            prototype.mkdir()
+            output = base / "review"
+            output.mkdir()
+            existing = output / "private-prototype-journeys.json"
+            existing.write_text('{"owner":"keep"}', encoding="utf-8")
+            result = run_journey_review(prototype, output)
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["journeys_checked"], 0)
+        self.assertTrue(any("refusing to overwrite" in error for error in result["errors"]))
+        self.assertEqual(existing.read_text(encoding="utf-8"), '{"owner":"keep"}')
+
+    def test_journey_review_rejects_symlinked_output_directory(self):
+        with tempfile.TemporaryDirectory(prefix="dag-journey-output-link-") as tmp:
+            base = Path(tmp)
+            prototype = base / "prototype"
+            prototype.mkdir()
+            target = base / "target"
+            target.mkdir()
+            link = base / "review-link"
+            try:
+                link.symlink_to(target, target_is_directory=True)
+            except (OSError, NotImplementedError):
+                self.skipTest("directory symlinks are unavailable on this runner")
+            result = run_journey_review(prototype, link)
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["journeys_checked"], 0)
+        self.assertTrue(any("symbolic link" in error for error in result["errors"]))
+        self.assertEqual(list(target.iterdir()), [])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -17,8 +17,10 @@ from typing import Any
 from urllib.parse import unquote, urlsplit
 
 try:
+    from .private_review_output import prepare_private_output_directory, write_private_artifacts
     from .validate_private_prototype import ROOT, validate_private_prototype
 except ImportError:  # direct script execution
+    from private_review_output import prepare_private_output_directory, write_private_artifacts
     from validate_private_prototype import ROOT, validate_private_prototype
 
 VIEWPORT_WIDTHS = (390, 430, 768, 1280, 1440)
@@ -572,14 +574,16 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
     except (OSError, RuntimeError):
         return {"ok": False, "errors": ["prototype root does not exist or cannot be resolved"], "journeys_checked": 0}
 
-    output = output_dir.expanduser().resolve()
-    repo = ROOT.resolve()
-    if _inside(output, repo):
-        return {"ok": False, "errors": ["journey review output must be outside the public repository"], "journeys_checked": 0}
-    if _inside(output, root):
-        return {"ok": False, "errors": ["journey review output must be outside the prototype source directory"], "journeys_checked": 0}
     if not widths or any(width < 320 for width in widths):
         return {"ok": False, "errors": ["review widths must be a non-empty tuple of widths >= 320px"], "journeys_checked": 0}
+    output, output_errors = prepare_private_output_directory(
+        output_dir,
+        protected_roots=(ROOT, root),
+        reserved_paths=("private-prototype-journeys.json", "private-prototype-journeys.md"),
+        label="private journey review",
+    )
+    if output_errors or output is None:
+        return {"ok": False, "errors": output_errors or ["private journey review output path is invalid"], "journeys_checked": 0}
 
     validation = validate_private_prototype(prototype_path, ROOT)
     if not validation["ok"]:
@@ -611,7 +615,7 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
     except ImportError:
         return {"ok": False, "errors": ["Playwright is not installed; install requirements-browser.txt"], "journeys_checked": 0}
 
-    output.mkdir(parents=True, exist_ok=True)
+    output.mkdir(parents=True, exist_ok=True, mode=0o700)
     results: list[dict[str, Any]] = []
     fatal: list[str] = []
     try:
@@ -657,9 +661,6 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
         "errors": fatal,
         "results": results,
     }
-    (output / "private-prototype-journeys.json").write_text(
-        json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
     rows = [
         "# DAG Private Prototype — Five-Journey Review",
         "",
@@ -681,7 +682,10 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
     ]
     if fatal:
         rows.extend(["", "## Findings", *[f"- {error}" for error in fatal]])
-    (output / "private-prototype-journeys.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
+    write_private_artifacts(output, {
+        "private-prototype-journeys.json": json.dumps(summary, ensure_ascii=False, indent=2) + "\n",
+        "private-prototype-journeys.md": "\n".join(rows) + "\n",
+    })
     return summary
 
 
