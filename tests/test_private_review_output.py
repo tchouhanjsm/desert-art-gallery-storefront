@@ -19,7 +19,7 @@ class PrivateReviewOutputTests(unittest.TestCase):
             root.mkdir()
             output, errors = prepare_private_output_directory(
                 root / "reports",
-                protected_roots=(root,),
+                protected_roots=(("prototype source directory", root),),
                 reserved_paths=("report.json",),
                 label="private review",
             )

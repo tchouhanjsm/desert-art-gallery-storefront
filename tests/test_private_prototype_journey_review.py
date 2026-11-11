@@ -166,10 +166,10 @@ class PrivatePrototypeJourneyReviewTests(unittest.TestCase):
             existing = output / "private-prototype-journeys.json"
             existing.write_text('{"owner":"keep"}', encoding="utf-8")
             result = run_journey_review(prototype, output)
-        self.assertFalse(result["ok"])
-        self.assertEqual(result["journeys_checked"], 0)
-        self.assertTrue(any("refusing to overwrite" in error for error in result["errors"]))
-        self.assertEqual(existing.read_text(encoding="utf-8"), '{"owner":"keep"}')
+            self.assertFalse(result["ok"])
+            self.assertEqual(result["journeys_checked"], 0)
+            self.assertTrue(any("refusing to overwrite" in error for error in result["errors"]))
+            self.assertEqual(existing.read_text(encoding="utf-8"), '{"owner":"keep"}')
 
     def test_journey_review_rejects_symlinked_output_directory(self):
         with tempfile.TemporaryDirectory(prefix="dag-journey-output-link-") as tmp:
@@ -184,10 +184,10 @@ class PrivatePrototypeJourneyReviewTests(unittest.TestCase):
             except (OSError, NotImplementedError):
                 self.skipTest("directory symlinks are unavailable on this runner")
             result = run_journey_review(prototype, link)
-        self.assertFalse(result["ok"])
-        self.assertEqual(result["journeys_checked"], 0)
-        self.assertTrue(any("symbolic link" in error for error in result["errors"]))
-        self.assertEqual(list(target.iterdir()), [])
+            self.assertFalse(result["ok"])
+            self.assertEqual(result["journeys_checked"], 0)
+            self.assertTrue(any("symbolic link" in error for error in result["errors"]))
+            self.assertEqual(list(target.iterdir()), [])
 
 
 if __name__ == "__main__":

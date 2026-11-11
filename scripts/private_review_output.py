@@ -14,7 +14,7 @@ def _overlaps(path: Path, protected: Path) -> bool:
 def prepare_private_output_directory(
     output_dir: Path,
     *,
-    protected_roots: Sequence[Path],
+    protected_roots: Sequence[tuple[str, Path]],
     reserved_paths: Sequence[str],
     label: str,
 ) -> tuple[Path | None, list[str]]:
@@ -28,13 +28,13 @@ def prepare_private_output_directory(
     except (OSError, RuntimeError):
         return None, [f"{label} output directory cannot be resolved"]
 
-    for protected_root in protected_roots:
+    for protected_label, protected_root in protected_roots:
         try:
             protected = Path(protected_root).expanduser().resolve(strict=False)
         except (OSError, RuntimeError):
             return None, [f"{label} protected source path cannot be resolved"]
         if _overlaps(output, protected):
-            return None, [f"{label} output must remain separate from {protected}"]
+            return None, [f"{label} output directory must be outside the {protected_label}"]
 
     if output.exists() and not output.is_dir():
         return None, [f"{label} output path must be a directory"]

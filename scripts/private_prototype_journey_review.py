@@ -578,7 +578,7 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
         return {"ok": False, "errors": ["review widths must be a non-empty tuple of widths >= 320px"], "journeys_checked": 0}
     output, output_errors = prepare_private_output_directory(
         output_dir,
-        protected_roots=(ROOT, root),
+        protected_roots=(("public repository", ROOT), ("prototype source directory", root)),
         reserved_paths=("private-prototype-journeys.json", "private-prototype-journeys.md"),
         label="private journey review",
     )

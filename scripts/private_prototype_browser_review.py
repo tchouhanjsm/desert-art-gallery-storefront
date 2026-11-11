@@ -66,7 +66,7 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
         return {"ok": False, "errors": ["prototype root does not exist or cannot be resolved"], "checks": 0}
     output, output_errors = prepare_private_output_directory(
         output_dir,
-        protected_roots=(ROOT, root),
+        protected_roots=(("public repository", ROOT), ("prototype source directory", root)),
         reserved_paths=("private-prototype-review.json", "private-prototype-review.md", "screenshots"),
         label="private browser review",
     )
