@@ -113,7 +113,7 @@ def _safe_paths(directory: Path, output_dir: Path, photo_audit_csv: Path | None,
             continue
         if not resolved.is_file():
             errors.append(f"{label} is not a regular file")
-        if _overlaps(resolved, repository):
+        if _overlaps(resolved, ROOT.resolve()):
             errors.append(f"{label} must remain outside the public Git repository")
         if _overlaps(resolved, source):
             errors.append(f"{label} must remain outside the catalogue source directory")
