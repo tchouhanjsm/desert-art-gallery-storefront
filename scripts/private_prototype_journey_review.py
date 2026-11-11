@@ -17,10 +17,10 @@ from typing import Any
 from urllib.parse import unquote, urlsplit
 
 try:
-    from .private_review_output import prepare_private_output_directory, write_private_artifacts
+    from .private_review_output import ensure_private_directory, prepare_private_output_directory, write_private_artifacts
     from .validate_private_prototype import ROOT, validate_private_prototype
 except ImportError:  # direct script execution
-    from private_review_output import prepare_private_output_directory, write_private_artifacts
+    from private_review_output import ensure_private_directory, prepare_private_output_directory, write_private_artifacts
     from validate_private_prototype import ROOT, validate_private_prototype
 
 VIEWPORT_WIDTHS = (390, 430, 768, 1280, 1440)
@@ -615,7 +615,7 @@ def run_journey_review(prototype_root: Path, output_dir: Path, widths: tuple[int
     except ImportError:
         return {"ok": False, "errors": ["Playwright is not installed; install requirements-browser.txt"], "journeys_checked": 0}
 
-    output.mkdir(parents=True, exist_ok=True, mode=0o700)
+    ensure_private_directory(output)
     results: list[dict[str, Any]] = []
     fatal: list[str] = []
     try:

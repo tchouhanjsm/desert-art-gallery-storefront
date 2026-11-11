@@ -19,10 +19,10 @@ from typing import Iterator
 from urllib.parse import urlsplit
 
 try:
-    from .private_review_output import prepare_private_output_directory, write_private_artifacts, write_private_bytes
+    from .private_review_output import ensure_private_directory, prepare_private_output_directory, write_private_artifacts, write_private_bytes
     from .validate_private_prototype import ROOT, ROUTES, validate_private_prototype
 except ImportError:  # direct script execution
-    from private_review_output import prepare_private_output_directory, write_private_artifacts, write_private_bytes
+    from private_review_output import ensure_private_directory, prepare_private_output_directory, write_private_artifacts, write_private_bytes
     from validate_private_prototype import ROOT, ROUTES, validate_private_prototype
 
 VIEWPORT_WIDTHS = (390, 430, 768, 1280, 1440)
@@ -86,7 +86,7 @@ def run_private_review(prototype_root: Path, output_dir: Path) -> dict[str, obje
     except ImportError:
         return {"ok": False, "errors": ["Playwright is not installed; install requirements-browser.txt"], "checks": 0}
 
-    output.mkdir(parents=True, exist_ok=True, mode=0o700)
+    ensure_private_directory(output)
     screenshots = output / "screenshots"
     screenshots.mkdir(mode=0o700, exist_ok=False)
     checks: list[dict[str, object]] = []

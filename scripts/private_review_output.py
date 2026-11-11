@@ -3,12 +3,47 @@
 from __future__ import annotations
 
 import os
+import stat
 from pathlib import Path
 from typing import Mapping, Sequence
 
 
 def _overlaps(path: Path, protected: Path) -> bool:
     return path == protected or path in protected.parents or protected in path.parents
+
+
+def has_symlink_component(path: Path) -> bool:
+    """Return true when any component from the filesystem root is a symlink."""
+    absolute = Path(path).expanduser().absolute()
+    current = Path(absolute.anchor)
+    for part in absolute.parts[1:]:
+        current = current / part
+        try:
+            if current.is_symlink():
+                return True
+        except OSError:
+            return True
+    return False
+
+
+def ensure_private_directory(path: Path) -> Path:
+    """Create or tighten a report directory so only its owner can traverse it."""
+    raw = Path(path).expanduser()
+    if has_symlink_component(raw):
+        raise OSError(f"private output directory contains a symbolic link: {raw}")
+    try:
+        directory = raw.resolve(strict=False)
+        directory.mkdir(parents=True, exist_ok=True, mode=0o700)
+    except (OSError, RuntimeError) as exc:
+        raise OSError(f"cannot prepare private output directory: {type(exc).__name__}") from exc
+    if not directory.is_dir():
+        raise NotADirectoryError(f"private output path is not a directory: {directory}")
+    if os.name == "posix":
+        os.chmod(directory, 0o700)
+        permissions = stat.S_IMODE(directory.stat().st_mode)
+        if permissions & 0o077:
+            raise PermissionError(f"private output directory is not owner-only: {directory}")
+    return directory
 
 
 def prepare_private_output_directory(
@@ -20,8 +55,8 @@ def prepare_private_output_directory(
 ) -> tuple[Path | None, list[str]]:
     """Resolve a private output directory and refuse links or existing artifacts."""
     raw = Path(output_dir).expanduser()
-    if raw.is_symlink():
-        return None, [f"{label} output directory must not be a symbolic link"]
+    if has_symlink_component(raw):
+        return None, [f"{label} output path must not contain symbolic links"]
 
     try:
         output = raw.resolve(strict=False)
